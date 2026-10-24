@@ -7,7 +7,8 @@
         "op": "begin"
       },
       "expect": {
-        "error": null
+        "error": null,
+        "command_count": 0
       }
     },
     {
@@ -17,7 +18,8 @@
       },
       "expect": {
         "preview": 0.5,
-        "error": null
+        "error": null,
+        "command_count": 0
       }
     },
     {
@@ -28,7 +30,8 @@
       "expect": {
         "committed": 0.75,
         "undo_depth": 1,
-        "error": null
+        "error": null,
+        "command_count": 1
       }
     },
     {
@@ -39,7 +42,8 @@
         "committed": 0.75,
         "undo_depth": 1,
         "editing": false,
-        "error": "context changed"
+        "error": "context changed",
+        "command_count": 1
       }
     }
   ]

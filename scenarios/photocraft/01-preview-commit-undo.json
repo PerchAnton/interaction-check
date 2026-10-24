@@ -10,7 +10,8 @@
         "committed": 1,
         "preview": 1,
         "undo_depth": 0,
-        "error": null
+        "error": null,
+        "command_count": 0
       }
     },
     {
@@ -22,7 +23,8 @@
         "committed": 1,
         "preview": 0.75,
         "undo_depth": 0,
-        "error": null
+        "error": null,
+        "command_count": 0
       }
     },
     {
@@ -34,7 +36,8 @@
         "committed": 1,
         "preview": 0.5,
         "undo_depth": 0,
-        "error": null
+        "error": null,
+        "command_count": 0
       }
     },
     {
@@ -46,7 +49,8 @@
         "committed": 1,
         "preview": 0.25,
         "undo_depth": 0,
-        "error": null
+        "error": null,
+        "command_count": 0
       }
     },
     {
@@ -57,7 +61,8 @@
         "committed": 0.25,
         "preview": null,
         "undo_depth": 1,
-        "error": null
+        "error": null,
+        "command_count": 1
       }
     },
     {
@@ -68,7 +73,8 @@
         "committed": 1,
         "undo_depth": 0,
         "can_redo": true,
-        "error": null
+        "error": null,
+        "command_count": 1
       }
     },
     {
@@ -79,7 +85,8 @@
         "committed": 0.25,
         "undo_depth": 1,
         "can_redo": false,
-        "error": null
+        "error": null,
+        "command_count": 1
       }
     }
   ]

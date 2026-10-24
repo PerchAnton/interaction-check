@@ -1,0 +1,21 @@
+[package]
+name = "edit-session-photocraft-probe"
+version = "0.1.0-alpha.1"
+edition = "2024"
+rust-version = "1.99"
+license = "MIT OR Apache-2.0"
+publish = false
+
+[dependencies]
+edit-session = { git = "https://github.com/PerchAnton/edit-session", rev = "28620b8264660ea84a182110cf5894da90281c42" }
+photocraft-doc = { git = "https://github.com/storytold/photocraft", rev = "14a4ab9b3f38f0b68fde6add97384919710374c8" }
+photocraft-engine = { git = "https://github.com/storytold/photocraft", rev = "14a4ab9b3f38f0b68fde6add97384919710374c8" }
+serde_json = "1"
+
+[lints.rust]
+unsafe_code = "forbid"
+
+[lints.clippy]
+unwrap_used = "deny"
+expect_used = "deny"
+panic = "deny"

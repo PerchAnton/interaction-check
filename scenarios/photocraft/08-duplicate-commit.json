@@ -7,7 +7,8 @@
         "op": "begin"
       },
       "expect": {
-        "error": null
+        "error": null,
+        "command_count": 0
       }
     },
     {
@@ -15,7 +16,8 @@
         "op": "begin"
       },
       "expect": {
-        "error": "already editing"
+        "error": "already editing",
+        "command_count": 0
       }
     },
     {
@@ -24,7 +26,8 @@
         "value": 0.5
       },
       "expect": {
-        "error": null
+        "error": null,
+        "command_count": 0
       }
     },
     {
@@ -34,7 +37,8 @@
       "expect": {
         "committed": 0.5,
         "undo_depth": 1,
-        "error": null
+        "error": null,
+        "command_count": 1
       }
     },
     {
@@ -44,7 +48,8 @@
       "expect": {
         "committed": 0.5,
         "undo_depth": 1,
-        "error": "no draft"
+        "error": "no draft",
+        "command_count": 1
       }
     }
   ]

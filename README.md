@@ -4,7 +4,9 @@
 interaction traces against an explicit local adapter. No third-party Python packages.
 Maintained by [PerchAnton](https://github.com/PerchAnton); no PyPI release or upstream adoption.
 
-The first adapter exercises actual PhotoCraft document/history components. The tool itself
+The first adapter uses the independent [edit-session library](https://github.com/PerchAnton/edit-session)
+from a fixed Git revision, and commits through PhotoCraft's actual `Session` command API.
+The tool itself
 knows nothing about opacity, PDF geometry, Rust, Go or a GUI framework. A future PdfCraft
 adapter would translate scenarios to that application's existing command and inspection APIs.
 
@@ -14,13 +16,14 @@ Requires Python 3.10+ (tested with Python 3.14 on macOS arm64).
 
 ```sh
 python3 -m unittest -v
+cargo build --locked --manifest-path adapters/photocraft/Cargo.toml
 python3 interaction_check.py --report result.json scenarios/photocraft/*.json -- \
-  ../edit-session/pilots/photocraft/target/debug/edit-session-photocraft-probe
+  adapters/photocraft/target/debug/edit-session-photocraft-probe
 ```
 
-If the local binary is absent, build the probe as described in the
-[library README](https://github.com/PerchAnton/edit-session#photocraft-compatibility-probe).
-Clone both repositories into sibling directories. Each scenario starts a fresh process. Exit 0
+Only the PhotoCraft adapter needs Rust (1.99+; tested with 1.99.1). Cargo fetches both Rust
+repositories at fixed commits; no sibling checkout or path override is required.
+See the [adapter README](adapters/photocraft/README.md). Each scenario starts a fresh process. Exit 0
 means all scenarios passed; 1 means at least one failed; invalid CLI usage exits 2.
 
 ## Scenario format
@@ -57,8 +60,9 @@ Keep `egui_kittest` for widget/accessibility/pixel tests, `teatest` for Bubble T
 `proptest` for input generation. This prototype adds a portable trace plus explicit assertions
 and a machine-readable report; it does not replace those tools or discover bugs by itself.
 
-The PhotoCraft adapter observes a headless component test, not the live application's UI,
-engine commands, renderer, saved files or native input. No PdfCraft or Bubbles adapter is
+The PhotoCraft adapter drives real engine commands and history in a headless process. It does
+not connect to the live application's UI or test its renderer, saved files or native input.
+Upstream PhotoCraft has not adopted these dependencies. No PdfCraft or Bubbles adapter is
 implemented. There is no auto-recording or shrinking yet.
 
 Adapters are trusted local test programs, launched without a shell. A per-scenario timeout
@@ -68,8 +72,12 @@ The current timeout controls the direct adapter process, not a tree of spawned d
 
 ## Evidence
 
-- [Passing PhotoCraft component scenarios](photocraft-report.json): eight scenarios.
-- [Deliberate mutation](mutation-report.json): expected failures after disabling context
+- [Current PhotoCraft Session scenarios](photocraft-session-report.json): eight scenarios,
+  41 steps, using the published Git dependency and real command dispatch. Each step also
+  checks the command journal count, so previews and no-op commits cannot silently send edits.
+- [Earlier PhotoCraft component scenarios](photocraft-report.json): eight scenarios against
+  the original Document/History adapter, before switching to Session dispatch.
+- [Earlier deliberate mutation](mutation-report.json): expected failures after disabling context
   protection in a temporary library copy. Stale-target and undo-back-to-original scenarios
   detect a wrong document mutation/history change. A third scenario detects the changed error.
 - [Detailed validation](https://github.com/PerchAnton/edit-session/blob/main/docs/VALIDATION.md).

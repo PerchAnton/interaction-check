@@ -10,7 +10,8 @@
       "expect": {
         "committed": 0.5,
         "undo_depth": 1,
-        "error": null
+        "error": null,
+        "command_count": 1
       }
     },
     {
@@ -20,7 +21,8 @@
       "expect": {
         "committed": 1,
         "can_redo": true,
-        "error": null
+        "error": null,
+        "command_count": 1
       }
     },
     {
@@ -28,7 +30,8 @@
         "op": "begin"
       },
       "expect": {
-        "error": null
+        "error": null,
+        "command_count": 1
       }
     },
     {
@@ -38,7 +41,8 @@
       },
       "expect": {
         "preview": 0.5,
-        "error": null
+        "error": null,
+        "command_count": 1
       }
     },
     {
@@ -48,7 +52,8 @@
       },
       "expect": {
         "preview": 1,
-        "error": null
+        "error": null,
+        "command_count": 1
       }
     },
     {
@@ -59,7 +64,8 @@
         "committed": 1,
         "undo_depth": 0,
         "can_redo": true,
-        "error": null
+        "error": null,
+        "command_count": 1
       }
     },
     {
@@ -69,7 +75,8 @@
       "expect": {
         "committed": 0.5,
         "undo_depth": 1,
-        "error": null
+        "error": null,
+        "command_count": 1
       }
     }
   ]
