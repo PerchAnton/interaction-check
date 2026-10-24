@@ -1,0 +1,51 @@
+{
+  "schema": 1,
+  "name": "PhotoCraft: 08-duplicate-commit",
+  "steps": [
+    {
+      "event": {
+        "op": "begin"
+      },
+      "expect": {
+        "error": null
+      }
+    },
+    {
+      "event": {
+        "op": "begin"
+      },
+      "expect": {
+        "error": "already editing"
+      }
+    },
+    {
+      "event": {
+        "op": "preview",
+        "value": 0.5
+      },
+      "expect": {
+        "error": null
+      }
+    },
+    {
+      "event": {
+        "op": "commit"
+      },
+      "expect": {
+        "committed": 0.5,
+        "undo_depth": 1,
+        "error": null
+      }
+    },
+    {
+      "event": {
+        "op": "commit"
+      },
+      "expect": {
+        "committed": 0.5,
+        "undo_depth": 1,
+        "error": "no draft"
+      }
+    }
+  ]
+}

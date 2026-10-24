@@ -1,0 +1,52 @@
+{
+  "version": "0.1.0-alpha.1",
+  "results": [
+    {
+      "name": "PhotoCraft: 01-preview-commit-undo",
+      "passed": true,
+      "steps": 7,
+      "stderr": ""
+    },
+    {
+      "name": "PhotoCraft: 02-cancel",
+      "passed": true,
+      "steps": 3,
+      "stderr": ""
+    },
+    {
+      "name": "PhotoCraft: 03-invalid-input",
+      "passed": true,
+      "steps": 6,
+      "stderr": ""
+    },
+    {
+      "name": "04-stale-document.json",
+      "passed": false,
+      "error": "Step 4 ({'op': 'commit'}): state.error: expected 'context changed', got 'value changed'"
+    },
+    {
+      "name": "05-stale-target.json",
+      "passed": false,
+      "error": "Step 4 ({'op': 'commit'}): state.committed: expected 1, got 0.5; state.undo_depth: expected 0, got 1; state.error: expected 'context changed', got None"
+    },
+    {
+      "name": "PhotoCraft: 06-noop-preserves-redo",
+      "passed": true,
+      "steps": 7,
+      "stderr": ""
+    },
+    {
+      "name": "07-undo-aba.json",
+      "passed": false,
+      "error": "Step 5 ({'op': 'commit'}): state.committed: expected 1, got 0.5; state.undo_depth: expected 0, got 1; state.can_redo: expected True, got False; state.error: expected 'context changed', got None"
+    },
+    {
+      "name": "PhotoCraft: 08-duplicate-commit",
+      "passed": true,
+      "steps": 5,
+      "stderr": ""
+    }
+  ],
+  "mutation": "Disabled context/revision check in a temporary copy only",
+  "expected_failure": true
+}

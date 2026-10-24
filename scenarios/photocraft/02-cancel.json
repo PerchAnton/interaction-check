@@ -1,0 +1,38 @@
+{
+  "schema": 1,
+  "name": "PhotoCraft: 02-cancel",
+  "steps": [
+    {
+      "event": {
+        "op": "begin"
+      },
+      "expect": {
+        "error": null
+      }
+    },
+    {
+      "event": {
+        "op": "preview",
+        "value": 0.5
+      },
+      "expect": {
+        "committed": 1,
+        "preview": 0.5,
+        "undo_depth": 0,
+        "error": null
+      }
+    },
+    {
+      "event": {
+        "op": "cancel"
+      },
+      "expect": {
+        "committed": 1,
+        "preview": null,
+        "undo_depth": 0,
+        "editing": false,
+        "error": null
+      }
+    }
+  ]
+}

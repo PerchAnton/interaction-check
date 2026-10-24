@@ -1,0 +1,70 @@
+{
+  "version": "0.1.0-alpha.1",
+  "results": [
+    {
+      "name": "PhotoCraft: 01-preview-commit-undo",
+      "passed": true,
+      "steps": 7,
+      "stderr": ""
+    },
+    {
+      "name": "PhotoCraft: 02-cancel",
+      "passed": true,
+      "steps": 3,
+      "stderr": ""
+    },
+    {
+      "name": "PhotoCraft: 03-invalid-input",
+      "passed": true,
+      "steps": 6,
+      "stderr": ""
+    },
+    {
+      "name": "PhotoCraft: 04-stale-document",
+      "passed": true,
+      "steps": 4,
+      "stderr": ""
+    },
+    {
+      "name": "PhotoCraft: 05-stale-target",
+      "passed": true,
+      "steps": 4,
+      "stderr": ""
+    },
+    {
+      "name": "PhotoCraft: 06-noop-preserves-redo",
+      "passed": true,
+      "steps": 7,
+      "stderr": ""
+    },
+    {
+      "name": "PhotoCraft: 07-undo-aba",
+      "passed": true,
+      "steps": 5,
+      "stderr": ""
+    },
+    {
+      "name": "PhotoCraft: 08-duplicate-commit",
+      "passed": true,
+      "steps": 5,
+      "stderr": ""
+    }
+  ],
+  "verified_at": "2026-10-24T22:35:18+03:00",
+  "environment": {
+    "os": "Darwin",
+    "machine": "arm64",
+    "python": "3.14.3",
+    "rust": "1.99.1 (58cf8f9c3 2026-10-13)"
+  },
+  "adapter": {
+    "upstream": "https://github.com/storytold/photocraft",
+    "revision": "14a4ab9b3f38f0b68fde6add97384919710374c8",
+    "crates": [
+      "photocraft-doc",
+      "photocraft-ops"
+    ],
+    "scope": "headless document/history component compatibility; no GUI or Session integration",
+    "binary_sha256": "930867230c8dd91700af1a80e3514b6a2fe03fac36a618998abf98cd7727cf18"
+  }
+}

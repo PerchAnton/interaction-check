@@ -1,0 +1,44 @@
+{
+  "schema": 1,
+  "name": "PhotoCraft: 05-stale-target",
+  "steps": [
+    {
+      "event": {
+        "op": "begin"
+      },
+      "expect": {
+        "error": null
+      }
+    },
+    {
+      "event": {
+        "op": "preview",
+        "value": 0.5
+      },
+      "expect": {
+        "preview": 0.5,
+        "error": null
+      }
+    },
+    {
+      "event": {
+        "op": "select-other"
+      },
+      "expect": {
+        "committed": 1,
+        "error": null
+      }
+    },
+    {
+      "event": {
+        "op": "commit"
+      },
+      "expect": {
+        "committed": 1,
+        "undo_depth": 0,
+        "editing": false,
+        "error": "context changed"
+      }
+    }
+  ]
+}

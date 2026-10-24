@@ -1,0 +1,55 @@
+{
+  "schema": 1,
+  "name": "PhotoCraft: 07-undo-aba",
+  "steps": [
+    {
+      "event": {
+        "op": "begin"
+      },
+      "expect": {
+        "error": null
+      }
+    },
+    {
+      "event": {
+        "op": "preview",
+        "value": 0.5
+      },
+      "expect": {
+        "preview": 0.5,
+        "error": null
+      }
+    },
+    {
+      "event": {
+        "op": "external",
+        "value": 0.75
+      },
+      "expect": {
+        "committed": 0.75,
+        "error": null
+      }
+    },
+    {
+      "event": {
+        "op": "undo"
+      },
+      "expect": {
+        "committed": 1,
+        "can_redo": true,
+        "error": null
+      }
+    },
+    {
+      "event": {
+        "op": "commit"
+      },
+      "expect": {
+        "committed": 1,
+        "undo_depth": 0,
+        "can_redo": true,
+        "error": "context changed"
+      }
+    }
+  ]
+}

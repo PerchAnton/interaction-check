@@ -1,0 +1,46 @@
+{
+  "schema": 1,
+  "name": "PhotoCraft: 04-stale-document",
+  "steps": [
+    {
+      "event": {
+        "op": "begin"
+      },
+      "expect": {
+        "error": null
+      }
+    },
+    {
+      "event": {
+        "op": "preview",
+        "value": 0.5
+      },
+      "expect": {
+        "preview": 0.5,
+        "error": null
+      }
+    },
+    {
+      "event": {
+        "op": "external",
+        "value": 0.75
+      },
+      "expect": {
+        "committed": 0.75,
+        "undo_depth": 1,
+        "error": null
+      }
+    },
+    {
+      "event": {
+        "op": "commit"
+      },
+      "expect": {
+        "committed": 0.75,
+        "undo_depth": 1,
+        "editing": false,
+        "error": "context changed"
+      }
+    }
+  ]
+}

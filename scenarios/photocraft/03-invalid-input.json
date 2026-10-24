@@ -1,0 +1,68 @@
+{
+  "schema": 1,
+  "name": "PhotoCraft: 03-invalid-input",
+  "steps": [
+    {
+      "event": {
+        "op": "begin"
+      },
+      "expect": {
+        "error": null
+      }
+    },
+    {
+      "event": {
+        "op": "preview",
+        "value": 0.5
+      },
+      "expect": {
+        "preview": 0.5,
+        "error": null
+      }
+    },
+    {
+      "event": {
+        "op": "preview",
+        "value": "NaN"
+      },
+      "expect": {
+        "committed": 1,
+        "preview": 0.5,
+        "valid": false,
+        "error": "invalid opacity"
+      }
+    },
+    {
+      "event": {
+        "op": "commit"
+      },
+      "expect": {
+        "committed": 1,
+        "undo_depth": 0,
+        "editing": true,
+        "error": "invalid proposal"
+      }
+    },
+    {
+      "event": {
+        "op": "preview",
+        "value": 0.75
+      },
+      "expect": {
+        "valid": true,
+        "preview": 0.75,
+        "error": null
+      }
+    },
+    {
+      "event": {
+        "op": "commit"
+      },
+      "expect": {
+        "committed": 0.75,
+        "undo_depth": 1,
+        "error": null
+      }
+    }
+  ]
+}

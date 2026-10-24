@@ -1,0 +1,86 @@
+{
+  "schema": 1,
+  "name": "PhotoCraft: 01-preview-commit-undo",
+  "steps": [
+    {
+      "event": {
+        "op": "begin"
+      },
+      "expect": {
+        "committed": 1,
+        "preview": 1,
+        "undo_depth": 0,
+        "error": null
+      }
+    },
+    {
+      "event": {
+        "op": "preview",
+        "value": 0.75
+      },
+      "expect": {
+        "committed": 1,
+        "preview": 0.75,
+        "undo_depth": 0,
+        "error": null
+      }
+    },
+    {
+      "event": {
+        "op": "preview",
+        "value": 0.5
+      },
+      "expect": {
+        "committed": 1,
+        "preview": 0.5,
+        "undo_depth": 0,
+        "error": null
+      }
+    },
+    {
+      "event": {
+        "op": "preview",
+        "value": 0.25
+      },
+      "expect": {
+        "committed": 1,
+        "preview": 0.25,
+        "undo_depth": 0,
+        "error": null
+      }
+    },
+    {
+      "event": {
+        "op": "commit"
+      },
+      "expect": {
+        "committed": 0.25,
+        "preview": null,
+        "undo_depth": 1,
+        "error": null
+      }
+    },
+    {
+      "event": {
+        "op": "undo"
+      },
+      "expect": {
+        "committed": 1,
+        "undo_depth": 0,
+        "can_redo": true,
+        "error": null
+      }
+    },
+    {
+      "event": {
+        "op": "redo"
+      },
+      "expect": {
+        "committed": 0.25,
+        "undo_depth": 1,
+        "can_redo": false,
+        "error": null
+      }
+    }
+  ]
+}
