@@ -10,6 +10,16 @@ The tool itself
 knows nothing about opacity, PDF geometry, Rust, Go or a GUI framework. A future PdfCraft
 adapter would translate scenarios to that application's existing command and inspection APIs.
 
+## Proposed PhotoCraft UI consumer
+
+[PhotoCraft PR #9190](https://github.com/storytold/photocraft/pull/9190) adds a PhotoCraft-owned
+adapter that drives the shipped Edit Selected Guides dialog, egui canvas/dialog frames, control
+field setter and real Session. Its CI fetches this runner at
+`f8d4282d61576ffe78d18553c642d215887e2d9f`; Python is not an application runtime dependency.
+[Ten scenarios / 44 steps](https://github.com/PerchAnton/photocraft/tree/46b4a183d5f44035bbc216dcf6196701bcb45bc9/tests/interactions/guide-edit)
+pass locally, covering preview, commit, Cancel/Escape, invalid input, no-ops and stale drafts.
+This consumer patch is awaiting maintainer review; upstream adoption is not claimed.
+
 ## Run
 
 Requires Python 3.10+ (tested with Python 3.14 on macOS arm64).
@@ -60,7 +70,7 @@ Keep `egui_kittest` for widget/accessibility/pixel tests, `teatest` for Bubble T
 `proptest` for input generation. This prototype adds a portable trace plus explicit assertions
 and a machine-readable report; it does not replace those tools or discover bugs by itself.
 
-The PhotoCraft adapter drives real engine commands and history in a headless process. It does
+The bundled engine-only PhotoCraft adapter drives real commands and history in a headless process. It does
 not connect to the live application's UI or test its renderer, saved files or native input.
 Upstream PhotoCraft has not adopted these dependencies. No PdfCraft or Bubbles adapter is
 implemented. There is no auto-recording or shrinking yet.
@@ -82,8 +92,8 @@ The current timeout controls the direct adapter process, not a tree of spawned d
   detect a wrong document mutation/history change. A third scenario detects the changed error.
 - [Detailed validation](https://github.com/PerchAnton/edit-session/blob/main/docs/VALIDATION.md).
 
-The next adoption milestone is one real UI trace for PhotoCraft and one for PdfCraft,
-using existing harnesses. Cross-application reuse is still a hypothesis until both work.
+The PhotoCraft UI trace is now proposed in PR #9190 above. The next milestones are maintainer
+review and a real PdfCraft consumer. Cross-application reuse remains unproven until both work.
 
 ## License
 
