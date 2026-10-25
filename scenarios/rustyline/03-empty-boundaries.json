@@ -9,7 +9,8 @@
       },
       "expect": {
         "value": "",
-        "cursor_bytes": 0
+        "cursor_bytes": 0,
+        "changes": 0
       }
     },
     {
@@ -19,7 +20,8 @@
       },
       "expect": {
         "value": "",
-        "cursor_bytes": 0
+        "cursor_bytes": 0,
+        "changes": 0
       }
     },
     {
@@ -29,7 +31,8 @@
       },
       "expect": {
         "value": "",
-        "cursor_bytes": 0
+        "cursor_bytes": 0,
+        "changes": 0
       }
     },
     {
@@ -39,7 +42,8 @@
       },
       "expect": {
         "value": "界",
-        "cursor_bytes": 3
+        "cursor_bytes": 3,
+        "changes": 1
       }
     },
     {
@@ -49,7 +53,8 @@
       },
       "expect": {
         "value": "界",
-        "cursor_bytes": 3
+        "cursor_bytes": 3,
+        "changes": 1
       }
     },
     {
@@ -59,7 +64,8 @@
       },
       "expect": {
         "value": "",
-        "cursor_bytes": 0
+        "cursor_bytes": 0,
+        "changes": 2
       }
     }
   ]

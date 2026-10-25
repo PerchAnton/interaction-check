@@ -4,9 +4,8 @@ import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
-from python_protocol import fields, serve, text, width
-
 import urwid
+from python_protocol import fields, serve, text, width
 
 widget = None
 columns = 20
