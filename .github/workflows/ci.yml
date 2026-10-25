@@ -57,7 +57,11 @@ jobs:
       - name: Build and check native adapter
         working-directory: adapters/${{ matrix.adapter }}
         run: |
-          test -z "$(gofmt -l *.go)"
+          unformatted="$(gofmt -l *.go)"
+          if [ -n "$unformatted" ]; then
+            printf '%s\n' "$unformatted"
+            exit 1
+          fi
           go test -race ./...
           go vet ./...
           go build -o "$RUNNER_TEMP/probe.exe" .
