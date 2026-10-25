@@ -1,0 +1,55 @@
+{
+  "schema": 1,
+  "name": "Combining grapheme navigation and deletion retain valid UTF-8",
+  "steps": [
+    {
+      "event": {
+        "op": "new",
+        "width": 5,
+        "text": "éx"
+      },
+      "expect": {
+        "value": "éx",
+        "position_bytes": 4
+      }
+    },
+    {
+      "event": {
+        "op": "key",
+        "key": "left"
+      },
+      "expect": {
+        "position_bytes": 3
+      }
+    },
+    {
+      "event": {
+        "op": "key",
+        "key": "left"
+      },
+      "expect": {
+        "position_bytes": 0
+      }
+    },
+    {
+      "event": {
+        "op": "key",
+        "key": "delete"
+      },
+      "expect": {
+        "value": "x",
+        "position_bytes": 0
+      }
+    },
+    {
+      "event": {
+        "op": "key",
+        "key": "backspace"
+      },
+      "expect": {
+        "value": "x",
+        "position_bytes": 0
+      }
+    }
+  ]
+}

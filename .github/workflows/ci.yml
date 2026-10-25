@@ -34,3 +34,45 @@ jobs:
       - run: cargo +1.99.1 build --locked --manifest-path adapters/photocraft/Cargo.toml
       - run: cargo +1.99.1 clippy --locked --manifest-path adapters/photocraft/Cargo.toml --all-targets -- -D warnings
       - run: python3 interaction_check.py scenarios/photocraft/*.json -- adapters/photocraft/target/debug/edit-session-photocraft-probe
+  widgets-go:
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-24.04, windows-latest]
+        adapter: [bubbles, huh]
+    defaults:
+      run:
+        shell: bash
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+      - uses: actions/setup-go@b7ad1dad31e06c5925ef5d2fc7ad053ef454303e # v7
+        with:
+          go-version: '1.27.3'
+          cache: false
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0
+        with:
+          python-version: '3.14'
+      - name: Build and check native adapter
+        working-directory: adapters/${{ matrix.adapter }}
+        run: |
+          test -z "$(gofmt -l *.go)"
+          go test -race ./...
+          go vet ./...
+          go build -o "$RUNNER_TEMP/probe.exe" .
+      - name: Replay native widget scenarios
+        run: python interaction_check.py --timeout 30 scenarios/${{ matrix.adapter }}/*.json -- "$RUNNER_TEMP/probe.exe"
+  widgets-rust:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    env:
+      CARGO_PROFILE_DEV_DEBUG: '0'
+      CARGO_INCREMENTAL: '0'
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+      - run: rustup toolchain install 1.99.1 --profile minimal --component rustfmt,clippy
+      - run: cargo +1.99.1 fmt --check --manifest-path adapters/cursive/Cargo.toml
+      - run: cargo +1.99.1 build --locked --manifest-path adapters/cursive/Cargo.toml
+      - run: cargo +1.99.1 clippy --locked --manifest-path adapters/cursive/Cargo.toml --all-targets -- -D warnings
+      - run: python3 interaction_check.py scenarios/cursive/*.json -- adapters/cursive/target/debug/interaction-check-cursive

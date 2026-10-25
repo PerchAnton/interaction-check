@@ -1,0 +1,82 @@
+{
+  "schema": 1,
+  "name": "Shift Tab returns to the previous field and retains values",
+  "steps": [
+    {
+      "event": {
+        "op": "new",
+        "width": 40
+      },
+      "expect": {
+        "focused": "first"
+      }
+    },
+    {
+      "event": {
+        "op": "text",
+        "text": "A"
+      },
+      "expect": {
+        "first": "A"
+      }
+    },
+    {
+      "event": {
+        "op": "key",
+        "key": "tab"
+      },
+      "expect": {
+        "focused": "second"
+      }
+    },
+    {
+      "event": {
+        "op": "text",
+        "text": "B"
+      },
+      "expect": {
+        "second": "B"
+      }
+    },
+    {
+      "event": {
+        "op": "key",
+        "key": "shift+tab"
+      },
+      "expect": {
+        "focused": "first",
+        "second": "B"
+      }
+    },
+    {
+      "event": {
+        "op": "text",
+        "text": "!"
+      },
+      "expect": {
+        "first": "A!",
+        "second": "B"
+      }
+    },
+    {
+      "event": {
+        "op": "key",
+        "key": "tab"
+      },
+      "expect": {
+        "focused": "second"
+      }
+    },
+    {
+      "event": {
+        "op": "key",
+        "key": "enter"
+      },
+      "expect": {
+        "status": "completed",
+        "first": "A!",
+        "second": "B"
+      }
+    }
+  ]
+}

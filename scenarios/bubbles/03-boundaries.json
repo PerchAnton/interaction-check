@@ -1,0 +1,65 @@
+{
+  "schema": 1,
+  "name": "Empty and end boundaries remain valid",
+  "steps": [
+    {
+      "event": {
+        "op": "new",
+        "width": 8
+      },
+      "expect": {
+        "value": "",
+        "position_runes": 0
+      }
+    },
+    {
+      "event": {
+        "op": "key",
+        "key": "backspace"
+      },
+      "expect": {
+        "value": "",
+        "position_runes": 0
+      }
+    },
+    {
+      "event": {
+        "op": "key",
+        "key": "delete"
+      },
+      "expect": {
+        "value": "",
+        "position_runes": 0
+      }
+    },
+    {
+      "event": {
+        "op": "text",
+        "text": "ab"
+      },
+      "expect": {
+        "value": "ab",
+        "position_runes": 2
+      }
+    },
+    {
+      "event": {
+        "op": "cursor",
+        "position": 999
+      },
+      "expect": {
+        "position_runes": 2
+      }
+    },
+    {
+      "event": {
+        "op": "key",
+        "key": "delete"
+      },
+      "expect": {
+        "value": "ab",
+        "position_runes": 2
+      }
+    }
+  ]
+}
