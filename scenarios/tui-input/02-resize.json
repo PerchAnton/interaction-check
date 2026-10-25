@@ -1,0 +1,50 @@
+{
+  "schema": 1,
+  "name": "Wide character scrolling preserves text and logical cursor",
+  "steps": [
+    {
+      "event": {
+        "op": "new",
+        "text": "a界bc",
+        "width": 3
+      },
+      "expect": {
+        "value": "a界bc",
+        "position_codepoints": 4,
+        "visual_cursor": 5,
+        "scroll_columns": 3
+      }
+    },
+    {
+      "event": {
+        "op": "resize",
+        "width": 6
+      },
+      "expect": {
+        "value": "a界bc",
+        "position_codepoints": 4,
+        "scroll_columns": 0
+      }
+    },
+    {
+      "event": {
+        "op": "key",
+        "key": "home"
+      },
+      "expect": {
+        "position_codepoints": 0,
+        "visual_cursor": 0
+      }
+    },
+    {
+      "event": {
+        "op": "text",
+        "text": "!r"
+      },
+      "expect": {
+        "value": "!ra界bc",
+        "position_codepoints": 2
+      }
+    }
+  ]
+}

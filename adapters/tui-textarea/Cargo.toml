@@ -1,0 +1,11 @@
+[package]
+name = "interaction-check-tui-textarea"
+version = "0.1.0"
+edition = "2024"
+publish = false
+license = "MIT OR Apache-2.0"
+
+[dependencies]
+tui-textarea = { git = "https://github.com/PerchAnton/tui-textarea", rev = "1a0276461f31a57a74187d22f9d6513a9c539c37", default-features = false, features = ["no-backend"] }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"

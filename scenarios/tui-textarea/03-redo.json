@@ -1,0 +1,87 @@
+{
+  "schema": 1,
+  "name": "No-op clear preserves the previous redo operation",
+  "steps": [
+    {
+      "event": {
+        "op": "new",
+        "lines": [
+          ""
+        ]
+      },
+      "expect": {
+        "lines": [
+          ""
+        ]
+      }
+    },
+    {
+      "event": {
+        "op": "text",
+        "text": "界"
+      },
+      "expect": {
+        "lines": [
+          "界"
+        ],
+        "cursor": [
+          0,
+          1
+        ]
+      }
+    },
+    {
+      "event": {
+        "op": "key",
+        "key": "undo"
+      },
+      "expect": {
+        "lines": [
+          ""
+        ],
+        "cursor": [
+          0,
+          0
+        ]
+      }
+    },
+    {
+      "event": {
+        "op": "select_all"
+      },
+      "expect": {
+        "lines": [
+          ""
+        ]
+      }
+    },
+    {
+      "event": {
+        "op": "delete",
+        "chars": null
+      },
+      "expect": {
+        "changed": false,
+        "lines": [
+          ""
+        ]
+      }
+    },
+    {
+      "event": {
+        "op": "key",
+        "key": "redo"
+      },
+      "expect": {
+        "changed": true,
+        "lines": [
+          "界"
+        ],
+        "cursor": [
+          0,
+          1
+        ]
+      }
+    }
+  ]
+}

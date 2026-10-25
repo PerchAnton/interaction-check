@@ -1,0 +1,70 @@
+{
+  "schema": 1,
+  "name": "Oversized deletion restores a valid Unicode endpoint on undo",
+  "steps": [
+    {
+      "event": {
+        "op": "new",
+        "lines": [
+          "ab",
+          "界🙂"
+        ]
+      },
+      "expect": {
+        "cursor": [
+          0,
+          0
+        ]
+      }
+    },
+    {
+      "event": {
+        "op": "delete",
+        "chars": null
+      },
+      "expect": {
+        "changed": true,
+        "lines": [
+          ""
+        ],
+        "cursor": [
+          0,
+          0
+        ]
+      }
+    },
+    {
+      "event": {
+        "op": "key",
+        "key": "undo"
+      },
+      "expect": {
+        "changed": true,
+        "lines": [
+          "ab",
+          "界🙂"
+        ],
+        "cursor": [
+          1,
+          2
+        ]
+      }
+    },
+    {
+      "event": {
+        "op": "key",
+        "key": "redo"
+      },
+      "expect": {
+        "changed": true,
+        "lines": [
+          ""
+        ],
+        "cursor": [
+          0,
+          0
+        ]
+      }
+    }
+  ]
+}

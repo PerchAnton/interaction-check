@@ -1,0 +1,69 @@
+{
+  "schema": 1,
+  "name": "Clearing an empty selection does not invent an undo step",
+  "steps": [
+    {
+      "event": {
+        "op": "new",
+        "lines": [
+          ""
+        ]
+      },
+      "expect": {
+        "lines": [
+          ""
+        ],
+        "cursor": [
+          0,
+          0
+        ]
+      }
+    },
+    {
+      "event": {
+        "op": "select_all"
+      },
+      "expect": {
+        "lines": [
+          ""
+        ],
+        "cursor": [
+          0,
+          0
+        ]
+      }
+    },
+    {
+      "event": {
+        "op": "delete",
+        "chars": null
+      },
+      "expect": {
+        "changed": false,
+        "lines": [
+          ""
+        ],
+        "cursor": [
+          0,
+          0
+        ]
+      }
+    },
+    {
+      "event": {
+        "op": "key",
+        "key": "undo"
+      },
+      "expect": {
+        "changed": false,
+        "lines": [
+          ""
+        ],
+        "cursor": [
+          0,
+          0
+        ]
+      }
+    }
+  ]
+}

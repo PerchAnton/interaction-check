@@ -1,0 +1,66 @@
+{
+  "schema": 1,
+  "name": "Empty boundaries and delete to end remain stable",
+  "steps": [
+    {
+      "event": {
+        "op": "new",
+        "text": "",
+        "width": 5
+      },
+      "expect": {
+        "value": "",
+        "position_codepoints": 0
+      }
+    },
+    {
+      "event": {
+        "op": "key",
+        "key": "delete"
+      },
+      "expect": {
+        "value": "",
+        "position_codepoints": 0
+      }
+    },
+    {
+      "event": {
+        "op": "key",
+        "key": "backspace"
+      },
+      "expect": {
+        "value": "",
+        "position_codepoints": 0
+      }
+    },
+    {
+      "event": {
+        "op": "text",
+        "text": "abc"
+      },
+      "expect": {
+        "value": "abc",
+        "position_codepoints": 3
+      }
+    },
+    {
+      "event": {
+        "op": "key",
+        "key": "home"
+      },
+      "expect": {
+        "position_codepoints": 0
+      }
+    },
+    {
+      "event": {
+        "op": "key",
+        "key": "ctrl+k"
+      },
+      "expect": {
+        "value": "",
+        "position_codepoints": 0
+      }
+    }
+  ]
+}

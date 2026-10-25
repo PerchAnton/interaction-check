@@ -1,0 +1,58 @@
+{
+  "schema": 1,
+  "name": "Native redraw after resize retains text and accepts editing",
+  "steps": [
+    {
+      "event": {
+        "op": "new",
+        "width": 8,
+        "text": "abcdefgh"
+      },
+      "expect": {
+        "value": "abcdefgh",
+        "width": 8
+      }
+    },
+    {
+      "event": {
+        "op": "key",
+        "key": "end"
+      },
+      "expect": {
+        "value": "abcdefgh"
+      }
+    },
+    {
+      "event": {
+        "op": "resize",
+        "width": 4
+      },
+      "expect": {
+        "value": "abcdefgh",
+        "width": 4
+      }
+    },
+    {
+      "event": {
+        "op": "key",
+        "key": "backspace"
+      },
+      "expect": {
+        "value": "abcdefg",
+        "changes": 1
+      }
+    },
+    {
+      "event": {
+        "op": "key",
+        "key": "escape"
+      },
+      "expect": {
+        "done": [
+          "escape"
+        ],
+        "value": "abcdefg"
+      }
+    }
+  ]
+}
