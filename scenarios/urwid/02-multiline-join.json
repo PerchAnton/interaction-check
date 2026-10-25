@@ -1,0 +1,56 @@
+{
+  "schema": 1,
+  "name": "02-multiline-join",
+  "steps": [
+    {
+      "event": {
+        "op": "new",
+        "text": "one\ntwo",
+        "width": 10,
+        "multiline": true
+      },
+      "expect": {
+        "cursor_codepoints": 7,
+        "rows": 2
+      }
+    },
+    {
+      "event": {
+        "op": "key",
+        "key": "home"
+      },
+      "expect": {
+        "cursor_codepoints": 4
+      }
+    },
+    {
+      "event": {
+        "op": "key",
+        "key": "backspace"
+      },
+      "expect": {
+        "value": "onetwo",
+        "cursor_codepoints": 3
+      }
+    },
+    {
+      "event": {
+        "op": "key",
+        "key": "enter"
+      },
+      "expect": {
+        "value": "one\ntwo",
+        "cursor_codepoints": 4
+      }
+    },
+    {
+      "event": {
+        "op": "key",
+        "key": "end"
+      },
+      "expect": {
+        "cursor_codepoints": 7
+      }
+    }
+  ]
+}

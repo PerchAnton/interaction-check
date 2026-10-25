@@ -1,0 +1,42 @@
+{
+  "schema": 1,
+  "name": "02-unicode-input",
+  "steps": [
+    {
+      "event": {
+        "op": "new",
+        "width": 30
+      },
+      "expect": {
+        "value": ""
+      }
+    },
+    {
+      "event": {
+        "op": "text",
+        "text": "A界"
+      },
+      "expect": {
+        "value": "A界"
+      }
+    },
+    {
+      "event": {
+        "op": "key",
+        "key": "backspace"
+      },
+      "expect": {
+        "value": "A"
+      }
+    },
+    {
+      "event": {
+        "op": "text",
+        "text": "🙂"
+      },
+      "expect": {
+        "value": "A🙂"
+      }
+    }
+  ]
+}

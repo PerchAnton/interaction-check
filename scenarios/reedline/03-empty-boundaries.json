@@ -1,0 +1,66 @@
+{
+  "schema": 1,
+  "name": "03-empty-boundaries",
+  "steps": [
+    {
+      "event": {
+        "op": "new",
+        "text": ""
+      },
+      "expect": {
+        "value": "",
+        "cursor_bytes": 0
+      }
+    },
+    {
+      "event": {
+        "op": "key",
+        "key": "backspace"
+      },
+      "expect": {
+        "value": "",
+        "cursor_bytes": 0
+      }
+    },
+    {
+      "event": {
+        "op": "key",
+        "key": "delete"
+      },
+      "expect": {
+        "value": "",
+        "cursor_bytes": 0
+      }
+    },
+    {
+      "event": {
+        "op": "text",
+        "text": "界"
+      },
+      "expect": {
+        "value": "界",
+        "cursor_bytes": 3
+      }
+    },
+    {
+      "event": {
+        "op": "key",
+        "key": "delete"
+      },
+      "expect": {
+        "value": "界",
+        "cursor_bytes": 3
+      }
+    },
+    {
+      "event": {
+        "op": "key",
+        "key": "backspace"
+      },
+      "expect": {
+        "value": "",
+        "cursor_bytes": 0
+      }
+    }
+  ]
+}

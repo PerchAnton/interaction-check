@@ -1,0 +1,57 @@
+{
+  "schema": 1,
+  "name": "03-validation-and-noop",
+  "steps": [
+    {
+      "event": {
+        "op": "new",
+        "text": "12",
+        "digits_only": true
+      },
+      "expect": {
+        "valid": true
+      }
+    },
+    {
+      "event": {
+        "op": "text",
+        "text": "x"
+      },
+      "expect": {
+        "value": "12x",
+        "valid": false,
+        "changes": 1
+      }
+    },
+    {
+      "event": {
+        "op": "key",
+        "key": "backspace"
+      },
+      "expect": {
+        "value": "12",
+        "valid": true,
+        "changes": 2
+      }
+    },
+    {
+      "event": {
+        "op": "key",
+        "key": "end"
+      },
+      "expect": {
+        "changes": 2
+      }
+    },
+    {
+      "event": {
+        "op": "key",
+        "key": "delete"
+      },
+      "expect": {
+        "value": "12",
+        "changes": 2
+      }
+    }
+  ]
+}

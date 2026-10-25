@@ -1,0 +1,1 @@
+textual @ git+https://github.com/PerchAnton/textual.git@c22e522b600d15e76b5c1048a07d1f09f937821f

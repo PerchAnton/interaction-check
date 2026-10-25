@@ -1,0 +1,55 @@
+{
+  "schema": 1,
+  "name": "02-restrict",
+  "steps": [
+    {
+      "event": {
+        "op": "new",
+        "text": "",
+        "width": 40,
+        "digits_only": true
+      },
+      "expect": {
+        "value": ""
+      }
+    },
+    {
+      "event": {
+        "op": "text",
+        "text": "12x3"
+      },
+      "expect": {
+        "value": "123",
+        "cursor_codepoints": 3
+      }
+    },
+    {
+      "event": {
+        "op": "key",
+        "key": "home"
+      },
+      "expect": {
+        "cursor_codepoints": 0
+      }
+    },
+    {
+      "event": {
+        "op": "key",
+        "key": "backspace"
+      },
+      "expect": {
+        "value": "123",
+        "cursor_codepoints": 0
+      }
+    },
+    {
+      "event": {
+        "op": "key",
+        "key": "delete"
+      },
+      "expect": {
+        "value": "23"
+      }
+    }
+  ]
+}

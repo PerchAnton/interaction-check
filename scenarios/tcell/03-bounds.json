@@ -1,0 +1,70 @@
+{
+  "schema": 1,
+  "name": "03-bounds",
+  "steps": [
+    {
+      "event": {
+        "op": "new",
+        "width": 1,
+        "height": 1
+      },
+      "expect": {
+        "cells": [
+          {
+            "text": " "
+          }
+        ]
+      }
+    },
+    {
+      "event": {
+        "op": "put",
+        "x": -1,
+        "y": 0,
+        "text": "x"
+      },
+      "expect": {
+        "used": 0,
+        "rest": "x",
+        "cells": [
+          {
+            "text": " "
+          }
+        ]
+      }
+    },
+    {
+      "event": {
+        "op": "put",
+        "x": 1,
+        "y": 0,
+        "text": "界"
+      },
+      "expect": {
+        "used": 0,
+        "rest": "界",
+        "cells": [
+          {
+            "text": " "
+          }
+        ]
+      }
+    },
+    {
+      "event": {
+        "op": "put",
+        "x": 0,
+        "y": 0,
+        "text": "x"
+      },
+      "expect": {
+        "used": 1,
+        "cells": [
+          {
+            "text": "x"
+          }
+        ]
+      }
+    }
+  ]
+}

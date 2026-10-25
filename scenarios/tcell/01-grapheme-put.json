@@ -1,0 +1,87 @@
+{
+  "schema": 1,
+  "name": "01-grapheme-put",
+  "steps": [
+    {
+      "event": {
+        "op": "new",
+        "width": 3,
+        "height": 1
+      },
+      "expect": {
+        "width": 3,
+        "height": 1
+      }
+    },
+    {
+      "event": {
+        "op": "put",
+        "x": 0,
+        "y": 0,
+        "text": "éX"
+      },
+      "expect": {
+        "rest": "X",
+        "used": 1,
+        "cells": [
+          {
+            "text": "é",
+            "width": 1
+          },
+          {
+            "text": " "
+          },
+          {
+            "text": " "
+          }
+        ]
+      }
+    },
+    {
+      "event": {
+        "op": "put",
+        "x": 1,
+        "y": 0,
+        "text": "界"
+      },
+      "expect": {
+        "used": 2,
+        "cells": [
+          {
+            "text": "é"
+          },
+          {
+            "text": "界",
+            "width": 2
+          },
+          {
+            "text": " "
+          }
+        ]
+      }
+    },
+    {
+      "event": {
+        "op": "put",
+        "x": 1,
+        "y": 0,
+        "text": "x"
+      },
+      "expect": {
+        "used": 1,
+        "cells": [
+          {
+            "text": "é"
+          },
+          {
+            "text": "x",
+            "width": 1
+          },
+          {
+            "text": " "
+          }
+        ]
+      }
+    }
+  ]
+}

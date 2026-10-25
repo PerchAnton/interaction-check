@@ -1,0 +1,73 @@
+{
+  "schema": 1,
+  "name": "02-explicitly-grouped-selection-replacement",
+  "steps": [
+    {
+      "event": {
+        "op": "new",
+        "text": "original"
+      },
+      "expect": {
+        "value": "original"
+      }
+    },
+    {
+      "event": {
+        "op": "key",
+        "key": "select_all"
+      },
+      "expect": {
+        "selection": [
+          0,
+          8
+        ]
+      }
+    },
+    {
+      "event": {
+        "op": "key",
+        "key": "begin_group"
+      },
+      "expect": {
+        "value": "original"
+      }
+    },
+    {
+      "event": {
+        "op": "text",
+        "text": "界"
+      },
+      "expect": {
+        "value": "界",
+        "cursor_graphemes": 1
+      }
+    },
+    {
+      "event": {
+        "op": "key",
+        "key": "end_group"
+      },
+      "expect": {
+        "value": "界"
+      }
+    },
+    {
+      "event": {
+        "op": "key",
+        "key": "undo"
+      },
+      "expect": {
+        "value": "original"
+      }
+    },
+    {
+      "event": {
+        "op": "key",
+        "key": "redo"
+      },
+      "expect": {
+        "value": "界"
+      }
+    }
+  ]
+}

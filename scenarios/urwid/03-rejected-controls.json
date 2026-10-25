@@ -1,0 +1,64 @@
+{
+  "schema": 1,
+  "name": "03-rejected-controls",
+  "steps": [
+    {
+      "event": {
+        "op": "new",
+        "text": "",
+        "width": 10
+      },
+      "expect": {
+        "value": ""
+      }
+    },
+    {
+      "event": {
+        "op": "text",
+        "text": "\u0001"
+      },
+      "expect": {
+        "value": "",
+        "unhandled": "\u0001"
+      }
+    },
+    {
+      "event": {
+        "op": "text",
+        "text": "x"
+      },
+      "expect": {
+        "value": "x"
+      }
+    },
+    {
+      "event": {
+        "op": "key",
+        "key": "enter"
+      },
+      "expect": {
+        "value": "x",
+        "unhandled": "enter"
+      }
+    },
+    {
+      "event": {
+        "op": "key",
+        "key": "home"
+      },
+      "expect": {
+        "cursor_codepoints": 0
+      }
+    },
+    {
+      "event": {
+        "op": "key",
+        "key": "backspace"
+      },
+      "expect": {
+        "value": "x",
+        "cursor_codepoints": 0
+      }
+    }
+  ]
+}

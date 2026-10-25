@@ -1,0 +1,44 @@
+{
+  "schema": 1,
+  "name": "03-limit-resize-abort",
+  "steps": [
+    {
+      "event": {
+        "op": "new",
+        "text": "",
+        "char_limit": 3
+      },
+      "expect": {
+        "value": ""
+      }
+    },
+    {
+      "event": {
+        "op": "text",
+        "text": "abcd"
+      },
+      "expect": {
+        "value": "abc"
+      }
+    },
+    {
+      "event": {
+        "op": "resize",
+        "width": 10
+      },
+      "expect": {
+        "value": "abc"
+      }
+    },
+    {
+      "event": {
+        "op": "key",
+        "key": "ctrl+c"
+      },
+      "expect": {
+        "aborted": true,
+        "submitted": false
+      }
+    }
+  ]
+}
