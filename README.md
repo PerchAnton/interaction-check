@@ -6,9 +6,8 @@ Maintained by [PerchAnton](https://github.com/PerchAnton); no PyPI release or up
 
 The first adapter uses the independent [edit-session library](https://github.com/PerchAnton/edit-session)
 from a fixed Git revision, and commits through PhotoCraft's actual `Session` command API.
-The tool itself
-knows nothing about opacity, PDF geometry, Rust, Go or a GUI framework. A future PdfCraft
-adapter would translate scenarios to that application's existing command and inspection APIs.
+The tool itself knows nothing about opacity, PDF geometry, Rust, Go or a GUI framework.
+Consumer-owned adapters now also exercise the real PhotoCraft and PdfCraft dialogs.
 
 ## Proposed PhotoCraft UI consumer
 
@@ -19,6 +18,23 @@ field setter and real Session. Its CI fetches this runner at
 [Ten scenarios / 44 steps](https://github.com/PerchAnton/photocraft/tree/46b4a183d5f44035bbc216dcf6196701bcb45bc9/tests/interactions/guide-edit)
 pass locally, covering preview, commit, Cancel/Escape, invalid input, no-ops and stale drafts.
 This consumer patch is awaiting maintainer review; upstream adoption is not claimed.
+
+## Proposed PdfCraft UI consumer
+
+[PdfCraft PR #4594](https://github.com/storytold/pdfcraft/pull/4594) uses this runner for **Document Properties**.
+Its runtime draft lifecycle uses edit-session; this runner checks the resulting UI and engine state.
+Description, Initial View and Custom values share a draft bound to document identity,
+edit generation and permissions. `check_live` rejects stale input after edits, Undo/Redo,
+reload or a document switch; the existing engine commits one atomic batch. Cancel,
+Escape and no-ops do not add history. Failed engine edits retain the form for correction.
+Clean inspection tabs retain their existing live refresh without rebasing typed input.
+
+The consumer owns a [real UI adapter](https://github.com/PerchAnton/pdfcraft/blob/535d990d10832baf3b0a64910c51b280c224bd5c/crates/ui-egui/examples/properties_scenarios.rs)
+and [10 scenarios / 79 steps](https://github.com/PerchAnton/pdfcraft/tree/535d990d10832baf3b0a64910c51b280c224bd5c/tests/interactions/document-properties),
+replayed by interaction-check, including save/reopen and preservation of custom metadata.
+Local scoped UI tests, strict Clippy, assets, parity and wasm checks pass. Both dependencies
+are pinned; upstream review of the source-policy exception and adoption is pending.
+See [reproduction instructions](https://github.com/PerchAnton/pdfcraft/blob/535d990d10832baf3b0a64910c51b280c224bd5c/docs/document-properties-sessions.md).
 
 ## Run
 
@@ -31,8 +47,8 @@ python3 interaction_check.py --report result.json --junit result.xml scenarios/p
   adapters/photocraft/target/debug/edit-session-photocraft-probe
 ```
 
-Only the PhotoCraft adapter needs Rust (1.99+; tested with 1.99.1). Cargo fetches both Rust
-repositories at fixed commits; no sibling checkout or path override is required.
+The Rust adapters need Rust 1.99+ (tested with 1.99.1). For the bundled PhotoCraft adapter,
+Cargo fetches both Rust repositories at fixed commits; no sibling checkout or path override is required.
 See the [adapter README](adapters/photocraft/README.md). Each scenario starts a fresh process. Exit 0
 means all scenarios passed and requested reports were written; 1 means a scenario or report
 write failed; invalid CLI usage exits 2.
@@ -93,8 +109,9 @@ and a machine-readable report; it does not replace those tools or discover bugs 
 
 The bundled engine-only PhotoCraft adapter drives real commands and history in a headless process. It does
 not connect to the live application's UI or test its renderer, saved files or native input.
-Upstream PhotoCraft has not adopted these dependencies. No PdfCraft or Bubbles adapter is
-implemented. There is no auto-recording or shrinking yet.
+Upstream adoption is pending. The [PdfCraft adapter](adapters/pdfcraft/README.md) is owned
+by the consumer repository and also uses engine save/reopen. No Bubbles adapter,
+auto-recording or shrinking is implemented.
 
 Adapters are trusted local test programs, launched without a shell. A per-scenario timeout
 defaults to five seconds. Input and captured output are limited to 1 MiB; output limits are
@@ -102,6 +119,9 @@ checked after execution, with file-backed capture. This is not a sandbox or a CP
 The current timeout controls the direct adapter process, not a tree of spawned descendants.
 
 ## Evidence
+
+- [PdfCraft UI report](reports/pdfcraft-properties.json): ten scenarios / 79 steps; see the
+  [adapter instructions](adapters/pdfcraft/README.md) for immutable source pins and replay.
 
 - [Alpha 2 review and regression checks](docs/VALIDATION.md): Unicode JSONL, report safety,
   JUnit, bounded JSON nesting and compatibility with existing PhotoCraft adapters.
@@ -115,8 +135,8 @@ The current timeout controls the direct adapter process, not a tree of spawned d
   detect a wrong document mutation/history change. A third scenario detects the changed error.
 - [Detailed validation](https://github.com/PerchAnton/edit-session/blob/main/docs/VALIDATION.md).
 
-The PhotoCraft UI trace is now proposed in PR #9190 above. The next milestones are maintainer
-review and a real PdfCraft consumer. Cross-application reuse remains unproven until both work.
+The same runner now passes real UI scenarios in both proposed consumers. The next milestone
+is maintainer review of their behavior and dependency policy; this is not a claim of upstream adoption.
 
 ## License
 

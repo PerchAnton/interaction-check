@@ -1,0 +1,75 @@
+{
+  "version": "0.1.0-alpha.2",
+  "results": [
+    {
+      "name": "Document Properties: cancel-and-escape",
+      "passed": true,
+      "steps": 8,
+      "stderr": "",
+      "source": "tests/interactions/document-properties/cancel-and-escape.json"
+    },
+    {
+      "name": "Document Properties: close-document",
+      "passed": true,
+      "steps": 5,
+      "stderr": "",
+      "source": "tests/interactions/document-properties/close-document.json"
+    },
+    {
+      "name": "Document Properties: commit-save-undo",
+      "passed": true,
+      "steps": 14,
+      "stderr": "",
+      "source": "tests/interactions/document-properties/commit-save-undo.json"
+    },
+    {
+      "name": "Document Properties: custom-validation",
+      "passed": true,
+      "steps": 10,
+      "stderr": "",
+      "source": "tests/interactions/document-properties/custom-validation.json"
+    },
+    {
+      "name": "Document Properties: inspection tabs refresh only without pending input",
+      "passed": true,
+      "steps": 13,
+      "stderr": "",
+      "source": "tests/interactions/document-properties/inspection-tabs.json"
+    },
+    {
+      "name": "Document Properties: newer-edit",
+      "passed": true,
+      "steps": 6,
+      "stderr": "",
+      "source": "tests/interactions/document-properties/newer-edit.json"
+    },
+    {
+      "name": "Document Properties: no-op-preserves-redo",
+      "passed": true,
+      "steps": 6,
+      "stderr": "",
+      "source": "tests/interactions/document-properties/no-op-preserves-redo.json"
+    },
+    {
+      "name": "Document Properties: reload-same-document",
+      "passed": true,
+      "steps": 7,
+      "stderr": "",
+      "source": "tests/interactions/document-properties/reload-same-document.json"
+    },
+    {
+      "name": "Document Properties: switch-document",
+      "passed": true,
+      "steps": 6,
+      "stderr": "",
+      "source": "tests/interactions/document-properties/switch-document.json"
+    },
+    {
+      "name": "Document Properties: undo-aba",
+      "passed": true,
+      "steps": 4,
+      "stderr": "",
+      "source": "tests/interactions/document-properties/undo-aba.json"
+    }
+  ]
+}

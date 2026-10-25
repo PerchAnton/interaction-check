@@ -1,4 +1,34 @@
-# Alpha 2 review — 25 October 2026
+# Validation evidence
+
+## PdfCraft consumer proposal — 25 October 2026
+
+[PR #4594](https://github.com/storytold/pdfcraft/pull/4594), consumer commit `535d990d10832baf3b0a64910c51b280c224bd5c` on upstream
+`418ac6a2af49b7ac2fed44ca2cae8d5d1d2cec0d`, uses edit-session alpha 2 at
+`033f7c3a67b825b8f222288788cc61234c0c945d` and interaction-check at
+`7722d66c0ede7855ff58d1df3d1632fd4e5e66a5`.
+
+On macOS arm64, Rust 1.99.1, Python 3.14.3, English UI and system-font fallback disabled:
+
+- Two upstream UI regressions fail before the fix: confirming a stale title after another
+  edit, and confirming after edit + Undo back to the same original value.
+- 522 unit, 1,153 integration and 3 performance tests pass for `pdfcraft-ui-egui`; 11
+  existing tests are ignored. Tests run with two threads and host loopback/GPU access.
+- Formatting, strict Clippy on all UI targets, layering, asset attribution and parity pass.
+- `xtask wasm` checks 31 crates successfully, with warnings in unchanged platform-specific code.
+- 10 JSONL scenarios / 79 steps pass through actual egui controls and the real engine.
+  They cover commit, Cancel/Escape, no-op preserving Redo, custom validation, stale edits,
+  Undo ABA, reload, target switching/closure, clean inspection refresh, and save/reopen.
+  JSON and JUnit reports were generated. Actual Description, Custom, Initial View and
+  stale-notice screenshots were inspected locally; synthetic PDF bytes are not committed.
+- Engine refusal/retry is atomic. A separate test checks freshness immediately at commit,
+  without relying on a preceding frame. Pending input is not rebased by an inspection tab.
+
+The [consumer documentation](https://github.com/PerchAnton/pdfcraft/blob/535d990d10832baf3b0a64910c51b280c224bd5c/docs/document-properties-sessions.md)
+explains replay and the proposed exact Git-source exception. These results are local;
+Linux/Windows CI, native OS input, another PDF reader, packaging and maintainer adoption
+are not implied. PhotoCraft's existing alpha 1 pin is unchanged.
+
+# Alpha 2 runner review — 25 October 2026
 
 Local environment: macOS arm64, Python 3.14.3. The runner remains standard-library-only.
 
