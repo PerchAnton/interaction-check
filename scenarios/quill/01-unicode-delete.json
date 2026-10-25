@@ -1,0 +1,54 @@
+{
+  "schema": 1,
+  "name": "quill / 01-unicode-delete",
+  "steps": [
+    {
+      "event": {
+        "op": "new",
+        "text": "A🙂界"
+      },
+      "expect": {
+        "text": "A🙂界\n",
+        "undo": 0
+      }
+    },
+    {
+      "event": {
+        "op": "delete",
+        "index": 1,
+        "length": 2
+      },
+      "expect": {
+        "text": "A界\n",
+        "undo": 1
+      }
+    },
+    {
+      "event": {
+        "op": "undo"
+      },
+      "expect": {
+        "text": "A🙂界\n",
+        "redo": 1
+      }
+    },
+    {
+      "event": {
+        "op": "redo"
+      },
+      "expect": {
+        "text": "A界\n"
+      }
+    },
+    {
+      "event": {
+        "op": "insert",
+        "index": 1,
+        "text": "é"
+      },
+      "expect": {
+        "text": "Aé界\n"
+      }
+    }
+  ]
+}

@@ -104,3 +104,25 @@ jobs:
       - run: python -m ruff check --isolated --select E,F,I --ignore E402 adapters/python_protocol.py adapters/${{ matrix.adapter }}/main.py
       - run: python -m ruff format --isolated --check adapters/python_protocol.py adapters/${{ matrix.adapter }}/main.py
       - run: python interaction_check.py --timeout 30 scenarios/${{ matrix.adapter }}/*.json -- python adapters/${{ matrix.adapter }}/main.py
+  javascript:
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-24.04, windows-latest, macos-latest]
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+      - uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6
+        with:
+          node-version: '24.19.0'
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0
+        with:
+          python-version: '3.14'
+      - run: npm ci --ignore-scripts --no-audit --no-fund
+        working-directory: adapters/javascript
+      - run: npm test
+        working-directory: adapters/javascript
+      - run: npm run format:check
+        working-directory: adapters/javascript
+      - run: python adapters/javascript/replay.py

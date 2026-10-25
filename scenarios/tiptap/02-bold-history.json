@@ -1,0 +1,82 @@
+{
+  "schema": 1,
+  "name": "tiptap / 02-bold-history",
+  "steps": [
+    {
+      "event": {
+        "op": "new",
+        "text": "abc"
+      },
+      "expect": {
+        "text": "abc"
+      }
+    },
+    {
+      "event": {
+        "op": "select",
+        "from": 1,
+        "to": 4
+      },
+      "expect": {
+        "from": 1,
+        "to": 4
+      }
+    },
+    {
+      "event": {
+        "op": "bold"
+      },
+      "expect": {
+        "json": {
+          "content": [
+            {
+              "content": [
+                {
+                  "text": "abc",
+                  "marks": [
+                    {
+                      "type": "bold"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "can_undo": true
+      }
+    },
+    {
+      "event": {
+        "op": "undo"
+      },
+      "expect": {
+        "text": "abc",
+        "can_redo": true
+      }
+    },
+    {
+      "event": {
+        "op": "redo"
+      },
+      "expect": {
+        "json": {
+          "content": [
+            {
+              "content": [
+                {
+                  "text": "abc",
+                  "marks": [
+                    {
+                      "type": "bold"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

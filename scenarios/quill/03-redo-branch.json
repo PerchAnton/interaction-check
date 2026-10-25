@@ -1,0 +1,53 @@
+{
+  "schema": 1,
+  "name": "quill / 03-redo-branch",
+  "steps": [
+    {
+      "event": {
+        "op": "new",
+        "text": "a"
+      },
+      "expect": {
+        "text": "a\n"
+      }
+    },
+    {
+      "event": {
+        "op": "insert",
+        "index": 1,
+        "text": "b"
+      },
+      "expect": {
+        "text": "ab\n"
+      }
+    },
+    {
+      "event": {
+        "op": "undo"
+      },
+      "expect": {
+        "text": "a\n",
+        "redo": 1
+      }
+    },
+    {
+      "event": {
+        "op": "insert",
+        "index": 1,
+        "text": "c"
+      },
+      "expect": {
+        "text": "ac\n",
+        "redo": 0
+      }
+    },
+    {
+      "event": {
+        "op": "redo"
+      },
+      "expect": {
+        "text": "ac\n"
+      }
+    }
+  ]
+}

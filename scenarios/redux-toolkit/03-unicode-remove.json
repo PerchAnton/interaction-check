@@ -1,0 +1,63 @@
+{
+  "schema": 1,
+  "name": "redux-toolkit / 03-unicode-remove",
+  "steps": [
+    {
+      "event": {
+        "op": "new"
+      },
+      "expect": {
+        "original": {
+          "ids": [],
+          "entities": {}
+        }
+      }
+    },
+    {
+      "event": {
+        "op": "add",
+        "id": "🙂",
+        "title": "界"
+      },
+      "expect": {
+        "value": {
+          "ids": [
+            "🙂"
+          ]
+        }
+      }
+    },
+    {
+      "event": {
+        "op": "update",
+        "id": "🙂",
+        "title": "é"
+      },
+      "expect": {
+        "value": {
+          "entities": {
+            "🙂": {
+              "title": "é"
+            }
+          }
+        },
+        "original": {
+          "ids": [],
+          "entities": {}
+        }
+      }
+    },
+    {
+      "event": {
+        "op": "remove",
+        "id": "🙂"
+      },
+      "expect": {
+        "value": {
+          "ids": [],
+          "entities": {}
+        }
+      }
+    }
+  ]
+}

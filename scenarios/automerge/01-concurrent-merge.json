@@ -1,0 +1,71 @@
+{
+  "schema": 1,
+  "name": "automerge / 01-concurrent-merge",
+  "steps": [
+    {
+      "event": {
+        "op": "new",
+        "text": "base"
+      },
+      "expect": {
+        "a": "base",
+        "b": "base",
+        "same_heads": true
+      }
+    },
+    {
+      "event": {
+        "op": "insert",
+        "peer": "a",
+        "index": 0,
+        "text": "!"
+      },
+      "expect": {
+        "a": "!base"
+      }
+    },
+    {
+      "event": {
+        "op": "insert",
+        "peer": "b",
+        "index": 4,
+        "text": "?"
+      },
+      "expect": {
+        "b": "base?"
+      }
+    },
+    {
+      "event": {
+        "op": "merge",
+        "from": "a",
+        "to": "b"
+      },
+      "expect": {
+        "b": "!base?"
+      }
+    },
+    {
+      "event": {
+        "op": "merge",
+        "from": "b",
+        "to": "a"
+      },
+      "expect": {
+        "a": "!base?",
+        "same_heads": true
+      }
+    },
+    {
+      "event": {
+        "op": "merge",
+        "from": "b",
+        "to": "a"
+      },
+      "expect": {
+        "a": "!base?",
+        "same_heads": true
+      }
+    }
+  ]
+}

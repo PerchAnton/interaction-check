@@ -1,0 +1,67 @@
+{
+  "schema": 1,
+  "name": "xstate / 02-validation",
+  "steps": [
+    {
+      "event": {
+        "op": "new"
+      },
+      "expect": {
+        "value": "idle"
+      }
+    },
+    {
+      "event": {
+        "op": "send",
+        "type": "EDIT"
+      },
+      "expect": {
+        "value": "editing"
+      }
+    },
+    {
+      "event": {
+        "op": "send",
+        "type": "CHANGE",
+        "value": " "
+      },
+      "expect": {
+        "can_save": false
+      }
+    },
+    {
+      "event": {
+        "op": "send",
+        "type": "SAVE"
+      },
+      "expect": {
+        "value": "editing",
+        "context": {
+          "saved": "original"
+        }
+      }
+    },
+    {
+      "event": {
+        "op": "send",
+        "type": "CHANGE",
+        "value": "界🙂"
+      },
+      "expect": {
+        "can_save": true
+      }
+    },
+    {
+      "event": {
+        "op": "send",
+        "type": "SAVE"
+      },
+      "expect": {
+        "value": "idle",
+        "context": {
+          "saved": "界🙂"
+        }
+      }
+    }
+  ]
+}

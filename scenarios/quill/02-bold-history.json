@@ -1,0 +1,65 @@
+{
+  "schema": 1,
+  "name": "quill / 02-bold-history",
+  "steps": [
+    {
+      "event": {
+        "op": "new",
+        "text": "abc"
+      },
+      "expect": {
+        "text": "abc\n"
+      }
+    },
+    {
+      "event": {
+        "op": "bold",
+        "index": 0,
+        "length": 3
+      },
+      "expect": {
+        "ops": [
+          {
+            "insert": "abc",
+            "attributes": {
+              "bold": true
+            }
+          },
+          {
+            "insert": "\n"
+          }
+        ]
+      }
+    },
+    {
+      "event": {
+        "op": "undo"
+      },
+      "expect": {
+        "ops": [
+          {
+            "insert": "abc\n"
+          }
+        ]
+      }
+    },
+    {
+      "event": {
+        "op": "redo"
+      },
+      "expect": {
+        "ops": [
+          {
+            "insert": "abc",
+            "attributes": {
+              "bold": true
+            }
+          },
+          {
+            "insert": "\n"
+          }
+        ]
+      }
+    }
+  ]
+}

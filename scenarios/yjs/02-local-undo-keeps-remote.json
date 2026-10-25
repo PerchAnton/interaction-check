@@ -1,0 +1,84 @@
+{
+  "schema": 1,
+  "name": "yjs / 02-local-undo-keeps-remote",
+  "steps": [
+    {
+      "event": {
+        "op": "new",
+        "text": "x"
+      },
+      "expect": {
+        "a": "x",
+        "b": "x"
+      }
+    },
+    {
+      "event": {
+        "op": "insert",
+        "peer": "a",
+        "index": 0,
+        "text": "A"
+      },
+      "expect": {
+        "a": "Ax"
+      }
+    },
+    {
+      "event": {
+        "op": "insert",
+        "peer": "b",
+        "index": 1,
+        "text": "B"
+      },
+      "expect": {
+        "b": "xB"
+      }
+    },
+    {
+      "event": {
+        "op": "sync",
+        "from": "b",
+        "to": "a"
+      },
+      "expect": {
+        "a": "AxB",
+        "undo": [
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "event": {
+        "op": "undo",
+        "peer": "a"
+      },
+      "expect": {
+        "a": "xB",
+        "redo": [
+          1,
+          0
+        ]
+      }
+    },
+    {
+      "event": {
+        "op": "sync",
+        "from": "a",
+        "to": "b"
+      },
+      "expect": {
+        "b": "xB"
+      }
+    },
+    {
+      "event": {
+        "op": "redo",
+        "peer": "a"
+      },
+      "expect": {
+        "a": "AxB"
+      }
+    }
+  ]
+}

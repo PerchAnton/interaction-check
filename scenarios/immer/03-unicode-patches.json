@@ -1,0 +1,60 @@
+{
+  "schema": 1,
+  "name": "immer / 03-unicode-patches",
+  "steps": [
+    {
+      "event": {
+        "op": "new",
+        "title": "A🙂"
+      },
+      "expect": {
+        "value": {
+          "title": "A🙂"
+        }
+      }
+    },
+    {
+      "event": {
+        "op": "tag",
+        "index": 1,
+        "value": "界é"
+      },
+      "expect": {
+        "value": {
+          "tags": [
+            "one",
+            "界é"
+          ]
+        }
+      }
+    },
+    {
+      "event": {
+        "op": "apply",
+        "direction": "inverse"
+      },
+      "expect": {
+        "value": {
+          "tags": [
+            "one",
+            "two"
+          ]
+        }
+      }
+    },
+    {
+      "event": {
+        "op": "apply",
+        "direction": "forward"
+      },
+      "expect": {
+        "value": {
+          "tags": [
+            "one",
+            "界é"
+          ]
+        }
+      }
+    }
+  ]
+}

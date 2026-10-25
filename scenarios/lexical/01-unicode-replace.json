@@ -1,0 +1,50 @@
+{
+  "schema": 1,
+  "name": "lexical / 01-unicode-replace",
+  "steps": [
+    {
+      "event": {
+        "op": "new",
+        "text": "A🙂界"
+      },
+      "expect": {
+        "text": "A🙂界"
+      }
+    },
+    {
+      "event": {
+        "op": "select",
+        "from": 1,
+        "to": 3
+      },
+      "expect": {
+        "text": "A🙂界"
+      }
+    },
+    {
+      "event": {
+        "op": "insert",
+        "text": "é"
+      },
+      "expect": {
+        "text": "Aé界"
+      }
+    },
+    {
+      "event": {
+        "op": "undo"
+      },
+      "expect": {
+        "text": "A🙂界"
+      }
+    },
+    {
+      "event": {
+        "op": "redo"
+      },
+      "expect": {
+        "text": "Aé界"
+      }
+    }
+  ]
+}

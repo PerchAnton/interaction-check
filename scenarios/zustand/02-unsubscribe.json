@@ -1,0 +1,61 @@
+{
+  "schema": 1,
+  "name": "zustand / 02-unsubscribe",
+  "steps": [
+    {
+      "event": {
+        "op": "new",
+        "title": "a"
+      },
+      "expect": {
+        "value": {
+          "title": "a"
+        }
+      }
+    },
+    {
+      "event": {
+        "op": "title",
+        "value": "b"
+      },
+      "expect": {
+        "notifications": [
+          {
+            "value": "b",
+            "previous": "a"
+          }
+        ]
+      }
+    },
+    {
+      "event": {
+        "op": "unsubscribe"
+      },
+      "expect": {
+        "notifications": [
+          {
+            "value": "b",
+            "previous": "a"
+          }
+        ]
+      }
+    },
+    {
+      "event": {
+        "op": "title",
+        "value": "c"
+      },
+      "expect": {
+        "value": {
+          "title": "c"
+        },
+        "notifications": [
+          {
+            "value": "b",
+            "previous": "a"
+          }
+        ]
+      }
+    }
+  ]
+}

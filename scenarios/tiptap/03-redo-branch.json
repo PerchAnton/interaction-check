@@ -1,0 +1,61 @@
+{
+  "schema": 1,
+  "name": "tiptap / 03-redo-branch",
+  "steps": [
+    {
+      "event": {
+        "op": "new",
+        "text": "a"
+      },
+      "expect": {
+        "text": "a"
+      }
+    },
+    {
+      "event": {
+        "op": "select",
+        "from": 2,
+        "to": 2
+      },
+      "expect": {
+        "from": 2
+      }
+    },
+    {
+      "event": {
+        "op": "insert",
+        "text": "b"
+      },
+      "expect": {
+        "text": "ab"
+      }
+    },
+    {
+      "event": {
+        "op": "undo"
+      },
+      "expect": {
+        "text": "a",
+        "can_redo": true
+      }
+    },
+    {
+      "event": {
+        "op": "insert",
+        "text": "<x>"
+      },
+      "expect": {
+        "text": "a<x>",
+        "can_redo": false
+      }
+    },
+    {
+      "event": {
+        "op": "redo"
+      },
+      "expect": {
+        "text": "a<x>"
+      }
+    }
+  ]
+}

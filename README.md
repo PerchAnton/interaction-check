@@ -166,6 +166,12 @@ adapter process, not a tree of spawned descendants. Adapters must manage their c
 The same runner now passes real UI scenarios in both proposed consumers. The next milestone
 is maintainer review of their behavior and dependency policy; this is not a claim of upstream adoption.
 
+## JavaScript examples
+
+[Ten external JavaScript adapters](adapters/javascript/README.md) replay editor history,
+patches, store notifications and two-replica document operations against pinned stable
+packages. These are optional development examples; upstream adoption is pending.
+
 ## License
 
 Licensed under either the [MIT license](LICENSE-MIT) or the

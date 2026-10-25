@@ -1,0 +1,66 @@
+{
+  "schema": 1,
+  "name": "immer / 02-array-inverse",
+  "steps": [
+    {
+      "event": {
+        "op": "new",
+        "title": "doc"
+      },
+      "expect": {
+        "value": {
+          "tags": [
+            "one",
+            "two"
+          ]
+        }
+      }
+    },
+    {
+      "event": {
+        "op": "removeTag",
+        "index": 0
+      },
+      "expect": {
+        "value": {
+          "tags": [
+            "two"
+          ]
+        },
+        "original": {
+          "tags": [
+            "one",
+            "two"
+          ]
+        }
+      }
+    },
+    {
+      "event": {
+        "op": "apply",
+        "direction": "inverse"
+      },
+      "expect": {
+        "value": {
+          "tags": [
+            "one",
+            "two"
+          ]
+        }
+      }
+    },
+    {
+      "event": {
+        "op": "apply",
+        "direction": "forward"
+      },
+      "expect": {
+        "value": {
+          "tags": [
+            "two"
+          ]
+        }
+      }
+    }
+  ]
+}
