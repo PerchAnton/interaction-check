@@ -1,0 +1,75 @@
+{
+  "version": "0.1.0-alpha.2",
+  "results": [
+    {
+      "name": "another-document",
+      "passed": true,
+      "steps": 4,
+      "stderr": "",
+      "source": "../photocraft/tests/interactions/guide-edit/another-document.json"
+    },
+    {
+      "name": "cancel-and-escape",
+      "passed": true,
+      "steps": 6,
+      "stderr": "",
+      "source": "../photocraft/tests/interactions/guide-edit/cancel-and-escape.json"
+    },
+    {
+      "name": "changed-ruler-units",
+      "passed": true,
+      "steps": 3,
+      "stderr": "",
+      "source": "../photocraft/tests/interactions/guide-edit/changed-ruler-units.json"
+    },
+    {
+      "name": "deleted-index-reused",
+      "passed": true,
+      "steps": 3,
+      "stderr": "",
+      "source": "../photocraft/tests/interactions/guide-edit/deleted-index-reused.json"
+    },
+    {
+      "name": "fractional-unchanged",
+      "passed": true,
+      "steps": 4,
+      "stderr": "",
+      "source": "../photocraft/tests/interactions/guide-edit/fractional-unchanged.json"
+    },
+    {
+      "name": "invalid-then-correct",
+      "passed": true,
+      "steps": 6,
+      "stderr": "",
+      "source": "../photocraft/tests/interactions/guide-edit/invalid-then-correct.json"
+    },
+    {
+      "name": "orientation-and-color",
+      "passed": true,
+      "steps": 5,
+      "stderr": "",
+      "source": "../photocraft/tests/interactions/guide-edit/orientation-and-color.json"
+    },
+    {
+      "name": "preview-commit-undo-redo",
+      "passed": true,
+      "steps": 5,
+      "stderr": "",
+      "source": "../photocraft/tests/interactions/guide-edit/preview-commit-undo-redo.json"
+    },
+    {
+      "name": "unchanged-preserves-redo",
+      "passed": true,
+      "steps": 4,
+      "stderr": "",
+      "source": "../photocraft/tests/interactions/guide-edit/unchanged-preserves-redo.json"
+    },
+    {
+      "name": "undo-does-not-revive-draft",
+      "passed": true,
+      "steps": 4,
+      "stderr": "",
+      "source": "../photocraft/tests/interactions/guide-edit/undo-does-not-revive-draft.json"
+    }
+  ]
+}

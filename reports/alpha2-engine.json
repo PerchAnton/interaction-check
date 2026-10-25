@@ -1,0 +1,61 @@
+{
+  "version": "0.1.0-alpha.2",
+  "results": [
+    {
+      "name": "PhotoCraft: 01-preview-commit-undo",
+      "passed": true,
+      "steps": 7,
+      "stderr": "",
+      "source": "scenarios/photocraft/01-preview-commit-undo.json"
+    },
+    {
+      "name": "PhotoCraft: 02-cancel",
+      "passed": true,
+      "steps": 3,
+      "stderr": "",
+      "source": "scenarios/photocraft/02-cancel.json"
+    },
+    {
+      "name": "PhotoCraft: 03-invalid-input",
+      "passed": true,
+      "steps": 6,
+      "stderr": "",
+      "source": "scenarios/photocraft/03-invalid-input.json"
+    },
+    {
+      "name": "PhotoCraft: 04-stale-document",
+      "passed": true,
+      "steps": 4,
+      "stderr": "",
+      "source": "scenarios/photocraft/04-stale-document.json"
+    },
+    {
+      "name": "PhotoCraft: 05-stale-target",
+      "passed": true,
+      "steps": 4,
+      "stderr": "",
+      "source": "scenarios/photocraft/05-stale-target.json"
+    },
+    {
+      "name": "PhotoCraft: 06-noop-preserves-redo",
+      "passed": true,
+      "steps": 7,
+      "stderr": "",
+      "source": "scenarios/photocraft/06-noop-preserves-redo.json"
+    },
+    {
+      "name": "PhotoCraft: 07-undo-aba",
+      "passed": true,
+      "steps": 5,
+      "stderr": "",
+      "source": "scenarios/photocraft/07-undo-aba.json"
+    },
+    {
+      "name": "PhotoCraft: 08-duplicate-commit",
+      "passed": true,
+      "steps": 5,
+      "stderr": "",
+      "source": "scenarios/photocraft/08-duplicate-commit.json"
+    }
+  ]
+}

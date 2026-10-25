@@ -1,6 +1,6 @@
 # interaction-check
 
-**Experimental, 0.1.0-alpha.1.** An independent development tool for replaying semantic
+**Experimental, 0.1.0-alpha.2.** An independent development tool for replaying semantic
 interaction traces against an explicit local adapter. No third-party Python packages.
 Maintained by [PerchAnton](https://github.com/PerchAnton); no PyPI release or upstream adoption.
 
@@ -27,14 +27,29 @@ Requires Python 3.10+ (tested with Python 3.14 on macOS arm64).
 ```sh
 python3 -m unittest -v
 cargo build --locked --manifest-path adapters/photocraft/Cargo.toml
-python3 interaction_check.py --report result.json scenarios/photocraft/*.json -- \
+python3 interaction_check.py --report result.json --junit result.xml scenarios/photocraft/*.json -- \
   adapters/photocraft/target/debug/edit-session-photocraft-probe
 ```
 
 Only the PhotoCraft adapter needs Rust (1.99+; tested with 1.99.1). Cargo fetches both Rust
 repositories at fixed commits; no sibling checkout or path override is required.
 See the [adapter README](adapters/photocraft/README.md). Each scenario starts a fresh process. Exit 0
-means all scenarios passed; 1 means at least one failed; invalid CLI usage exits 2.
+means all scenarios passed and requested reports were written; 1 means a scenario or report
+write failed; invalid CLI usage exits 2.
+
+## Reports for CI
+
+`--report FILE` writes JSON and `--junit FILE` writes JUnit XML; either or both are optional.
+JUnit contains one test case per scenario, failure details and captured successful-adapter
+stderr. Scenario failures keep their declared name and source path in both formats. If the
+input cannot be parsed, its filename is used instead. A failed scenario does not prevent
+the remaining scenarios from running or the reports from being written.
+
+Each report is replaced atomically after a complete write. Create parent directories first.
+Report paths that refer to a scenario input or to the other report (including existing
+symlinks/hard links) are rejected before starting an adapter. Report write failures produce
+a diagnostic on stderr and exit 1, even when every scenario passed. Characters forbidden by
+XML 1.0 are replaced with U+FFFD in JUnit; the JSON report preserves the original strings.
 
 ## Scenario format
 
@@ -55,10 +70,16 @@ means all scenarios passed; 1 means at least one failed; invalid CLI usage exits
 Each request is a JSON line with `protocol: 1`, an integer `id`, and `event`.
 The adapter returns exactly one JSON line per request with the same `protocol`/`id` and a
 `state` object, then exits at stdin EOF. Logs go to stderr. Expectations are never sent to
-the adapter. Objects match recursively by expected fields; arrays match in full and in
-order; booleans are distinct from numbers. Missing fields are distinct from null.
+the adapter. Objects match recursively by expected fields, including objects inside arrays.
+Arrays must have the same length and order; each element uses the same matching rules.
+Booleans are distinct from numbers. Missing fields are distinct from null.
 Non-finite numbers, duplicate keys, missing/extra replies, wrong IDs, adapter crashes,
 timeouts and malformed JSON fail the run.
+
+JSONL records are separated by LF (CRLF also works), with an optional final newline.
+Unicode line separators inside a JSON string are data, not record boundaries. Extra blank
+lines are invalid. Inputs and replies allow at most 64 nested objects/arrays and must use
+Unicode scalar values (no unpaired surrogates); malformed data fails with a diagnostic.
 
 The whole scenario's events are sent in order. The adapter must process them sequentially
 and finish each event before replying. This is semantic replay, not timed pointer playback.
@@ -82,6 +103,8 @@ The current timeout controls the direct adapter process, not a tree of spawned d
 
 ## Evidence
 
+- [Alpha 2 review and regression checks](docs/VALIDATION.md): Unicode JSONL, report safety,
+  JUnit, bounded JSON nesting and compatibility with existing PhotoCraft adapters.
 - [Current PhotoCraft Session scenarios](photocraft-session-report.json): eight scenarios,
   41 steps, using the published Git dependency and real command dispatch. Each step also
   checks the command journal count, so previews and no-op commits cannot silently send edits.
