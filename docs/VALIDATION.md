@@ -19,10 +19,11 @@ Using the previous runner at `dd112cd8ac29b834884cad0c4eb3ee793c74f10f`:
 
 ## Checks
 
-`python3 -m unittest -v`: **26 tests passed**. Regression coverage includes raw Unicode
+`python3 -m unittest -v`: **27 tests passed**. Regression coverage includes raw Unicode
 separators, LF/CRLF and optional final LF, extra blank lines, nested JSON, invalid Unicode,
 cyclic Python input, report aliases, preserved old reports after a failed replacement,
-mixed successful/failed/malformed scenarios and parseable JUnit XML with escaped text.
+mixed successful/failed/malformed scenarios, printable diagnostics for malformed duplicate
+keys and parseable JUnit XML with escaped text.
 
 The JUnit option is new: one test case per scenario, failures and successful-adapter stderr.
 JSON and JUnit reports retain declared scenario names and source paths. XML-forbidden

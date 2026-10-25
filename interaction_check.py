@@ -63,7 +63,7 @@ def strict_json(text):
         result = {}
         for key, value in pairs:
             if key in result:
-                raise CheckError(f"Duplicate JSON key: {key}")
+                raise CheckError(f"Duplicate JSON key: {key!r}")
             result[key] = value
         return result
     try:

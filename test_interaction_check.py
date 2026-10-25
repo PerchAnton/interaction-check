@@ -3,6 +3,7 @@ import contextlib
 import io
 import os
 from pathlib import Path
+import subprocess
 import sys
 import tempfile
 import unittest
@@ -123,6 +124,20 @@ class Tests(unittest.TestCase):
         for value in [r'"\ud800"', r'{"\udfff": 1}']:
             with self.subTest(value=value), self.assertRaisesRegex(CheckError, "Unicode"):
                 strict_json(value)
+
+    def test_invalid_duplicate_key_still_produces_a_cli_failure_report(self):
+        with tempfile.TemporaryDirectory() as root:
+            case, report = Path(root) / "case.json", Path(root) / "report.json"
+            case.write_text(r'{"\ud800": 1, "\ud800": 2}', encoding="utf-8")
+            completed = subprocess.run(
+                [sys.executable, "-X", "utf8", str(Path(__file__).with_name("interaction_check.py")),
+                 "--report", str(report), str(case), "--", *self.adapter(ECHO)],
+                capture_output=True, text=True, encoding="utf-8", timeout=10, check=False)
+            self.assertEqual(completed.returncode, 1)
+            self.assertNotIn("Traceback", completed.stderr)
+            result = json.loads(report.read_text(encoding="utf-8"))["results"][0]
+            self.assertFalse(result["passed"])
+            self.assertIn("Duplicate JSON key", result["error"])
 
     def test_empty_or_ambiguous_scenarios_rejected(self):
         cases = [dict(scenario(), schema=True), dict(scenario(), steps=[]),
