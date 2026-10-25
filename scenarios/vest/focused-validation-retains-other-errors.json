@@ -1,0 +1,60 @@
+{
+  "schema": 1,
+  "name": "vest / focused-validation-retains-other-errors",
+  "steps": [
+    {
+      "event": {
+        "op": "new"
+      },
+      "expect": {
+        "testCount": 0,
+        "errorCount": 0
+      }
+    },
+    {
+      "event": {
+        "op": "run",
+        "name": "",
+        "age": 17,
+        "only": "all"
+      },
+      "expect": {
+        "valid": false,
+        "errorFields": [
+          "age",
+          "name"
+        ],
+        "testCount": 2,
+        "errorCount": 2
+      }
+    },
+    {
+      "event": {
+        "op": "run",
+        "name": "Ada",
+        "age": 17,
+        "only": "name"
+      },
+      "expect": {
+        "valid": false,
+        "errorFields": [
+          "age"
+        ],
+        "errorCount": 1
+      }
+    },
+    {
+      "event": {
+        "op": "run",
+        "name": "",
+        "age": 20,
+        "only": "age"
+      },
+      "expect": {
+        "valid": true,
+        "errorFields": [],
+        "errorCount": 0
+      }
+    }
+  ]
+}

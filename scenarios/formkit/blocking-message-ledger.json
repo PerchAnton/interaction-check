@@ -1,0 +1,64 @@
+{
+  "schema": 1,
+  "name": "formkit / blocking-message-ledger",
+  "steps": [
+    {
+      "event": {
+        "op": "new",
+        "title": "A",
+        "note": "B"
+      },
+      "expect": {
+        "blocking": 0
+      }
+    },
+    {
+      "event": {
+        "op": "error",
+        "field": "title",
+        "value": "Rejected"
+      },
+      "expect": {
+        "blocking": 1
+      }
+    },
+    {
+      "event": {
+        "op": "error",
+        "field": "title",
+        "value": "Updated"
+      },
+      "expect": {
+        "blocking": 1
+      }
+    },
+    {
+      "event": {
+        "op": "error",
+        "field": "note",
+        "value": "Rejected"
+      },
+      "expect": {
+        "blocking": 2
+      }
+    },
+    {
+      "event": {
+        "op": "clear",
+        "field": "title"
+      },
+      "expect": {
+        "blocking": 1
+      }
+    },
+    {
+      "event": {
+        "op": "clear",
+        "field": "note"
+      },
+      "expect": {
+        "blocking": 0
+      }
+    }
+  ]
+}

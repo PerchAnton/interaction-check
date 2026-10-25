@@ -1,0 +1,45 @@
+{
+  "schema": 1,
+  "name": "redux-saga / stop-cancels-pending-worker",
+  "steps": [
+    {
+      "event": {
+        "op": "new"
+      },
+      "expect": {
+        "running": true
+      }
+    },
+    {
+      "event": {
+        "op": "request",
+        "id": "a"
+      },
+      "expect": {
+        "cancelled": []
+      }
+    },
+    {
+      "event": {
+        "op": "stop"
+      },
+      "expect": {
+        "running": false,
+        "cancelled": [
+          "a"
+        ]
+      }
+    },
+    {
+      "event": {
+        "op": "resolve",
+        "id": "a",
+        "value": "ignored"
+      },
+      "expect": {
+        "completed": [],
+        "running": false
+      }
+    }
+  ]
+}

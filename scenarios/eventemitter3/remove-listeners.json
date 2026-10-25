@@ -1,0 +1,54 @@
+{
+  "schema": 1,
+  "name": "eventemitter3 / remove-listeners",
+  "steps": [
+    {
+      "event": {
+        "op": "new",
+        "reentrant": false
+      },
+      "expect": {
+        "listeners": 2
+      }
+    },
+    {
+      "event": {
+        "op": "off"
+      },
+      "expect": {
+        "listeners": 1
+      }
+    },
+    {
+      "event": {
+        "op": "emit",
+        "value": "one"
+      },
+      "expect": {
+        "listeners": 0,
+        "events": [],
+        "seen": [
+          {
+            "listener": "once",
+            "value": "one"
+          }
+        ]
+      }
+    },
+    {
+      "event": {
+        "op": "emit",
+        "value": "two"
+      },
+      "expect": {
+        "emitted": false,
+        "seen": [
+          {
+            "listener": "once",
+            "value": "one"
+          }
+        ]
+      }
+    }
+  ]
+}

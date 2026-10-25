@@ -28,10 +28,11 @@ The JSONL transport limits records/replies to 64 KiB and events to 1024. Text ev
 are limited to 4096 valid UTF-16 units; offsets must be safe non-negative integers in range.
 The runner applies its own input, nesting, process-time and output limits.
 
-Dependencies use exact stable npm releases and a committed integrity-checked lockfile.
+Dependencies use exact published npm releases and a committed integrity-checked lockfile.
 Install scripts are disabled. `versions.json` records registry metadata (including gitHead
 where published); absent gitHead is unknown, not inferred from a repository's current main.
-These examples do not claim to test unreleased main branches. Lexical packages resolve to
+These examples do not claim to test unreleased main branches. Redux Observable uses the
+upstream latest-tagged **3.0.0-rc.3 prerelease**, explicitly paired with Redux 5 and RxJS 7. Lexical packages resolve to
 one matching version. Tiptap/Quill use jsdom rather than a browser. Keep native project
 unit tests, property-based tests and Playwright for coverage outside the table below.
 
@@ -59,6 +60,26 @@ unit tests, property-based tests and Playwright for coverage outside the table b
 | [rxjs](https://github.com/ReactiveX/rxjs) | 7.8.2 | 3 / 20 |
 | [final-form](https://github.com/final-form/final-form) | 5.0.1 | 3 / 14 |
 | [tanstack-store](https://github.com/TanStack/store) | @tanstack/store 0.11.2 | 3 / 14 |
+| [zod](https://github.com/colinhacks/zod) | zod 4.6.7 | 3 / 9 |
+| [valibot](https://github.com/open-circle/valibot) | valibot 1.5.0 | 3 / 9 |
+| [yup](https://github.com/jquense/yup) | yup 1.7.1 | 3 / 9 |
+| [ajv](https://github.com/ajv-validator/ajv) | ajv 8.20.0 | 3 / 9 |
+| [joi](https://github.com/hapijs/joi) | joi 18.3.0 | 3 / 9 |
+| [superstruct](https://github.com/ianstormtaylor/superstruct) | superstruct 2.0.2 | 3 / 9 |
+| [arktype](https://github.com/arktypeio/arktype) | arktype 2.2.9 | 3 / 9 |
+| [vest](https://github.com/ealush/vest) | vest 6.3.4 | 3 / 12 |
+| [immutable-js](https://github.com/immutable-js/immutable-js) | immutable 5.1.9 | 3 / 11 |
+| [reselect](https://github.com/reduxjs/reselect) | reselect 5.3.0 | 3 / 13 |
+| [redux](https://github.com/reduxjs/redux) | redux 5.0.1 | 3 / 11 |
+| [preact-signals](https://github.com/preactjs/signals) | @preact/signals-core 1.14.4 | 3 / 13 |
+| [solid](https://github.com/solidjs/solid) | solid-js 1.9.17 | 3 / 13 |
+| [svelte](https://github.com/sveltejs/svelte) | svelte 5.57.2 | 3 / 11 |
+| [robot](https://github.com/matthewp/robot) | robot3 1.4.0 | 3 / 16 |
+| [eventemitter3](https://github.com/primus/eventemitter3) | eventemitter3 5.0.4 | 3 / 11 |
+| [formkit](https://github.com/formkit/formkit) | @formkit/core 2.1.2 | 3 / 13 |
+| [redux-saga](https://github.com/redux-saga/redux-saga) | redux-saga 1.5.1 | 3 / 14 |
+| [redux-observable](https://github.com/redux-observable/redux-observable) | redux-observable 3.0.0-rc.3 | 3 / 17 |
+| [react-hook-form](https://github.com/react-hook-form/react-hook-form) | react-hook-form 7.91.0 | 3 / 14 |
 
 ### slate
 
@@ -180,6 +201,126 @@ Native createForm, registered field, synchronous validation/submission, reset ve
 
 Native createStore derived dependencies, batch, equality and unsubscribe. Uses the current createStore API, not the older Derived class. No UI adapters or concurrent rendering.
 
+### zod
+
+[Adapter](consumers/zod.mjs) · [scenarios](../../scenarios/zod)
+
+Native safeParse: trim/defaults, unknown-key stripping, strict numeric types and recovery after invalid input. No async refinements, JSON Schema conversion or AOT compilation.
+
+### valibot
+
+[Adapter](consumers/valibot.mjs) · [scenarios](../../scenarios/valibot)
+
+Native safeParse/pipe: trim/defaults, unknown-key stripping, integer validation and error recovery. No async actions, Standard Schema integration or generated schemas.
+
+### yup
+
+[Adapter](consumers/yup.mjs) · [scenarios](../../scenarios/yup)
+
+Native validateSync: cast versus strict mode, boolean conversion, defaults and multiple error paths. No async tests or React form bindings.
+
+### ajv
+
+[Adapter](consumers/ajv.mjs) · [scenarios](../../scenarios/ajv)
+
+Compiled JSON Schema: explicit coercion, defaults, additional-property rejection and cleared errors between calls. The adapter clones the request before validation; the native working copy can change even when validation fails. No remote schemas or asynchronous keywords.
+
+### joi
+
+[Adapter](consumers/joi.mjs) · [scenarios](../../scenarios/joi)
+
+Native object.validate: conversion on/off, trim/defaults, unknown-key stripping and collected error paths. No async external rules or HTTP framework integration.
+
+### superstruct
+
+[Adapter](consumers/superstruct.mjs) · [scenarios](../../scenarios/superstruct)
+
+Native create/mask: unknown-key policy, coercion/defaults, explicit false values and accumulated failures. No TypeScript inference or custom async validation.
+
+### arktype
+
+[Adapter](consumers/arktype.mjs) · [scenarios](../../scenarios/arktype)
+
+Native type invocation: undeclared-key deletion, optional fields, integer constraints and error recovery. No generated input schemas, async pipelines or compiler/performance claims.
+
+### vest
+
+[Adapter](consumers/vest.mjs) · [scenarios](../../scenarios/vest)
+
+Stateful suite.run/only/get/reset: focused validation retains results for untouched fields and a full run revalidates them. No async races or framework bindings.
+
+### immutable-js
+
+[Adapter](consumers/immutable-js.mjs) · [scenarios](../../scenarios/immutable-js)
+
+Native Map/List/setIn/withMutations: no-op identity, nested structural sharing and retained original snapshots. No adapter-defined undo history or performance claim.
+
+### reselect
+
+[Adapter](consumers/reselect.mjs) · [scenarios](../../scenarios/reselect)
+
+Native createSelector/lruMemoize: unrelated state updates, resultEqualityCheck reference reuse and filter ordering. The state fixture is original; no React or devtools coverage.
+
+### redux
+
+[Adapter](consumers/redux.mjs) · [scenarios](../../scenarios/redux)
+
+Core legacy_createStore/combineReducers/applyMiddleware: notifications on no-op dispatch, middleware order, unsubscribe and replaceReducer state retention. A core API reproduction, not a recommendation to replace Redux Toolkit in apps.
+
+### preact-signals
+
+[Adapter](consumers/preact-signals.mjs) · [scenarios](../../scenarios/preact-signals)
+
+Native signals/computed/effect/batch: dynamic dependencies, final-state batch notification and observer disposal. No Preact rendering or DOM.
+
+### solid
+
+[Adapter](consumers/solid.mjs) · [scenarios](../../scenarios/solid)
+
+Published solid-js/dist/solid.js client reactive runtime selected explicitly because Node defaults to SSR. createRoot/createComputed/createMemo/batch: dependency switching, batching and disposal. No JSX, DOM, SSR or browser behavior claims.
+
+### svelte
+
+[Adapter](consumers/svelte.mjs) · [scenarios](../../scenarios/svelte)
+
+Native svelte/store writable/derived/get: same-object writes notify, derived reads after unsubscribe and independent fields. No compiler, runes, components or DOM.
+
+### robot
+
+[Adapter](consumers/robot.mjs) · [scenarios](../../scenarios/robot)
+
+Original synchronous draft machine interpreted by robot3: edit/cancel, validation guard and out-of-state events. No arbitrary-machine correctness, async invoke or browser bindings.
+
+### eventemitter3
+
+[Adapter](consumers/eventemitter3.mjs) · [scenarios](../../scenarios/eventemitter3)
+
+Native EventEmitter: context binding, once removal before reentrant emission, removeListener and listener-free emit. No performance or compatibility claims for other emitter implementations.
+
+### formkit
+
+[Adapter](consumers/formkit.mjs) · [scenarios](../../scenarios/formkit)
+
+Native core node tree: child input propagation, tree reset and blocking-message ledger accounting. input(value,false) is explicit; settlement is awaited. No Vue/React rendering or validation plugin.
+
+### redux-saga
+
+[Adapter](consumers/redux-saga.mjs) · [scenarios](../../scenarios/redux-saga)
+
+Native runSaga/stdChannel/takeLatest: obsolete worker cancellation, ignored stale resolution and root cancellation. Responses are explicit channel events; no wall-clock timer or network.
+
+### redux-observable
+
+[Adapter](consumers/redux-observable.mjs) · [scenarios](../../scenarios/redux-observable)
+
+Published latest-tagged 3.0.0-rc.3 prerelease with Redux 5 and RxJS 7: real epic middleware, switchMap, inner cancellation and root stop. No timers, UI or stable-release compatibility claim.
+
+### react-hook-form
+
+[Adapter](consumers/react-hook-form.mjs) · [scenarios](../../scenarios/react-hook-form)
+
+Native createFormControl: required/minLength validation, dirty/touched reset and valid/invalid submit callbacks. Validation/submission are awaited. No React mounting, DOM events, async resolver or network.
+
 ## Design choices
 
 History grouping is explicit: Slate withNewBatch, Lexical HISTORY_PUSH_TAG, Tiptap
@@ -199,3 +340,9 @@ The reactive examples run synchronously except for explicitly awaited Effector a
 Expected states and notification sequences are hand-authored before execution. Five input
 regressions verify that an invalid final batch argument leaves both native values and
 notification history unchanged. There are no real-time sleeps or network effects.
+
+Validation traces expose native results, output keys, sorted error paths and request-input
+equality. They do not compare translated error messages or treat these libraries as
+interchangeable. Ajv deliberately validates a working copy: default/coercion writes can
+survive a failed validation on that copy. The Robot machine, Redux reducer and saga/epic
+are small original consumer fixtures. Their state transitions remain owned by native APIs.

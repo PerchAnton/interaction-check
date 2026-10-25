@@ -1,0 +1,80 @@
+{
+  "schema": 1,
+  "name": "ajv / defaults-can-apply-on-failure",
+  "steps": [
+    {
+      "event": {
+        "op": "validate",
+        "coerce": true,
+        "data": {
+          "name": "",
+          "age": "20"
+        }
+      },
+      "expect": {
+        "valid": false,
+        "paths": [
+          "/name"
+        ],
+        "output": {
+          "name": "",
+          "age": 20,
+          "enabled": true
+        },
+        "input": {
+          "age": "20"
+        },
+        "inputUnchanged": true
+      }
+    },
+    {
+      "event": {
+        "op": "validate",
+        "coerce": true,
+        "data": {
+          "name": "Ada",
+          "age": 20,
+          "extra": "x"
+        }
+      },
+      "expect": {
+        "valid": false,
+        "paths": [
+          "/extra"
+        ],
+        "keys": [
+          "age",
+          "enabled",
+          "extra",
+          "name"
+        ],
+        "inputUnchanged": true
+      }
+    },
+    {
+      "event": {
+        "op": "validate",
+        "coerce": true,
+        "data": {
+          "name": "Ada",
+          "age": 20
+        }
+      },
+      "expect": {
+        "valid": true,
+        "output": {
+          "name": "Ada",
+          "age": 20,
+          "enabled": true
+        },
+        "keys": [
+          "age",
+          "enabled",
+          "name"
+        ],
+        "paths": [],
+        "inputUnchanged": true
+      }
+    }
+  ]
+}

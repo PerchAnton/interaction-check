@@ -1,0 +1,64 @@
+{
+  "schema": 1,
+  "name": "zod / reject-coercion-and-fractions",
+  "steps": [
+    {
+      "event": {
+        "op": "validate",
+        "data": {
+          "name": "Ada",
+          "age": "20"
+        }
+      },
+      "expect": {
+        "valid": false,
+        "output": null,
+        "paths": [
+          "age"
+        ],
+        "inputUnchanged": true
+      }
+    },
+    {
+      "event": {
+        "op": "validate",
+        "data": {
+          "name": "Ada",
+          "age": 1.5
+        }
+      },
+      "expect": {
+        "valid": false,
+        "output": null,
+        "paths": [
+          "age"
+        ],
+        "inputUnchanged": true
+      }
+    },
+    {
+      "event": {
+        "op": "validate",
+        "data": {
+          "name": "Ada",
+          "age": 20
+        }
+      },
+      "expect": {
+        "valid": true,
+        "output": {
+          "name": "Ada",
+          "age": 20,
+          "enabled": true
+        },
+        "keys": [
+          "age",
+          "enabled",
+          "name"
+        ],
+        "paths": [],
+        "inputUnchanged": true
+      }
+    }
+  ]
+}

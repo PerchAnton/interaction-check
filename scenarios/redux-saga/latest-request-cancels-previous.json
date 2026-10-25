@@ -1,0 +1,64 @@
+{
+  "schema": 1,
+  "name": "redux-saga / latest-request-cancels-previous",
+  "steps": [
+    {
+      "event": {
+        "op": "new"
+      },
+      "expect": {
+        "completed": [],
+        "cancelled": [],
+        "running": true
+      }
+    },
+    {
+      "event": {
+        "op": "request",
+        "id": "a"
+      },
+      "expect": {
+        "completed": []
+      }
+    },
+    {
+      "event": {
+        "op": "request",
+        "id": "b"
+      },
+      "expect": {
+        "cancelled": [
+          "a"
+        ]
+      }
+    },
+    {
+      "event": {
+        "op": "resolve",
+        "id": "a",
+        "value": "stale"
+      },
+      "expect": {
+        "completed": []
+      }
+    },
+    {
+      "event": {
+        "op": "resolve",
+        "id": "b",
+        "value": "fresh"
+      },
+      "expect": {
+        "completed": [
+          {
+            "id": "b",
+            "value": "fresh"
+          }
+        ],
+        "cancelled": [
+          "a"
+        ]
+      }
+    }
+  ]
+}

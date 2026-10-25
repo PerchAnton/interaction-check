@@ -1,0 +1,53 @@
+{
+  "schema": 1,
+  "name": "svelte / independent-fields",
+  "steps": [
+    {
+      "event": {
+        "op": "new",
+        "title": "і"
+      },
+      "expect": {
+        "upper": "І"
+      }
+    },
+    {
+      "event": {
+        "op": "save"
+      },
+      "expect": {
+        "upper": "І",
+        "value": {
+          "title": "і",
+          "saved": true
+        }
+      }
+    },
+    {
+      "event": {
+        "op": "title",
+        "value": "🧪"
+      },
+      "expect": {
+        "upper": "🧪",
+        "value": {
+          "title": "🧪",
+          "saved": true
+        }
+      }
+    },
+    {
+      "event": {
+        "op": "title",
+        "value": ""
+      },
+      "expect": {
+        "upper": "",
+        "value": {
+          "title": "",
+          "saved": true
+        }
+      }
+    }
+  ]
+}

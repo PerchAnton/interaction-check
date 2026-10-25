@@ -1,0 +1,56 @@
+{
+  "schema": 1,
+  "name": "immutable-js / mutation-batch-preserves-original",
+  "steps": [
+    {
+      "event": {
+        "op": "new",
+        "title": "old"
+      },
+      "expect": {
+        "value": {
+          "title": "old"
+        }
+      }
+    },
+    {
+      "event": {
+        "op": "batch",
+        "title": "new",
+        "item": "one"
+      },
+      "expect": {
+        "value": {
+          "title": "new",
+          "items": [
+            "one"
+          ]
+        },
+        "initial": {
+          "title": "old",
+          "items": []
+        }
+      }
+    },
+    {
+      "event": {
+        "op": "batch",
+        "title": "next",
+        "item": "two"
+      },
+      "expect": {
+        "value": {
+          "title": "next",
+          "items": [
+            "one",
+            "two"
+          ]
+        },
+        "initial": {
+          "title": "old",
+          "items": []
+        }
+      }
+    }
+  ]
+}

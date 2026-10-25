@@ -1,0 +1,76 @@
+{
+  "schema": 1,
+  "name": "superstruct / create-versus-mask",
+  "steps": [
+    {
+      "event": {
+        "op": "validate",
+        "mode": "create",
+        "data": {
+          "name": " Ada ",
+          "age": 20,
+          "extra": "x"
+        }
+      },
+      "expect": {
+        "valid": false,
+        "output": null,
+        "paths": [
+          "extra"
+        ],
+        "inputUnchanged": true
+      }
+    },
+    {
+      "event": {
+        "op": "validate",
+        "mode": "mask",
+        "data": {
+          "name": " Ada ",
+          "age": 20,
+          "extra": "x"
+        }
+      },
+      "expect": {
+        "valid": true,
+        "output": {
+          "name": "Ada",
+          "age": 20,
+          "enabled": true
+        },
+        "keys": [
+          "age",
+          "enabled",
+          "name"
+        ],
+        "paths": [],
+        "inputUnchanged": true
+      }
+    },
+    {
+      "event": {
+        "op": "validate",
+        "mode": "create",
+        "data": {
+          "name": "Grace",
+          "age": 0
+        }
+      },
+      "expect": {
+        "valid": true,
+        "output": {
+          "name": "Grace",
+          "age": 0,
+          "enabled": true
+        },
+        "keys": [
+          "age",
+          "enabled",
+          "name"
+        ],
+        "paths": [],
+        "inputUnchanged": true
+      }
+    }
+  ]
+}

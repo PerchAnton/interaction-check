@@ -1,0 +1,59 @@
+{
+  "schema": 1,
+  "name": "eventemitter3 / once-and-context",
+  "steps": [
+    {
+      "event": {
+        "op": "new",
+        "reentrant": false
+      },
+      "expect": {
+        "listeners": 2,
+        "seen": []
+      }
+    },
+    {
+      "event": {
+        "op": "emit",
+        "value": "one"
+      },
+      "expect": {
+        "listeners": 1,
+        "emitted": true,
+        "seen": [
+          {
+            "listener": "context",
+            "value": "one"
+          },
+          {
+            "listener": "once",
+            "value": "one"
+          }
+        ]
+      }
+    },
+    {
+      "event": {
+        "op": "emit",
+        "value": "two"
+      },
+      "expect": {
+        "listeners": 1,
+        "seen": [
+          {
+            "listener": "context",
+            "value": "one"
+          },
+          {
+            "listener": "once",
+            "value": "one"
+          },
+          {
+            "listener": "context",
+            "value": "two"
+          }
+        ]
+      }
+    }
+  ]
+}

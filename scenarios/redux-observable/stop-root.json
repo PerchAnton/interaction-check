@@ -1,0 +1,80 @@
+{
+  "schema": 1,
+  "name": "redux-observable / stop-root",
+  "steps": [
+    {
+      "event": {
+        "op": "new"
+      },
+      "expect": {
+        "completed": []
+      }
+    },
+    {
+      "event": {
+        "op": "request",
+        "id": "a"
+      },
+      "expect": {
+        "completed": []
+      }
+    },
+    {
+      "event": {
+        "op": "emit",
+        "id": "a",
+        "value": "before"
+      },
+      "expect": {
+        "completed": [
+          {
+            "id": "a",
+            "value": "before"
+          }
+        ]
+      }
+    },
+    {
+      "event": {
+        "op": "stop"
+      },
+      "expect": {
+        "completed": [
+          {
+            "id": "a",
+            "value": "before"
+          }
+        ]
+      }
+    },
+    {
+      "event": {
+        "op": "request",
+        "id": "b"
+      },
+      "expect": {
+        "completed": [
+          {
+            "id": "a",
+            "value": "before"
+          }
+        ]
+      }
+    },
+    {
+      "event": {
+        "op": "emit",
+        "id": "b",
+        "value": "after"
+      },
+      "expect": {
+        "completed": [
+          {
+            "id": "a",
+            "value": "before"
+          }
+        ]
+      }
+    }
+  ]
+}

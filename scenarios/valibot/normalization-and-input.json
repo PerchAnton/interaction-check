@@ -1,0 +1,72 @@
+{
+  "schema": 1,
+  "name": "valibot / normalization-and-input",
+  "steps": [
+    {
+      "event": {
+        "op": "validate",
+        "data": {
+          "name": " Ada ",
+          "age": 20,
+          "extra": "keep input"
+        }
+      },
+      "expect": {
+        "valid": true,
+        "output": {
+          "name": "Ada",
+          "age": 20,
+          "enabled": true
+        },
+        "keys": [
+          "age",
+          "enabled",
+          "name"
+        ],
+        "paths": [],
+        "inputUnchanged": true
+      }
+    },
+    {
+      "event": {
+        "op": "validate",
+        "data": {
+          "name": "   ",
+          "age": 20
+        }
+      },
+      "expect": {
+        "valid": false,
+        "output": null,
+        "paths": [
+          "name"
+        ],
+        "inputUnchanged": true
+      }
+    },
+    {
+      "event": {
+        "op": "validate",
+        "data": {
+          "name": "Grace",
+          "age": 0
+        }
+      },
+      "expect": {
+        "valid": true,
+        "output": {
+          "name": "Grace",
+          "age": 0,
+          "enabled": true
+        },
+        "keys": [
+          "age",
+          "enabled",
+          "name"
+        ],
+        "paths": [],
+        "inputUnchanged": true
+      }
+    }
+  ]
+}

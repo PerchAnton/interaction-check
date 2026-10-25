@@ -1,0 +1,49 @@
+{
+  "schema": 1,
+  "name": "formkit / child-values-propagate",
+  "steps": [
+    {
+      "event": {
+        "op": "new",
+        "title": "A",
+        "note": "B"
+      },
+      "expect": {
+        "value": {
+          "title": "A",
+          "note": "B"
+        },
+        "blocking": 0,
+        "settled": true
+      }
+    },
+    {
+      "event": {
+        "op": "input",
+        "field": "title",
+        "value": "C"
+      },
+      "expect": {
+        "value": {
+          "title": "C",
+          "note": "B"
+        },
+        "settled": true
+      }
+    },
+    {
+      "event": {
+        "op": "input",
+        "field": "note",
+        "value": "D"
+      },
+      "expect": {
+        "value": {
+          "title": "C",
+          "note": "D"
+        },
+        "settled": true
+      }
+    }
+  ]
+}

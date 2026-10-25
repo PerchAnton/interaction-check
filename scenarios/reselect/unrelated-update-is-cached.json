@@ -1,0 +1,52 @@
+{
+  "schema": 1,
+  "name": "reselect / unrelated-update-is-cached",
+  "steps": [
+    {
+      "event": {
+        "op": "new"
+      },
+      "expect": {
+        "titles": [],
+        "recomputations": 1,
+        "same": false
+      }
+    },
+    {
+      "event": {
+        "op": "append",
+        "title": "A",
+        "done": true
+      },
+      "expect": {
+        "titles": [
+          "A"
+        ],
+        "recomputations": 2,
+        "same": false
+      }
+    },
+    {
+      "event": {
+        "op": "theme",
+        "value": "dark"
+      },
+      "expect": {
+        "titles": [
+          "A"
+        ],
+        "recomputations": 2,
+        "same": true
+      }
+    },
+    {
+      "event": {
+        "op": "same"
+      },
+      "expect": {
+        "recomputations": 2,
+        "same": true
+      }
+    }
+  ]
+}

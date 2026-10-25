@@ -1,0 +1,63 @@
+{
+  "schema": 1,
+  "name": "immutable-js / structural-sharing",
+  "steps": [
+    {
+      "event": {
+        "op": "new",
+        "title": "A"
+      },
+      "expect": {
+        "value": {
+          "title": "A",
+          "items": []
+        },
+        "same": true
+      }
+    },
+    {
+      "event": {
+        "op": "title",
+        "value": "B"
+      },
+      "expect": {
+        "value": {
+          "title": "B"
+        },
+        "initial": {
+          "title": "A",
+          "items": []
+        },
+        "same": false,
+        "itemsShared": true
+      }
+    },
+    {
+      "event": {
+        "op": "append",
+        "value": "one"
+      },
+      "expect": {
+        "value": {
+          "items": [
+            "one"
+          ]
+        },
+        "initial": {
+          "items": []
+        },
+        "itemsShared": false
+      }
+    },
+    {
+      "event": {
+        "op": "title",
+        "value": "B"
+      },
+      "expect": {
+        "same": true,
+        "itemsShared": true
+      }
+    }
+  ]
+}

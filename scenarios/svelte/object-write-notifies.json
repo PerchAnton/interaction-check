@@ -1,0 +1,64 @@
+{
+  "schema": 1,
+  "name": "svelte / object-write-notifies",
+  "steps": [
+    {
+      "event": {
+        "op": "new",
+        "title": "A"
+      },
+      "expect": {
+        "seen": [
+          {
+            "title": "A",
+            "saved": false
+          }
+        ],
+        "upper": "A"
+      }
+    },
+    {
+      "event": {
+        "op": "same"
+      },
+      "expect": {
+        "seen": [
+          {
+            "title": "A",
+            "saved": false
+          },
+          {
+            "title": "A",
+            "saved": false
+          }
+        ]
+      }
+    },
+    {
+      "event": {
+        "op": "title",
+        "value": "a"
+      },
+      "expect": {
+        "upper": "A",
+        "value": {
+          "title": "a"
+        },
+        "seen": [
+          {
+            "title": "A",
+            "saved": false
+          },
+          {
+            "title": "A",
+            "saved": false
+          },
+          {
+            "title": "a",
+            "saved": false
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -36,7 +36,27 @@
     "@vue/reactivity": "3.5.44",
     "rxjs": "7.8.2",
     "final-form": "5.0.1",
-    "@tanstack/store": "0.11.2"
+    "@tanstack/store": "0.11.2",
+    "yup": "1.7.1",
+    "valibot": "1.5.0",
+    "zod": "4.6.7",
+    "ajv": "8.20.0",
+    "joi": "18.3.0",
+    "superstruct": "2.0.2",
+    "arktype": "2.2.9",
+    "vest": "6.3.4",
+    "immutable": "5.1.9",
+    "reselect": "5.3.0",
+    "@preact/signals-core": "1.14.4",
+    "solid-js": "1.9.17",
+    "redux": "5.0.1",
+    "svelte": "5.57.2",
+    "robot3": "1.4.0",
+    "@formkit/core": "2.1.2",
+    "redux-saga": "1.5.1",
+    "redux-observable": "3.0.0-rc.3",
+    "react-hook-form": "7.91.0",
+    "eventemitter3": "5.0.4"
   },
   "devDependencies": {
     "prettier": "3.9.10"

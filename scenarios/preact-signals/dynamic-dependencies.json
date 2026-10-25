@@ -1,0 +1,74 @@
+{
+  "schema": 1,
+  "name": "preact-signals / dynamic-dependencies",
+  "steps": [
+    {
+      "event": {
+        "op": "new",
+        "left": "L",
+        "right": "R"
+      },
+      "expect": {
+        "selected": "L",
+        "seen": [
+          "L"
+        ]
+      }
+    },
+    {
+      "event": {
+        "op": "set",
+        "side": "right",
+        "value": "R2"
+      },
+      "expect": {
+        "selected": "L",
+        "seen": [
+          "L"
+        ]
+      }
+    },
+    {
+      "event": {
+        "op": "select",
+        "side": "right"
+      },
+      "expect": {
+        "selected": "R2",
+        "seen": [
+          "L",
+          "R2"
+        ]
+      }
+    },
+    {
+      "event": {
+        "op": "set",
+        "side": "left",
+        "value": "L2"
+      },
+      "expect": {
+        "selected": "R2",
+        "seen": [
+          "L",
+          "R2"
+        ]
+      }
+    },
+    {
+      "event": {
+        "op": "set",
+        "side": "right",
+        "value": "R3"
+      },
+      "expect": {
+        "selected": "R3",
+        "seen": [
+          "L",
+          "R2",
+          "R3"
+        ]
+      }
+    }
+  ]
+}

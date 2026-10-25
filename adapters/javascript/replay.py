@@ -11,6 +11,7 @@ CONSUMERS = (
     "slate", "lexical", "tiptap", "quill", "immer", "zustand",
     "xstate", "yjs", "automerge", "redux-toolkit",
     "mobx", "jotai", "valtio", "nanostores", "effector", "pinia", "vue-reactivity", "rxjs", "final-form", "tanstack-store",
+    "zod", "valibot", "yup", "ajv", "joi", "superstruct", "arktype", "vest", "immutable-js", "reselect", "redux", "preact-signals", "solid", "svelte", "robot", "eventemitter3", "formkit", "redux-saga", "redux-observable", "react-hook-form",
 )
 
 

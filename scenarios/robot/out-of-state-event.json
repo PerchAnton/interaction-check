@@ -1,0 +1,61 @@
+{
+  "schema": 1,
+  "name": "robot / out-of-state-event",
+  "steps": [
+    {
+      "event": {
+        "op": "new",
+        "value": "old"
+      },
+      "expect": {
+        "state": "idle"
+      }
+    },
+    {
+      "event": {
+        "op": "input",
+        "value": "ignored"
+      },
+      "expect": {
+        "state": "idle",
+        "value": "old",
+        "draft": "old"
+      }
+    },
+    {
+      "event": {
+        "op": "save"
+      },
+      "expect": {
+        "state": "idle",
+        "value": "old"
+      }
+    },
+    {
+      "event": {
+        "op": "edit"
+      },
+      "expect": {
+        "state": "editing"
+      }
+    },
+    {
+      "event": {
+        "op": "input",
+        "value": "🧪"
+      },
+      "expect": {
+        "draft": "🧪"
+      }
+    },
+    {
+      "event": {
+        "op": "save"
+      },
+      "expect": {
+        "value": "🧪",
+        "state": "idle"
+      }
+    }
+  ]
+}

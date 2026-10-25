@@ -1,0 +1,67 @@
+{
+  "schema": 1,
+  "name": "redux-saga / completed-task-is-not-cancelled",
+  "steps": [
+    {
+      "event": {
+        "op": "new"
+      },
+      "expect": {
+        "completed": []
+      }
+    },
+    {
+      "event": {
+        "op": "request",
+        "id": "a"
+      },
+      "expect": {
+        "cancelled": []
+      }
+    },
+    {
+      "event": {
+        "op": "resolve",
+        "id": "a",
+        "value": "first"
+      },
+      "expect": {
+        "completed": [
+          {
+            "id": "a",
+            "value": "first"
+          }
+        ]
+      }
+    },
+    {
+      "event": {
+        "op": "request",
+        "id": "b"
+      },
+      "expect": {
+        "cancelled": []
+      }
+    },
+    {
+      "event": {
+        "op": "resolve",
+        "id": "b",
+        "value": "second"
+      },
+      "expect": {
+        "completed": [
+          {
+            "id": "a",
+            "value": "first"
+          },
+          {
+            "id": "b",
+            "value": "second"
+          }
+        ],
+        "cancelled": []
+      }
+    }
+  ]
+}

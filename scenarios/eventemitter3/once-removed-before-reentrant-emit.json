@@ -1,0 +1,70 @@
+{
+  "schema": 1,
+  "name": "eventemitter3 / once-removed-before-reentrant-emit",
+  "steps": [
+    {
+      "event": {
+        "op": "new",
+        "reentrant": true
+      },
+      "expect": {
+        "listeners": 2
+      }
+    },
+    {
+      "event": {
+        "op": "emit",
+        "value": "x"
+      },
+      "expect": {
+        "listeners": 1,
+        "seen": [
+          {
+            "listener": "context",
+            "value": "x"
+          },
+          {
+            "listener": "once",
+            "value": "x"
+          },
+          {
+            "listener": "context",
+            "value": "x!"
+          }
+        ]
+      }
+    },
+    {
+      "event": {
+        "op": "clear"
+      },
+      "expect": {
+        "listeners": 0,
+        "events": []
+      }
+    },
+    {
+      "event": {
+        "op": "emit",
+        "value": "ignored"
+      },
+      "expect": {
+        "emitted": false,
+        "seen": [
+          {
+            "listener": "context",
+            "value": "x"
+          },
+          {
+            "listener": "once",
+            "value": "x"
+          },
+          {
+            "listener": "context",
+            "value": "x!"
+          }
+        ]
+      }
+    }
+  ]
+}

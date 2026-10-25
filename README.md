@@ -168,9 +168,9 @@ is maintainer review of their behavior and dependency policy; this is not a clai
 
 ## JavaScript examples
 
-[Twenty external JavaScript adapters](adapters/javascript/README.md) replay editor history, reactive state, form validation, stream cancellation,
-patches, store notifications and two-replica document operations against pinned stable
-packages. These are optional development examples; upstream adoption is pending.
+[Forty external JavaScript adapters](adapters/javascript/README.md) replay editor history, reactive state, form validation, stream cancellation,
+patches, store notifications and two-replica document operations against pinned published
+packages (including an explicitly documented Redux Observable prerelease). These are optional development examples; upstream adoption is pending.
 
 ## License
 

@@ -1,0 +1,49 @@
+{
+  "schema": 1,
+  "name": "react-hook-form / invalid-submit-does-not-call-success",
+  "steps": [
+    {
+      "event": {
+        "op": "new",
+        "title": ""
+      },
+      "expect": {
+        "submissions": [],
+        "invalidSubmits": 0
+      }
+    },
+    {
+      "event": {
+        "op": "submit"
+      },
+      "expect": {
+        "submissions": [],
+        "invalidSubmits": 1,
+        "error": "required"
+      }
+    },
+    {
+      "event": {
+        "op": "input",
+        "value": "ready"
+      },
+      "expect": {
+        "submissions": []
+      }
+    },
+    {
+      "event": {
+        "op": "submit"
+      },
+      "expect": {
+        "submissions": [
+          {
+            "title": "ready"
+          }
+        ],
+        "invalidSubmits": 1,
+        "error": null
+      }
+    }
+  ]
+}

@@ -1,0 +1,55 @@
+{
+  "schema": 1,
+  "name": "formkit / reset-whole-tree",
+  "steps": [
+    {
+      "event": {
+        "op": "new",
+        "title": "A",
+        "note": "B"
+      },
+      "expect": {
+        "value": {
+          "title": "A",
+          "note": "B"
+        }
+      }
+    },
+    {
+      "event": {
+        "op": "input",
+        "field": "title",
+        "value": "C"
+      },
+      "expect": {
+        "value": {
+          "title": "C"
+        }
+      }
+    },
+    {
+      "event": {
+        "op": "input",
+        "field": "note",
+        "value": "D"
+      },
+      "expect": {
+        "value": {
+          "note": "D"
+        }
+      }
+    },
+    {
+      "event": {
+        "op": "reset"
+      },
+      "expect": {
+        "value": {
+          "title": "A",
+          "note": "B"
+        },
+        "settled": true
+      }
+    }
+  ]
+}
