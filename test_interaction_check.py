@@ -10,7 +10,7 @@ import unittest
 from unittest import mock
 import xml.etree.ElementTree as ET
 
-from interaction_check import (CheckError, MAX_DEPTH, differences, replay, strict_json,
+from interaction_check import (CheckError, LIMIT, MAX_DEPTH, differences, replay, strict_json,
                                validate, main, write_report)
 
 
@@ -81,6 +81,70 @@ class Tests(unittest.TestCase):
     def test_timeout_terminates_stalled_adapter(self):
         with self.assertRaisesRegex(CheckError, "timed out"):
             replay(scenario(), self.adapter("import time; time.sleep(5)"), 0.05)
+
+    def test_output_limit_stops_adapter_before_timeout(self):
+        for stream in ["stdout", "stderr"]:
+            code = (f"import sys, time; sys.{stream}.buffer.write(b'x' * {LIMIT + 1}); "
+                    f"sys.{stream}.buffer.flush(); time.sleep(10)")
+            with self.subTest(stream=stream), self.assertRaisesRegex(CheckError, "output exceeds"):
+                replay(scenario(), self.adapter(code), timeout=2)
+
+    def test_output_limit_is_checked_after_fast_exit_too(self):
+        for stream in ["stdout", "stderr"]:
+            code = f"import sys; sys.{stream}.buffer.write(b'x' * {LIMIT + 1})"
+            with self.subTest(stream=stream), self.assertRaisesRegex(CheckError, "output exceeds"):
+                replay(scenario(), self.adapter(code))
+
+    def test_output_at_limit_is_accepted(self):
+        for stream in ["stdout", "stderr"]:
+            if stream == "stdout":
+                code = ("import json, sys; r = json.loads(sys.stdin.readline()); "
+                        "data = json.dumps({'protocol': 1, 'id': r['id'], 'state': r['event']}).encode(); "
+                        f"sys.stdout.buffer.write(data.ljust({LIMIT - 1}, b' ') + b'\\n')")
+            else:
+                code = ECHO + f"sys.stderr.write('x' * {LIMIT})"
+            with self.subTest(stream=stream):
+                result = replay(scenario(), self.adapter(code))
+                self.assertTrue(result["passed"])
+                if stream == "stderr":
+                    self.assertEqual(len(result["stderr"]), LIMIT)
+
+    def test_large_input_does_not_block_timeout_if_adapter_never_reads(self):
+        case = scenario()
+        case["steps"][0]["event"]["padding"] = "x" * (LIMIT // 2)
+        with self.assertRaisesRegex(CheckError, "timed out"):
+            replay(case, self.adapter("import time; time.sleep(10)"), timeout=0.1)
+
+    def test_timeout_keeps_partial_diagnostic_output(self):
+        code = "import sys, time; print('before stall', file=sys.stderr, flush=True); time.sleep(10)"
+        with self.assertRaisesRegex(CheckError, "timed out") as error:
+            replay(scenario(), self.adapter(code), timeout=2)
+        self.assertIn("before stall", error.exception.stderr)
+
+    def test_failed_assertion_and_protocol_keep_adapter_diagnostics(self):
+        for code in [ECHO, "print('not json')"]:
+            case = scenario()
+            case["steps"][0]["expect"]["text"] = "wrong"
+            code = "import sys; print('useful diagnostic', file=sys.stderr)\n" + code
+            with self.subTest(code=code), self.assertRaises(CheckError) as error:
+                replay(case, self.adapter(code))
+            self.assertIn("useful diagnostic", getattr(error.exception, "stderr", ""))
+
+    def test_failed_reports_include_adapter_stderr(self):
+        with tempfile.TemporaryDirectory() as root:
+            root = Path(root)
+            case, report, junit = root / "case.json", root / "report.json", root / "junit.xml"
+            value = scenario()
+            value["steps"][0]["expect"]["text"] = "wrong"
+            case.write_text(json.dumps(value), encoding="utf-8")
+            code = "import sys; print('failure details', file=sys.stderr)\n" + ECHO
+            with contextlib.redirect_stdout(io.StringIO()):
+                status = main(["--report", str(report), "--junit", str(junit),
+                               str(case), "--", *self.adapter(code)])
+            self.assertEqual(status, 1)
+            result = json.loads(report.read_text(encoding="utf-8"))["results"][0]
+            self.assertIn("failure details", result.get("stderr", ""))
+            self.assertIn("failure details", ET.parse(junit).find(".//system-err").text)
 
     def test_wrong_id_is_rejected(self):
         with self.assertRaisesRegex(CheckError, "mismatched reply id"):
@@ -227,7 +291,7 @@ class Tests(unittest.TestCase):
             os.link(case, hardlink)
             for options in [["--report", str(case)], ["--junit", str(hardlink)],
                             ["--report", str(report), "--junit", str(report)]]:
-                with self.subTest(options=options), mock.patch("interaction_check.subprocess.run") as run:
+                with self.subTest(options=options), mock.patch("interaction_check.subprocess.Popen") as run:
                     with contextlib.redirect_stderr(io.StringIO()), self.assertRaises(SystemExit) as error:
                         main([*options, str(case), "--", *self.adapter(ECHO)])
                     self.assertEqual(error.exception.code, 2)

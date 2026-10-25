@@ -1,5 +1,28 @@
 # Validation evidence
 
+## Alpha 3 runner review - 25 October 2026
+
+Local environment: macOS arm64, Python 3.12. The runner is still standard-library-only.
+
+On the preceding main `11b728e33ee2c5ef27a918e778e311a856a87af4`, three new regression
+tests failed: stdout/stderr exceeding 1 MiB followed by a stalled adapter reached the
+timeout instead of failing early, and assertion/protocol failures lost stderr in the
+Python API and JSON/JUnit reports.
+
+After the changes, all **34 tests pass**. They cover early output-limit detection on both
+streams, fast exits, the exact byte boundary, a non-reading adapter with large input,
+partial diagnostics on timeout, failure diagnostics in both report formats, and the
+previous protocol/Unicode/JSON/report-preservation cases.
+
+The runner checks output sizes about every 50 ms and reaps the direct process on failure.
+Capture stays file-backed and reads are bounded. Polling is not a hard disk quota or
+subprocess-tree isolation; adapter children remain the adapter's responsibility.
+
+No PhotoCraft/PdfCraft source or dependency pin changed. Full application builds and GUI
+scenarios were not rerun locally for this review; the existing PhotoCraft engine CI job
+tests the updated runner against its pinned real adapter. Its result is reported by CI,
+not inferred from the unit tests above. Temporary local test files are removed.
+
 ## PdfCraft consumer proposal — 25 October 2026
 
 [PR #4594](https://github.com/storytold/pdfcraft/pull/4594), consumer commit `535d990d10832baf3b0a64910c51b280c224bd5c` on upstream

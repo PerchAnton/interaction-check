@@ -13,15 +13,20 @@ from pathlib import Path
 import subprocess
 import sys
 import tempfile
+import time
 import xml.etree.ElementTree as ET
 
-VERSION = "0.1.0-alpha.2"
+VERSION = "0.1.0-alpha.3"
 LIMIT = 1024 * 1024
 MAX_DEPTH = 64
 
 
 class CheckError(Exception):
-    pass
+    """A failed check, optionally carrying the adapter's bounded diagnostic output."""
+
+    def __init__(self, message, *, stderr=""):
+        super().__init__(message)
+        self.stderr = stderr
 
 
 def validate_json(value):
@@ -114,6 +119,57 @@ def differences(expected, actual, path="state"):
     return []
 
 
+def run_adapter(command, payload, timeout):
+    """Capture a trusted adapter, checking output growth while the process runs.
+
+    Sizes are checked periodically, not enforced as a disk quota: a fast writer may
+    overshoot between polls. Only the direct process is stopped, not its descendants.
+    """
+    with tempfile.TemporaryFile() as source, tempfile.TemporaryFile() as output, \
+            tempfile.TemporaryFile() as diagnostic:
+        source.write(payload)
+        source.seek(0)
+        try:
+            # A file-backed stdin cannot block the parent when an adapter stops reading.
+            with subprocess.Popen(command, stdin=source, stdout=output, stderr=diagnostic) as process:
+                deadline = time.monotonic() + timeout
+                try:
+                    while True:
+                        if (os.fstat(output.fileno()).st_size > LIMIT
+                                or os.fstat(diagnostic.fileno()).st_size > LIMIT):
+                            raise CheckError("Adapter output exceeds 1 MiB")
+                        remaining = deadline - time.monotonic()
+                        if remaining <= 0:
+                            raise CheckError(f"Adapter timed out after {timeout:g}s")
+                        try:
+                            process.wait(timeout=min(remaining, 0.05))
+                            break
+                        except subprocess.TimeoutExpired:
+                            continue
+                except BaseException:
+                    # Reap even on cancellation; Popen's context manager otherwise waits
+                    # for a still-running adapter on exit.
+                    process.kill()
+                    process.wait()
+                    raise
+            output.seek(0)
+            stdout = output.read(LIMIT + 1)
+            if len(stdout) > LIMIT or os.fstat(diagnostic.fileno()).st_size > LIMIT:
+                raise CheckError("Adapter output exceeds 1 MiB")
+        except CheckError as error:
+            diagnostic.seek(0)
+            error.stderr = diagnostic.read(LIMIT).decode("utf-8", errors="replace")
+            raise
+        except OSError as error:
+            raise CheckError(f"Cannot run adapter: {error}") from error
+        diagnostic.seek(0)
+        stderr = diagnostic.read(LIMIT).decode("utf-8", errors="replace")
+    if process.returncode:
+        raise CheckError(f"Adapter exited with {process.returncode}: {stderr[-2000:]}",
+                         stderr=stderr)
+    return stdout, stderr
+
+
 def replay(scenario, command, timeout=5.0):
     validate(scenario)
     if not command or not math.isfinite(timeout) or timeout <= 0:
@@ -126,44 +182,32 @@ def replay(scenario, command, timeout=5.0):
         raise CheckError(f"Cannot encode scenario: {error}") from error
     if len(payload) > LIMIT:
         raise CheckError("Scenario exceeds 1 MiB")
-    # File-backed capture avoids unbounded RAM if an adapter logs too much. Adapters are
-    # trusted local test programs, not sandboxed plugins; no subprocess isolation is claimed.
-    with tempfile.TemporaryFile() as output, tempfile.TemporaryFile() as diagnostic:
-        try:
-            completed = subprocess.run(command, input=payload, stdout=output, stderr=diagnostic,
-                                       timeout=timeout, check=False)
-        except subprocess.TimeoutExpired as error:
-            raise CheckError(f"Adapter timed out after {timeout:g}s") from error
-        except OSError as error:
-            raise CheckError(f"Cannot run adapter: {error}") from error
-        if output.tell() > LIMIT or diagnostic.tell() > LIMIT:
-            raise CheckError("Adapter output exceeds 1 MiB")
-        output.seek(0)
-        diagnostic.seek(0)
-        stderr = diagnostic.read().decode("utf-8", errors="replace")
-        if completed.returncode:
-            raise CheckError(f"Adapter exited with {completed.returncode}: {stderr[-2000:]}")
+    stdout, stderr = run_adapter(command, payload, timeout)
+    try:
         try:
             # JSONL is delimited by LF, not Unicode line separators inside strings.
-            lines = output.read().decode("utf-8").split("\n")
+            lines = stdout.decode("utf-8").split("\n")
             if lines[-1] == "":
                 lines.pop()  # A single final LF is optional; extra blank lines are errors.
         except UnicodeError as error:
             raise CheckError("Adapter output is not UTF-8") from error
-    if len(lines) != len(scenario["steps"]):
-        raise CheckError(f"Expected {len(scenario['steps'])} replies, got {len(lines)}")
-    for index, (line, step) in enumerate(zip(lines, scenario["steps"]), 1):
-        try:
-            response = strict_json(line)
-        except CheckError as error:
-            raise CheckError(f"Step {index}: {error}") from error
-        if (not isinstance(response, dict) or type(response.get("protocol")) is not int
-                or response["protocol"] != 1 or type(response.get("id")) is not int
-                or response["id"] != index or not isinstance(response.get("state"), dict)):
-            raise CheckError(f"Step {index}: invalid envelope or mismatched reply id")
-        errors = differences(step["expect"], response["state"])
-        if errors:
-            raise CheckError(f"Step {index} ({step['event']}): " + "; ".join(errors))
+        if len(lines) != len(scenario["steps"]):
+            raise CheckError(f"Expected {len(scenario['steps'])} replies, got {len(lines)}")
+        for index, (line, step) in enumerate(zip(lines, scenario["steps"]), 1):
+            try:
+                response = strict_json(line)
+            except CheckError as error:
+                raise CheckError(f"Step {index}: {error}") from error
+            if (not isinstance(response, dict) or type(response.get("protocol")) is not int
+                    or response["protocol"] != 1 or type(response.get("id")) is not int
+                    or response["id"] != index or not isinstance(response.get("state"), dict)):
+                raise CheckError(f"Step {index}: invalid envelope or mismatched reply id")
+            errors = differences(step["expect"], response["state"])
+            if errors:
+                raise CheckError(f"Step {index} ({step['event']}): " + "; ".join(errors))
+    except CheckError as error:
+        error.stderr = stderr
+        raise
     return {"name": scenario["name"], "passed": True, "steps": len(lines), "stderr": stderr}
 
 
@@ -244,6 +288,8 @@ def main(argv=None):
             result = replay(scenario, command, args.timeout)
         except (CheckError, OSError, UnicodeError) as error:
             result = {"name": name, "passed": False, "error": str(error)}
+            if isinstance(error, CheckError) and error.stderr:
+                result["stderr"] = error.stderr
         result["source"] = str(path)
         results.append(result)
         print(("PASS " if result["passed"] else "FAIL ") + result["name"])

@@ -1,6 +1,6 @@
 # interaction-check
 
-**Experimental, 0.1.0-alpha.2.** An independent development tool for replaying semantic
+**Experimental, 0.1.0-alpha.3.** An independent development tool for replaying semantic
 interaction traces against an explicit local adapter. No third-party Python packages.
 Maintained by [PerchAnton](https://github.com/PerchAnton); no PyPI release or upstream adoption.
 
@@ -56,8 +56,10 @@ write failed; invalid CLI usage exits 2.
 ## Reports for CI
 
 `--report FILE` writes JSON and `--junit FILE` writes JUnit XML; either or both are optional.
-JUnit contains one test case per scenario, failure details and captured successful-adapter
-stderr. Scenario failures keep their declared name and source path in both formats. If the
+JUnit contains one test case per scenario, failure details and captured adapter stderr,
+including failed assertions, invalid replies, nonzero exits and timeouts. The Python API
+exposes these diagnostics as `CheckError.stderr`; JSON reports use `stderr`, and JUnit
+uses `system-err`. Scenario failures keep their declared name and source path in both formats. If the
 input cannot be parsed, its filename is used instead. A failed scenario does not prevent
 the remaining scenarios from running or the reports from being written.
 
@@ -114,9 +116,15 @@ by the consumer repository and also uses engine save/reopen. No Bubbles adapter,
 auto-recording or shrinking is implemented.
 
 Adapters are trusted local test programs, launched without a shell. A per-scenario timeout
-defaults to five seconds. Input and captured output are limited to 1 MiB; output limits are
-checked after execution, with file-backed capture. This is not a sandbox or a CPU/disk quota.
-The current timeout controls the direct adapter process, not a tree of spawned descendants.
+defaults to five seconds. Input is limited to 1 MiB. Stdin and output capture use temporary
+files so a non-reading adapter cannot block input delivery and logs do not grow in RAM.
+While the adapter runs, stdout and stderr sizes are checked about every 50 ms; either
+stream exceeding 1 MiB stops the adapter. A final check also catches fast-exiting writers.
+At most 1 MiB of stderr is retained in a failure report.
+
+Polling is not a hard disk quota: a fast writer can overshoot between checks. This is not
+a sandbox. Timeout, output-limit handling and cancellation stop and reap the direct
+adapter process, not a tree of spawned descendants. Adapters must manage their children.
 
 ## Evidence
 
