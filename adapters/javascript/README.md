@@ -49,6 +49,16 @@ unit tests, property-based tests and Playwright for coverage outside the table b
 | [yjs](https://github.com/yjs/yjs) | yjs 13.6.33 | 3 / 17 |
 | [automerge](https://github.com/automerge/automerge) | @automerge/automerge 3.5.0 | 3 / 15 |
 | [redux-toolkit](https://github.com/reduxjs/redux-toolkit) | @reduxjs/toolkit 2.13.0 | 3 / 13 |
+| [mobx](https://github.com/mobxjs/mobx) | 7.1.1 | 3 / 12 |
+| [jotai](https://github.com/pmndrs/jotai) | 3.0.1 | 3 / 13 |
+| [valtio](https://github.com/pmndrs/valtio) | 2.3.2 | 3 / 12 |
+| [nanostores](https://github.com/nanostores/nanostores) | 1.5.5 | 3 / 13 |
+| [effector](https://github.com/effector/effector) | 23.4.4 | 3 / 11 |
+| [pinia](https://github.com/vuejs/pinia) | 4.1.0 (Vue 3.5.44) | 3 / 11 |
+| [vue-reactivity](https://github.com/vuejs/core) | @vue/reactivity 3.5.44 | 3 / 13 |
+| [rxjs](https://github.com/ReactiveX/rxjs) | 7.8.2 | 3 / 20 |
+| [final-form](https://github.com/final-form/final-form) | 5.0.1 | 3 / 14 |
+| [tanstack-store](https://github.com/TanStack/store) | @tanstack/store 0.11.2 | 3 / 14 |
 
 ### slate
 
@@ -110,6 +120,66 @@ Two native documents, concurrent text splices, merge idempotence, binary save/lo
 
 Native sorted createEntityAdapter reducers inside configureStore: duplicate IDs, missing updates/removals, reordering and immutable initial state. No React bindings, RTK Query or async middleware.
 
+### mobx
+
+[Adapter](consumers/mobx.mjs) · [scenarios](../../scenarios/mobx)
+
+Observable/computed reactions: action batching, equal writes and disposal. No React bindings or asynchronous flows.
+
+### jotai
+
+[Adapter](consumers/jotai.mjs) · [scenarios](../../scenarios/jotai)
+
+Vanilla atoms in two stores: scope isolation, derived-value equality and unsubscribe. No React hooks, Suspense or async atoms.
+
+### valtio
+
+[Adapter](consumers/valtio.mjs) · [scenarios](../../scenarios/valtio)
+
+Nested proxy writes, cached snapshots, retained immutable snapshots and synchronous subscriptions. No React or asynchronous notification batching.
+
+### nanostores
+
+[Adapter](consumers/nanostores.mjs) · [scenarios](../../scenarios/nanostores)
+
+Native map/setKey and batch: final-state notifications, no-op writes and unsubscribe. No persistent stores, async tasks or framework bindings.
+
+### effector
+
+[Adapter](consumers/effector.mjs) · [scenarios](../../scenarios/effector)
+
+Two native fork scopes, allSettled events, mapped stores, reset and SID-based serialization. No effects, SSR transport or framework bindings.
+
+### pinia
+
+[Adapter](consumers/pinia.mjs) · [scenarios](../../scenarios/pinia)
+
+Two Pinia instances, object/function patches, reset and synchronous detached subscriptions. No component mounting, plugins or SSR hydration.
+
+### vue-reactivity
+
+[Adapter](consumers/vue-reactivity.mjs) · [scenarios](../../scenarios/vue-reactivity)
+
+Conditional computed dependencies, equal derived values and effectScope disposal. No DOM, component rendering, compiler, Vapor or unreleased Vue APIs.
+
+### rxjs
+
+[Adapter](consumers/rxjs.mjs) · [scenarios](../../scenarios/rxjs)
+
+Synchronous Subject/switchMap/distinctUntilChanged/takeUntil: stale inner emissions, cancellation and equality across switches. RxJS 7 only; not RxJS Next/9 compatibility. No timers or scheduler claims; keep native marble tests for timing.
+
+### final-form
+
+[Adapter](consumers/final-form.mjs) · [scenarios](../../scenarios/final-form)
+
+Native createForm, registered field, synchronous validation/submission, reset versus restart and batched value notifications. No React, browser input, async validation or network submission.
+
+### tanstack-store
+
+[Adapter](consumers/tanstack-store.mjs) · [scenarios](../../scenarios/tanstack-store)
+
+Native createStore derived dependencies, batch, equality and unsubscribe. Uses the current createStore API, not the older Derived class. No UI adapters or concurrent rendering.
+
 ## Design choices
 
 History grouping is explicit: Slate withNewBatch, Lexical HISTORY_PUSH_TAG, Tiptap
@@ -124,3 +194,8 @@ notifications, persistence and CRDT merges remain owned by the respective librar
 The Rust edit-session library is not injected through an FFI/WASM wrapper: these examples
 already have native snapshots, transactions or draft handling, and no benefit from that
 additional runtime boundary has been demonstrated.
+
+The reactive examples run synchronously except for explicitly awaited Effector allSettled.
+Expected states and notification sequences are hand-authored before execution. Five input
+regressions verify that an invalid final batch argument leaves both native values and
+notification history unchanged. There are no real-time sleeps or network effects.

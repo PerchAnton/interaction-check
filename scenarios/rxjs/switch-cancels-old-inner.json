@@ -1,0 +1,72 @@
+{
+  "schema": 1,
+  "name": "rxjs / switch-cancels-old-inner",
+  "steps": [
+    {
+      "event": {
+        "op": "new"
+      },
+      "expect": {
+        "values": [],
+        "closed": false
+      }
+    },
+    {
+      "event": {
+        "op": "select",
+        "channel": "a"
+      },
+      "expect": {
+        "values": []
+      }
+    },
+    {
+      "event": {
+        "op": "emit",
+        "channel": "a",
+        "value": "a1"
+      },
+      "expect": {
+        "values": [
+          "a1"
+        ]
+      }
+    },
+    {
+      "event": {
+        "op": "select",
+        "channel": "b"
+      },
+      "expect": {
+        "values": [
+          "a1"
+        ]
+      }
+    },
+    {
+      "event": {
+        "op": "emit",
+        "channel": "a",
+        "value": "stale"
+      },
+      "expect": {
+        "values": [
+          "a1"
+        ]
+      }
+    },
+    {
+      "event": {
+        "op": "emit",
+        "channel": "b",
+        "value": "b1"
+      },
+      "expect": {
+        "values": [
+          "a1",
+          "b1"
+        ]
+      }
+    }
+  ]
+}

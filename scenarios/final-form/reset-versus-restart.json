@@ -1,0 +1,64 @@
+{
+  "schema": 1,
+  "name": "final-form / reset-versus-restart",
+  "steps": [
+    {
+      "event": {
+        "op": "new",
+        "title": "base"
+      },
+      "expect": {
+        "touched": false
+      }
+    },
+    {
+      "event": {
+        "op": "focus"
+      },
+      "expect": {
+        "touched": false
+      }
+    },
+    {
+      "event": {
+        "op": "blur"
+      },
+      "expect": {
+        "touched": true
+      }
+    },
+    {
+      "event": {
+        "op": "change",
+        "value": "changed"
+      },
+      "expect": {
+        "pristine": false
+      }
+    },
+    {
+      "event": {
+        "op": "reset"
+      },
+      "expect": {
+        "values": {
+          "title": "base"
+        },
+        "pristine": true,
+        "touched": true
+      }
+    },
+    {
+      "event": {
+        "op": "restart"
+      },
+      "expect": {
+        "values": {
+          "title": "base"
+        },
+        "pristine": true,
+        "touched": false
+      }
+    }
+  ]
+}

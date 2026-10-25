@@ -1,0 +1,53 @@
+{
+  "schema": 1,
+  "name": "effector / unicode-and-empty",
+  "steps": [
+    {
+      "event": {
+        "op": "new",
+        "value": "і"
+      },
+      "expect": {
+        "a": "І"
+      }
+    },
+    {
+      "event": {
+        "op": "set",
+        "scope": "a",
+        "value": ""
+      },
+      "expect": {
+        "a": "",
+        "b": "І",
+        "serialized": {
+          "a": {
+            "title": ""
+          }
+        }
+      }
+    },
+    {
+      "event": {
+        "op": "set",
+        "scope": "b",
+        "value": "🧪"
+      },
+      "expect": {
+        "a": "",
+        "b": "🧪"
+      }
+    },
+    {
+      "event": {
+        "op": "reset",
+        "scope": "b"
+      },
+      "expect": {
+        "a": "",
+        "b": "І",
+        "root": "і"
+      }
+    }
+  ]
+}

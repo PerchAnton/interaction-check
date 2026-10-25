@@ -1,0 +1,56 @@
+{
+  "schema": 1,
+  "name": "vue-reactivity / equal-derived-value",
+  "steps": [
+    {
+      "event": {
+        "op": "new",
+        "left": "same",
+        "right": "same"
+      },
+      "expect": {
+        "seen": [
+          "same"
+        ]
+      }
+    },
+    {
+      "event": {
+        "op": "select",
+        "side": "right"
+      },
+      "expect": {
+        "selected": "same",
+        "seen": [
+          "same"
+        ]
+      }
+    },
+    {
+      "event": {
+        "op": "set",
+        "field": "right",
+        "value": "different"
+      },
+      "expect": {
+        "seen": [
+          "same",
+          "different"
+        ]
+      }
+    },
+    {
+      "event": {
+        "op": "set",
+        "field": "right",
+        "value": "different"
+      },
+      "expect": {
+        "seen": [
+          "same",
+          "different"
+        ]
+      }
+    }
+  ]
+}

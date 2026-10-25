@@ -1,0 +1,55 @@
+{
+  "schema": 1,
+  "name": "tanstack-store / unsubscribe-and-noop",
+  "steps": [
+    {
+      "event": {
+        "op": "new",
+        "left": "x",
+        "right": "y"
+      },
+      "expect": {
+        "seen": []
+      }
+    },
+    {
+      "event": {
+        "op": "set",
+        "side": "left",
+        "value": "x"
+      },
+      "expect": {
+        "seen": []
+      }
+    },
+    {
+      "event": {
+        "op": "unsubscribe"
+      },
+      "expect": {
+        "seen": []
+      }
+    },
+    {
+      "event": {
+        "op": "set",
+        "side": "left",
+        "value": "z"
+      },
+      "expect": {
+        "selected": "z",
+        "seen": []
+      }
+    },
+    {
+      "event": {
+        "op": "select",
+        "side": "right"
+      },
+      "expect": {
+        "selected": "y",
+        "seen": []
+      }
+    }
+  ]
+}

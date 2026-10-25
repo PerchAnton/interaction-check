@@ -1,0 +1,74 @@
+{
+  "schema": 1,
+  "name": "vue-reactivity / conditional-dependencies",
+  "steps": [
+    {
+      "event": {
+        "op": "new",
+        "left": "L",
+        "right": "R"
+      },
+      "expect": {
+        "selected": "L",
+        "seen": [
+          "L"
+        ]
+      }
+    },
+    {
+      "event": {
+        "op": "set",
+        "field": "right",
+        "value": "R2"
+      },
+      "expect": {
+        "selected": "L",
+        "seen": [
+          "L"
+        ]
+      }
+    },
+    {
+      "event": {
+        "op": "select",
+        "side": "right"
+      },
+      "expect": {
+        "selected": "R2",
+        "seen": [
+          "L",
+          "R2"
+        ]
+      }
+    },
+    {
+      "event": {
+        "op": "set",
+        "field": "left",
+        "value": "L2"
+      },
+      "expect": {
+        "selected": "R2",
+        "seen": [
+          "L",
+          "R2"
+        ]
+      }
+    },
+    {
+      "event": {
+        "op": "set",
+        "field": "right",
+        "value": "R3"
+      },
+      "expect": {
+        "selected": "R3",
+        "seen": [
+          "L",
+          "R2",
+          "R3"
+        ]
+      }
+    }
+  ]
+}

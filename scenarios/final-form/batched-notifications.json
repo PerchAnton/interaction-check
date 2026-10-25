@@ -1,0 +1,74 @@
+{
+  "schema": 1,
+  "name": "final-form / batched-notifications",
+  "steps": [
+    {
+      "event": {
+        "op": "new",
+        "title": "a"
+      },
+      "expect": {
+        "valuesSeen": [
+          {
+            "title": "a"
+          }
+        ]
+      }
+    },
+    {
+      "event": {
+        "op": "batch",
+        "first": "intermediate",
+        "last": "final"
+      },
+      "expect": {
+        "values": {
+          "title": "final"
+        },
+        "valuesSeen": [
+          {
+            "title": "a"
+          },
+          {
+            "title": "final"
+          }
+        ]
+      }
+    },
+    {
+      "event": {
+        "op": "change",
+        "value": "final"
+      },
+      "expect": {
+        "valuesSeen": [
+          {
+            "title": "a"
+          },
+          {
+            "title": "final"
+          }
+        ]
+      }
+    },
+    {
+      "event": {
+        "op": "restart"
+      },
+      "expect": {
+        "pristine": true,
+        "valuesSeen": [
+          {
+            "title": "a"
+          },
+          {
+            "title": "final"
+          },
+          {
+            "title": "a"
+          }
+        ]
+      }
+    }
+  ]
+}

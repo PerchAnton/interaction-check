@@ -1,0 +1,57 @@
+{
+  "schema": 1,
+  "name": "jotai / unsubscribe",
+  "steps": [
+    {
+      "event": {
+        "op": "new",
+        "value": "a"
+      },
+      "expect": {
+        "a": "A"
+      }
+    },
+    {
+      "event": {
+        "op": "unsubscribe",
+        "store": "a"
+      },
+      "expect": {
+        "seen": {
+          "a": [],
+          "b": []
+        }
+      }
+    },
+    {
+      "event": {
+        "op": "set",
+        "store": "a",
+        "value": "b"
+      },
+      "expect": {
+        "a": "B",
+        "seen": {
+          "a": [],
+          "b": []
+        }
+      }
+    },
+    {
+      "event": {
+        "op": "set",
+        "store": "b",
+        "value": "c"
+      },
+      "expect": {
+        "b": "C",
+        "seen": {
+          "a": [],
+          "b": [
+            "C"
+          ]
+        }
+      }
+    }
+  ]
+}

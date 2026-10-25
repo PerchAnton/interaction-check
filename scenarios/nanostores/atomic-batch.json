@@ -1,0 +1,67 @@
+{
+  "schema": 1,
+  "name": "nanostores / atomic-batch",
+  "steps": [
+    {
+      "event": {
+        "op": "new",
+        "title": "draft"
+      },
+      "expect": {
+        "seen": []
+      }
+    },
+    {
+      "event": {
+        "op": "batch",
+        "title": "ready",
+        "done": true
+      },
+      "expect": {
+        "value": {
+          "title": "ready",
+          "done": true
+        },
+        "seen": [
+          {
+            "title": "ready",
+            "done": true
+          }
+        ]
+      }
+    },
+    {
+      "event": {
+        "op": "batch",
+        "title": "ready",
+        "done": true
+      },
+      "expect": {
+        "seen": [
+          {
+            "title": "ready",
+            "done": true
+          }
+        ]
+      }
+    },
+    {
+      "event": {
+        "op": "title",
+        "value": "again"
+      },
+      "expect": {
+        "seen": [
+          {
+            "title": "ready",
+            "done": true
+          },
+          {
+            "title": "again",
+            "done": true
+          }
+        ]
+      }
+    }
+  ]
+}

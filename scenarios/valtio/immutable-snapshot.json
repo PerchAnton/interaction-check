@@ -1,0 +1,67 @@
+{
+  "schema": 1,
+  "name": "valtio / immutable-snapshot",
+  "steps": [
+    {
+      "event": {
+        "op": "new",
+        "name": "Alice"
+      },
+      "expect": {
+        "current": {
+          "profile": {
+            "name": "Alice"
+          },
+          "saved": false
+        },
+        "same": true,
+        "notifications": 0
+      }
+    },
+    {
+      "event": {
+        "op": "name",
+        "value": "Bob"
+      },
+      "expect": {
+        "current": {
+          "profile": {
+            "name": "Bob"
+          }
+        },
+        "initial": {
+          "profile": {
+            "name": "Alice"
+          },
+          "saved": false
+        },
+        "same": false,
+        "notifications": 1
+      }
+    },
+    {
+      "event": {
+        "op": "save"
+      },
+      "expect": {
+        "current": {
+          "saved": true
+        },
+        "initial": {
+          "saved": false
+        },
+        "notifications": 2
+      }
+    },
+    {
+      "event": {
+        "op": "name",
+        "value": "Bob"
+      },
+      "expect": {
+        "same": true,
+        "notifications": 2
+      }
+    }
+  ]
+}

@@ -1,0 +1,76 @@
+{
+  "schema": 1,
+  "name": "pinia / function-patch",
+  "steps": [
+    {
+      "event": {
+        "op": "new",
+        "title": "a"
+      },
+      "expect": {
+        "seen": []
+      }
+    },
+    {
+      "event": {
+        "op": "patch",
+        "title": "b",
+        "saved": true,
+        "mode": "function"
+      },
+      "expect": {
+        "seen": [
+          {
+            "type": "patch function",
+            "title": "b",
+            "saved": true
+          }
+        ]
+      }
+    },
+    {
+      "event": {
+        "op": "title",
+        "value": "c"
+      },
+      "expect": {
+        "value": {
+          "title": "c",
+          "saved": true
+        },
+        "seen": [
+          {
+            "type": "patch function",
+            "title": "b",
+            "saved": true
+          },
+          {
+            "type": "direct",
+            "title": "c",
+            "saved": true
+          }
+        ]
+      }
+    },
+    {
+      "event": {
+        "op": "title",
+        "value": "c"
+      },
+      "expect": {
+        "seen": [
+          {
+            "type": "patch function",
+            "title": "b",
+            "saved": true
+          },
+          {
+            "type": "direct",
+            "title": "c",
+            "saved": true
+          }
+        ]
+      }
+    }
+  ]
+}

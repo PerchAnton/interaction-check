@@ -1,0 +1,51 @@
+{
+  "schema": 1,
+  "name": "mobx / disposed-reaction",
+  "steps": [
+    {
+      "event": {
+        "op": "new",
+        "first": "A",
+        "last": "B"
+      },
+      "expect": {
+        "seen": [
+          "A B"
+        ]
+      }
+    },
+    {
+      "event": {
+        "op": "dispose"
+      },
+      "expect": {
+        "seen": [
+          "A B"
+        ]
+      }
+    },
+    {
+      "event": {
+        "op": "set",
+        "field": "first",
+        "value": "C"
+      },
+      "expect": {
+        "full": "C B",
+        "seen": [
+          "A B"
+        ]
+      }
+    },
+    {
+      "event": {
+        "op": "dispose"
+      },
+      "expect": {
+        "seen": [
+          "A B"
+        ]
+      }
+    }
+  ]
+}

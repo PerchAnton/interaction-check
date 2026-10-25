@@ -1,0 +1,95 @@
+{
+  "schema": 1,
+  "name": "rxjs / distinct-across-switch",
+  "steps": [
+    {
+      "event": {
+        "op": "new"
+      },
+      "expect": {
+        "values": []
+      }
+    },
+    {
+      "event": {
+        "op": "emit",
+        "channel": "a",
+        "value": "unobserved"
+      },
+      "expect": {
+        "values": []
+      }
+    },
+    {
+      "event": {
+        "op": "select",
+        "channel": "a"
+      },
+      "expect": {
+        "values": []
+      }
+    },
+    {
+      "event": {
+        "op": "emit",
+        "channel": "a",
+        "value": "x"
+      },
+      "expect": {
+        "values": [
+          "x"
+        ]
+      }
+    },
+    {
+      "event": {
+        "op": "select",
+        "channel": "b"
+      },
+      "expect": {
+        "values": [
+          "x"
+        ]
+      }
+    },
+    {
+      "event": {
+        "op": "emit",
+        "channel": "b",
+        "value": "x"
+      },
+      "expect": {
+        "values": [
+          "x"
+        ]
+      }
+    },
+    {
+      "event": {
+        "op": "emit",
+        "channel": "b",
+        "value": "y"
+      },
+      "expect": {
+        "values": [
+          "x",
+          "y"
+        ]
+      }
+    },
+    {
+      "event": {
+        "op": "emit",
+        "channel": "b",
+        "value": "x"
+      },
+      "expect": {
+        "values": [
+          "x",
+          "y",
+          "x"
+        ]
+      }
+    }
+  ]
+}

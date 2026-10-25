@@ -1,0 +1,73 @@
+{
+  "schema": 1,
+  "name": "jotai / store-isolation",
+  "steps": [
+    {
+      "event": {
+        "op": "new",
+        "value": "draft"
+      },
+      "expect": {
+        "a": "DRAFT",
+        "b": "DRAFT",
+        "seen": {
+          "a": [],
+          "b": []
+        }
+      }
+    },
+    {
+      "event": {
+        "op": "set",
+        "store": "a",
+        "value": "one"
+      },
+      "expect": {
+        "a": "ONE",
+        "b": "DRAFT",
+        "seen": {
+          "a": [
+            "ONE"
+          ],
+          "b": []
+        }
+      }
+    },
+    {
+      "event": {
+        "op": "set",
+        "store": "b",
+        "value": "two"
+      },
+      "expect": {
+        "a": "ONE",
+        "b": "TWO",
+        "seen": {
+          "a": [
+            "ONE"
+          ],
+          "b": [
+            "TWO"
+          ]
+        }
+      }
+    },
+    {
+      "event": {
+        "op": "set",
+        "store": "a",
+        "value": "ONE"
+      },
+      "expect": {
+        "seen": {
+          "a": [
+            "ONE"
+          ],
+          "b": [
+            "TWO"
+          ]
+        }
+      }
+    }
+  ]
+}

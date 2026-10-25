@@ -1,0 +1,66 @@
+{
+  "schema": 1,
+  "name": "rxjs / cancel-chain",
+  "steps": [
+    {
+      "event": {
+        "op": "new"
+      },
+      "expect": {
+        "closed": false
+      }
+    },
+    {
+      "event": {
+        "op": "select",
+        "channel": "a"
+      },
+      "expect": {
+        "values": []
+      }
+    },
+    {
+      "event": {
+        "op": "emit",
+        "channel": "a",
+        "value": "before"
+      },
+      "expect": {
+        "values": [
+          "before"
+        ]
+      }
+    },
+    {
+      "event": {
+        "op": "cancel"
+      },
+      "expect": {
+        "completed": true,
+        "closed": true
+      }
+    },
+    {
+      "event": {
+        "op": "select",
+        "channel": "b"
+      },
+      "expect": {
+        "closed": true
+      }
+    },
+    {
+      "event": {
+        "op": "emit",
+        "channel": "b",
+        "value": "after"
+      },
+      "expect": {
+        "values": [
+          "before"
+        ],
+        "closed": true
+      }
+    }
+  ]
+}

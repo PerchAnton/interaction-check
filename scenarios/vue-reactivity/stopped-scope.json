@@ -1,0 +1,53 @@
+{
+  "schema": 1,
+  "name": "vue-reactivity / stopped-scope",
+  "steps": [
+    {
+      "event": {
+        "op": "new",
+        "left": "a",
+        "right": "b"
+      },
+      "expect": {
+        "seen": [
+          "a"
+        ]
+      }
+    },
+    {
+      "event": {
+        "op": "stop"
+      },
+      "expect": {
+        "seen": [
+          "a"
+        ]
+      }
+    },
+    {
+      "event": {
+        "op": "set",
+        "field": "left",
+        "value": "c"
+      },
+      "expect": {
+        "selected": "c",
+        "seen": [
+          "a"
+        ]
+      }
+    },
+    {
+      "event": {
+        "op": "select",
+        "side": "right"
+      },
+      "expect": {
+        "selected": "b",
+        "seen": [
+          "a"
+        ]
+      }
+    }
+  ]
+}
