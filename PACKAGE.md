@@ -4,6 +4,21 @@ A small Python command-line tool that replays semantic JSON event sequences agai
 an explicitly selected local adapter. Python 3.10+; **zero runtime dependencies**.
 Licensed under MIT OR Apache-2.0. Experimental alpha: formats and CLI may still change.
 
+## Installation
+
+Install a published copy of this prerelease from PyPI:
+
+```sh
+python -m pip install 'interaction-check==0.1.0a6'
+```
+
+An exact version selects this prerelease without opting into all future prereleases.
+Use a virtual environment. On Windows, the same command works with `py -m pip`.
+For other distribution options and current publication status, see the
+[project README](https://github.com/PerchAnton/interaction-check#install-the-released-command).
+
+## Usage
+
 ```sh
 interaction-check --version
 interaction-check --failure-dir failures --trace --report report.json scenario.json -- path/to/adapter

@@ -27,6 +27,11 @@ with your runner and adapter versions, or read the [alpha compatibility policy](
 
 ## Install the released command
 
+**PyPI candidate: `0.1.0a6` (not published yet).** The [publishing guide](docs/RELEASING.md#registry-publication)
+records the remaining account setup and verification. After publication, installation
+will be `python -m pip install 'interaction-check==0.1.0a6'` in a virtual environment.
+Until then, use the existing GitHub release below.
+
 Download the wheel above, then run these commands in its directory:
 
 ```sh

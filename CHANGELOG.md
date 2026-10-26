@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.0a6 / v0.1.0-alpha.6 — unpublished candidate
+
+- Prepare PyPI metadata, installation instructions and a manual Trusted Publishing
+  workflow. Its default mode builds and checks packages without uploading them.
+- Publish only from a matching version tag, with separate build and upload jobs.
+- CLI/report version advances to `0.1.0a6`; schema 1, protocol 1 and runtime behavior
+  are unchanged from alpha.5. Existing GitHub archives and tags remain unchanged.
+
 ## 0.1.0a5 / v0.1.0-alpha.5
 
 - Export each state-mismatch prefix with `--failure-dir`, without replacing expected
