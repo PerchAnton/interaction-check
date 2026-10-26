@@ -1,5 +1,21 @@
 # Validation evidence
 
+## Alpha 5: failure export and distributable CLI — 26 October 2026
+
+- 49 runner tests pass on Python 3.14.3/macOS arm64: 41 existing plus 8 export/CLI
+  tests. Before implementation the new suite had 1 failure and 7 errors; afterward
+  all pass. Checks include replay of the original failing expectation, preserved
+  metadata/source, duplicate names, stale-output prevention, output path collisions,
+  failed writes and omission of guessed prefixes for non-assertion failures.
+- The exporter keeps the prefix through the first state mismatch. It does not minimize
+  events or rerun the adapter, and does not turn an actual value into an expectation.
+- Packaging adds no runtime dependencies. The wheel is built from the sdist and installed
+  in an isolated venv outside the checkout for CLI/metadata and passing/failing replay
+  checks. CI runs these checks on Linux, macOS and Windows.
+- XState, pyee and consumer behavior measurements below retain their original scope;
+  no new speed, adoption or total-code reduction claim is made for this CLI addition.
+
+
 ## Alpha 4: reviewable trace evidence — 26 October 2026
 
 - 41 runner tests pass locally (34 existing + 7 trace-report tests). The new cases were

@@ -6,7 +6,7 @@ images or trackers. The repository README also provides accessible text and sour
 
 Snapshot: **26 October 2026**. Sources:
 
-- [Validation](../VALIDATION.md): 41 runner tests and 6 focused Node tests.
+- [Validation](../VALIDATION.md): 49 runner tests (including 8 alpha 5 export/CLI checks) and 6 focused Node tests.
 - [PdfCraft state report](../evidence/pdfcraft-alpha4.json): 10 scenarios / 79 steps.
 - [XState raw evidence](../evidence/xstate.json): 120 and 1 non-root lockfile package
   entries, 30 native/replay timing samples, and three controlled model mutations.

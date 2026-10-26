@@ -1,0 +1,4 @@
+include README.md PACKAGE.md CHANGELOG.md LICENSE-MIT LICENSE-APACHE
+include test_*.py
+include tools/check_distribution.py
+include docs/NATIVE_TESTS.md docs/RELEASING.md

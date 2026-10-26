@@ -9,18 +9,19 @@ without the separate [edit-session](https://github.com/PerchAnton/edit-session) 
 
 **[Run the small example](examples/xstate/README.md)** · **[Measurements](docs/VALUE.md)** · **[Scenario format](#scenario-format)** · **[MIT OR Apache-2.0](#license)**
 
-![interaction-check evidence: zero third-party Python packages; 41 runner and six Node tests pass; PdfCraft passes ten scenarios and 79 steps. The focused XState install has one lockfile package entry versus 120 in the earlier bundle. Native tests have a 74.6 ms median and replay 183.9 ms across 30 paired samples; replay is slower in this pilot.](docs/assets/overview.svg)
+![interaction-check evidence: zero third-party Python packages; 49 runner and six Node tests pass; PdfCraft passes ten scenarios and 79 steps. The focused XState install has one lockfile package entry versus 120 in the earlier bundle. Native tests have a 74.6 ms median and replay 183.9 ms across 30 paired samples; replay is slower in this pilot.](docs/assets/overview.svg)
 
 ### The numbers behind the overview
 
 Evidence snapshot: **26 October 2026**. CI badges are live; the graphic and counts are
-dated results. Package counts describe the example installation; timings describe the
+dated results. The runner count includes eight alpha 5 export/CLI tests; Node,
+PdfCraft and timing figures retain their earlier 26 October evidence. Package counts describe the example installation; timings describe the
 same three example scenarios on one macOS arm64 machine.
 
 | Measure | Recorded result | Source and scope |
 | --- | --- | --- |
 | Runner Python dependencies | **0 third-party packages** | [Runner source](interaction_check.py); adapters have their own requirements |
-| Verification tests | **41 Python + 6 Node pass** | [Runner checks](docs/VALIDATION.md), [native example tests](examples/xstate/native.test.mjs), [adapter tests](examples/xstate/adapter.test.mjs) |
+| Verification tests | **49 Python + 6 Node pass** | [Runner checks](docs/VALIDATION.md), [native example tests](examples/xstate/native.test.mjs), [adapter tests](examples/xstate/adapter.test.mjs) |
 | Real PdfCraft replay | **10 scenarios / 79 steps pass** | [State report](docs/evidence/pdfcraft-alpha4.json); real widgets and engine, proposed integration |
 | Focused XState installation | **120 → 1 package entries; −99.2%** | [Lockfile comparison](docs/VALUE.md#a-smaller-installation-for-one-example); excludes unrelated examples and formatter; XState is unchanged |
 | Median / p95 execution time | **Native: 74.6 / 80.5 ms; replay: 183.9 / 191.9 ms** | [30 paired samples](docs/evidence/xstate.json), [method](docs/VALUE.md#measured-execution-overhead); startup included, install and JSON report writes excluded |
@@ -30,7 +31,7 @@ Replay is **2.46× slower** in this small pilot. Its value is a shareable trace 
 failure report. Native tests also need only XState; fewer total lines of code or faster
 application behavior are not demonstrated.
 
-**Experimental, 0.1.0-alpha.4.** Maintained by [PerchAnton](https://github.com/PerchAnton).
+**Experimental, 0.1.0a5 (alpha 5).** Maintained by [PerchAnton](https://github.com/PerchAnton).
 No PyPI release or upstream adoption is claimed. The first adapter uses a fixed
 edit-session revision and commits through PhotoCraft's actual `Session` command API;
 consumer-owned adapters also exercise the real PhotoCraft and PdfCraft dialogs.
@@ -47,7 +48,7 @@ The candidate needs **no new dependency** in pyee and no interaction-check runne
 
 [Test, method, raw results and reproduction](examples/pyee/README.md).
 This is one demonstrated coverage gap, not a current pyee bug, a general coverage score
-or upstream adoption. These are pyee suite counts, separate from our 41 runner tests.
+or upstream adoption. These are pyee suite counts, separate from our 49 runner tests.
 
 ## Start with one reviewable reproduction
 
@@ -132,6 +133,40 @@ Report paths that refer to a scenario input or to the other report (including ex
 symlinks/hard links) are rejected before starting an adapter. Report write failures produce
 a diagnostic on stderr and exit 1, even when every scenario passed. Characters forbidden by
 XML 1.0 are replaced with U+FFFD in JUnit; the JSON report preserves the original strings.
+
+## Export a failure and keep a native test
+
+```sh
+python3 interaction_check.py --failure-dir failures --report report.json scenario.json -- path/to/adapter
+python3 interaction_check.py failures/0001.json -- path/to/adapter
+```
+
+`--failure-dir` creates a new directory and writes each failing scenario through its
+first state mismatch. It preserves expectations and metadata; JSON reports link to
+the saved files. Numbered filenames follow input order. Successful runs create no
+scenario files. Existing directories are refused to avoid mixing old and new failures.
+
+The export is a checked prefix, not an automatically minimized or rerun reproduction.
+Re-run it with the same adapter revision. Crashes, timeouts and protocol errors keep
+their diagnostics instead of exporting a guessed assertion failure. The
+[native-test guide](docs/NATIVE_TESTS.md) shows how to move useful pyee and XState
+behavior into the consumer's normal tests, without retaining a runner dependency.
+
+## Install the command locally
+
+Python 3.10+; from a checkout:
+
+```sh
+python3 -m venv .venv
+.venv/bin/python -m pip install .
+.venv/bin/interaction-check --version
+```
+
+On Windows use `.venv\Scripts\python.exe` and `.venv\Scripts\interaction-check.exe`.
+The wheel has zero runtime dependencies and installs only the runner; adapters and
+examples stay separate. This is local installation, not a claim of PyPI publication.
+[Release preparation](docs/RELEASING.md) describes wheel/sdist checks;
+[the changelog](CHANGELOG.md) records compatibility and version spelling.
 
 ## Scenario format
 
