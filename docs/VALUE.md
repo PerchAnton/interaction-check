@@ -106,5 +106,5 @@ For stronger real-application evidence, the previously proposed
 [PdfCraft integration](https://github.com/storytold/pdfcraft/pull/4594) reproduces two
 stale-draft regressions and replays ten UI/engine scenarios. Its source-policy approval
 is still required; pins and passing tests do not settle that decision. See
-[edit-session's adoption analysis](https://github.com/PerchAnton/edit-session/blob/edit-session/adoption-evidence/docs/ADOPTION.md).
+[edit-session's adoption analysis](https://github.com/PerchAnton/edit-session/blob/main/docs/ADOPTION.md).
 New adapters are justified by a concrete workflow or regression, not their number.

@@ -1,13 +1,39 @@
 # interaction-check
 
-**Experimental, 0.1.0-alpha.4.** An independent development tool for replaying semantic
-interaction traces against an explicit local adapter. No third-party Python packages.
-Maintained by [PerchAnton](https://github.com/PerchAnton); no PyPI release or upstream adoption.
+Replay a semantic event sequence and inspect each checked state. A standalone Python
+development tool that uses an explicit local adapter. It can test consumers with or
+without the separate [edit-session](https://github.com/PerchAnton/edit-session) Rust library.
 
-The first adapter uses the independent [edit-session library](https://github.com/PerchAnton/edit-session)
-from a fixed Git revision, and commits through PhotoCraft's actual `Session` command API.
-The tool itself knows nothing about opacity, PDF geometry, Rust, Go or a GUI framework.
-Consumer-owned adapters now also exercise the real PhotoCraft and PdfCraft dialogs.
+[![CI](https://github.com/PerchAnton/interaction-check/actions/workflows/ci.yml/badge.svg?branch=main&event=push)](https://github.com/PerchAnton/interaction-check/actions/workflows/ci.yml)
+[![Replay evidence](https://github.com/PerchAnton/interaction-check/actions/workflows/evidence.yml/badge.svg?branch=main&event=push)](https://github.com/PerchAnton/interaction-check/actions/workflows/evidence.yml)
+
+**[Run the small example](examples/xstate/README.md)** · **[Measurements](docs/VALUE.md)** · **[Scenario format](#scenario-format)** · **[MIT OR Apache-2.0](#license)**
+
+![interaction-check evidence: zero third-party Python packages; 41 runner and six Node tests pass; PdfCraft passes ten scenarios and 79 steps. The focused XState install has one lockfile package entry versus 120 in the earlier bundle. Native tests have a 74.6 ms median and replay 183.9 ms across 30 paired samples; replay is slower in this pilot.](docs/assets/overview.svg)
+
+### The numbers behind the overview
+
+Evidence snapshot: **26 October 2026**. CI badges are live; the graphic and counts are
+dated results. Package counts describe the example installation; timings describe the
+same three example scenarios on one macOS arm64 machine.
+
+| Measure | Recorded result | Source and scope |
+| --- | --- | --- |
+| Runner Python dependencies | **0 third-party packages** | [Runner source](interaction_check.py); adapters have their own requirements |
+| Verification tests | **41 Python + 6 Node pass** | [Runner checks](docs/VALIDATION.md), [native example tests](examples/xstate/native.test.mjs), [adapter tests](examples/xstate/adapter.test.mjs) |
+| Real PdfCraft replay | **10 scenarios / 79 steps pass** | [State report](docs/evidence/pdfcraft-alpha4.json); real widgets and engine, proposed integration |
+| Focused XState installation | **120 → 1 package entries; −99.2%** | [Lockfile comparison](docs/VALUE.md#a-smaller-installation-for-one-example); excludes unrelated examples and formatter; XState is unchanged |
+| Median / p95 execution time | **Native: 74.6 / 80.5 ms; replay: 183.9 / 191.9 ms** | [30 paired samples](docs/evidence/xstate.json), [method](docs/VALUE.md#measured-execution-overhead); startup included, install and JSON report writes excluded |
+| Controlled example mutations | **3/3 detected by both methods** | [Three deliberate defects](docs/VALUE.md#does-it-detect-wrong-behavior); not upstream bugs or a general coverage score |
+
+Replay is **2.46× slower** in this small pilot. Its value is a shareable trace and common
+failure report. Native tests also need only XState; fewer total lines of code or faster
+application behavior are not demonstrated.
+
+**Experimental, 0.1.0-alpha.4.** Maintained by [PerchAnton](https://github.com/PerchAnton).
+No PyPI release or upstream adoption is claimed. The first adapter uses a fixed
+edit-session revision and commits through PhotoCraft's actual `Session` command API;
+consumer-owned adapters also exercise the real PhotoCraft and PdfCraft dialogs.
 
 ## Start with one reviewable reproduction
 
