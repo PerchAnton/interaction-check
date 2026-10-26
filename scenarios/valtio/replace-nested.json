@@ -1,0 +1,58 @@
+{
+  "schema": 1,
+  "name": "valtio / replace-nested",
+  "steps": [
+    {
+      "event": {
+        "op": "new",
+        "name": "old"
+      },
+      "expect": {
+        "notifications": 0
+      }
+    },
+    {
+      "event": {
+        "op": "replace",
+        "value": "new"
+      },
+      "expect": {
+        "current": {
+          "profile": {
+            "name": "new"
+          }
+        },
+        "initial": {
+          "profile": {
+            "name": "old"
+          }
+        },
+        "notifications": 1
+      }
+    },
+    {
+      "event": {
+        "op": "name",
+        "value": "last"
+      },
+      "expect": {
+        "current": {
+          "profile": {
+            "name": "last"
+          }
+        },
+        "notifications": 2
+      }
+    },
+    {
+      "event": {
+        "op": "name",
+        "value": "last"
+      },
+      "expect": {
+        "same": true,
+        "notifications": 2
+      }
+    }
+  ]
+}

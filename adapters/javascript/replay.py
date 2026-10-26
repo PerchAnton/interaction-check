@@ -10,6 +10,7 @@ ROOT = pathlib.Path(__file__).resolve().parents[2]
 CONSUMERS = (
     "slate", "lexical", "tiptap", "quill", "immer", "zustand",
     "xstate", "yjs", "automerge", "redux-toolkit",
+    "mobx", "jotai", "valtio", "nanostores", "effector", "pinia", "vue-reactivity", "rxjs", "final-form", "tanstack-store",
 )
 
 

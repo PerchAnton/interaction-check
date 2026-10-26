@@ -1,0 +1,61 @@
+{
+  "schema": 1,
+  "name": "mobx / action-batching",
+  "steps": [
+    {
+      "event": {
+        "op": "new",
+        "first": "Ada",
+        "last": "Lovelace"
+      },
+      "expect": {
+        "full": "Ada Lovelace",
+        "seen": [
+          "Ada Lovelace"
+        ]
+      }
+    },
+    {
+      "event": {
+        "op": "rename",
+        "first": "Grace",
+        "last": "Hopper"
+      },
+      "expect": {
+        "full": "Grace Hopper",
+        "seen": [
+          "Ada Lovelace",
+          "Grace Hopper"
+        ]
+      }
+    },
+    {
+      "event": {
+        "op": "rename",
+        "first": "Grace",
+        "last": "Hopper"
+      },
+      "expect": {
+        "seen": [
+          "Ada Lovelace",
+          "Grace Hopper"
+        ]
+      }
+    },
+    {
+      "event": {
+        "op": "set",
+        "field": "last",
+        "value": "Murray"
+      },
+      "expect": {
+        "full": "Grace Murray",
+        "seen": [
+          "Ada Lovelace",
+          "Grace Hopper",
+          "Grace Murray"
+        ]
+      }
+    }
+  ]
+}

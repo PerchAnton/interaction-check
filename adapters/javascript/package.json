@@ -25,7 +25,18 @@
     "xstate": "5.33.3",
     "yjs": "13.6.33",
     "@automerge/automerge": "3.5.0",
-    "@reduxjs/toolkit": "2.13.0"
+    "@reduxjs/toolkit": "2.13.0",
+    "mobx": "7.1.1",
+    "jotai": "3.0.1",
+    "valtio": "2.3.2",
+    "nanostores": "1.5.5",
+    "effector": "23.4.4",
+    "pinia": "4.1.0",
+    "vue": "3.5.44",
+    "@vue/reactivity": "3.5.44",
+    "rxjs": "7.8.2",
+    "final-form": "5.0.1",
+    "@tanstack/store": "0.11.2"
   },
   "devDependencies": {
     "prettier": "3.9.10"

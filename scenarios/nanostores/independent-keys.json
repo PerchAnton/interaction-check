@@ -1,0 +1,68 @@
+{
+  "schema": 1,
+  "name": "nanostores / independent-keys",
+  "steps": [
+    {
+      "event": {
+        "op": "new",
+        "title": "🧪"
+      },
+      "expect": {
+        "value": {
+          "title": "🧪",
+          "done": false
+        }
+      }
+    },
+    {
+      "event": {
+        "op": "title",
+        "value": ""
+      },
+      "expect": {
+        "value": {
+          "title": "",
+          "done": false
+        }
+      }
+    },
+    {
+      "event": {
+        "op": "done",
+        "value": true
+      },
+      "expect": {
+        "value": {
+          "title": "",
+          "done": true
+        }
+      }
+    },
+    {
+      "event": {
+        "op": "done",
+        "value": false
+      },
+      "expect": {
+        "value": {
+          "title": "",
+          "done": false
+        },
+        "seen": [
+          {
+            "title": "",
+            "done": false
+          },
+          {
+            "title": "",
+            "done": true
+          },
+          {
+            "title": "",
+            "done": false
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,52 @@
+{
+  "schema": 1,
+  "name": "pinia / detached-subscription",
+  "steps": [
+    {
+      "event": {
+        "op": "new",
+        "title": "x"
+      },
+      "expect": {
+        "seen": []
+      }
+    },
+    {
+      "event": {
+        "op": "unsubscribe"
+      },
+      "expect": {
+        "seen": []
+      }
+    },
+    {
+      "event": {
+        "op": "title",
+        "value": "y"
+      },
+      "expect": {
+        "value": {
+          "title": "y",
+          "saved": false
+        },
+        "other": {
+          "title": "x",
+          "saved": false
+        },
+        "seen": []
+      }
+    },
+    {
+      "event": {
+        "op": "reset"
+      },
+      "expect": {
+        "value": {
+          "title": "x",
+          "saved": false
+        },
+        "seen": []
+      }
+    }
+  ]
+}

@@ -1,0 +1,67 @@
+{
+  "schema": 1,
+  "name": "pinia / object-patch",
+  "steps": [
+    {
+      "event": {
+        "op": "new",
+        "title": "draft"
+      },
+      "expect": {
+        "value": {
+          "title": "draft",
+          "saved": false
+        },
+        "seen": []
+      }
+    },
+    {
+      "event": {
+        "op": "patch",
+        "title": "ready",
+        "saved": true,
+        "mode": "object"
+      },
+      "expect": {
+        "value": {
+          "title": "ready",
+          "saved": true
+        },
+        "other": {
+          "title": "draft",
+          "saved": false
+        },
+        "seen": [
+          {
+            "type": "patch object",
+            "title": "ready",
+            "saved": true
+          }
+        ]
+      }
+    },
+    {
+      "event": {
+        "op": "reset"
+      },
+      "expect": {
+        "value": {
+          "title": "draft",
+          "saved": false
+        },
+        "seen": [
+          {
+            "type": "patch object",
+            "title": "ready",
+            "saved": true
+          },
+          {
+            "type": "patch function",
+            "title": "draft",
+            "saved": false
+          }
+        ]
+      }
+    }
+  ]
+}

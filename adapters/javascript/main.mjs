@@ -11,6 +11,16 @@ const consumers = new Set([
   "yjs",
   "automerge",
   "redux-toolkit",
+  "mobx",
+  "jotai",
+  "valtio",
+  "nanostores",
+  "effector",
+  "pinia",
+  "vue-reactivity",
+  "rxjs",
+  "final-form",
+  "tanstack-store",
 ]);
 const name = process.argv[2];
 try {

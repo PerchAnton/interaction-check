@@ -1,0 +1,59 @@
+{
+  "schema": 1,
+  "name": "tanstack-store / batched-updates",
+  "steps": [
+    {
+      "event": {
+        "op": "new",
+        "left": "a",
+        "right": "b"
+      },
+      "expect": {
+        "seen": []
+      }
+    },
+    {
+      "event": {
+        "op": "batch",
+        "left": "c",
+        "right": "d"
+      },
+      "expect": {
+        "left": "c",
+        "right": "d",
+        "selected": "c",
+        "seen": [
+          "c"
+        ]
+      }
+    },
+    {
+      "event": {
+        "op": "select",
+        "side": "right"
+      },
+      "expect": {
+        "selected": "d",
+        "seen": [
+          "c",
+          "d"
+        ]
+      }
+    },
+    {
+      "event": {
+        "op": "batch",
+        "left": "e",
+        "right": "f"
+      },
+      "expect": {
+        "selected": "f",
+        "seen": [
+          "c",
+          "d",
+          "f"
+        ]
+      }
+    }
+  ]
+}

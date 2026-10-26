@@ -1,0 +1,53 @@
+{
+  "schema": 1,
+  "name": "valtio / unsubscribe",
+  "steps": [
+    {
+      "event": {
+        "op": "new",
+        "name": "x"
+      },
+      "expect": {
+        "notifications": 0
+      }
+    },
+    {
+      "event": {
+        "op": "unsubscribe"
+      },
+      "expect": {
+        "same": true
+      }
+    },
+    {
+      "event": {
+        "op": "name",
+        "value": "🧪"
+      },
+      "expect": {
+        "current": {
+          "profile": {
+            "name": "🧪"
+          }
+        },
+        "initial": {
+          "profile": {
+            "name": "x"
+          }
+        },
+        "notifications": 0
+      }
+    },
+    {
+      "event": {
+        "op": "save"
+      },
+      "expect": {
+        "current": {
+          "saved": true
+        },
+        "notifications": 0
+      }
+    }
+  ]
+}

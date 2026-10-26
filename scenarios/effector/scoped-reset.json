@@ -1,0 +1,54 @@
+{
+  "schema": 1,
+  "name": "effector / scoped-reset",
+  "steps": [
+    {
+      "event": {
+        "op": "new",
+        "value": "base"
+      },
+      "expect": {
+        "a": "BASE"
+      }
+    },
+    {
+      "event": {
+        "op": "set",
+        "scope": "a",
+        "value": "edited"
+      },
+      "expect": {
+        "a": "EDITED"
+      }
+    },
+    {
+      "event": {
+        "op": "set",
+        "scope": "b",
+        "value": "keep"
+      },
+      "expect": {
+        "b": "KEEP"
+      }
+    },
+    {
+      "event": {
+        "op": "reset",
+        "scope": "a"
+      },
+      "expect": {
+        "root": "base",
+        "a": "BASE",
+        "b": "KEEP",
+        "serialized": {
+          "a": {
+            "title": "base"
+          },
+          "b": {
+            "title": "keep"
+          }
+        }
+      }
+    }
+  ]
+}

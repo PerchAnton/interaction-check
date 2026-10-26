@@ -1,0 +1,59 @@
+{
+  "schema": 1,
+  "name": "effector / scope-isolation",
+  "steps": [
+    {
+      "event": {
+        "op": "new",
+        "value": "draft"
+      },
+      "expect": {
+        "root": "draft",
+        "a": "DRAFT",
+        "b": "DRAFT",
+        "serialized": {
+          "a": {},
+          "b": {}
+        }
+      }
+    },
+    {
+      "event": {
+        "op": "set",
+        "scope": "a",
+        "value": "one"
+      },
+      "expect": {
+        "root": "draft",
+        "a": "ONE",
+        "b": "DRAFT",
+        "serialized": {
+          "a": {
+            "title": "one"
+          },
+          "b": {}
+        }
+      }
+    },
+    {
+      "event": {
+        "op": "set",
+        "scope": "b",
+        "value": "two"
+      },
+      "expect": {
+        "root": "draft",
+        "a": "ONE",
+        "b": "TWO",
+        "serialized": {
+          "a": {
+            "title": "one"
+          },
+          "b": {
+            "title": "two"
+          }
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "schema": 1,
+  "name": "final-form / validation-and-submit",
+  "steps": [
+    {
+      "event": {
+        "op": "new",
+        "title": ""
+      },
+      "expect": {
+        "valid": false,
+        "pristine": true,
+        "touched": false,
+        "submissions": []
+      }
+    },
+    {
+      "event": {
+        "op": "submit"
+      },
+      "expect": {
+        "valid": false,
+        "submitSucceeded": false,
+        "submissions": []
+      }
+    },
+    {
+      "event": {
+        "op": "change",
+        "value": "saved"
+      },
+      "expect": {
+        "valid": true,
+        "pristine": false
+      }
+    },
+    {
+      "event": {
+        "op": "submit"
+      },
+      "expect": {
+        "submitSucceeded": true,
+        "submissions": [
+          {
+            "title": "saved"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,73 @@
+{
+  "schema": 1,
+  "name": "jotai / derived-equality",
+  "steps": [
+    {
+      "event": {
+        "op": "new",
+        "value": "ab"
+      },
+      "expect": {
+        "a": "AB"
+      }
+    },
+    {
+      "event": {
+        "op": "set",
+        "store": "a",
+        "value": "Ab"
+      },
+      "expect": {
+        "a": "AB",
+        "seen": {
+          "a": []
+        }
+      }
+    },
+    {
+      "event": {
+        "op": "set",
+        "store": "a",
+        "value": "cd"
+      },
+      "expect": {
+        "a": "CD",
+        "seen": {
+          "a": [
+            "CD"
+          ]
+        }
+      }
+    },
+    {
+      "event": {
+        "op": "set",
+        "store": "a",
+        "value": "CD"
+      },
+      "expect": {
+        "seen": {
+          "a": [
+            "CD"
+          ]
+        }
+      }
+    },
+    {
+      "event": {
+        "op": "set",
+        "store": "a",
+        "value": ""
+      },
+      "expect": {
+        "a": "",
+        "seen": {
+          "a": [
+            "CD",
+            ""
+          ]
+        }
+      }
+    }
+  ]
+}

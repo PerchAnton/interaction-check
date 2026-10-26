@@ -1,0 +1,54 @@
+{
+  "schema": 1,
+  "name": "mobx / unicode-and-noop",
+  "steps": [
+    {
+      "event": {
+        "op": "new",
+        "first": "Ім’я",
+        "last": "🧪"
+      },
+      "expect": {
+        "full": "Ім’я 🧪"
+      }
+    },
+    {
+      "event": {
+        "op": "set",
+        "field": "first",
+        "value": "Ім’я"
+      },
+      "expect": {
+        "seen": [
+          "Ім’я 🧪"
+        ]
+      }
+    },
+    {
+      "event": {
+        "op": "set",
+        "field": "last",
+        "value": ""
+      },
+      "expect": {
+        "full": "Ім’я ",
+        "seen": [
+          "Ім’я 🧪",
+          "Ім’я "
+        ]
+      }
+    },
+    {
+      "event": {
+        "op": "new",
+        "first": "New",
+        "last": "Store"
+      },
+      "expect": {
+        "seen": [
+          "New Store"
+        ]
+      }
+    }
+  ]
+}

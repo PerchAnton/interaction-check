@@ -1,0 +1,69 @@
+{
+  "schema": 1,
+  "name": "nanostores / no-op-and-unsubscribe",
+  "steps": [
+    {
+      "event": {
+        "op": "new",
+        "title": "a"
+      },
+      "expect": {
+        "seen": []
+      }
+    },
+    {
+      "event": {
+        "op": "title",
+        "value": "a"
+      },
+      "expect": {
+        "seen": []
+      }
+    },
+    {
+      "event": {
+        "op": "done",
+        "value": true
+      },
+      "expect": {
+        "seen": [
+          {
+            "title": "a",
+            "done": true
+          }
+        ]
+      }
+    },
+    {
+      "event": {
+        "op": "unsubscribe"
+      },
+      "expect": {
+        "seen": [
+          {
+            "title": "a",
+            "done": true
+          }
+        ]
+      }
+    },
+    {
+      "event": {
+        "op": "title",
+        "value": "b"
+      },
+      "expect": {
+        "value": {
+          "title": "b",
+          "done": true
+        },
+        "seen": [
+          {
+            "title": "a",
+            "done": true
+          }
+        ]
+      }
+    }
+  ]
+}
