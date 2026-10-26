@@ -7,7 +7,41 @@ without the separate [edit-session](https://github.com/PerchAnton/edit-session) 
 [![CI](https://github.com/PerchAnton/interaction-check/actions/workflows/ci.yml/badge.svg?branch=main&event=push)](https://github.com/PerchAnton/interaction-check/actions/workflows/ci.yml)
 [![Replay evidence](https://github.com/PerchAnton/interaction-check/actions/workflows/evidence.yml/badge.svg?branch=main&event=push)](https://github.com/PerchAnton/interaction-check/actions/workflows/evidence.yml)
 
-**[Run the small example](examples/xstate/README.md)** · **[Measurements](docs/VALUE.md)** · **[Scenario format](#scenario-format)** · **[MIT OR Apache-2.0](#license)**
+**[Download](#current-prerelease)** · **[Install](#install-the-released-command)** · **[Export a failure](#export-a-failure-and-keep-a-native-test)** · **[Evidence](#evidence-and-trade-offs)** · **[License](#license)**
+
+## Current prerelease
+
+**[v0.1.0-alpha.5](https://github.com/PerchAnton/interaction-check/releases/tag/v0.1.0-alpha.5) · released 26 October 2026 · Python 3.10+**
+
+**[Download the wheel](https://github.com/PerchAnton/interaction-check/releases/download/v0.1.0-alpha.5/interaction_check-0.1.0a5-py3-none-any.whl)** · [Source archive](https://github.com/PerchAnton/interaction-check/releases/download/v0.1.0-alpha.5/interaction_check-0.1.0a5.tar.gz) · [SHA-256 checksums](https://github.com/PerchAnton/interaction-check/releases/download/v0.1.0-alpha.5/SHA256SUMS) · [Changelog](CHANGELOG.md)
+
+![interaction-check alpha 5, released 26 October 2026: 0 runtime dependencies, 49 runner tests, 12.6 KiB wheel. Replay a scenario, export its original expectations through the first mismatch, and manually translate useful behavior into a native test.](docs/assets/release.svg)
+
+Release snapshot: **49 runner tests**, **0 runtime dependencies**, **12.6 KiB wheel
+(12,937 bytes)**. [Exact files, hashes and release CI](docs/evidence/release-alpha5.json).
+These are dated release facts; the CI badges above track current main. The handoff is
+manual, and an export must be replayed before sharing. Examples and adapters are separate.
+
+## Install the released command
+
+Download the wheel above, then run these commands in its directory:
+
+```sh
+python -m venv .venv
+.venv/bin/python -m pip install ./interaction_check-0.1.0a5-py3-none-any.whl
+.venv/bin/interaction-check --version
+```
+
+On Windows use `.venv\Scripts\python.exe` and `.venv\Scripts\interaction-check.exe`.
+For a source checkout, use `python -m pip install .` inside your virtual environment.
+The installed command uses Python version spelling `0.1.0a5`. Packages are available
+from GitHub Releases; there is no PyPI publication. Start with the
+[XState walkthrough](examples/xstate/README.md) or the [native-test guide](docs/NATIVE_TESTS.md).
+
+## Evidence and trade-offs
+
+<details>
+<summary>Open measured results, comparisons and sources</summary>
 
 ![interaction-check evidence: zero third-party Python packages; 49 runner and six Node tests pass; PdfCraft passes ten scenarios and 79 steps. The focused XState install has one lockfile package entry versus 120 in the earlier bundle. Native tests have a 74.6 ms median and replay 183.9 ms across 30 paired samples; replay is slower in this pilot.](docs/assets/overview.svg)
 
@@ -35,6 +69,8 @@ application behavior are not demonstrated.
 No PyPI release or upstream adoption is claimed. The first adapter uses a fixed
 edit-session revision and commits through PhotoCraft's actual `Session` command API;
 consumer-owned adapters also exercise the real PhotoCraft and PdfCraft dialogs.
+
+</details>
 
 ## A useful outcome can be one native test
 
@@ -151,22 +187,6 @@ Re-run it with the same adapter revision. Crashes, timeouts and protocol errors 
 their diagnostics instead of exporting a guessed assertion failure. The
 [native-test guide](docs/NATIVE_TESTS.md) shows how to move useful pyee and XState
 behavior into the consumer's normal tests, without retaining a runner dependency.
-
-## Install the command locally
-
-Python 3.10+; from a checkout:
-
-```sh
-python3 -m venv .venv
-.venv/bin/python -m pip install .
-.venv/bin/interaction-check --version
-```
-
-On Windows use `.venv\Scripts\python.exe` and `.venv\Scripts\interaction-check.exe`.
-The wheel has zero runtime dependencies and installs only the runner; adapters and
-examples stay separate. This is local installation, not a claim of PyPI publication.
-[Release preparation](docs/RELEASING.md) describes wheel/sdist checks;
-[the changelog](CHANGELOG.md) records compatibility and version spelling.
 
 ## Scenario format
 
