@@ -1,0 +1,67 @@
+{
+  "schema": 1,
+  "name": "deepdiff / empty-diff-round-trip",
+  "steps": [
+    {
+      "event": {
+        "op": "new",
+        "data": {
+          "count": 1
+        }
+      },
+      "expect": {
+        "document": {
+          "count": 1
+        },
+        "original": {
+          "count": 1
+        }
+      }
+    },
+    {
+      "event": {
+        "op": "plan",
+        "target": {
+          "count": 1
+        }
+      },
+      "expect": {
+        "document": {
+          "count": 1
+        },
+        "original": {
+          "count": 1
+        },
+        "kinds": []
+      }
+    },
+    {
+      "event": {
+        "op": "apply"
+      },
+      "expect": {
+        "document": {
+          "count": 1
+        },
+        "original": {
+          "count": 1
+        },
+        "kinds": []
+      }
+    },
+    {
+      "event": {
+        "op": "revert"
+      },
+      "expect": {
+        "document": {
+          "count": 1
+        },
+        "original": {
+          "count": 1
+        },
+        "kinds": []
+      }
+    }
+  ]
+}

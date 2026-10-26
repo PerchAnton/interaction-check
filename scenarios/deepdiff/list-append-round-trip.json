@@ -1,0 +1,105 @@
+{
+  "schema": 1,
+  "name": "deepdiff / list-append-round-trip",
+  "steps": [
+    {
+      "event": {
+        "op": "new",
+        "data": {
+          "items": [
+            1,
+            2
+          ]
+        }
+      },
+      "expect": {
+        "document": {
+          "items": [
+            1,
+            2
+          ]
+        },
+        "original": {
+          "items": [
+            1,
+            2
+          ]
+        }
+      }
+    },
+    {
+      "event": {
+        "op": "plan",
+        "target": {
+          "items": [
+            1,
+            2,
+            3
+          ]
+        }
+      },
+      "expect": {
+        "document": {
+          "items": [
+            1,
+            2
+          ]
+        },
+        "original": {
+          "items": [
+            1,
+            2
+          ]
+        },
+        "kinds": [
+          "iterable_item_added"
+        ]
+      }
+    },
+    {
+      "event": {
+        "op": "apply"
+      },
+      "expect": {
+        "document": {
+          "items": [
+            1,
+            2,
+            3
+          ]
+        },
+        "original": {
+          "items": [
+            1,
+            2
+          ]
+        },
+        "kinds": [
+          "iterable_item_added"
+        ]
+      }
+    },
+    {
+      "event": {
+        "op": "revert"
+      },
+      "expect": {
+        "document": {
+          "items": [
+            1,
+            2
+          ]
+        },
+        "original": {
+          "items": [
+            1,
+            2
+          ]
+        },
+        "kinds": [
+          "iterable_item_added"
+        ]
+      }
+    }
+  ]
+}

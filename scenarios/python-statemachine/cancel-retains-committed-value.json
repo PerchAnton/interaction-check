@@ -1,0 +1,51 @@
+{
+  "schema": 1,
+  "name": "python-statemachine / cancel-retains-committed-value",
+  "steps": [
+    {
+      "event": {
+        "op": "edit"
+      },
+      "expect": {
+        "state": "editing",
+        "draft": "A",
+        "saved": "A",
+        "rejected": false
+      }
+    },
+    {
+      "event": {
+        "op": "change",
+        "value": "B"
+      },
+      "expect": {
+        "state": "editing",
+        "draft": "B",
+        "saved": "A",
+        "rejected": false
+      }
+    },
+    {
+      "event": {
+        "op": "cancel"
+      },
+      "expect": {
+        "state": "idle",
+        "draft": "A",
+        "saved": "A",
+        "rejected": false
+      }
+    },
+    {
+      "event": {
+        "op": "edit"
+      },
+      "expect": {
+        "state": "editing",
+        "draft": "A",
+        "saved": "A",
+        "rejected": false
+      }
+    }
+  ]
+}

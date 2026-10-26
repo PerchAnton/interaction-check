@@ -1,0 +1,58 @@
+{
+  "schema": 1,
+  "name": "pydantic / failed-assignment-retains-value",
+  "steps": [
+    {
+      "event": {
+        "op": "assign",
+        "field": "count",
+        "value": -1
+      },
+      "expect": {
+        "value": {
+          "name": "Ada",
+          "count": 1,
+          "enabled": true
+        },
+        "valid": false,
+        "paths": [
+          "count"
+        ]
+      }
+    },
+    {
+      "event": {
+        "op": "assign",
+        "field": "name",
+        "value": "  "
+      },
+      "expect": {
+        "value": {
+          "name": "Ada",
+          "count": 1,
+          "enabled": true
+        },
+        "valid": false,
+        "paths": [
+          "name"
+        ]
+      }
+    },
+    {
+      "event": {
+        "op": "assign",
+        "field": "name",
+        "value": " Grace "
+      },
+      "expect": {
+        "value": {
+          "name": "Grace",
+          "count": 1,
+          "enabled": true
+        },
+        "valid": true,
+        "paths": []
+      }
+    }
+  ]
+}

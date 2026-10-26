@@ -1,0 +1,75 @@
+{
+  "schema": 1,
+  "name": "glom / literal-dotted-key",
+  "steps": [
+    {
+      "event": {
+        "op": "new",
+        "data": {
+          "a.b": {
+            "x": 1
+          },
+          "a": {
+            "b": 2
+          }
+        }
+      },
+      "expect": {
+        "document": {
+          "a.b": {
+            "x": 1
+          },
+          "a": {
+            "b": 2
+          }
+        }
+      }
+    },
+    {
+      "event": {
+        "op": "get",
+        "path": [
+          "a.b",
+          "x"
+        ]
+      },
+      "expect": {
+        "value": 1,
+        "error": null
+      }
+    },
+    {
+      "event": {
+        "op": "assign",
+        "path": [
+          "a.b",
+          "x"
+        ],
+        "value": 3
+      },
+      "expect": {
+        "document": {
+          "a.b": {
+            "x": 3
+          },
+          "a": {
+            "b": 2
+          }
+        }
+      }
+    },
+    {
+      "event": {
+        "op": "get",
+        "path": [
+          "a",
+          "b"
+        ]
+      },
+      "expect": {
+        "value": 2,
+        "error": null
+      }
+    }
+  ]
+}

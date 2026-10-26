@@ -1,0 +1,53 @@
+{
+  "schema": 1,
+  "name": "rxpy / dispose-drops-pending-value",
+  "steps": [
+    {
+      "event": {
+        "op": "next",
+        "value": 1
+      },
+      "expect": {
+        "log": []
+      }
+    },
+    {
+      "event": {
+        "op": "dispose"
+      },
+      "expect": {
+        "log": [],
+        "completed": false
+      }
+    },
+    {
+      "event": {
+        "op": "advance",
+        "time": 20
+      },
+      "expect": {
+        "log": [],
+        "completed": false
+      }
+    },
+    {
+      "event": {
+        "op": "next",
+        "value": 2
+      },
+      "expect": {
+        "log": []
+      }
+    },
+    {
+      "event": {
+        "op": "advance",
+        "time": 40
+      },
+      "expect": {
+        "log": [],
+        "completed": false
+      }
+    }
+  ]
+}

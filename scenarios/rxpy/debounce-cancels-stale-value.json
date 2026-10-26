@@ -1,0 +1,57 @@
+{
+  "schema": 1,
+  "name": "rxpy / debounce-cancels-stale-value",
+  "steps": [
+    {
+      "event": {
+        "op": "next",
+        "value": 1
+      },
+      "expect": {
+        "time": 0,
+        "log": []
+      }
+    },
+    {
+      "event": {
+        "op": "advance",
+        "time": 5
+      },
+      "expect": {
+        "time": 5,
+        "log": []
+      }
+    },
+    {
+      "event": {
+        "op": "next",
+        "value": 2
+      },
+      "expect": {
+        "time": 5,
+        "log": []
+      }
+    },
+    {
+      "event": {
+        "op": "advance",
+        "time": 10
+      },
+      "expect": {
+        "log": []
+      }
+    },
+    {
+      "event": {
+        "op": "advance",
+        "time": 15
+      },
+      "expect": {
+        "log": [
+          2
+        ],
+        "completed": false
+      }
+    }
+  ]
+}

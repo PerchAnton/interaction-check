@@ -1,0 +1,51 @@
+{
+  "schema": 1,
+  "name": "python-dispatch / equal-values-do-not-notify",
+  "steps": [
+    {
+      "event": {
+        "op": "write",
+        "values": [
+          0
+        ],
+        "locked": false
+      },
+      "expect": {
+        "count": 0,
+        "log": []
+      }
+    },
+    {
+      "event": {
+        "op": "write",
+        "values": [
+          1,
+          1
+        ],
+        "locked": false
+      },
+      "expect": {
+        "count": 1,
+        "log": [
+          1
+        ]
+      }
+    },
+    {
+      "event": {
+        "op": "write",
+        "values": [
+          1,
+          1
+        ],
+        "locked": true
+      },
+      "expect": {
+        "count": 1,
+        "log": [
+          1
+        ]
+      }
+    }
+  ]
+}

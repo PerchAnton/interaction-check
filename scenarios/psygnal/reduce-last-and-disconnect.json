@@ -1,0 +1,50 @@
+{
+  "schema": 1,
+  "name": "psygnal / reduce-last-and-disconnect",
+  "steps": [
+    {
+      "event": {
+        "op": "emit",
+        "mode": "last",
+        "values": [
+          1,
+          2,
+          3
+        ]
+      },
+      "expect": {
+        "log": [
+          3
+        ],
+        "during": 0
+      }
+    },
+    {
+      "event": {
+        "op": "disconnect"
+      },
+      "expect": {
+        "listeners": 0,
+        "log": [
+          3
+        ]
+      }
+    },
+    {
+      "event": {
+        "op": "emit",
+        "mode": "plain",
+        "values": [
+          4
+        ]
+      },
+      "expect": {
+        "listeners": 0,
+        "log": [
+          3
+        ],
+        "during": 1
+      }
+    }
+  ]
+}

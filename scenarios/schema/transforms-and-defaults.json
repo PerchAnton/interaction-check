@@ -1,0 +1,79 @@
+{
+  "schema": 1,
+  "name": "schema / transforms-and-defaults",
+  "steps": [
+    {
+      "event": {
+        "op": "validate",
+        "data": {
+          "name": " A ",
+          "count": "2"
+        }
+      },
+      "expect": {
+        "valid": true,
+        "output": {
+          "name": "A",
+          "count": 2,
+          "enabled": true
+        },
+        "paths": [],
+        "input_unchanged": true,
+        "keys": [
+          "count",
+          "enabled",
+          "name"
+        ]
+      }
+    },
+    {
+      "event": {
+        "op": "validate",
+        "data": {
+          "name": "B",
+          "count": 0,
+          "enabled": false
+        }
+      },
+      "expect": {
+        "valid": true,
+        "output": {
+          "name": "B",
+          "count": 0,
+          "enabled": false
+        },
+        "paths": [],
+        "input_unchanged": true,
+        "keys": [
+          "count",
+          "enabled",
+          "name"
+        ]
+      }
+    },
+    {
+      "event": {
+        "op": "validate",
+        "data": {
+          "name": "C",
+          "count": "3"
+        }
+      },
+      "expect": {
+        "valid": true,
+        "output": {
+          "name": "C",
+          "count": 3,
+          "enabled": true
+        },
+        "paths": [],
+        "input_unchanged": true,
+        "keys": [
+          "count",
+          "enabled",
+          "name"
+        ]
+      }
+    }
+  ]
+}

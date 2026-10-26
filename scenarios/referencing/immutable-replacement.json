@@ -1,0 +1,60 @@
+{
+  "schema": 1,
+  "name": "referencing / immutable-replacement",
+  "steps": [
+    {
+      "event": {
+        "op": "register",
+        "uri": "urn:config",
+        "data": {
+          "type": "integer"
+        }
+      },
+      "expect": {
+        "resources": 1,
+        "previous_resources": 0,
+        "error": null
+      }
+    },
+    {
+      "event": {
+        "op": "register",
+        "uri": "urn:config",
+        "data": {
+          "type": "string"
+        }
+      },
+      "expect": {
+        "resources": 1,
+        "previous_resources": 1,
+        "error": null
+      }
+    },
+    {
+      "event": {
+        "op": "lookup",
+        "ref": "urn:config",
+        "previous": true
+      },
+      "expect": {
+        "value": {
+          "type": "integer"
+        },
+        "error": null
+      }
+    },
+    {
+      "event": {
+        "op": "lookup",
+        "ref": "urn:config",
+        "previous": false
+      },
+      "expect": {
+        "value": {
+          "type": "string"
+        },
+        "error": null
+      }
+    }
+  ]
+}

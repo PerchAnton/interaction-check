@@ -1,0 +1,65 @@
+{
+  "schema": 1,
+  "name": "traitlets / observer-removal",
+  "steps": [
+    {
+      "event": {
+        "op": "write",
+        "hold": false,
+        "updates": [
+          {
+            "field": "label",
+            "value": "B"
+          }
+        ]
+      },
+      "expect": {
+        "label": "B",
+        "log": [
+          {
+            "field": "label",
+            "old": "A",
+            "new": "B"
+          }
+        ]
+      }
+    },
+    {
+      "event": {
+        "op": "unwatch"
+      },
+      "expect": {
+        "label": "B",
+        "log": [
+          {
+            "field": "label",
+            "old": "A",
+            "new": "B"
+          }
+        ]
+      }
+    },
+    {
+      "event": {
+        "op": "write",
+        "hold": false,
+        "updates": [
+          {
+            "field": "label",
+            "value": "C"
+          }
+        ]
+      },
+      "expect": {
+        "label": "C",
+        "log": [
+          {
+            "field": "label",
+            "old": "A",
+            "new": "B"
+          }
+        ]
+      }
+    }
+  ]
+}

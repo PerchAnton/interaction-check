@@ -1,0 +1,66 @@
+{
+  "schema": 1,
+  "name": "msgspec / unknown-keys-and-false",
+  "steps": [
+    {
+      "event": {
+        "op": "validate",
+        "data": {
+          "name": "A",
+          "count": 1,
+          "extra": 1
+        },
+        "strict": true
+      },
+      "expect": {
+        "valid": false,
+        "output": null,
+        "paths": [],
+        "input_unchanged": true,
+        "keys": []
+      }
+    },
+    {
+      "event": {
+        "op": "validate",
+        "data": {
+          "name": "A",
+          "count": 1,
+          "enabled": false
+        },
+        "strict": true
+      },
+      "expect": {
+        "valid": true,
+        "output": {
+          "name": "A",
+          "count": 1,
+          "enabled": false
+        },
+        "paths": [],
+        "input_unchanged": true,
+        "keys": [
+          "count",
+          "enabled",
+          "name"
+        ]
+      }
+    },
+    {
+      "event": {
+        "op": "validate",
+        "data": {
+          "name": "A"
+        },
+        "strict": true
+      },
+      "expect": {
+        "valid": false,
+        "output": null,
+        "paths": [],
+        "input_unchanged": true,
+        "keys": []
+      }
+    }
+  ]
+}

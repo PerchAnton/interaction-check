@@ -1,0 +1,70 @@
+{
+  "schema": 1,
+  "name": "pyee / empty-emission-and-removal",
+  "steps": [
+    {
+      "event": {
+        "op": "emit",
+        "value": 1
+      },
+      "expect": {
+        "delivered": false,
+        "listeners": 0,
+        "log": []
+      }
+    },
+    {
+      "event": {
+        "op": "connect",
+        "handler": "ordinary"
+      },
+      "expect": {
+        "listeners": 1
+      }
+    },
+    {
+      "event": {
+        "op": "emit",
+        "value": 2
+      },
+      "expect": {
+        "delivered": true,
+        "log": [
+          [
+            "ordinary",
+            2
+          ]
+        ]
+      }
+    },
+    {
+      "event": {
+        "op": "remove"
+      },
+      "expect": {
+        "listeners": 0,
+        "log": [
+          [
+            "ordinary",
+            2
+          ]
+        ]
+      }
+    },
+    {
+      "event": {
+        "op": "emit",
+        "value": 3
+      },
+      "expect": {
+        "delivered": false,
+        "log": [
+          [
+            "ordinary",
+            2
+          ]
+        ]
+      }
+    }
+  ]
+}

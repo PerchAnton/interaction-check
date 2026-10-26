@@ -1,0 +1,81 @@
+{
+  "schema": 1,
+  "name": "cerberus / coercion-error-clears",
+  "steps": [
+    {
+      "event": {
+        "op": "validate",
+        "data": {
+          "name": "A",
+          "count": "bad"
+        }
+      },
+      "expect": {
+        "valid": false,
+        "output": {
+          "name": "A",
+          "count": "bad",
+          "enabled": true
+        },
+        "paths": [
+          "count"
+        ],
+        "input_unchanged": true,
+        "keys": [
+          "count",
+          "enabled",
+          "name"
+        ]
+      }
+    },
+    {
+      "event": {
+        "op": "validate",
+        "data": {
+          "name": "A",
+          "count": "3"
+        }
+      },
+      "expect": {
+        "valid": true,
+        "output": {
+          "name": "A",
+          "count": 3,
+          "enabled": true
+        },
+        "paths": [],
+        "input_unchanged": true,
+        "keys": [
+          "count",
+          "enabled",
+          "name"
+        ]
+      }
+    },
+    {
+      "event": {
+        "op": "validate",
+        "data": {
+          "name": "A",
+          "count": "4",
+          "enabled": false
+        }
+      },
+      "expect": {
+        "valid": true,
+        "output": {
+          "name": "A",
+          "count": 4,
+          "enabled": false
+        },
+        "paths": [],
+        "input_unchanged": true,
+        "keys": [
+          "count",
+          "enabled",
+          "name"
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,62 @@
+{
+  "schema": 1,
+  "name": "blinker / disconnect-and-reconnect",
+  "steps": [
+    {
+      "event": {
+        "op": "connect",
+        "sender": "left"
+      },
+      "expect": {
+        "log": []
+      }
+    },
+    {
+      "event": {
+        "op": "disconnect",
+        "sender": "left"
+      },
+      "expect": {
+        "log": []
+      }
+    },
+    {
+      "event": {
+        "op": "send",
+        "sender": "left",
+        "value": 1,
+        "muted": false
+      },
+      "expect": {
+        "log": [],
+        "delivered": 0
+      }
+    },
+    {
+      "event": {
+        "op": "connect",
+        "sender": "left"
+      },
+      "expect": {
+        "log": []
+      }
+    },
+    {
+      "event": {
+        "op": "send",
+        "sender": "left",
+        "value": 2,
+        "muted": false
+      },
+      "expect": {
+        "log": [
+          {
+            "sender": "left",
+            "value": 2
+          }
+        ],
+        "delivered": 1
+      }
+    }
+  ]
+}

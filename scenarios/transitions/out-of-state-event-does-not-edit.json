@@ -1,0 +1,62 @@
+{
+  "schema": 1,
+  "name": "transitions / out-of-state-event-does-not-edit",
+  "steps": [
+    {
+      "event": {
+        "op": "change",
+        "value": "B"
+      },
+      "expect": {
+        "state": "idle",
+        "draft": "A",
+        "saved": "A",
+        "rejected": true
+      }
+    },
+    {
+      "event": {
+        "op": "save"
+      },
+      "expect": {
+        "state": "idle",
+        "draft": "A",
+        "saved": "A",
+        "rejected": true
+      }
+    },
+    {
+      "event": {
+        "op": "edit"
+      },
+      "expect": {
+        "state": "editing",
+        "draft": "A",
+        "saved": "A",
+        "rejected": false
+      }
+    },
+    {
+      "event": {
+        "op": "edit"
+      },
+      "expect": {
+        "state": "editing",
+        "draft": "A",
+        "saved": "A",
+        "rejected": true
+      }
+    },
+    {
+      "event": {
+        "op": "cancel"
+      },
+      "expect": {
+        "state": "idle",
+        "draft": "A",
+        "saved": "A",
+        "rejected": false
+      }
+    }
+  ]
+}

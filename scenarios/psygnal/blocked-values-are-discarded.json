@@ -1,0 +1,51 @@
+{
+  "schema": 1,
+  "name": "psygnal / blocked-values-are-discarded",
+  "steps": [
+    {
+      "event": {
+        "op": "emit",
+        "mode": "blocked",
+        "values": [
+          1,
+          2
+        ]
+      },
+      "expect": {
+        "log": [],
+        "during": 0,
+        "listeners": 1
+      }
+    },
+    {
+      "event": {
+        "op": "emit",
+        "mode": "plain",
+        "values": [
+          3
+        ]
+      },
+      "expect": {
+        "log": [
+          3
+        ],
+        "during": 1
+      }
+    },
+    {
+      "event": {
+        "op": "emit",
+        "mode": "blocked",
+        "values": [
+          4
+        ]
+      },
+      "expect": {
+        "log": [
+          3
+        ],
+        "during": 1
+      }
+    }
+  ]
+}

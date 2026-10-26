@@ -1,0 +1,77 @@
+{
+  "schema": 1,
+  "name": "pyee / once-before-reentrant-emit",
+  "steps": [
+    {
+      "event": {
+        "op": "connect",
+        "handler": "reentrant"
+      },
+      "expect": {
+        "listeners": 1,
+        "log": []
+      }
+    },
+    {
+      "event": {
+        "op": "connect",
+        "handler": "ordinary"
+      },
+      "expect": {
+        "listeners": 2,
+        "log": []
+      }
+    },
+    {
+      "event": {
+        "op": "emit",
+        "value": 1
+      },
+      "expect": {
+        "listeners": 1,
+        "log": [
+          [
+            "once",
+            1
+          ],
+          [
+            "ordinary",
+            2
+          ],
+          [
+            "ordinary",
+            1
+          ]
+        ],
+        "delivered": true
+      }
+    },
+    {
+      "event": {
+        "op": "emit",
+        "value": 3
+      },
+      "expect": {
+        "listeners": 1,
+        "log": [
+          [
+            "once",
+            1
+          ],
+          [
+            "ordinary",
+            2
+          ],
+          [
+            "ordinary",
+            1
+          ],
+          [
+            "ordinary",
+            3
+          ]
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,63 @@
+{
+  "schema": 1,
+  "name": "python-statemachine / guard-rejection-and-recovery",
+  "steps": [
+    {
+      "event": {
+        "op": "edit"
+      },
+      "expect": {
+        "state": "editing",
+        "draft": "A",
+        "saved": "A",
+        "rejected": false
+      }
+    },
+    {
+      "event": {
+        "op": "change",
+        "value": " "
+      },
+      "expect": {
+        "state": "editing",
+        "draft": " ",
+        "saved": "A",
+        "rejected": false
+      }
+    },
+    {
+      "event": {
+        "op": "save"
+      },
+      "expect": {
+        "state": "editing",
+        "draft": " ",
+        "saved": "A",
+        "rejected": true
+      }
+    },
+    {
+      "event": {
+        "op": "change",
+        "value": "B"
+      },
+      "expect": {
+        "state": "editing",
+        "draft": "B",
+        "saved": "A",
+        "rejected": false
+      }
+    },
+    {
+      "event": {
+        "op": "save"
+      },
+      "expect": {
+        "state": "idle",
+        "draft": "B",
+        "saved": "B",
+        "rejected": false
+      }
+    }
+  ]
+}

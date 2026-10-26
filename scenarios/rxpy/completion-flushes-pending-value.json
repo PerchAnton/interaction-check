@@ -1,0 +1,50 @@
+{
+  "schema": 1,
+  "name": "rxpy / completion-flushes-pending-value",
+  "steps": [
+    {
+      "event": {
+        "op": "next",
+        "value": 1
+      },
+      "expect": {
+        "log": []
+      }
+    },
+    {
+      "event": {
+        "op": "complete"
+      },
+      "expect": {
+        "log": [
+          1
+        ],
+        "completed": true
+      }
+    },
+    {
+      "event": {
+        "op": "advance",
+        "time": 20
+      },
+      "expect": {
+        "log": [
+          1
+        ],
+        "completed": true
+      }
+    },
+    {
+      "event": {
+        "op": "next",
+        "value": 2
+      },
+      "expect": {
+        "log": [
+          1
+        ],
+        "completed": true
+      }
+    }
+  ]
+}

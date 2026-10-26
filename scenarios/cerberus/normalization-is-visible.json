@@ -1,0 +1,82 @@
+{
+  "schema": 1,
+  "name": "cerberus / normalization-is-visible",
+  "steps": [
+    {
+      "event": {
+        "op": "validate",
+        "data": {
+          "name": " Ada ",
+          "count": "2",
+          "extra": "discard"
+        }
+      },
+      "expect": {
+        "valid": true,
+        "output": {
+          "name": "Ada",
+          "count": 2,
+          "enabled": true
+        },
+        "paths": [],
+        "input_unchanged": true,
+        "keys": [
+          "count",
+          "enabled",
+          "name"
+        ]
+      }
+    },
+    {
+      "event": {
+        "op": "validate",
+        "data": {
+          "name": " ",
+          "count": "-1"
+        }
+      },
+      "expect": {
+        "valid": false,
+        "output": {
+          "name": "",
+          "count": -1,
+          "enabled": true
+        },
+        "paths": [
+          "count",
+          "name"
+        ],
+        "input_unchanged": true,
+        "keys": [
+          "count",
+          "enabled",
+          "name"
+        ]
+      }
+    },
+    {
+      "event": {
+        "op": "validate",
+        "data": {
+          "name": "B",
+          "count": 0
+        }
+      },
+      "expect": {
+        "valid": true,
+        "output": {
+          "name": "B",
+          "count": 0,
+          "enabled": true
+        },
+        "paths": [],
+        "input_unchanged": true,
+        "keys": [
+          "count",
+          "enabled",
+          "name"
+        ]
+      }
+    }
+  ]
+}

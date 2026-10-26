@@ -1,0 +1,48 @@
+{
+  "schema": 1,
+  "name": "python-dispatch / unbind-keeps-property-writes",
+  "steps": [
+    {
+      "event": {
+        "op": "write",
+        "values": [
+          1
+        ],
+        "locked": false
+      },
+      "expect": {
+        "count": 1,
+        "log": [
+          1
+        ]
+      }
+    },
+    {
+      "event": {
+        "op": "unbind"
+      },
+      "expect": {
+        "count": 1,
+        "log": [
+          1
+        ]
+      }
+    },
+    {
+      "event": {
+        "op": "write",
+        "values": [
+          2,
+          3
+        ],
+        "locked": true
+      },
+      "expect": {
+        "count": 3,
+        "log": [
+          1
+        ]
+      }
+    }
+  ]
+}

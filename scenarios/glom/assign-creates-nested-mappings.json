@@ -1,0 +1,63 @@
+{
+  "schema": 1,
+  "name": "glom / assign-creates-nested-mappings",
+  "steps": [
+    {
+      "event": {
+        "op": "new",
+        "data": {}
+      },
+      "expect": {
+        "document": {}
+      }
+    },
+    {
+      "event": {
+        "op": "assign",
+        "path": [
+          "settings",
+          "name"
+        ],
+        "value": "Ada"
+      },
+      "expect": {
+        "document": {
+          "settings": {
+            "name": "Ada"
+          }
+        },
+        "error": null
+      }
+    },
+    {
+      "event": {
+        "op": "get",
+        "path": [
+          "settings",
+          "name"
+        ]
+      },
+      "expect": {
+        "value": "Ada",
+        "error": null
+      }
+    },
+    {
+      "event": {
+        "op": "assign",
+        "path": [
+          "settings",
+          "name"
+        ],
+        "value": "B"
+      },
+      "expect": {
+        "document": {
+          "settings": {
+            "name": "B"
+          }
+        }
+      }
+    }
+  ]
+}

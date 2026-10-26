@@ -1,0 +1,62 @@
+{
+  "schema": 1,
+  "name": "schema / unknown-keys-and-missing-values",
+  "steps": [
+    {
+      "event": {
+        "op": "validate",
+        "data": {
+          "name": "A",
+          "count": 1,
+          "extra": 1
+        }
+      },
+      "expect": {
+        "valid": false,
+        "output": null,
+        "paths": [],
+        "input_unchanged": true,
+        "keys": []
+      }
+    },
+    {
+      "event": {
+        "op": "validate",
+        "data": {
+          "count": 1
+        }
+      },
+      "expect": {
+        "valid": false,
+        "output": null,
+        "paths": [],
+        "input_unchanged": true,
+        "keys": []
+      }
+    },
+    {
+      "event": {
+        "op": "validate",
+        "data": {
+          "name": "A",
+          "count": 1
+        }
+      },
+      "expect": {
+        "valid": true,
+        "output": {
+          "name": "A",
+          "count": 1,
+          "enabled": true
+        },
+        "paths": [],
+        "input_unchanged": true,
+        "keys": [
+          "count",
+          "enabled",
+          "name"
+        ]
+      }
+    }
+  ]
+}

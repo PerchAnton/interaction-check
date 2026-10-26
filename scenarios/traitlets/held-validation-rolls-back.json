@@ -1,0 +1,89 @@
+{
+  "schema": 1,
+  "name": "traitlets / held-validation-rolls-back",
+  "steps": [
+    {
+      "event": {
+        "op": "write",
+        "hold": true,
+        "updates": [
+          {
+            "field": "label",
+            "value": "B"
+          },
+          {
+            "field": "count",
+            "value": 99
+          }
+        ]
+      },
+      "expect": {
+        "label": "A",
+        "count": 0,
+        "log": [],
+        "rejected": true
+      }
+    },
+    {
+      "event": {
+        "op": "write",
+        "hold": true,
+        "updates": [
+          {
+            "field": "label",
+            "value": "C"
+          },
+          {
+            "field": "count",
+            "value": 2
+          }
+        ]
+      },
+      "expect": {
+        "label": "C",
+        "count": 2,
+        "log": [
+          {
+            "field": "label",
+            "old": "A",
+            "new": "C"
+          },
+          {
+            "field": "count",
+            "old": 0,
+            "new": 2
+          }
+        ],
+        "rejected": false
+      }
+    },
+    {
+      "event": {
+        "op": "write",
+        "hold": false,
+        "updates": [
+          {
+            "field": "count",
+            "value": -1
+          }
+        ]
+      },
+      "expect": {
+        "count": 2,
+        "log": [
+          {
+            "field": "label",
+            "old": "A",
+            "new": "C"
+          },
+          {
+            "field": "count",
+            "old": 0,
+            "new": 2
+          }
+        ],
+        "rejected": true
+      }
+    }
+  ]
+}

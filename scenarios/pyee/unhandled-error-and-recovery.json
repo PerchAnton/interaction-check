@@ -1,0 +1,41 @@
+{
+  "schema": 1,
+  "name": "pyee / unhandled-error-and-recovery",
+  "steps": [
+    {
+      "event": {
+        "op": "error"
+      },
+      "expect": {
+        "error": "PyeeError",
+        "log": []
+      }
+    },
+    {
+      "event": {
+        "op": "connect",
+        "handler": "ordinary"
+      },
+      "expect": {
+        "error": null,
+        "listeners": 1
+      }
+    },
+    {
+      "event": {
+        "op": "emit",
+        "value": 4
+      },
+      "expect": {
+        "error": null,
+        "log": [
+          [
+            "ordinary",
+            4
+          ]
+        ],
+        "delivered": true
+      }
+    }
+  ]
+}
