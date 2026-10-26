@@ -14,7 +14,6 @@ These examples exercise real, separately pinned libraries through interaction-ch
 | [Fabric.js](../examples/fabric/README.md) | fabric 7.4.0 | 3 / 11 | Move a real Group, detach and re-add objects, and preserve their scene centers. A detached object must not move with its former group. |
 | [vee-validate](../examples/vee-validate/README.md) | vee-validate 4.15.1, vue 3.5.44 | 3 / 14 | Mount a null-rendering Vue component, validate an invalid value, correct it, and reset repeatedly. |
 | [Excalidraw](../examples/excalidraw/README.md) | @excalidraw/excalidraw 0.18.1, @napi-rs/canvas 1.0.13, jsdom 30.1.3, react 18.3.1, react-dom 18.3.1 | 3 / 12 | Convert real elements, mutate coordinates, preserve versions on no-op changes, and restore saved/deleted geometry. |
-
 | [PyQtGraph](../examples/pyqtgraph/README.md) | pyqtgraph 0.14.0, PyQt6 6.11.0, numpy 2.5.4 | 3 / 13 | Observe real parameter-tree notifications, batched changes, no-op writes, and save/restore with offscreen Qt. |
 | [napari](../examples/napari/README.md) | napari 0.9.2, numpy 2.5.4 | 3 / 17 | Use real image layers and LayerList to remove selected unlocked layers, retain locked layers, and toggle visibility. |
 | [Toga](../examples/toga/README.md) | toga-dummy 0.5.7 | 3 / 11 | Use the official dummy backend to observe real Selection data and callbacks through removal, clear, and append. |
@@ -23,8 +22,13 @@ These examples exercise real, separately pinned libraries through interaction-ch
 | [Microsoft Edit](../examples/rust-consumers/README.md) | Git `cb6de0a8` | 3 / 15 | Restore dirty/clean markers through history and normalize CRLF before moving by UTF-8 byte offsets. |
 | [Xilem Core](../examples/rust-consumers/README.md) | Git `271a27a6` | 3 / 20 | Rebuild an optional no-element view and reject messages for previous generations. |
 
-Windows local validation: 34 native/boundary tests, 50 passing traces / 240 steps, five shared Python transport tests, and two Rust protocol tests. The TanStack Form pending-reset trace is a separate known failure, not a passing test. Hosted CI must be checked independently.
+| [Icy Draw engine](../examples/icy-draw/README.md) | Git `9ebe3dea`, edit-session `968ebd2f` | 3 / 23 | Stage a layer name, commit once through the host command, preserve Redo on no-op, and reject a stale draft after edit/undo. |
+| [Eldiron text widget](../examples/eldiron/README.md) | Git `c1ac529b` | 3 / 14 | Paste Unicode, undo/redo, and clear native widget history with programmatic set_value. |
+
+Windows local validation for the nineteen rows: 38 native/boundary tests, 56 passing traces / 277 steps, five shared Python transport tests, and two Rust protocol tests. The TanStack Form pending-reset trace is a separate known failure, not a passing test. Hosted CI must be checked independently.
 
 SurveyJS has merged its own [survey-core/tester harness](https://github.com/surveyjs/survey-library/pull/11723). Prefer that project-specific tool for upstream scenarios; this external example is a comparison, not a request to add a competing dependency. Toga requires prior permission for unsolicited AI-assisted contributions.
 
-These are the first seventeen implementations from the 20-project investigation. Icy Draw, Eldiron, and Amp are not implemented by this change. The Rust source revisions and narrower model-only scope are documented in their README.
+[Amp](../examples/amp/README.md) is the twentieth implementation, compiled on Linux inside the pinned editor's own TestTerminal harness. Its native Unicode control and two traces / eight steps passed the initial CI. The third normal trace now supplies an explicit Home command after Undo; its fourteen-step total is awaiting CI. The original direct-insert failure is preserved as a separate known regression at step 4, not reported as an upstream fix or a GUI reproduction.
+
+The Icy Draw identity/generation fixture belongs to the adapter, not the upstream dialog. Eldiron covers the native text widget, not ProjectUndo or the rename dialog. The source pins and narrower model-only scope are documented in each README.

@@ -1,0 +1,48 @@
+{
+  "schema": 1,
+  "name": "03-widget-redo-branch",
+  "steps": [
+    {
+      "event": {
+        "op": "new"
+      },
+      "expect": {
+        "text": ""
+      }
+    },
+    {
+      "event": {
+        "op": "paste",
+        "text": "a"
+      },
+      "expect": {
+        "text": "a"
+      }
+    },
+    {
+      "event": {
+        "op": "undo"
+      },
+      "expect": {
+        "text": ""
+      }
+    },
+    {
+      "event": {
+        "op": "paste",
+        "text": "b"
+      },
+      "expect": {
+        "text": "b"
+      }
+    },
+    {
+      "event": {
+        "op": "redo"
+      },
+      "expect": {
+        "text": "b"
+      }
+    }
+  ]
+}

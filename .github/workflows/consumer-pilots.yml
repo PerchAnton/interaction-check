@@ -1,5 +1,8 @@
 name: Consumer model pilots
-on: [push, pull_request]
+on:
+  push:
+    branches: [main]
+  pull_request:
 permissions:
   contents: read
 jobs:
@@ -66,6 +69,34 @@ jobs:
           sudo apt-get install -y libicu-dev
       - run: cargo +1.96.0 test --locked --manifest-path examples/rust-consumers/Cargo.toml -p pilot-protocol -p pilot-${{ matrix.example }}
       - run: cargo +1.96.0 build --locked --manifest-path examples/rust-consumers/Cargo.toml -p pilot-${{ matrix.example }}
+      - run: python examples/verify_rust_consumers.py ${{ matrix.example }}
+  rust-app-models:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    strategy:
+      fail-fast: false
+      matrix:
+        example: [icy-draw, eldiron]
+    env:
+      CARGO_TARGET_DIR: ${{ github.workspace }}/.artifacts/rust-consumers
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        if: matrix.example == 'eldiron'
+        with:
+          repository: markusmoenig/Eldiron
+          ref: c1ac529b501745a38d78f633ba23d2254c2ec71c
+          path: .artifacts/eldiron-source
+          sparse-checkout: crates/theframework
+          persist-credentials: false
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0
+        with:
+          python-version: '3.12'
+      - run: rustup toolchain install 1.96.0 --profile minimal
+      - run: python examples/eldiron/verify_source.py
+        if: matrix.example == 'eldiron'
+      - run: cargo +1.96.0 test --locked --manifest-path examples/${{ matrix.example }}/Cargo.toml
+      - run: cargo +1.96.0 build --locked --manifest-path examples/${{ matrix.example }}/Cargo.toml
       - run: python examples/verify_rust_consumers.py ${{ matrix.example }}
   amp-commands:
     runs-on: ubuntu-24.04

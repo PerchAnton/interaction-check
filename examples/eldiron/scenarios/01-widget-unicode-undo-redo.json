@@ -1,0 +1,39 @@
+{
+  "schema": 1,
+  "name": "01-widget-unicode-undo-redo",
+  "steps": [
+    {
+      "event": {
+        "op": "new"
+      },
+      "expect": {
+        "text": ""
+      }
+    },
+    {
+      "event": {
+        "op": "paste",
+        "text": "λ🦀"
+      },
+      "expect": {
+        "text": "λ🦀"
+      }
+    },
+    {
+      "event": {
+        "op": "undo"
+      },
+      "expect": {
+        "text": ""
+      }
+    },
+    {
+      "event": {
+        "op": "redo"
+      },
+      "expect": {
+        "text": "λ🦀"
+      }
+    }
+  ]
+}

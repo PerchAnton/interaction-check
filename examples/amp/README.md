@@ -8,7 +8,7 @@ UI, change Amp's release binary, or test rendering, keyboard decoding, or modes.
 `prepare.py` requires a clean, disposable checkout at that exact revision. It
 adds only the test module and its dependencies and copies the pinned Cargo.lock.
 Do not run it on a checkout with your work. The bridge has a native Unicode
-undo/redo control and three JSON traces (13 steps) covering Unicode backspace,
+undo/redo control and three normal JSON traces (14 steps) covering Unicode backspace,
 empty backspace, and replacing a redo branch. Linux CI is the validation target;
 Amp's terminal dependencies do not support a native Windows build.
 
@@ -28,5 +28,13 @@ and `pkg-config`. The Python wrapper removes only libtest's known startup banner
 and validates the response envelope; it never supplies expected states to Amp.
 The shared Rust protocol limits input to 64 KiB per line and 1,024 events.
 The adapter limits input text and the buffer and supports single-line fixtures.
+The normal branch trace explicitly calls the native Home command after Undo.
+A separate regression preserves the original direct-command sequence without
+Home: insert `a`, undo, then insert `b` leaves the buffer empty at step 4.
+The verifier requires that exact known failure, separately from passing traces.
+This is an observed command-level result at the pin, not a claimed GUI reproduction
+or an upstream fix. Direct buffer insertion does not adjust a stale cursor after
+Undo. The adapter must not silently supply cursor movement that the trace omitted.
+
 The existing Amp native suite remains the source of truth; this experiment
 demonstrates a portable event sequence and step report, not missing upstream coverage.

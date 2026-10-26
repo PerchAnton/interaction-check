@@ -29,6 +29,15 @@
     },
     {
       "event": {
+        "op": "home"
+      },
+      "expect": {
+        "text": "",
+        "offset": 0
+      }
+    },
+    {
+      "event": {
         "op": "type",
         "text": "b"
       },

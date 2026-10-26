@@ -12,6 +12,7 @@ enum Event {
     Undo {},
     Redo {},
     Backspace {},
+    Home {},
 }
 
 fn fixture() -> Result<Application> {
@@ -44,6 +45,7 @@ fn step(app: &mut Application, event: Event) -> Result<Value> {
         Event::Undo {} => commands::buffer::undo(app).map_err(|e| e.to_string())?,
         Event::Redo {} => commands::buffer::redo(app).map_err(|e| e.to_string())?,
         Event::Backspace {} => commands::buffer::backspace(app).map_err(|e| e.to_string())?,
+        Event::Home {} => commands::cursor::move_to_start_of_line(app).map_err(|e| e.to_string())?,
         Event::New {} => return Err("new handled by driver".into()),
     }
     state(app)

@@ -25,9 +25,24 @@ def main():
         return result.returncode
     report = ROOT / '.artifacts/consumer-reports/amp.json'
     report.parent.mkdir(parents=True, exist_ok=True)
-    return subprocess.run([sys.executable, str(ROOT / 'interaction_check.py'), '--timeout', '60', '--trace',
+    command = [sys.executable, str(ROOT / 'interaction_check.py'), '--timeout', '60', '--trace']
+    adapter = [sys.executable, str(HERE / 'adapter.py'), '--binary', binaries[0], '--source', str(args.source.resolve())]
+    normal = subprocess.run([*command,
                            '--report', str(report), *map(str, sorted((HERE / 'scenarios').glob('*.json'))), '--',
-                           sys.executable, str(HERE / 'adapter.py'), '--binary', binaries[0], '--source', str(args.source.resolve())], cwd=ROOT).returncode
+                           *adapter], cwd=ROOT)
+    if normal.returncode:
+        return normal.returncode
+    regression = report.with_name('amp-known-direct-insert-failure.json')
+    failed = subprocess.run([*command, '--report', str(regression),
+                             str(HERE / 'regressions/direct-insert-after-undo.json'), '--', *adapter], cwd=ROOT)
+    results = json.loads(regression.read_text(encoding='utf-8'))['results']
+    if failed.returncode != 1 or len(results) != 1 or results[0]['passed']:
+        raise RuntimeError('The Amp direct-command baseline changed; investigate before changing assertions')
+    last = results[0]['trace'][-1]
+    if last['step'] != 4 or last['actual']['text'] != '':
+        raise RuntimeError('Amp regression failed for an unexpected reason')
+    print('VERIFIED KNOWN FAILURE: direct insert after undo leaves an empty buffer at step 4')
+    return 0
 
 if __name__ == '__main__':
     raise SystemExit(main())
