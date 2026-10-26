@@ -1,0 +1,59 @@
+name: Bug report
+description: Report a problem with installation, replay, exports or reports.
+body:
+  - type: markdown
+    attributes:
+      value: |
+        A small example helps us reproduce the problem. A command and a short
+        sequence of steps are enough if you cannot provide a standalone case.
+  - type: input
+    id: version
+    attributes:
+      label: interaction-check version
+      description: Paste the output of interaction-check --version, or the Git commit. If installation fails, name the package or revision you tried.
+    validations:
+      required: true
+  - type: input
+    id: environment
+    attributes:
+      label: Environment
+      description: Python version, operating system and installation method (wheel, source archive or Git checkout).
+    validations:
+      required: true
+  - type: input
+    id: adapter
+    attributes:
+      label: Adapter and consumer version
+      description: Name the adapter, its source revision and the library or app it calls. Include its runtime version if known. For an installation issue, write "none".
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Command and scenario
+      description: |
+        Paste the exact command and the smallest scenario you have, keeping the
+        original expect values. For an installation failure, give the install
+        command and steps instead. If you share a --failure-dir export, say
+        whether it still fails when replayed with the same adapter revision.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected result
+      description: What should happen? For replay, name the step and state you expected.
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual result
+      description: What happened instead? Include the failing step, exit code or error message if available.
+    validations:
+      required: true
+  - type: textarea
+    id: diagnostics
+    attributes:
+      label: Logs or reports (optional)
+      description: Add relevant stderr, JSON or JUnit output, or a link to a small reproducer. Remove private data before sharing.
