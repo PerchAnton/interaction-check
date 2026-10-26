@@ -1,0 +1,51 @@
+{
+  "schema": 1,
+  "name": "03-repeated-restore",
+  "steps": [
+    {
+      "event": {
+        "op": "new"
+      },
+      "expect": {
+        "left": 1,
+        "right": 2
+      }
+    },
+    {
+      "event": {
+        "op": "save"
+      },
+      "expect": {
+        "notifications": 0
+      }
+    },
+    {
+      "event": {
+        "op": "set",
+        "name": "right",
+        "value": 8
+      },
+      "expect": {
+        "right": 8
+      }
+    },
+    {
+      "event": {
+        "op": "restore"
+      },
+      "expect": {
+        "left": 1,
+        "right": 2
+      }
+    },
+    {
+      "event": {
+        "op": "restore"
+      },
+      "expect": {
+        "left": 1,
+        "right": 2
+      }
+    }
+  ]
+}

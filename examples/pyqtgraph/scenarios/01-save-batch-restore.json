@@ -1,0 +1,44 @@
+{
+  "schema": 1,
+  "name": "01-save-batch-restore",
+  "steps": [
+    {
+      "event": {
+        "op": "new"
+      },
+      "expect": {
+        "left": 1,
+        "right": 2
+      }
+    },
+    {
+      "event": {
+        "op": "save"
+      },
+      "expect": {
+        "notifications": 0
+      }
+    },
+    {
+      "event": {
+        "op": "batch",
+        "left": 7,
+        "right": 9
+      },
+      "expect": {
+        "left": 7,
+        "right": 9,
+        "notifications": 1
+      }
+    },
+    {
+      "event": {
+        "op": "restore"
+      },
+      "expect": {
+        "left": 1,
+        "right": 2
+      }
+    }
+  ]
+}

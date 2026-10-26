@@ -1,0 +1,45 @@
+{
+  "schema": 1,
+  "name": "02-noop-keeps-signal-count",
+  "steps": [
+    {
+      "event": {
+        "op": "new"
+      },
+      "expect": {
+        "notifications": 0
+      }
+    },
+    {
+      "event": {
+        "op": "set",
+        "name": "left",
+        "value": 1
+      },
+      "expect": {
+        "notifications": 0
+      }
+    },
+    {
+      "event": {
+        "op": "set",
+        "name": "left",
+        "value": 4
+      },
+      "expect": {
+        "left": 4,
+        "notifications": 1
+      }
+    },
+    {
+      "event": {
+        "op": "batch",
+        "left": 4,
+        "right": 2
+      },
+      "expect": {
+        "notifications": 1
+      }
+    }
+  ]
+}

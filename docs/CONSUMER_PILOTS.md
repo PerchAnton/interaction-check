@@ -15,6 +15,12 @@ These examples exercise real, separately pinned libraries through interaction-ch
 | [vee-validate](../examples/vee-validate/README.md) | vee-validate 4.15.1, vue 3.5.44 | 3 / 14 | Mount a null-rendering Vue component, validate an invalid value, correct it, and reset repeatedly. |
 | [Excalidraw](../examples/excalidraw/README.md) | @excalidraw/excalidraw 0.18.1, @napi-rs/canvas 1.0.13, jsdom 30.1.3, react 18.3.1, react-dom 18.3.1 | 3 / 12 | Convert real elements, mutate coordinates, preserve versions on no-op changes, and restore saved/deleted geometry. |
 
-Windows local validation: 20 native/boundary tests, 29 passing traces / 136 steps. The TanStack Form pending-reset trace is a separate known failure, not a passing test. Hosted CI must be checked independently.
+| [PyQtGraph](../examples/pyqtgraph/README.md) | pyqtgraph 0.14.0, PyQt6 6.11.0, numpy 2.5.4 | 3 / 13 | Observe real parameter-tree notifications, batched changes, no-op writes, and save/restore with offscreen Qt. |
+| [napari](../examples/napari/README.md) | napari 0.9.2, numpy 2.5.4 | 3 / 17 | Use real image layers and LayerList to remove selected unlocked layers, retain locked layers, and toggle visibility. |
+| [Toga](../examples/toga/README.md) | toga-dummy 0.5.7 | 3 / 11 | Use the official dummy backend to observe real Selection data and callbacks through removal, clear, and append. |
 
-These are the first ten implementations from the 20-project investigation. The remaining projects are not implemented by this change.
+Windows local validation: 26 native/boundary tests, 38 passing traces / 177 steps, and five shared Python transport tests. The TanStack Form pending-reset trace is a separate known failure, not a passing test. Hosted CI must be checked independently.
+
+SurveyJS has merged its own [survey-core/tester harness](https://github.com/surveyjs/survey-library/pull/11723). Prefer that project-specific tool for upstream scenarios; this external example is a comparison, not a request to add a competing dependency. Toga requires prior permission for unsolicited AI-assisted contributions.
+
+These are the first thirteen implementations from the 20-project investigation. The remaining projects are not implemented by this change.

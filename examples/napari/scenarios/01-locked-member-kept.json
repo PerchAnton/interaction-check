@@ -1,0 +1,101 @@
+{
+  "schema": 1,
+  "name": "01-locked-member-kept",
+  "steps": [
+    {
+      "event": {
+        "op": "new"
+      },
+      "expect": {
+        "layers": [
+          {
+            "name": "a"
+          },
+          {
+            "name": "b"
+          }
+        ],
+        "selected": []
+      }
+    },
+    {
+      "event": {
+        "op": "lock",
+        "name": "a",
+        "locked": true
+      },
+      "expect": {
+        "layers": [
+          {
+            "locked": true
+          },
+          {
+            "locked": false
+          }
+        ]
+      }
+    },
+    {
+      "event": {
+        "op": "select",
+        "name": "a"
+      },
+      "expect": {
+        "selected": [
+          "a"
+        ]
+      }
+    },
+    {
+      "event": {
+        "op": "select",
+        "name": "b"
+      },
+      "expect": {
+        "selected": [
+          "a",
+          "b"
+        ]
+      }
+    },
+    {
+      "event": {
+        "op": "remove_selected"
+      },
+      "expect": {
+        "layers": [
+          {
+            "name": "a",
+            "locked": true
+          }
+        ],
+        "selected": [
+          "a"
+        ]
+      }
+    },
+    {
+      "event": {
+        "op": "lock",
+        "name": "a",
+        "locked": false
+      },
+      "expect": {
+        "layers": [
+          {
+            "locked": false
+          }
+        ]
+      }
+    },
+    {
+      "event": {
+        "op": "remove_selected"
+      },
+      "expect": {
+        "layers": [],
+        "selected": []
+      }
+    }
+  ]
+}

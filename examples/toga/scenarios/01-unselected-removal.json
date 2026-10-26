@@ -1,0 +1,53 @@
+{
+  "schema": 1,
+  "name": "01-unselected-removal",
+  "steps": [
+    {
+      "event": {
+        "op": "new"
+      },
+      "expect": {
+        "items": [
+          "a",
+          "b"
+        ],
+        "value": "a",
+        "changes": 0
+      }
+    },
+    {
+      "event": {
+        "op": "select",
+        "value": "b"
+      },
+      "expect": {
+        "value": "b",
+        "changes": 1
+      }
+    },
+    {
+      "event": {
+        "op": "remove",
+        "index": 0
+      },
+      "expect": {
+        "items": [
+          "b"
+        ],
+        "value": "b",
+        "changes": 1
+      }
+    },
+    {
+      "event": {
+        "op": "remove",
+        "index": 0
+      },
+      "expect": {
+        "items": [],
+        "value": null,
+        "changes": 2
+      }
+    }
+  ]
+}

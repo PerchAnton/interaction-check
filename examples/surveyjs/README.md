@@ -20,6 +20,10 @@ Each event is validated; expected states remain in the Python runner and are nev
 
 ## Scope and limits
 
+SurveyJS already has its own headless tester ([#11723](https://github.com/surveyjs/survey-library/pull/11723), merged).
+Prefer that domain-specific harness for survey-only tests. This external example is kept for comparison;
+it is not a proposal to add another runner dependency or a claim that SurveyJS lacks replay tooling.
+
 Only the actual survey-core Model is driven. Framework renderers, accessibility, focus, and browser integration are not tested. detail_value explicitly reports null so object-subset matching cannot hide a retained answer.
 
 The small fixture and adapter are original example code. The installed library implements the behavior.
