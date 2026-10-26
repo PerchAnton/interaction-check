@@ -1,0 +1,56 @@
+{
+  "schema": 1,
+  "name": "immutable-js / nested-edit-noop",
+  "steps": [
+    {
+      "event": {
+        "op": "new",
+        "title": "A"
+      },
+      "expect": {
+        "same": true
+      }
+    },
+    {
+      "event": {
+        "op": "append",
+        "value": "🧪"
+      },
+      "expect": {
+        "value": {
+          "items": [
+            "🧪"
+          ]
+        }
+      }
+    },
+    {
+      "event": {
+        "op": "replace",
+        "at": 0,
+        "value": "🧪"
+      },
+      "expect": {
+        "same": true
+      }
+    },
+    {
+      "event": {
+        "op": "replace",
+        "at": 0,
+        "value": "new"
+      },
+      "expect": {
+        "same": false,
+        "value": {
+          "items": [
+            "new"
+          ]
+        },
+        "initial": {
+          "items": []
+        }
+      }
+    }
+  ]
+}

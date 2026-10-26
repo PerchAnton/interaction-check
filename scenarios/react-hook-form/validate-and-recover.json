@@ -1,0 +1,64 @@
+{
+  "schema": 1,
+  "name": "react-hook-form / validate-and-recover",
+  "steps": [
+    {
+      "event": {
+        "op": "new",
+        "title": ""
+      },
+      "expect": {
+        "value": "",
+        "dirty": false,
+        "touched": false,
+        "error": null
+      }
+    },
+    {
+      "event": {
+        "op": "validate"
+      },
+      "expect": {
+        "lastValid": false,
+        "error": "required"
+      }
+    },
+    {
+      "event": {
+        "op": "input",
+        "value": "ab"
+      },
+      "expect": {
+        "dirty": true,
+        "touched": true
+      }
+    },
+    {
+      "event": {
+        "op": "validate"
+      },
+      "expect": {
+        "lastValid": false,
+        "error": "minLength"
+      }
+    },
+    {
+      "event": {
+        "op": "input",
+        "value": "ready"
+      },
+      "expect": {
+        "value": "ready"
+      }
+    },
+    {
+      "event": {
+        "op": "validate"
+      },
+      "expect": {
+        "lastValid": true,
+        "error": null
+      }
+    }
+  ]
+}

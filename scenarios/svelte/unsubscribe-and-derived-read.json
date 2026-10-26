@@ -1,0 +1,67 @@
+{
+  "schema": 1,
+  "name": "svelte / unsubscribe-and-derived-read",
+  "steps": [
+    {
+      "event": {
+        "op": "new",
+        "title": "a"
+      },
+      "expect": {
+        "seen": [
+          {
+            "title": "a",
+            "saved": false
+          }
+        ]
+      }
+    },
+    {
+      "event": {
+        "op": "unsubscribe"
+      },
+      "expect": {
+        "seen": [
+          {
+            "title": "a",
+            "saved": false
+          }
+        ]
+      }
+    },
+    {
+      "event": {
+        "op": "title",
+        "value": "b"
+      },
+      "expect": {
+        "upper": "B",
+        "value": {
+          "title": "b"
+        },
+        "seen": [
+          {
+            "title": "a",
+            "saved": false
+          }
+        ]
+      }
+    },
+    {
+      "event": {
+        "op": "save"
+      },
+      "expect": {
+        "value": {
+          "saved": true
+        },
+        "seen": [
+          {
+            "title": "a",
+            "saved": false
+          }
+        ]
+      }
+    }
+  ]
+}

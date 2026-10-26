@@ -1,0 +1,77 @@
+{
+  "schema": 1,
+  "name": "yup / boolean-cast",
+  "steps": [
+    {
+      "event": {
+        "op": "validate",
+        "mode": "cast",
+        "data": {
+          "name": "Ada",
+          "age": 20,
+          "enabled": "false"
+        }
+      },
+      "expect": {
+        "valid": true,
+        "output": {
+          "name": "Ada",
+          "age": 20,
+          "enabled": false
+        },
+        "keys": [
+          "age",
+          "enabled",
+          "name"
+        ],
+        "paths": [],
+        "inputUnchanged": true
+      }
+    },
+    {
+      "event": {
+        "op": "validate",
+        "mode": "strict",
+        "data": {
+          "name": "Ada",
+          "age": 20,
+          "enabled": "false"
+        }
+      },
+      "expect": {
+        "valid": false,
+        "output": null,
+        "paths": [
+          "enabled"
+        ],
+        "inputUnchanged": true
+      }
+    },
+    {
+      "event": {
+        "op": "validate",
+        "mode": "cast",
+        "data": {
+          "name": "🧪",
+          "age": 0,
+          "enabled": false
+        }
+      },
+      "expect": {
+        "valid": true,
+        "output": {
+          "name": "🧪",
+          "age": 0,
+          "enabled": false
+        },
+        "keys": [
+          "age",
+          "enabled",
+          "name"
+        ],
+        "paths": [],
+        "inputUnchanged": true
+      }
+    }
+  ]
+}

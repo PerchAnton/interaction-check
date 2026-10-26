@@ -1,0 +1,63 @@
+{
+  "schema": 1,
+  "name": "arktype / undeclared-key-delete",
+  "steps": [
+    {
+      "event": {
+        "op": "validate",
+        "data": {
+          "name": "Ada",
+          "age": 20,
+          "extra": "x"
+        }
+      },
+      "expect": {
+        "valid": true,
+        "output": {
+          "name": "Ada",
+          "age": 20
+        },
+        "keys": [
+          "age",
+          "name"
+        ],
+        "inputUnchanged": true
+      }
+    },
+    {
+      "event": {
+        "op": "validate",
+        "data": {
+          "name": "",
+          "age": 20
+        }
+      },
+      "expect": {
+        "valid": false,
+        "output": null,
+        "paths": [
+          "name"
+        ],
+        "inputUnchanged": true
+      }
+    },
+    {
+      "event": {
+        "op": "validate",
+        "data": {
+          "name": "Grace",
+          "age": 0
+        }
+      },
+      "expect": {
+        "valid": true,
+        "keys": [
+          "age",
+          "name"
+        ],
+        "paths": [],
+        "inputUnchanged": true
+      }
+    }
+  ]
+}

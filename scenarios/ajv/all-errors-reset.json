@@ -1,0 +1,66 @@
+{
+  "schema": 1,
+  "name": "ajv / all-errors-reset",
+  "steps": [
+    {
+      "event": {
+        "op": "validate",
+        "coerce": false,
+        "data": {
+          "name": "",
+          "age": -1
+        }
+      },
+      "expect": {
+        "valid": false,
+        "paths": [
+          "/age",
+          "/name"
+        ],
+        "inputUnchanged": true
+      }
+    },
+    {
+      "event": {
+        "op": "validate",
+        "coerce": false,
+        "data": {
+          "name": "Ada"
+        }
+      },
+      "expect": {
+        "valid": false,
+        "paths": [
+          "/age"
+        ],
+        "inputUnchanged": true
+      }
+    },
+    {
+      "event": {
+        "op": "validate",
+        "coerce": false,
+        "data": {
+          "name": "Ada",
+          "age": 20,
+          "enabled": false
+        }
+      },
+      "expect": {
+        "valid": true,
+        "output": {
+          "name": "Ada",
+          "age": 20,
+          "enabled": false
+        },
+        "keys": [
+          "age",
+          "enabled",
+          "name"
+        ],
+        "paths": [],
+        "inputUnchanged": true
+      }
+    }
+  ]
+}

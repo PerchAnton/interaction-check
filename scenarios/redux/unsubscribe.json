@@ -1,0 +1,58 @@
+{
+  "schema": 1,
+  "name": "redux / unsubscribe",
+  "steps": [
+    {
+      "event": {
+        "op": "new"
+      },
+      "expect": {
+        "seen": []
+      }
+    },
+    {
+      "event": {
+        "op": "title",
+        "value": "A"
+      },
+      "expect": {
+        "seen": [
+          {
+            "count": 0,
+            "title": "A"
+          }
+        ]
+      }
+    },
+    {
+      "event": {
+        "op": "unsubscribe"
+      },
+      "expect": {
+        "seen": [
+          {
+            "count": 0,
+            "title": "A"
+          }
+        ]
+      }
+    },
+    {
+      "event": {
+        "op": "title",
+        "value": "B"
+      },
+      "expect": {
+        "value": {
+          "title": "B"
+        },
+        "seen": [
+          {
+            "count": 0,
+            "title": "A"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,59 @@
+{
+  "schema": 1,
+  "name": "robot / guard-and-recovery",
+  "steps": [
+    {
+      "event": {
+        "op": "new",
+        "value": "old"
+      },
+      "expect": {
+        "state": "idle"
+      }
+    },
+    {
+      "event": {
+        "op": "edit"
+      },
+      "expect": {
+        "state": "editing"
+      }
+    },
+    {
+      "event": {
+        "op": "input",
+        "value": " "
+      },
+      "expect": {
+        "draft": " "
+      }
+    },
+    {
+      "event": {
+        "op": "save"
+      },
+      "expect": {
+        "state": "editing",
+        "value": "old"
+      }
+    },
+    {
+      "event": {
+        "op": "input",
+        "value": "ready"
+      },
+      "expect": {
+        "draft": "ready"
+      }
+    },
+    {
+      "event": {
+        "op": "save"
+      },
+      "expect": {
+        "state": "idle",
+        "value": "ready"
+      }
+    }
+  ]
+}

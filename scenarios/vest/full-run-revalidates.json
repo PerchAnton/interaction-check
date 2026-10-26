@@ -1,0 +1,51 @@
+{
+  "schema": 1,
+  "name": "vest / full-run-revalidates",
+  "steps": [
+    {
+      "event": {
+        "op": "new"
+      },
+      "expect": {
+        "testCount": 0
+      }
+    },
+    {
+      "event": {
+        "op": "run",
+        "name": "Ada",
+        "age": 20,
+        "only": "all"
+      },
+      "expect": {
+        "valid": true
+      }
+    },
+    {
+      "event": {
+        "op": "run",
+        "name": "",
+        "age": 20,
+        "only": "all"
+      },
+      "expect": {
+        "valid": false,
+        "errorFields": [
+          "name"
+        ]
+      }
+    },
+    {
+      "event": {
+        "op": "run",
+        "name": "Grace",
+        "age": 18,
+        "only": "all"
+      },
+      "expect": {
+        "valid": true,
+        "errorFields": []
+      }
+    }
+  ]
+}

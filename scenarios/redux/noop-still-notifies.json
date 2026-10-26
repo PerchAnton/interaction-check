@@ -1,0 +1,63 @@
+{
+  "schema": 1,
+  "name": "redux / noop-still-notifies",
+  "steps": [
+    {
+      "event": {
+        "op": "new"
+      },
+      "expect": {
+        "value": {
+          "count": 0,
+          "title": ""
+        },
+        "seen": [],
+        "order": []
+      }
+    },
+    {
+      "event": {
+        "op": "noop"
+      },
+      "expect": {
+        "seen": [
+          {
+            "count": 0,
+            "title": ""
+          }
+        ],
+        "order": [
+          "before:0",
+          "after:0"
+        ]
+      }
+    },
+    {
+      "event": {
+        "op": "set",
+        "value": 2
+      },
+      "expect": {
+        "value": {
+          "count": 2
+        },
+        "seen": [
+          {
+            "count": 0,
+            "title": ""
+          },
+          {
+            "count": 2,
+            "title": ""
+          }
+        ],
+        "order": [
+          "before:0",
+          "after:0",
+          "before:0",
+          "after:2"
+        ]
+      }
+    }
+  ]
+}

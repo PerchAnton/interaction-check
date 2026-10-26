@@ -1,0 +1,51 @@
+{
+  "schema": 1,
+  "name": "solid / dispose-observer",
+  "steps": [
+    {
+      "event": {
+        "op": "new",
+        "left": "A",
+        "right": "B"
+      },
+      "expect": {
+        "seen": [
+          "A"
+        ]
+      }
+    },
+    {
+      "event": {
+        "op": "stop"
+      },
+      "expect": {
+        "seen": [
+          "A"
+        ]
+      }
+    },
+    {
+      "event": {
+        "op": "set",
+        "side": "left",
+        "value": "C"
+      },
+      "expect": {
+        "seen": [
+          "A"
+        ]
+      }
+    },
+    {
+      "event": {
+        "op": "select",
+        "side": "right"
+      },
+      "expect": {
+        "seen": [
+          "A"
+        ]
+      }
+    }
+  ]
+}

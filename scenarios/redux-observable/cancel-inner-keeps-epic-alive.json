@@ -1,0 +1,65 @@
+{
+  "schema": 1,
+  "name": "redux-observable / cancel-inner-keeps-epic-alive",
+  "steps": [
+    {
+      "event": {
+        "op": "new"
+      },
+      "expect": {
+        "completed": []
+      }
+    },
+    {
+      "event": {
+        "op": "request",
+        "id": "a"
+      },
+      "expect": {
+        "completed": []
+      }
+    },
+    {
+      "event": {
+        "op": "cancel"
+      },
+      "expect": {
+        "completed": []
+      }
+    },
+    {
+      "event": {
+        "op": "emit",
+        "id": "a",
+        "value": "stale"
+      },
+      "expect": {
+        "completed": []
+      }
+    },
+    {
+      "event": {
+        "op": "request",
+        "id": "b"
+      },
+      "expect": {
+        "completed": []
+      }
+    },
+    {
+      "event": {
+        "op": "emit",
+        "id": "b",
+        "value": "fresh"
+      },
+      "expect": {
+        "completed": [
+          {
+            "id": "b",
+            "value": "fresh"
+          }
+        ]
+      }
+    }
+  ]
+}

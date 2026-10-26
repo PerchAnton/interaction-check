@@ -1,0 +1,45 @@
+{
+  "schema": 1,
+  "name": "robot / cancel-does-not-commit",
+  "steps": [
+    {
+      "event": {
+        "op": "new",
+        "value": "old"
+      },
+      "expect": {
+        "state": "idle",
+        "value": "old",
+        "draft": "old"
+      }
+    },
+    {
+      "event": {
+        "op": "edit"
+      },
+      "expect": {
+        "state": "editing"
+      }
+    },
+    {
+      "event": {
+        "op": "input",
+        "value": "new"
+      },
+      "expect": {
+        "value": "old",
+        "draft": "new"
+      }
+    },
+    {
+      "event": {
+        "op": "cancel"
+      },
+      "expect": {
+        "state": "idle",
+        "value": "old",
+        "draft": "old"
+      }
+    }
+  ]
+}

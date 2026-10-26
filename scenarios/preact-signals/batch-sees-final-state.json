@@ -1,0 +1,62 @@
+{
+  "schema": 1,
+  "name": "preact-signals / batch-sees-final-state",
+  "steps": [
+    {
+      "event": {
+        "op": "new",
+        "left": "A",
+        "right": "B"
+      },
+      "expect": {
+        "seen": [
+          "A"
+        ]
+      }
+    },
+    {
+      "event": {
+        "op": "batch",
+        "left": "C",
+        "right": "D",
+        "side": "right"
+      },
+      "expect": {
+        "selected": "D",
+        "seen": [
+          "A",
+          "D"
+        ]
+      }
+    },
+    {
+      "event": {
+        "op": "batch",
+        "left": "E",
+        "right": "D",
+        "side": "right"
+      },
+      "expect": {
+        "selected": "D",
+        "seen": [
+          "A",
+          "D"
+        ]
+      }
+    },
+    {
+      "event": {
+        "op": "select",
+        "side": "left"
+      },
+      "expect": {
+        "selected": "E",
+        "seen": [
+          "A",
+          "D",
+          "E"
+        ]
+      }
+    }
+  ]
+}

@@ -432,5 +432,346 @@
       "integrity": "sha512-sJ4mjol8uQsHV0gOJzzjwXfh2Fwm+Sz0+8deqiTm4jGbMdjzNSW+xZCFm0kUa870uhd8yi+DpKnZb5Kc4apa0Q==",
       "shasum": "cea02e554a483c7334a64a3ca2c0e4b703ba8531"
     }
+  },
+  "yup": {
+    "version": "1.7.1",
+    "gitHead": "b413bf65ecdbea965a8e22060a16b5caa9b2c39b",
+    "license": "MIT",
+    "engines": null,
+    "repository": {
+      "url": "git+https://github.com/jquense/yup.git",
+      "type": "git"
+    },
+    "peerDependencies": null,
+    "dist": {
+      "tarball": "https://registry.npmjs.org/yup/-/yup-1.7.1.tgz",
+      "integrity": "sha512-GKHFX2nXul2/4Dtfxhozv701jLQHdf6J34YDh2cEkpqoo8le5Mg6/LrdseVLrFarmFygZTlfIhHx/QKfb/QWXw==",
+      "shasum": "4c47c6bb367df08d4bc597f8c4c4f5fc4277f6ab"
+    }
+  },
+  "valibot": {
+    "version": "1.5.0",
+    "gitHead": "7fd7c0f44509e8fa069291735bb4914db2cc75f7",
+    "license": "MIT",
+    "engines": null,
+    "repository": {
+      "url": "git+https://github.com/open-circle/valibot.git",
+      "type": "git"
+    },
+    "peerDependencies": {
+      "typescript": ">=5"
+    },
+    "dist": {
+      "tarball": "https://registry.npmjs.org/valibot/-/valibot-1.5.0.tgz",
+      "integrity": "sha512-nil6AkP2TChWL43Z5uJ6GTxX01CUA+g8LWUM+N/rB9NBbkUMaUsi9PUNzlUPgoKASgmx9f7eGOYpJ04/fSa6FQ==",
+      "shasum": "c05adda6b2823807bb0248e2952c35e1a50046fd"
+    }
+  },
+  "zod": {
+    "version": "4.6.7",
+    "gitHead": "b500a2ee95134f81d74da7911d7378dd2853d042",
+    "license": "MIT",
+    "engines": null,
+    "repository": {
+      "url": "git+https://github.com/colinhacks/zod.git",
+      "type": "git"
+    },
+    "peerDependencies": null,
+    "dist": {
+      "tarball": "https://registry.npmjs.org/zod/-/zod-4.6.7.tgz",
+      "integrity": "sha512-g8W2D2kU6a8untc053fX1uVBKzM7yqAxW/3zwk83+6RyF2+SKOuV+c0wBDhUwzV1PaGapmZH+rmcUzPf+3CGwg==",
+      "shasum": "e806cf64a7f4e37635ce9f2f52c04c3766f75e5b"
+    }
+  },
+  "ajv": {
+    "version": "8.20.0",
+    "gitHead": "0fba0b8e649909613cfce0999b149cd08f4a4987",
+    "license": "MIT",
+    "engines": null,
+    "repository": {
+      "url": "git+https://github.com/ajv-validator/ajv.git",
+      "type": "git"
+    },
+    "peerDependencies": null,
+    "dist": {
+      "tarball": "https://registry.npmjs.org/ajv/-/ajv-8.20.0.tgz",
+      "integrity": "sha512-Thbli+OlOj+iMPYFBVBfJ3OmCAnaSyNn4M1vz9T6Gka5Jt9ba/HIR56joy65tY6kx/FCF5VXNB819Y7/GUrBGA==",
+      "shasum": "304b3636add88ba7d936760dd50ece006dea95f9"
+    }
+  },
+  "joi": {
+    "version": "18.3.0",
+    "gitHead": "b3973e5e6d72a9b0d15b697dd3079bc40e0b1353",
+    "license": "BSD-3-Clause",
+    "engines": {
+      "node": ">= 20"
+    },
+    "repository": {
+      "url": "git://github.com/hapijs/joi.git",
+      "type": "git"
+    },
+    "peerDependencies": null,
+    "dist": {
+      "tarball": "https://registry.npmjs.org/joi/-/joi-18.3.0.tgz",
+      "integrity": "sha512-/RwAK4BAfzcdbdFg073tzq4/xhY6Q7lMd5AmjqTL6pu0QFJdEmtswgm8BvgwXvOKuPNYQ8XrdQrrW/gF65LiNw==",
+      "shasum": "c63eb2f25082fe9c443f48c2a8e5a7a11ce3a5a1"
+    }
+  },
+  "superstruct": {
+    "version": "2.0.2",
+    "gitHead": "4b87da17bf03a6c59d8b9cd0131f85ecca10f7d2",
+    "license": "MIT",
+    "engines": {
+      "node": ">=14.0.0"
+    },
+    "repository": {
+      "url": "git://github.com/ianstormtaylor/superstruct.git",
+      "type": "git"
+    },
+    "peerDependencies": null,
+    "dist": {
+      "tarball": "https://registry.npmjs.org/superstruct/-/superstruct-2.0.2.tgz",
+      "integrity": "sha512-uV+TFRZdXsqXTL2pRvujROjdZQ4RAlBUS5BTh9IGm+jTqQntYThciG/qu57Gs69yjnVUSqdxF9YLmSnpupBW9A==",
+      "shasum": "3f6d32fbdc11c357deff127d591a39b996300c54"
+    }
+  },
+  "arktype": {
+    "version": "2.2.9",
+    "gitHead": null,
+    "license": "MIT",
+    "engines": null,
+    "repository": {
+      "url": "git+https://github.com/arktypeio/arktype.git",
+      "type": "git",
+      "directory": "ark/type"
+    },
+    "peerDependencies": null,
+    "dist": {
+      "tarball": "https://registry.npmjs.org/arktype/-/arktype-2.2.9.tgz",
+      "integrity": "sha512-Cja0IMEn19rB35on9da1i1z6QMasuS7ULffXbetCry09jvCGYT8Bi1KgYiqri5FymF4nQAXkM90yksYkgSK2EA==",
+      "shasum": "00547f096b3841e9fb2054de8ab57187ca84a547"
+    }
+  },
+  "vest": {
+    "version": "6.3.4",
+    "gitHead": "972d0e5b3863788681e01bfaf19d8b53006d4291",
+    "license": "MIT",
+    "engines": null,
+    "repository": {
+      "url": "git+https://github.com/ealush/vest.git",
+      "type": "git",
+      "directory": "packages/vest"
+    },
+    "peerDependencies": null,
+    "dist": {
+      "tarball": "https://registry.npmjs.org/vest/-/vest-6.3.4.tgz",
+      "integrity": "sha512-P3Lg3Q4l0DdggdIfr4SxfXGc0xjlzWTQ43363bnchsgP9Bqm1wQpHyD+aP5WVTerVsmy9jEpYP8nxoT2rgwRtQ==",
+      "shasum": "70c3c1af1cde98b3ed43e410f05ac97c53ef4d2a"
+    }
+  },
+  "immutable": {
+    "version": "5.1.9",
+    "gitHead": "329f7a680efa262c310b938a343295880eefe4fc",
+    "license": "MIT",
+    "engines": null,
+    "repository": {
+      "url": "git://github.com/immutable-js/immutable-js.git",
+      "type": "git"
+    },
+    "peerDependencies": null,
+    "dist": {
+      "tarball": "https://registry.npmjs.org/immutable/-/immutable-5.1.9.tgz",
+      "integrity": "sha512-m8nVez3rwrgmWxtLMt1ZYXB2Lv7OKYn/disyxAlSDYAlKSlFoPPfIAmAM/M5xqL4m4C/wAPw7S2/CNaUii1Hxg==",
+      "shasum": "ac23c3a01992ab665e14ac9ffff298f28cd74a0c"
+    }
+  },
+  "reselect": {
+    "version": "5.3.0",
+    "gitHead": "73e20494780057cd44f2debc143eb7ef6178e19a",
+    "license": "MIT",
+    "engines": null,
+    "repository": {
+      "url": "git+https://github.com/reduxjs/reselect.git",
+      "type": "git"
+    },
+    "peerDependencies": null,
+    "dist": {
+      "tarball": "https://registry.npmjs.org/reselect/-/reselect-5.3.0.tgz",
+      "integrity": "sha512-XGoLeRAVzUTcJ1qkxPQhDJyIZ5d6zzZD9nT7AEZOaaU9UbWclhycElmhO+VD5bFeLuzhPBaOV2oXC8uG35ZSpg==",
+      "shasum": "0a3e3ed4436bdf2ab7c5e0f392dab2c062595d61"
+    }
+  },
+  "@preact/signals-core": {
+    "version": "1.14.4",
+    "gitHead": null,
+    "license": "MIT",
+    "engines": null,
+    "repository": {
+      "url": "https://github.com/preactjs/signals",
+      "type": "git"
+    },
+    "peerDependencies": null,
+    "dist": {
+      "tarball": "https://registry.npmjs.org/@preact/signals-core/-/signals-core-1.14.4.tgz",
+      "integrity": "sha512-HNB6HYeYKhQbJ1aKl+YRjrS4+QWHLKX6qKoUsfS/m0vqzsVaEBiZiaKbG/e+NKk2ch5ALQr/ihWaMHxiCuuWHA==",
+      "shasum": "d3588cbda237fcb3c8a8e478f6cc370653609eb7"
+    }
+  },
+  "solid-js": {
+    "version": "1.9.17",
+    "gitHead": null,
+    "license": "MIT",
+    "engines": null,
+    "repository": {
+      "url": "git+https://github.com/solidjs/solid.git",
+      "type": "git"
+    },
+    "peerDependencies": null,
+    "dist": {
+      "tarball": "https://registry.npmjs.org/solid-js/-/solid-js-1.9.17.tgz",
+      "integrity": "sha512-4GAmLOWPfNV8H9Jfn2LSFTpNEG6jiOKPiwd5lnLGQtehHaX6l3TOLzJqQ7mqwB/3k1Yy3zyumFVopmc/tm34ow==",
+      "shasum": "9f8444b3667f756c233dce15f76e431cf9a86480"
+    }
+  },
+  "redux": {
+    "version": "5.0.1",
+    "gitHead": "50b010210df25c470386f7e39a9389a4a77b3842",
+    "license": "MIT",
+    "engines": null,
+    "repository": {
+      "url": "git+https://github.com/reduxjs/redux.git",
+      "type": "git"
+    },
+    "peerDependencies": null,
+    "dist": {
+      "tarball": "https://registry.npmjs.org/redux/-/redux-5.0.1.tgz",
+      "integrity": "sha512-M9/ELqF6fy8FwmkpnF0S3YKOqMyoWJ4+CS5Efg2ct3oY9daQvd/Pc71FpGZsVsbl3Cpb+IIcjBDUnnyBdQbq4w==",
+      "shasum": "97fa26881ce5746500125585d5642c77b6e9447b"
+    }
+  },
+  "svelte": {
+    "version": "5.57.2",
+    "gitHead": null,
+    "license": "MIT",
+    "engines": {
+      "node": ">=18"
+    },
+    "repository": {
+      "url": "git+https://github.com/sveltejs/svelte.git",
+      "type": "git",
+      "directory": "packages/svelte"
+    },
+    "peerDependencies": null,
+    "dist": {
+      "tarball": "https://registry.npmjs.org/svelte/-/svelte-5.57.2.tgz",
+      "integrity": "sha512-1YiPCAXT0Ct6g1vOMmSLa0Nsc3QRMvtDF32ihgglGVrugIuIK38RyDiFNXVDhtQ81TJjSO57NdMw6DyYLqSGDQ==",
+      "shasum": "708ba9778114dc59457894055c9b034a4e0c86e0"
+    }
+  },
+  "robot3": {
+    "version": "1.4.0",
+    "gitHead": "bde04654c082c3ba4a54ed57c29d91fbc59e54a9",
+    "license": "BSD-2-Clause",
+    "engines": null,
+    "repository": {
+      "url": "git+https://github.com/matthewp/robot.git",
+      "type": "git",
+      "directory": "packages/core"
+    },
+    "peerDependencies": null,
+    "dist": {
+      "tarball": "https://registry.npmjs.org/robot3/-/robot3-1.4.0.tgz",
+      "integrity": "sha512-M7m12+Sx8SVgw72OMKcB9Eq6S0SKgj48sGRWHqFcND8+GDQBr7cZAdMlTWokcP6sslIdSW7hEYLjr17OJ+nh3w==",
+      "shasum": "d64cbd3276bc6e72437059768734946dbf429701"
+    }
+  },
+  "@formkit/core": {
+    "version": "2.1.2",
+    "gitHead": null,
+    "license": "MIT",
+    "engines": null,
+    "repository": {
+      "url": "git+https://github.com/formkit/formkit.git",
+      "type": "git",
+      "directory": "packages/core"
+    },
+    "peerDependencies": null,
+    "dist": {
+      "tarball": "https://registry.npmjs.org/@formkit/core/-/core-2.1.2.tgz",
+      "integrity": "sha512-uv3NUXQkqyjvT2VILdcDWvO99Ql69zA93RiInqBXMyuA6UyFTJvc/LQt352diP951k0bDGWG4ar0g1GI2/EtYQ==",
+      "shasum": "e1a262af2cd3c18272c0030aa4fd1b99199a38ef"
+    }
+  },
+  "redux-saga": {
+    "version": "1.5.1",
+    "gitHead": null,
+    "license": "MIT",
+    "engines": null,
+    "repository": {
+      "url": "https://github.com/redux-saga/redux-saga/tree/main/packages/core",
+      "type": "git"
+    },
+    "peerDependencies": null,
+    "dist": {
+      "tarball": "https://registry.npmjs.org/redux-saga/-/redux-saga-1.5.1.tgz",
+      "integrity": "sha512-ZwnV/p+ABHoaDzyBrZshmIG/axRQG6AQJre8p9t1bPI/i6UzE5C9jGG9wgSKi8ojLMVyFLwmiDwFtuaul9c3wQ==",
+      "shasum": "2d6b971eb8c0f359d7d9c8dcd72830d928044e8f"
+    }
+  },
+  "redux-observable": {
+    "version": "3.0.0-rc.3",
+    "gitHead": "a544c2d6aa99b8546e089da94bbf5bbef69d08cd",
+    "license": "MIT",
+    "engines": null,
+    "repository": {
+      "url": "git+https://github.com/redux-observable/redux-observable.git",
+      "type": "git"
+    },
+    "peerDependencies": {
+      "rxjs": ">=7 <8",
+      "redux": ">=5 <6"
+    },
+    "dist": {
+      "tarball": "https://registry.npmjs.org/redux-observable/-/redux-observable-3.0.0-rc.3.tgz",
+      "integrity": "sha512-L6uoVPQQp3yeeEiANvTxE/XsKhBTYOjH7VNpdmgAsHioxPFceWa9+KEQTkk8qlE+FC7hUALSEM6grSpVxC01Bw==",
+      "shasum": "a7343a5c74a4fca58c00f86bf272b8d152b44137"
+    }
+  },
+  "react-hook-form": {
+    "version": "7.91.0",
+    "gitHead": "de3c9469df8b28315265178b58909ee05aa57b74",
+    "license": "MIT",
+    "engines": {
+      "node": ">=18.0.0"
+    },
+    "repository": {
+      "url": "git+https://github.com/react-hook-form/react-hook-form.git",
+      "type": "git"
+    },
+    "peerDependencies": {
+      "react": "^16.8.0 || ^17 || ^18 || ^19",
+      "@types/react": "*"
+    },
+    "dist": {
+      "tarball": "https://registry.npmjs.org/react-hook-form/-/react-hook-form-7.91.0.tgz",
+      "integrity": "sha512-5BEBUnCBwa28AFXYTYmOaB/+CSpJ/+CWVASHEvIGUzFdHyUiPHeRhG7r5hOZ8nZi0yP7pbHdFNXO/p31EKTJFQ==",
+      "shasum": "751ffa4eef441562b7417727e247446ce7d2a002"
+    }
+  },
+  "eventemitter3": {
+    "version": "5.0.4",
+    "gitHead": "b0144e940ace8add8f335a8adfbed9284eb419f3",
+    "license": "MIT",
+    "engines": null,
+    "repository": {
+      "url": "git://github.com/primus/eventemitter3.git",
+      "type": "git"
+    },
+    "peerDependencies": null,
+    "dist": {
+      "tarball": "https://registry.npmjs.org/eventemitter3/-/eventemitter3-5.0.4.tgz",
+      "integrity": "sha512-mlsTRyGaPBjPedk6Bvw+aqbsXDtoAyAzm5MO7JgU+yVRyMQ5O8bD4Kcci7BS85f93veegeCPkL8R4GLClnjLFw==",
+      "shasum": "a86d66170433712dde814707ac52b5271ceb1feb"
+    }
   }
 }

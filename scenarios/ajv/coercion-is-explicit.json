@@ -1,0 +1,77 @@
+{
+  "schema": 1,
+  "name": "ajv / coercion-is-explicit",
+  "steps": [
+    {
+      "event": {
+        "op": "validate",
+        "coerce": false,
+        "data": {
+          "name": "Ada",
+          "age": "20"
+        }
+      },
+      "expect": {
+        "valid": false,
+        "paths": [
+          "/age"
+        ],
+        "output": {
+          "age": "20",
+          "enabled": true
+        },
+        "inputUnchanged": true
+      }
+    },
+    {
+      "event": {
+        "op": "validate",
+        "coerce": true,
+        "data": {
+          "name": "Ada",
+          "age": "20"
+        }
+      },
+      "expect": {
+        "valid": true,
+        "output": {
+          "name": "Ada",
+          "age": 20,
+          "enabled": true
+        },
+        "keys": [
+          "age",
+          "enabled",
+          "name"
+        ],
+        "paths": [],
+        "inputUnchanged": true
+      }
+    },
+    {
+      "event": {
+        "op": "validate",
+        "coerce": false,
+        "data": {
+          "name": "Ada",
+          "age": 20
+        }
+      },
+      "expect": {
+        "valid": true,
+        "output": {
+          "name": "Ada",
+          "age": 20,
+          "enabled": true
+        },
+        "keys": [
+          "age",
+          "enabled",
+          "name"
+        ],
+        "paths": [],
+        "inputUnchanged": true
+      }
+    }
+  ]
+}

@@ -1,0 +1,71 @@
+{
+  "schema": 1,
+  "name": "redux / replace-reducer-keeps-state",
+  "steps": [
+    {
+      "event": {
+        "op": "new"
+      },
+      "expect": {
+        "value": {
+          "count": 0
+        }
+      }
+    },
+    {
+      "event": {
+        "op": "set",
+        "value": 7
+      },
+      "expect": {
+        "value": {
+          "count": 7
+        }
+      }
+    },
+    {
+      "event": {
+        "op": "replace"
+      },
+      "expect": {
+        "value": {
+          "count": 7,
+          "title": "",
+          "ready": true
+        },
+        "seen": [
+          {
+            "count": 7,
+            "title": ""
+          },
+          {
+            "count": 7,
+            "title": "",
+            "ready": true
+          }
+        ],
+        "order": [
+          "before:0",
+          "after:7"
+        ]
+      }
+    },
+    {
+      "event": {
+        "op": "noop"
+      },
+      "expect": {
+        "value": {
+          "count": 7,
+          "ready": true
+        },
+        "order": [
+          "before:0",
+          "after:7",
+          "before:7",
+          "after:7"
+        ]
+      }
+    }
+  ]
+}

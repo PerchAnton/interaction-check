@@ -46,3 +46,36 @@ for (const [name, initial, invalid, probe] of [
     }
   });
 }
+
+for (const [name, initial, invalid, probe] of [
+  [
+    "immutable-js",
+    { op: "new", title: "A" },
+    { op: "batch", title: "changed", item: null },
+    { op: "title", value: "A" },
+  ],
+  [
+    "preact-signals",
+    { op: "new", left: "A", right: "B" },
+    { op: "batch", left: "changed", right: "changed", side: "unknown" },
+    { op: "stop" },
+  ],
+  [
+    "solid",
+    { op: "new", left: "A", right: "B" },
+    { op: "batch", left: "changed", right: "changed", side: "unknown" },
+    { op: "stop" },
+  ],
+]) {
+  test(`${name}: invalid final argument preserves native values and observations`, async () => {
+    const { create } = await import(`../consumers/${name}.mjs`);
+    const adapter = create();
+    try {
+      const before = structuredClone(await adapter.step(initial));
+      await assert.rejects(async () => adapter.step(invalid));
+      assert.deepEqual(await adapter.step(probe), before);
+    } finally {
+      adapter.close?.();
+    }
+  });
+}

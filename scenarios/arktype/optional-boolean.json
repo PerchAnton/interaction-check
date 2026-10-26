@@ -1,0 +1,70 @@
+{
+  "schema": 1,
+  "name": "arktype / optional-boolean",
+  "steps": [
+    {
+      "event": {
+        "op": "validate",
+        "data": {
+          "name": "Ada",
+          "age": 20,
+          "enabled": false
+        }
+      },
+      "expect": {
+        "valid": true,
+        "output": {
+          "name": "Ada",
+          "age": 20,
+          "enabled": false
+        },
+        "keys": [
+          "age",
+          "enabled",
+          "name"
+        ],
+        "paths": [],
+        "inputUnchanged": true
+      }
+    },
+    {
+      "event": {
+        "op": "validate",
+        "data": {
+          "name": "Ada",
+          "age": 20,
+          "enabled": "false"
+        }
+      },
+      "expect": {
+        "valid": false,
+        "output": null,
+        "paths": [
+          "enabled"
+        ],
+        "inputUnchanged": true
+      }
+    },
+    {
+      "event": {
+        "op": "validate",
+        "data": {
+          "name": "🧪",
+          "age": 0
+        }
+      },
+      "expect": {
+        "valid": true,
+        "output": {
+          "name": "🧪",
+          "age": 0
+        },
+        "keys": [
+          "age",
+          "name"
+        ],
+        "inputUnchanged": true
+      }
+    }
+  ]
+}

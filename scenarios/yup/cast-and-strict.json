@@ -1,0 +1,74 @@
+{
+  "schema": 1,
+  "name": "yup / cast-and-strict",
+  "steps": [
+    {
+      "event": {
+        "op": "validate",
+        "mode": "cast",
+        "data": {
+          "name": " Ada ",
+          "age": "20",
+          "extra": "x"
+        }
+      },
+      "expect": {
+        "valid": true,
+        "output": {
+          "name": "Ada",
+          "age": 20,
+          "enabled": true
+        },
+        "keys": [
+          "age",
+          "enabled",
+          "name"
+        ],
+        "paths": [],
+        "inputUnchanged": true
+      }
+    },
+    {
+      "event": {
+        "op": "validate",
+        "mode": "strict",
+        "data": {
+          "name": "Ada",
+          "age": "20",
+          "enabled": true
+        }
+      },
+      "expect": {
+        "valid": false,
+        "output": null,
+        "paths": [
+          "age"
+        ],
+        "inputUnchanged": true
+      }
+    },
+    {
+      "event": {
+        "op": "validate",
+        "mode": "strict",
+        "data": {
+          "name": "Ada",
+          "age": 20
+        }
+      },
+      "expect": {
+        "valid": true,
+        "output": {
+          "name": "Ada",
+          "age": 20
+        },
+        "keys": [
+          "age",
+          "name"
+        ],
+        "paths": [],
+        "inputUnchanged": true
+      }
+    }
+  ]
+}

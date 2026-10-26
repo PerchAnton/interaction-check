@@ -1,0 +1,48 @@
+{
+  "schema": 1,
+  "name": "vest / reset-clears-retained-results",
+  "steps": [
+    {
+      "event": {
+        "op": "new"
+      },
+      "expect": {
+        "testCount": 0
+      }
+    },
+    {
+      "event": {
+        "op": "run",
+        "name": "",
+        "age": 0,
+        "only": "all"
+      },
+      "expect": {
+        "errorCount": 2
+      }
+    },
+    {
+      "event": {
+        "op": "reset"
+      },
+      "expect": {
+        "testCount": 0,
+        "errorCount": 0,
+        "errorFields": []
+      }
+    },
+    {
+      "event": {
+        "op": "run",
+        "name": "Ada",
+        "age": 20,
+        "only": "all"
+      },
+      "expect": {
+        "valid": true,
+        "errorCount": 0,
+        "testCount": 2
+      }
+    }
+  ]
+}

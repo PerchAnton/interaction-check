@@ -1,0 +1,64 @@
+{
+  "schema": 1,
+  "name": "reselect / derived-filter-order",
+  "steps": [
+    {
+      "event": {
+        "op": "new"
+      },
+      "expect": {
+        "titles": []
+      }
+    },
+    {
+      "event": {
+        "op": "append",
+        "title": "A",
+        "done": true
+      },
+      "expect": {
+        "titles": [
+          "A"
+        ]
+      }
+    },
+    {
+      "event": {
+        "op": "append",
+        "title": "B",
+        "done": true
+      },
+      "expect": {
+        "titles": [
+          "A",
+          "B"
+        ]
+      }
+    },
+    {
+      "event": {
+        "op": "toggle",
+        "at": 0
+      },
+      "expect": {
+        "titles": [
+          "B"
+        ],
+        "recomputations": 4
+      }
+    },
+    {
+      "event": {
+        "op": "toggle",
+        "at": 0
+      },
+      "expect": {
+        "titles": [
+          "A",
+          "B"
+        ],
+        "recomputations": 5
+      }
+    }
+  ]
+}

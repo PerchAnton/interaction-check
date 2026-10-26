@@ -1,0 +1,57 @@
+{
+  "schema": 1,
+  "name": "arktype / reject-coercion-and-negative",
+  "steps": [
+    {
+      "event": {
+        "op": "validate",
+        "data": {
+          "name": "Ada",
+          "age": "20"
+        }
+      },
+      "expect": {
+        "valid": false,
+        "output": null,
+        "paths": [
+          "age"
+        ],
+        "inputUnchanged": true
+      }
+    },
+    {
+      "event": {
+        "op": "validate",
+        "data": {
+          "name": "Ada",
+          "age": -1
+        }
+      },
+      "expect": {
+        "valid": false,
+        "output": null,
+        "paths": [
+          "age"
+        ],
+        "inputUnchanged": true
+      }
+    },
+    {
+      "event": {
+        "op": "validate",
+        "data": {
+          "name": "Ada",
+          "age": 20
+        }
+      },
+      "expect": {
+        "valid": true,
+        "output": {
+          "age": 20
+        },
+        "paths": [],
+        "inputUnchanged": true
+      }
+    }
+  ]
+}

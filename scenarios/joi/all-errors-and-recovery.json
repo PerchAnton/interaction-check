@@ -1,0 +1,68 @@
+{
+  "schema": 1,
+  "name": "joi / all-errors-and-recovery",
+  "steps": [
+    {
+      "event": {
+        "op": "validate",
+        "convert": true,
+        "data": {
+          "name": "",
+          "age": -1
+        }
+      },
+      "expect": {
+        "valid": false,
+        "output": null,
+        "paths": [
+          "age",
+          "name"
+        ],
+        "inputUnchanged": true
+      }
+    },
+    {
+      "event": {
+        "op": "validate",
+        "convert": true,
+        "data": {
+          "name": "Ada",
+          "age": 1.5
+        }
+      },
+      "expect": {
+        "valid": false,
+        "output": null,
+        "paths": [
+          "age"
+        ],
+        "inputUnchanged": true
+      }
+    },
+    {
+      "event": {
+        "op": "validate",
+        "convert": true,
+        "data": {
+          "name": "Ada",
+          "age": 20
+        }
+      },
+      "expect": {
+        "valid": true,
+        "output": {
+          "name": "Ada",
+          "age": 20,
+          "enabled": true
+        },
+        "keys": [
+          "age",
+          "enabled",
+          "name"
+        ],
+        "paths": [],
+        "inputUnchanged": true
+      }
+    }
+  ]
+}

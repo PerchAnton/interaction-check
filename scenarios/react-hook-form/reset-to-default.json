@@ -1,0 +1,48 @@
+{
+  "schema": 1,
+  "name": "react-hook-form / reset-to-default",
+  "steps": [
+    {
+      "event": {
+        "op": "new",
+        "title": "base"
+      },
+      "expect": {
+        "value": "base",
+        "dirty": false
+      }
+    },
+    {
+      "event": {
+        "op": "input",
+        "value": "changed"
+      },
+      "expect": {
+        "value": "changed",
+        "dirty": true,
+        "touched": true
+      }
+    },
+    {
+      "event": {
+        "op": "reset"
+      },
+      "expect": {
+        "value": "base",
+        "dirty": false,
+        "touched": false,
+        "error": null
+      }
+    },
+    {
+      "event": {
+        "op": "input",
+        "value": "base"
+      },
+      "expect": {
+        "dirty": false,
+        "touched": true
+      }
+    }
+  ]
+}

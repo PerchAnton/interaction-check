@@ -1,0 +1,50 @@
+{
+  "schema": 1,
+  "name": "reselect / equal-result-reference",
+  "steps": [
+    {
+      "event": {
+        "op": "new"
+      },
+      "expect": {
+        "titles": [],
+        "recomputations": 1
+      }
+    },
+    {
+      "event": {
+        "op": "append",
+        "title": "pending",
+        "done": false
+      },
+      "expect": {
+        "titles": [],
+        "recomputations": 2,
+        "same": true
+      }
+    },
+    {
+      "event": {
+        "op": "toggle",
+        "at": 0
+      },
+      "expect": {
+        "titles": [
+          "pending"
+        ],
+        "recomputations": 3,
+        "same": false
+      }
+    },
+    {
+      "event": {
+        "op": "theme",
+        "value": "dark"
+      },
+      "expect": {
+        "recomputations": 3,
+        "same": true
+      }
+    }
+  ]
+}
