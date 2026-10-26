@@ -1,0 +1,62 @@
+{
+  "schema": 1,
+  "name": "lexical / 03-redo-branch",
+  "steps": [
+    {
+      "event": {
+        "op": "new",
+        "text": "a"
+      },
+      "expect": {
+        "text": "a"
+      }
+    },
+    {
+      "event": {
+        "op": "select",
+        "from": 1,
+        "to": 1
+      },
+      "expect": {
+        "text": "a"
+      }
+    },
+    {
+      "event": {
+        "op": "insert",
+        "text": "b"
+      },
+      "expect": {
+        "text": "ab"
+      }
+    },
+    {
+      "event": {
+        "op": "undo"
+      },
+      "expect": {
+        "text": "a",
+        "redo": 1
+      }
+    },
+    {
+      "event": {
+        "op": "insert",
+        "text": "c"
+      },
+      "expect": {
+        "text": "ac",
+        "redo": 0
+      }
+    },
+    {
+      "event": {
+        "op": "redo"
+      },
+      "expect": {
+        "text": "ac",
+        "redo": 0
+      }
+    }
+  ]
+}

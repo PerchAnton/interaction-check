@@ -1,0 +1,63 @@
+{
+  "schema": 1,
+  "name": "zustand / 03-replace-and-initial",
+  "steps": [
+    {
+      "event": {
+        "op": "new",
+        "title": "A🙂"
+      },
+      "expect": {
+        "initial": {
+          "title": "A🙂",
+          "saved": false
+        },
+        "keys": [
+          "saved",
+          "title"
+        ]
+      }
+    },
+    {
+      "event": {
+        "op": "saved"
+      },
+      "expect": {
+        "initial": {
+          "saved": false
+        }
+      }
+    },
+    {
+      "event": {
+        "op": "replace",
+        "value": "界"
+      },
+      "expect": {
+        "value": {
+          "title": "界"
+        },
+        "initial": {
+          "title": "A🙂",
+          "saved": false
+        },
+        "keys": [
+          "title"
+        ]
+      }
+    },
+    {
+      "event": {
+        "op": "same"
+      },
+      "expect": {
+        "notifications": [
+          {
+            "value": "界",
+            "previous": "A🙂"
+          }
+        ]
+      }
+    }
+  ]
+}

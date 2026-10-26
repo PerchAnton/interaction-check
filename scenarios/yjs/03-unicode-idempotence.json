@@ -1,0 +1,50 @@
+{
+  "schema": 1,
+  "name": "yjs / 03-unicode-idempotence",
+  "steps": [
+    {
+      "event": {
+        "op": "new",
+        "text": "🙂"
+      },
+      "expect": {
+        "a": "🙂"
+      }
+    },
+    {
+      "event": {
+        "op": "insert",
+        "peer": "a",
+        "index": 2,
+        "text": "界"
+      },
+      "expect": {
+        "a": "🙂界"
+      }
+    },
+    {
+      "event": {
+        "op": "sync",
+        "from": "a",
+        "to": "b"
+      },
+      "expect": {
+        "b": "🙂界"
+      }
+    },
+    {
+      "event": {
+        "op": "sync",
+        "from": "a",
+        "to": "b"
+      },
+      "expect": {
+        "b": "🙂界",
+        "undo": [
+          1,
+          0
+        ]
+      }
+    }
+  ]
+}

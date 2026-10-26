@@ -1,0 +1,53 @@
+{
+  "schema": 1,
+  "name": "immer / 01-noop-and-sharing",
+  "steps": [
+    {
+      "event": {
+        "op": "new",
+        "title": "old"
+      },
+      "expect": {
+        "same": true
+      }
+    },
+    {
+      "event": {
+        "op": "title",
+        "value": "old"
+      },
+      "expect": {
+        "same": true,
+        "patches": [],
+        "inverse": []
+      }
+    },
+    {
+      "event": {
+        "op": "title",
+        "value": "new"
+      },
+      "expect": {
+        "value": {
+          "title": "new"
+        },
+        "original": {
+          "title": "old"
+        },
+        "same": false,
+        "nested_shared": true
+      }
+    },
+    {
+      "event": {
+        "op": "apply",
+        "direction": "inverse"
+      },
+      "expect": {
+        "value": {
+          "title": "old"
+        }
+      }
+    }
+  ]
+}

@@ -1,2 +1,4 @@
 # gofmt emits LF on every platform; prevent checkout from converting Go sources.
 *.go text eol=lf
+# Prettier checks the same JavaScript sources on Windows and Unix.
+*.mjs text eol=lf

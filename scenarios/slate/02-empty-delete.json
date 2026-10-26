@@ -1,0 +1,62 @@
+{
+  "schema": 1,
+  "name": "slate / 02-empty-delete",
+  "steps": [
+    {
+      "event": {
+        "op": "new",
+        "text": ""
+      },
+      "expect": {
+        "text": "",
+        "undo": 0
+      }
+    },
+    {
+      "event": {
+        "op": "delete"
+      },
+      "expect": {
+        "text": "",
+        "undo": 0
+      }
+    },
+    {
+      "event": {
+        "op": "insert",
+        "text": "hi"
+      },
+      "expect": {
+        "text": "hi",
+        "undo": 1
+      }
+    },
+    {
+      "event": {
+        "op": "select",
+        "from": 0,
+        "to": 2
+      },
+      "expect": {
+        "text": "hi"
+      }
+    },
+    {
+      "event": {
+        "op": "delete"
+      },
+      "expect": {
+        "text": "",
+        "undo": 2
+      }
+    },
+    {
+      "event": {
+        "op": "undo"
+      },
+      "expect": {
+        "text": "hi"
+      }
+    }
+  ]
+}

@@ -1,0 +1,52 @@
+{
+  "schema": 1,
+  "name": "lexical / 02-snapshot-isolation",
+  "steps": [
+    {
+      "event": {
+        "op": "new",
+        "text": "a"
+      },
+      "expect": {
+        "text": "a"
+      }
+    },
+    {
+      "event": {
+        "op": "checkpoint"
+      },
+      "expect": {
+        "checkpoint": "a"
+      }
+    },
+    {
+      "event": {
+        "op": "select",
+        "from": 1,
+        "to": 1
+      },
+      "expect": {
+        "text": "a"
+      }
+    },
+    {
+      "event": {
+        "op": "insert",
+        "text": "b"
+      },
+      "expect": {
+        "text": "ab",
+        "checkpoint": "a"
+      }
+    },
+    {
+      "event": {
+        "op": "roundtrip"
+      },
+      "expect": {
+        "text": "ab",
+        "checkpoint": "a"
+      }
+    }
+  ]
+}

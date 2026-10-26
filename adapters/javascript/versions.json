@@ -1,0 +1,259 @@
+{
+  "slate": {
+    "version": "0.146.0",
+    "gitHead": "b9237ba8077be40578f5882caa498c24955aa7b3",
+    "license": "MIT",
+    "engines": null,
+    "repository": {
+      "url": "git://github.com/ianstormtaylor/slate.git",
+      "type": "git"
+    },
+    "dist": {
+      "tarball": "https://registry.npmjs.org/slate/-/slate-0.146.0.tgz",
+      "integrity": "sha512-MWu3mbJdnY71IdXoh4xSm9WG64Ytn+WFR7MeMCpfEe4XdGNiN4bpOyqq4p6mAKTCWrA/PbwJ0YhSmlKmcErkew==",
+      "shasum": "0f038690264865a90972ca8b782c029e7830f5b4"
+    }
+  },
+  "slate-history": {
+    "version": "0.144.0",
+    "gitHead": "536c3e28518980997479d84595602affe753c267",
+    "license": "MIT",
+    "engines": null,
+    "repository": {
+      "url": "git://github.com/ianstormtaylor/slate.git",
+      "type": "git"
+    },
+    "dist": {
+      "tarball": "https://registry.npmjs.org/slate-history/-/slate-history-0.144.0.tgz",
+      "integrity": "sha512-+ZTjXWyXTSxvzkCC4UW0xd6PTlsP8ZUPEkJXTt9M1SK2HjDisBrgQZbFFk8XxbpLaWZaL5DZIG3/WGPPj3muNg==",
+      "shasum": "e5c986e6a5493a46022fc84da6609a3ebc74e36f"
+    }
+  },
+  "lexical": {
+    "version": "0.52.0",
+    "gitHead": null,
+    "license": "MIT",
+    "engines": null,
+    "repository": {
+      "url": "git+https://github.com/facebook/lexical.git",
+      "type": "git",
+      "directory": "packages/lexical"
+    },
+    "dist": {
+      "tarball": "https://registry.npmjs.org/lexical/-/lexical-0.52.0.tgz",
+      "integrity": "sha512-mePejqwCDaW0GR89IoofJTTlk/EiwwlGhbs1D8qOx/Iw6ieG5D3nh7PSPLv0Csia0UC58HpuV91DilJjqeAWSw==",
+      "shasum": "fe745feb1800c0b5f75caa756c1bc7fccec71ca3"
+    }
+  },
+  "@lexical/headless": {
+    "version": "0.52.0",
+    "gitHead": null,
+    "license": "MIT",
+    "engines": null,
+    "repository": {
+      "url": "git+https://github.com/facebook/lexical.git",
+      "type": "git",
+      "directory": "packages/lexical-headless"
+    },
+    "dist": {
+      "tarball": "https://registry.npmjs.org/@lexical/headless/-/headless-0.52.0.tgz",
+      "integrity": "sha512-/AvKTFBHUzGWqRuWEMGOOizlGTBrnGuu0O3g+IKj+var657uazbheDknhSq3lQGxDosOeesTM52II0kV65mEEQ==",
+      "shasum": "08ead23b570df10e6dc6ddc61bbee3cf1917b603"
+    }
+  },
+  "@lexical/history": {
+    "version": "0.52.0",
+    "gitHead": null,
+    "license": "MIT",
+    "engines": null,
+    "repository": {
+      "url": "git+https://github.com/facebook/lexical.git",
+      "type": "git",
+      "directory": "packages/lexical-history"
+    },
+    "dist": {
+      "tarball": "https://registry.npmjs.org/@lexical/history/-/history-0.52.0.tgz",
+      "integrity": "sha512-UJWmTcru+4KWkk8YtBSQ4dNLYuOJVCyCMFGsaCp/jVJEobwdY//jCTj9idOfE4b3H39kAixe9yQG/FNNOj4ujg==",
+      "shasum": "de2de357ff20d72239f4cb45d838af68eff63b68"
+    }
+  },
+  "@tiptap/core": {
+    "version": "3.32.0",
+    "gitHead": null,
+    "license": "MIT",
+    "engines": null,
+    "repository": {
+      "url": "https://github.com/ueberdosis/tiptap",
+      "type": "git",
+      "directory": "packages/core"
+    },
+    "dist": {
+      "tarball": "https://registry.npmjs.org/@tiptap/core/-/core-3.32.0.tgz",
+      "integrity": "sha512-Ghh2h02GKSqzytQGcLV4espYOG4EHxjj0MsrUB2Vnr47xmlZYRf6r7k2J09H+JpBdaGrWwrTkyBEi5i3c3yy2Q==",
+      "shasum": "b9d1172869fc23637445723878d7d8570d1a20c2"
+    }
+  },
+  "@tiptap/starter-kit": {
+    "version": "3.32.0",
+    "gitHead": null,
+    "license": "MIT",
+    "engines": null,
+    "repository": {
+      "url": "https://github.com/ueberdosis/tiptap",
+      "type": "git",
+      "directory": "packages/starter-kit"
+    },
+    "dist": {
+      "tarball": "https://registry.npmjs.org/@tiptap/starter-kit/-/starter-kit-3.32.0.tgz",
+      "integrity": "sha512-aPYxaevci4PgMrTLsg+baiqI7M1ICd4V9H+zTTdrqs8OUZIbAvj/pNDuHU8uWZyKMu3Dh72t2D6ZdqRu/6aSWw==",
+      "shasum": "e4e4f93110f8122ead00d330aa272b9eddd19ab5"
+    }
+  },
+  "quill": {
+    "version": "2.0.3",
+    "gitHead": "522fd7ee0682498516df7389bacb6f7eb6e92b77",
+    "license": "BSD-3-Clause",
+    "engines": {
+      "npm": ">=8.2.3"
+    },
+    "repository": {
+      "url": "git+https://github.com/slab/quill.git",
+      "type": "git",
+      "directory": "packages/quill"
+    },
+    "dist": {
+      "tarball": "https://registry.npmjs.org/quill/-/quill-2.0.3.tgz",
+      "integrity": "sha512-xEYQBqfYx/sfb33VJiKnSJp8ehloavImQ2A6564GAbqG55PGw1dAWUn1MUbQB62t0azawUS2CZZhWCjO8gRvTw==",
+      "shasum": "752765a31d5a535cdc5717dc49d4e50099365eb1"
+    }
+  },
+  "jsdom": {
+    "version": "30.1.3",
+    "gitHead": "058c0f55f369a70bcb113d660ae562b9066f2d44",
+    "license": "MIT",
+    "engines": {
+      "node": "^22.22.2 || ^24.15.0 || >=26.0.0"
+    },
+    "repository": {
+      "url": "git+https://github.com/jsdom/jsdom.git",
+      "type": "git"
+    },
+    "dist": {
+      "tarball": "https://registry.npmjs.org/jsdom/-/jsdom-30.1.3.tgz",
+      "integrity": "sha512-hQMUPvRgN7KxsfIytDQji7bimuJeRQa6Qo5+iuiZQk5CafeRxLIA10/cG5YCBFNpD9RO3oqIiN4CO1Y44kxqXg==",
+      "shasum": "8917751fc47869ebf53b85028a4140381450fafb"
+    }
+  },
+  "immer": {
+    "version": "11.2.9",
+    "gitHead": "75a290e44ba14bd723c8ef8546b6559c8ef3ae88",
+    "license": "MIT",
+    "engines": null,
+    "repository": {
+      "url": "git+https://github.com/immerjs/immer.git",
+      "type": "git"
+    },
+    "dist": {
+      "tarball": "https://registry.npmjs.org/immer/-/immer-11.2.9.tgz",
+      "integrity": "sha512-IQ4UEtXjZjyefyWjtLEDXUSrF6T2hwjKPi6BIJl3bY/2XXW24d6cNGdXJSBOA/+KNnuiXkZY6DR0C3efolhitA==",
+      "shasum": "025deddab07b73a87aaf99b6ecf2b53267da5ee2"
+    }
+  },
+  "zustand": {
+    "version": "5.0.16",
+    "gitHead": null,
+    "license": "MIT",
+    "engines": {
+      "node": ">=12.20.0"
+    },
+    "repository": {
+      "url": "git+https://github.com/pmndrs/zustand.git",
+      "type": "git"
+    },
+    "dist": {
+      "tarball": "https://registry.npmjs.org/zustand/-/zustand-5.0.16.tgz",
+      "integrity": "sha512-Uv7e327ihlCfayfja3hDc0M64Upev1LWBKpRobdK4NyovDDPeeX4imWXc/wzC1yc6fkYPoAY/ncKVPAs2jrtQw==",
+      "shasum": "5d1fbffc43529a4313dd61b7183b93450638e9d4"
+    }
+  },
+  "xstate": {
+    "version": "5.33.3",
+    "gitHead": null,
+    "license": "MIT",
+    "engines": null,
+    "repository": {
+      "url": "git+https://github.com/statelyai/xstate.git",
+      "type": "git"
+    },
+    "dist": {
+      "tarball": "https://registry.npmjs.org/xstate/-/xstate-5.33.3.tgz",
+      "integrity": "sha512-AnDRjS/GyKHmbA1PyhVCYBqYsA7EGe3KGgeD0ht3NFsXzoz7leX/HQDFX9QlHFJ/ltLHPsgChJYwPzRvB/0b4g==",
+      "shasum": "6dc145fea93544377056cdb3f2958ef97bd99ad1"
+    }
+  },
+  "yjs": {
+    "version": "13.6.33",
+    "gitHead": "9ea3a4fb57b814292ce18dfd13c4f422e44e6c5c",
+    "license": "MIT",
+    "engines": {
+      "npm": ">=8.0.0",
+      "node": ">=16.0.0"
+    },
+    "repository": {
+      "url": "git+https://github.com/yjs/yjs.git",
+      "type": "git"
+    },
+    "dist": {
+      "tarball": "https://registry.npmjs.org/yjs/-/yjs-13.6.33.tgz",
+      "integrity": "sha512-q/UYvr1gOk4XII+Cu1CW2dINjYqJJFifTzogEaIARznrvX7uOlHsdTEXcnOBMuIsrCGEEKdNxi74kyMLZlKVfw==",
+      "shasum": "da54bb9a6463a694ae35e5ed085f718cfe96f138"
+    }
+  },
+  "@automerge/automerge": {
+    "version": "3.5.0",
+    "gitHead": "4d2a8f6bfecfb7f1e4fca126e6d2122ac526f903",
+    "license": "MIT",
+    "engines": null,
+    "repository": {
+      "url": "git+https://github.com/automerge/automerge.git",
+      "type": "git"
+    },
+    "dist": {
+      "tarball": "https://registry.npmjs.org/@automerge/automerge/-/automerge-3.5.0.tgz",
+      "integrity": "sha512-ejbqJWfXWM2QbTcUK/5ugYiQiyOP7LYVAp/RuSvthCc07oek0FClMxEuouuhjrLjVPDSI34RP1ftGc45PF7WRA==",
+      "shasum": "657c70c293349107e25d13e60eafafdd81e40aae"
+    }
+  },
+  "@reduxjs/toolkit": {
+    "version": "2.13.0",
+    "gitHead": "370f7eb6403bdfdb1a2ab5b90fbcfd8eaee7d57b",
+    "license": "MIT",
+    "engines": null,
+    "repository": {
+      "url": "git+https://github.com/reduxjs/redux-toolkit.git",
+      "type": "git"
+    },
+    "dist": {
+      "tarball": "https://registry.npmjs.org/@reduxjs/toolkit/-/toolkit-2.13.0.tgz",
+      "integrity": "sha512-f6jwVRfwW30+tnllz4YcsHHpPYYOE7abcHkyUCovD+P7DyhdAI5prz2Fh/8TLhakjpN+7aIEion1s5L/tvlYlA==",
+      "shasum": "9603bebd496c1872deed336b2fabab891de7ac1f"
+    }
+  },
+  "prettier": {
+    "version": "3.9.10",
+    "gitHead": "bd676aae6a3805672a21d02198e5d17c9cb1a97b",
+    "license": "MIT",
+    "engines": {
+      "node": ">=14"
+    },
+    "repository": {
+      "url": "git+https://github.com/prettier/prettier.git",
+      "type": "git"
+    },
+    "dist": {
+      "tarball": "https://registry.npmjs.org/prettier/-/prettier-3.9.10.tgz",
+      "integrity": "sha512-skGHTH1Yb9QvaTC4hWnRTzEYtCpApF0UMBPz+t/0ZPzP8ihefo/btKd+QA7pUE0fEwA1SbS/NmhyEcstdXOIdA==",
+      "shasum": "ac378e432f1a7381518f2e080816bbaefa38d585"
+    }
+  }
+}

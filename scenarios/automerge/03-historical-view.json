@@ -1,0 +1,56 @@
+{
+  "schema": 1,
+  "name": "automerge / 03-historical-view",
+  "steps": [
+    {
+      "event": {
+        "op": "new",
+        "text": "old"
+      },
+      "expect": {
+        "a": "old"
+      }
+    },
+    {
+      "event": {
+        "op": "checkpoint"
+      },
+      "expect": {
+        "checkpoint": "old"
+      }
+    },
+    {
+      "event": {
+        "op": "insert",
+        "peer": "a",
+        "index": 3,
+        "text": "!"
+      },
+      "expect": {
+        "a": "old!",
+        "checkpoint": "old"
+      }
+    },
+    {
+      "event": {
+        "op": "merge",
+        "from": "a",
+        "to": "b"
+      },
+      "expect": {
+        "b": "old!",
+        "checkpoint": "old"
+      }
+    },
+    {
+      "event": {
+        "op": "roundtrip",
+        "peer": "a"
+      },
+      "expect": {
+        "a": "old!",
+        "checkpoint": "old"
+      }
+    }
+  ]
+}

@@ -1,0 +1,75 @@
+{
+  "schema": 1,
+  "name": "redux-toolkit / 02-duplicates-missing",
+  "steps": [
+    {
+      "event": {
+        "op": "new"
+      },
+      "expect": {
+        "value": {
+          "ids": []
+        }
+      }
+    },
+    {
+      "event": {
+        "op": "add",
+        "id": "a",
+        "title": "first"
+      },
+      "expect": {
+        "value": {
+          "entities": {
+            "a": {
+              "title": "first"
+            }
+          }
+        }
+      }
+    },
+    {
+      "event": {
+        "op": "add",
+        "id": "a",
+        "title": "second"
+      },
+      "expect": {
+        "value": {
+          "entities": {
+            "a": {
+              "title": "first"
+            }
+          }
+        }
+      }
+    },
+    {
+      "event": {
+        "op": "update",
+        "id": "missing",
+        "title": "no"
+      },
+      "expect": {
+        "value": {
+          "ids": [
+            "a"
+          ]
+        }
+      }
+    },
+    {
+      "event": {
+        "op": "remove",
+        "id": "missing"
+      },
+      "expect": {
+        "value": {
+          "ids": [
+            "a"
+          ]
+        }
+      }
+    }
+  ]
+}

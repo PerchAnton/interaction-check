@@ -1,0 +1,60 @@
+{
+  "schema": 1,
+  "name": "redux-toolkit / 01-sorted-entities",
+  "steps": [
+    {
+      "event": {
+        "op": "new"
+      },
+      "expect": {
+        "value": {
+          "ids": []
+        }
+      }
+    },
+    {
+      "event": {
+        "op": "add",
+        "id": "b",
+        "title": "Bravo"
+      },
+      "expect": {
+        "value": {
+          "ids": [
+            "b"
+          ]
+        }
+      }
+    },
+    {
+      "event": {
+        "op": "add",
+        "id": "a",
+        "title": "Alpha"
+      },
+      "expect": {
+        "value": {
+          "ids": [
+            "a",
+            "b"
+          ]
+        }
+      }
+    },
+    {
+      "event": {
+        "op": "update",
+        "id": "b",
+        "title": "Aardvark"
+      },
+      "expect": {
+        "value": {
+          "ids": [
+            "b",
+            "a"
+          ]
+        }
+      }
+    }
+  ]
+}

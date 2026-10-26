@@ -1,0 +1,62 @@
+{
+  "schema": 1,
+  "name": "zustand / 01-selector-notifications",
+  "steps": [
+    {
+      "event": {
+        "op": "new",
+        "title": "old"
+      },
+      "expect": {
+        "notifications": []
+      }
+    },
+    {
+      "event": {
+        "op": "saved"
+      },
+      "expect": {
+        "value": {
+          "saved": true
+        },
+        "notifications": []
+      }
+    },
+    {
+      "event": {
+        "op": "title",
+        "value": "old"
+      },
+      "expect": {
+        "notifications": []
+      }
+    },
+    {
+      "event": {
+        "op": "title",
+        "value": "new"
+      },
+      "expect": {
+        "notifications": [
+          {
+            "value": "new",
+            "previous": "old"
+          }
+        ]
+      }
+    },
+    {
+      "event": {
+        "op": "same"
+      },
+      "expect": {
+        "notifications": [
+          {
+            "value": "new",
+            "previous": "old"
+          }
+        ]
+      }
+    }
+  ]
+}
