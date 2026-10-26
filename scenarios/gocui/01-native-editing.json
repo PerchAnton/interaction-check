@@ -1,0 +1,54 @@
+{
+  "schema": 1,
+  "name": "01-native-editing",
+  "steps": [
+    {
+      "event": {
+        "op": "new",
+        "width": 30
+      },
+      "expect": {
+        "value": ""
+      }
+    },
+    {
+      "event": {
+        "op": "text",
+        "text": "abc"
+      },
+      "expect": {
+        "value": "abc"
+      }
+    },
+    {
+      "event": {
+        "op": "key",
+        "key": "left"
+      },
+      "expect": {
+        "cursor": [
+          2,
+          0
+        ]
+      }
+    },
+    {
+      "event": {
+        "op": "key",
+        "key": "backspace"
+      },
+      "expect": {
+        "value": "ac"
+      }
+    },
+    {
+      "event": {
+        "op": "text",
+        "text": "X"
+      },
+      "expect": {
+        "value": "aXc"
+      }
+    }
+  ]
+}

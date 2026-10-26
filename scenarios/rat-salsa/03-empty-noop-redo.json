@@ -1,0 +1,51 @@
+{
+  "schema": 1,
+  "name": "03-empty-noop-redo",
+  "steps": [
+    {
+      "event": {
+        "op": "new",
+        "text": ""
+      },
+      "expect": {
+        "value": ""
+      }
+    },
+    {
+      "event": {
+        "op": "text",
+        "text": "x"
+      },
+      "expect": {
+        "value": "x"
+      }
+    },
+    {
+      "event": {
+        "op": "key",
+        "key": "undo"
+      },
+      "expect": {
+        "value": ""
+      }
+    },
+    {
+      "event": {
+        "op": "key",
+        "key": "backspace"
+      },
+      "expect": {
+        "value": ""
+      }
+    },
+    {
+      "event": {
+        "op": "key",
+        "key": "redo"
+      },
+      "expect": {
+        "value": "x"
+      }
+    }
+  ]
+}

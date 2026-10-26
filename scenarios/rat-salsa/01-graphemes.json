@@ -1,0 +1,62 @@
+{
+  "schema": 1,
+  "name": "01-graphemes",
+  "steps": [
+    {
+      "event": {
+        "op": "new",
+        "text": "xé界"
+      },
+      "expect": {
+        "value": "xé界",
+        "cursor_graphemes": 3
+      }
+    },
+    {
+      "event": {
+        "op": "key",
+        "key": "left"
+      },
+      "expect": {
+        "cursor_graphemes": 2
+      }
+    },
+    {
+      "event": {
+        "op": "key",
+        "key": "left"
+      },
+      "expect": {
+        "cursor_graphemes": 1
+      }
+    },
+    {
+      "event": {
+        "op": "key",
+        "key": "delete"
+      },
+      "expect": {
+        "value": "x界",
+        "cursor_graphemes": 1
+      }
+    },
+    {
+      "event": {
+        "op": "key",
+        "key": "undo"
+      },
+      "expect": {
+        "value": "xé界"
+      }
+    },
+    {
+      "event": {
+        "op": "key",
+        "key": "redo"
+      },
+      "expect": {
+        "value": "x界"
+      }
+    }
+  ]
+}

@@ -1,0 +1,54 @@
+{
+  "schema": 1,
+  "name": "01-unicode",
+  "steps": [
+    {
+      "event": {
+        "op": "new",
+        "text": "A界",
+        "width": 40
+      },
+      "expect": {
+        "value": "A界",
+        "focused": true
+      }
+    },
+    {
+      "event": {
+        "op": "key",
+        "key": "end"
+      },
+      "expect": {
+        "cursor_codepoints": 2
+      }
+    },
+    {
+      "event": {
+        "op": "key",
+        "key": "left"
+      },
+      "expect": {
+        "cursor_codepoints": 1
+      }
+    },
+    {
+      "event": {
+        "op": "text",
+        "text": "🙂"
+      },
+      "expect": {
+        "value": "A🙂界",
+        "cursor_codepoints": 2
+      }
+    },
+    {
+      "event": {
+        "op": "key",
+        "key": "delete"
+      },
+      "expect": {
+        "value": "A🙂"
+      }
+    }
+  ]
+}

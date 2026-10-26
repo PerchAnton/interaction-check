@@ -1,0 +1,56 @@
+{
+  "schema": 1,
+  "name": "02-readonly",
+  "steps": [
+    {
+      "event": {
+        "op": "new",
+        "text": "fixed",
+        "readonly": true
+      },
+      "expect": {
+        "value": "fixed",
+        "changes": 0
+      }
+    },
+    {
+      "event": {
+        "op": "text",
+        "text": "x"
+      },
+      "expect": {
+        "value": "fixed",
+        "changes": 0
+      }
+    },
+    {
+      "event": {
+        "op": "key",
+        "key": "backspace"
+      },
+      "expect": {
+        "value": "fixed",
+        "changes": 0
+      }
+    },
+    {
+      "event": {
+        "op": "key",
+        "key": "home"
+      },
+      "expect": {
+        "value": "fixed"
+      }
+    },
+    {
+      "event": {
+        "op": "key",
+        "key": "delete"
+      },
+      "expect": {
+        "value": "fixed",
+        "changes": 0
+      }
+    }
+  ]
+}

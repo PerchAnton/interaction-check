@@ -1,0 +1,33 @@
+{
+  "schema": 1,
+  "name": "03-chunk-boundary",
+  "steps": [
+    {
+      "event": {
+        "op": "new",
+        "width": 30
+      },
+      "expect": {
+        "value": ""
+      }
+    },
+    {
+      "event": {
+        "op": "text",
+        "text": "123456789界"
+      },
+      "expect": {
+        "value": "123456789界"
+      }
+    },
+    {
+      "event": {
+        "op": "key",
+        "key": "backspace"
+      },
+      "expect": {
+        "value": "123456789"
+      }
+    }
+  ]
+}

@@ -1,0 +1,57 @@
+{
+  "schema": 1,
+  "name": "01-max-length",
+  "steps": [
+    {
+      "event": {
+        "op": "new",
+        "text": "",
+        "max_length": 3
+      },
+      "expect": {
+        "value": "",
+        "changes": 0
+      }
+    },
+    {
+      "event": {
+        "op": "text",
+        "text": "A界🙂x"
+      },
+      "expect": {
+        "value": "A界🙂",
+        "changes": 3
+      }
+    },
+    {
+      "event": {
+        "op": "key",
+        "key": "left"
+      },
+      "expect": {
+        "value": "A界🙂",
+        "changes": 3
+      }
+    },
+    {
+      "event": {
+        "op": "key",
+        "key": "backspace"
+      },
+      "expect": {
+        "value": "A🙂",
+        "changes": 4
+      }
+    },
+    {
+      "event": {
+        "op": "text",
+        "text": "B"
+      },
+      "expect": {
+        "value": "AB🙂",
+        "changes": 5
+      }
+    }
+  ]
+}

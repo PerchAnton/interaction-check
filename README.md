@@ -172,3 +172,20 @@ Licensed under either the [MIT license](LICENSE-MIT) or the
 [Apache License, Version 2.0](LICENSE-APACHE), at your option.
 Unless explicitly stated otherwise, contributions submitted for inclusion are offered
 under the same dual license.
+
+## Additional external consumers
+
+The third adapter batch adds ten native API examples. Textual and gocui deliberately test proposed fork fixes; upstream approval remains pending. See each adapter README for exact pins and coverage boundaries.
+
+| Consumer | Scenarios / steps | Scope |
+| --- | --- | --- |
+| [prompt-toolkit](adapters/prompt-toolkit/README.md) | 3 / 21 | Native API observations; optional test tooling |
+| [urwid](adapters/urwid/README.md) | 3 / 17 | Native API observations; optional test tooling |
+| [asciimatics](adapters/asciimatics/README.md) | 3 / 15 | Native API observations; optional test tooling |
+| [textual](adapters/textual/README.md) | 3 / 15 | Native API observations; optional test tooling |
+| [reedline](adapters/reedline/README.md) | 3 / 17 | Native API observations; optional test tooling |
+| [rustyline](adapters/rustyline/README.md) | 3 / 17 | Native API observations; optional test tooling |
+| [rat-salsa](adapters/rat-salsa/README.md) | 3 / 18 | Native API observations; optional test tooling |
+| [promptkit](adapters/promptkit/README.md) | 3 / 15 | Native API observations; optional test tooling |
+| [tcell](adapters/tcell/README.md) | 3 / 13 | Native API observations; optional test tooling |
+| [gocui](adapters/gocui/README.md) | 3 / 12 | Native API observations; optional test tooling |

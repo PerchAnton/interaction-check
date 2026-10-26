@@ -1,0 +1,61 @@
+{
+  "schema": 1,
+  "name": "02-validation",
+  "steps": [
+    {
+      "event": {
+        "op": "new",
+        "text": "",
+        "digits_only": true
+      },
+      "expect": {
+        "value": ""
+      }
+    },
+    {
+      "event": {
+        "op": "key",
+        "key": "enter"
+      },
+      "expect": {
+        "submitted": false
+      }
+    },
+    {
+      "event": {
+        "op": "text",
+        "text": "12x"
+      },
+      "expect": {
+        "value": "12x"
+      }
+    },
+    {
+      "event": {
+        "op": "key",
+        "key": "enter"
+      },
+      "expect": {
+        "submitted": false
+      }
+    },
+    {
+      "event": {
+        "op": "key",
+        "key": "backspace"
+      },
+      "expect": {
+        "value": "12"
+      }
+    },
+    {
+      "event": {
+        "op": "key",
+        "key": "enter"
+      },
+      "expect": {
+        "submitted": true
+      }
+    }
+  ]
+}

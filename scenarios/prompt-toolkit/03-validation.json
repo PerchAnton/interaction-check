@@ -1,0 +1,67 @@
+{
+  "schema": 1,
+  "name": "03-validation",
+  "steps": [
+    {
+      "event": {
+        "op": "new",
+        "text": "12",
+        "digits_only": true
+      },
+      "expect": {
+        "value": "12"
+      }
+    },
+    {
+      "event": {
+        "op": "validate"
+      },
+      "expect": {
+        "validation_error": null
+      }
+    },
+    {
+      "event": {
+        "op": "text",
+        "text": "x"
+      },
+      "expect": {
+        "value": "12x"
+      }
+    },
+    {
+      "event": {
+        "op": "validate"
+      },
+      "expect": {
+        "validation_error": "digits required"
+      }
+    },
+    {
+      "event": {
+        "op": "key",
+        "key": "end"
+      },
+      "expect": {
+        "cursor_codepoints": 3
+      }
+    },
+    {
+      "event": {
+        "op": "key",
+        "key": "backspace"
+      },
+      "expect": {
+        "value": "12"
+      }
+    },
+    {
+      "event": {
+        "op": "validate"
+      },
+      "expect": {
+        "validation_error": null
+      }
+    }
+  ]
+}

@@ -1,0 +1,54 @@
+{
+  "schema": 1,
+  "name": "01-unicode",
+  "steps": [
+    {
+      "event": {
+        "op": "new",
+        "text": "A界"
+      },
+      "expect": {
+        "value": "A界",
+        "submitted": false
+      }
+    },
+    {
+      "event": {
+        "op": "key",
+        "key": "left"
+      },
+      "expect": {
+        "value": "A界"
+      }
+    },
+    {
+      "event": {
+        "op": "text",
+        "text": "🙂"
+      },
+      "expect": {
+        "value": "A🙂界"
+      }
+    },
+    {
+      "event": {
+        "op": "key",
+        "key": "delete"
+      },
+      "expect": {
+        "value": "A🙂"
+      }
+    },
+    {
+      "event": {
+        "op": "key",
+        "key": "enter"
+      },
+      "expect": {
+        "value": "A🙂",
+        "submitted": true,
+        "aborted": false
+      }
+    }
+  ]
+}

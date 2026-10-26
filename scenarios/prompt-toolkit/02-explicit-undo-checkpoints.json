@@ -1,0 +1,76 @@
+{
+  "schema": 1,
+  "name": "02-explicit-undo-checkpoints",
+  "steps": [
+    {
+      "event": {
+        "op": "new",
+        "text": ""
+      },
+      "expect": {
+        "value": ""
+      }
+    },
+    {
+      "event": {
+        "op": "checkpoint"
+      },
+      "expect": {
+        "value": ""
+      }
+    },
+    {
+      "event": {
+        "op": "text",
+        "text": "alpha"
+      },
+      "expect": {
+        "value": "alpha"
+      }
+    },
+    {
+      "event": {
+        "op": "key",
+        "key": "undo"
+      },
+      "expect": {
+        "value": ""
+      }
+    },
+    {
+      "event": {
+        "op": "key",
+        "key": "redo"
+      },
+      "expect": {
+        "value": "alpha"
+      }
+    },
+    {
+      "event": {
+        "op": "checkpoint"
+      },
+      "expect": {
+        "value": "alpha"
+      }
+    },
+    {
+      "event": {
+        "op": "text",
+        "text": "界"
+      },
+      "expect": {
+        "value": "alpha界"
+      }
+    },
+    {
+      "event": {
+        "op": "key",
+        "key": "undo"
+      },
+      "expect": {
+        "value": "alpha"
+      }
+    }
+  ]
+}

@@ -41,7 +41,7 @@ jobs:
       fail-fast: false
       matrix:
         os: [ubuntu-24.04, windows-latest]
-        adapter: [bubbles, huh, tview]
+        adapter: [bubbles, huh, tview, tcell, promptkit, gocui]
     defaults:
       run:
         shell: bash
@@ -73,7 +73,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        adapter: [cursive, tui-input, tui-textarea]
+        adapter: [cursive, tui-input, tui-textarea, reedline, rustyline, rat-salsa]
     env:
       CARGO_PROFILE_DEV_DEBUG: '0'
       CARGO_INCREMENTAL: '0'
@@ -84,3 +84,23 @@ jobs:
       - run: cargo +1.99.1 build --locked --manifest-path adapters/${{ matrix.adapter }}/Cargo.toml
       - run: cargo +1.99.1 clippy --locked --manifest-path adapters/${{ matrix.adapter }}/Cargo.toml --all-targets -- -D warnings
       - run: python3 interaction_check.py scenarios/${{ matrix.adapter }}/*.json -- adapters/${{ matrix.adapter }}/target/debug/interaction-check-${{ matrix.adapter }}
+  widgets-python:
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-24.04, windows-latest]
+        adapter: [prompt-toolkit, urwid, asciimatics, textual]
+    defaults:
+      run:
+        shell: bash
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -r adapters/${{ matrix.adapter }}/requirements.txt ruff==0.17.2
+      - run: python -m ruff check --isolated --select E,F,I --ignore E402 adapters/python_protocol.py adapters/${{ matrix.adapter }}/main.py
+      - run: python -m ruff format --isolated --check adapters/python_protocol.py adapters/${{ matrix.adapter }}/main.py
+      - run: python interaction_check.py --timeout 30 scenarios/${{ matrix.adapter }}/*.json -- python adapters/${{ matrix.adapter }}/main.py

@@ -1,0 +1,53 @@
+{
+  "schema": 1,
+  "name": "02-multiline",
+  "steps": [
+    {
+      "event": {
+        "op": "new",
+        "text": "one\n界two"
+      },
+      "expect": {
+        "cursor_bytes": 10
+      }
+    },
+    {
+      "event": {
+        "op": "key",
+        "key": "home"
+      },
+      "expect": {
+        "cursor_bytes": 4
+      }
+    },
+    {
+      "event": {
+        "op": "key",
+        "key": "backspace"
+      },
+      "expect": {
+        "value": "one界two",
+        "cursor_bytes": 3
+      }
+    },
+    {
+      "event": {
+        "op": "text",
+        "text": "\n"
+      },
+      "expect": {
+        "value": "one\n界two",
+        "cursor_bytes": 4
+      }
+    },
+    {
+      "event": {
+        "op": "key",
+        "key": "end"
+      },
+      "expect": {
+        "cursor_bytes": 10
+      }
+    }
+  ]
+}

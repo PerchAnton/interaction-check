@@ -1,0 +1,56 @@
+{
+  "schema": 1,
+  "name": "03-resize",
+  "steps": [
+    {
+      "event": {
+        "op": "new",
+        "text": "abcdef界",
+        "width": 40
+      },
+      "expect": {
+        "value": "abcdef界"
+      }
+    },
+    {
+      "event": {
+        "op": "key",
+        "key": "end"
+      },
+      "expect": {
+        "cursor_codepoints": 7
+      }
+    },
+    {
+      "event": {
+        "op": "resize",
+        "width": 12
+      },
+      "expect": {
+        "value": "abcdef界",
+        "cursor_codepoints": 7,
+        "focused": true
+      }
+    },
+    {
+      "event": {
+        "op": "key",
+        "key": "backspace"
+      },
+      "expect": {
+        "value": "abcdef",
+        "cursor_codepoints": 6
+      }
+    },
+    {
+      "event": {
+        "op": "resize",
+        "width": 60
+      },
+      "expect": {
+        "value": "abcdef",
+        "cursor_codepoints": 6
+      }
+    }
+  ]
+}

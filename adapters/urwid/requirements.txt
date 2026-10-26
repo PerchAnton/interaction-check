@@ -1,0 +1,1 @@
+urwid @ git+https://github.com/urwid/urwid.git@864dfc2b7cffa8fb660ba7c0f18b5e1ea39921c2

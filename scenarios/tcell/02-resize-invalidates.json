@@ -1,0 +1,86 @@
+{
+  "schema": 1,
+  "name": "02-resize-invalidates",
+  "steps": [
+    {
+      "event": {
+        "op": "new",
+        "width": 2,
+        "height": 1
+      },
+      "expect": {
+        "width": 2
+      }
+    },
+    {
+      "event": {
+        "op": "put",
+        "x": 0,
+        "y": 0,
+        "text": "x"
+      },
+      "expect": {
+        "used": 1
+      }
+    },
+    {
+      "event": {
+        "op": "clean",
+        "x": 0,
+        "y": 0
+      },
+      "expect": {
+        "cells": [
+          {
+            "text": "x",
+            "dirty": false
+          },
+          {
+            "text": " "
+          }
+        ]
+      }
+    },
+    {
+      "event": {
+        "op": "resize",
+        "width": 3,
+        "height": 1
+      },
+      "expect": {
+        "cells": [
+          {
+            "text": "x",
+            "dirty": true
+          },
+          {
+            "text": " ",
+            "dirty": true
+          },
+          {
+            "text": " ",
+            "dirty": true
+          }
+        ]
+      }
+    },
+    {
+      "event": {
+        "op": "clear"
+      },
+      "expect": {
+        "cells": [
+          {
+            "text": " "
+          },
+          {
+            "text": " "
+          },
+          {
+            "text": " "
+          }
+        ]
+      }
+    }
+  ]
+}
