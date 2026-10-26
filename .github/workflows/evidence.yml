@@ -3,6 +3,22 @@ on: [push, pull_request]
 permissions:
   contents: read
 jobs:
+  pyee-native:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0
+        with:
+          python-version: '3.12'
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          repository: jfhbrook/pyee
+          ref: cbeca176af1161e8fb52ea7bdc5e8133952358d2
+          path: .artifacts/pyee-source
+          persist-credentials: false
+      - run: python -m pip install -c .artifacts/pyee-source/requirements_dev.txt -r examples/pyee/requirements-audit.txt
+      - run: python examples/pyee/verify.py --source .artifacts/pyee-source --output .artifacts/pyee-audit
   xstate:
     runs-on: ${{ matrix.os }}
     timeout-minutes: 10

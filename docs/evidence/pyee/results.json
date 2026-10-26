@@ -1,0 +1,48 @@
+{
+  "checked_at": "2026-10-26T08:17:22.011085+00:00",
+  "upstream_revision": "cbeca176af1161e8fb52ea7bdc5e8133952358d2",
+  "platform": "macOS-27.0.1-arm64-arm-64bit-Mach-O",
+  "python": "Python 3.12.13",
+  "mutation": "Remove once listener after callback returns, instead of before callback begins. Deliberate local mutation, not an upstream bug.",
+  "candidate_sha256": "6f929d2cd171be002fb2dadee7ac0d5cdf8cef4047f5ac857483e486c8e3cafe",
+  "runs": [
+    {
+      "name": "baseline-original-suite",
+      "returncode": 0,
+      "tests": 53,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "failed_tests": []
+    },
+    {
+      "name": "baseline-with-candidate",
+      "returncode": 0,
+      "tests": 54,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "failed_tests": []
+    },
+    {
+      "name": "mutated-original-suite",
+      "returncode": 0,
+      "tests": 53,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "failed_tests": []
+    },
+    {
+      "name": "mutated-with-candidate",
+      "returncode": 1,
+      "tests": 54,
+      "failures": 1,
+      "errors": 0,
+      "skipped": 0,
+      "failed_tests": [
+        "test_once_is_removed_before_reentrant_emit"
+      ]
+    }
+  ]
+}
