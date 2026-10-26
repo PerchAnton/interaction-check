@@ -67,3 +67,26 @@ jobs:
       - run: cargo +1.96.0 test --locked --manifest-path examples/rust-consumers/Cargo.toml -p pilot-protocol -p pilot-${{ matrix.example }}
       - run: cargo +1.96.0 build --locked --manifest-path examples/rust-consumers/Cargo.toml -p pilot-${{ matrix.example }}
       - run: python examples/verify_rust_consumers.py ${{ matrix.example }}
+  amp-commands:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    env:
+      CARGO_TARGET_DIR: ${{ github.workspace }}/.artifacts/amp-target
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          repository: jmacdonald/amp
+          ref: df97a3c01e6021a464af4204dd64d10eb205f149
+          path: .artifacts/amp-source
+          persist-credentials: false
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0
+        with:
+          python-version: '3.12'
+      - run: rustup toolchain install 1.96.0 --profile minimal
+      - run: |
+          sudo apt-get update
+          sudo apt-get install -y libxcb1-dev libxcb-render0-dev libxcb-shape0-dev libxcb-xfixes0-dev pkg-config
+      - run: python examples/amp/prepare.py .artifacts/amp-source
+      - run: cargo +1.96.0 test --locked --manifest-path .artifacts/amp-source/Cargo.toml --no-run --lib --message-format=json > .artifacts/amp-build.jsonl
+      - run: python examples/amp/verify.py --source .artifacts/amp-source --build-log .artifacts/amp-build.jsonl
