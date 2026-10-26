@@ -1,0 +1,72 @@
+name: Prepare or publish to PyPI
+on:
+  workflow_dispatch:
+    inputs:
+      publish:
+        description: Upload to PyPI (requires a version tag and configured publisher)
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
+concurrency:
+  group: pypi-publication
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        with:
+          python-version: '3.14'
+      - run: python -m pip install build twine
+      - name: Require a matching release tag on main for an upload
+        if: inputs.publish
+        env:
+          RELEASE_REF: ${{ github.ref }}
+        run: |
+          python - <<'PY'
+          import os
+          from packaging.version import Version
+          from interaction_check import VERSION
+          ref = os.environ['RELEASE_REF']
+          if not ref.startswith('refs/tags/v'):
+              raise SystemExit('Upload requires a v-prefixed version tag, not a branch')
+          if Version(ref.removeprefix('refs/tags/v')) != Version(VERSION):
+              raise SystemExit('Tag does not match the package version')
+          PY
+          git merge-base --is-ancestor HEAD origin/main
+      - run: python -m unittest -v
+      - run: python -m build
+      - run: python -m twine check --strict dist/*
+      - run: python tools/check_distribution.py dist
+      - name: Record the verified artifacts
+        run: sha256sum dist/* > SHA256SUMS
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: pypi-distributions
+          path: |
+            dist/*
+            SHA256SUMS
+          if-no-files-found: error
+
+  publish:
+    if: inputs.publish && startsWith(github.ref, 'refs/tags/v') && github.repository == 'PerchAnton/interaction-check'
+    needs: build
+    runs-on: ubuntu-24.04
+    environment:
+      name: pypi
+      url: https://pypi.org/project/interaction-check/
+    permissions:
+      id-token: write
+    steps:
+      - uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
+        with:
+          name: pypi-distributions
+      - run: sha256sum --check SHA256SUMS
+      - uses: pypa/gh-action-pypi-publish@7245906fb61fa33a13554f9d5fb856fe61758086 # v1.14.3

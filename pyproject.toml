@@ -24,6 +24,7 @@ classifiers = [
 Repository = "https://github.com/PerchAnton/interaction-check"
 Documentation = "https://github.com/PerchAnton/interaction-check#readme"
 Issues = "https://github.com/PerchAnton/interaction-check/issues"
+Changelog = "https://github.com/PerchAnton/interaction-check/blob/main/CHANGELOG.md"
 
 [project.scripts]
 interaction-check = "interaction_check:main"

@@ -43,14 +43,71 @@ exports a failing prefix, and replays it. CI repeats this on supported platforms
 Before publishing, use an empty `dist/`, review its contents, require green CI on the
 exact release commit, and record SHA-256 checksums for both assets. Attach only the
 verified artifacts and changelog to a prerelease pointing to that commit. Do not mark
-an alpha as the latest stable release. No automated registry upload is configured.
+an alpha as the latest stable release.
 
 ## Registry publication
 
-PyPI publication is a separate step: confirm the package name/account, choose a scoped
-publishing method, and upload the already checked artifacts. A built wheel or GitHub
-release does not establish ownership of a PyPI name. Install instructions must say
-whether the package is local, from a GitHub asset, or actually available on PyPI.
+### Prepared candidate
+
+`0.1.0a6` / `v0.1.0-alpha.6` is prepared, **not published**. Runtime behavior is
+unchanged from alpha.5; the new version keeps the changed package documentation and
+metadata separate from the immutable alpha.5 archives. The public PyPI JSON endpoint
+returned HTTP 404 for `interaction-check` on 26 October 2026. This does not reserve
+the name or guarantee that PyPI will accept it; recheck immediately before upload.
+
+### One-time owner setup
+
+1. Sign in to the intended PyPI owner account, verify its email and enable 2FA.
+2. In [Publishing](https://pypi.org/manage/account/publishing/), add a pending GitHub
+   Trusted Publisher with these exact fields:
+
+   | Field | Value |
+   | --- | --- |
+   | PyPI project | `interaction-check` |
+   | Repository owner | `PerchAnton` |
+   | Repository name | `interaction-check` |
+   | Workflow filename | `publish.yml` |
+   | Environment | `pypi` |
+
+3. Create the `pypi` GitHub environment in this repository. Require owner approval
+   and restrict deployments to release tags (`v*`). No PyPI API token is needed.
+
+The pending publisher creates the project on the first successful upload. It does
+not reserve its name. Account and environment setup must be completed by an owner;
+these repository files do not configure either service automatically.
+
+### Rehearsal and publication
+
+After merging, run **Prepare or publish to PyPI** from `main`, with `publish=false`
+(the default). The workflow tests the runner, builds wheel + sdist, checks metadata
+and the installed command, and saves `pypi-distributions` with SHA-256 checksums.
+It has no upload permission in this mode. Neither pushes nor PRs trigger publishing.
+
+For an approved release, require green CI on the exact commit, create and push its
+matching version tag, then run the workflow from that tag with `publish=true`:
+
+```sh
+gh workflow run publish.yml --ref v0.1.0-alpha.6 -f publish=true
+```
+
+The build job requires a matching package version and a commit contained in `main`.
+The upload job waits for the `pypi` environment, downloads the verified distributions,
+checks their hashes and uses OIDC with PyPA's publishing action. Build/test jobs have
+no OIDC permission. The upload job does not run project source or build scripts.
+Keep PyPI attestations enabled (the action's default); do not skip duplicate uploads.
+
+After success, verify the [project](https://pypi.org/project/interaction-check/),
+version, license, Python requirement and both archive hashes. In a fresh venv:
+
+```sh
+python -m pip install --index-url https://pypi.org/simple 'interaction-check==0.1.0a6'
+interaction-check --version
+```
+
+Only then change the README's candidate status to published and add registry badges.
+Keep GitHub release assets consistent with the uploaded artifacts. A failed or partial
+upload must be inspected before retrying; never replace a published version's files.
 
 References: [Python packaging guide](https://packaging.python.org/en/latest/guides/writing-pyproject-toml/)
 and [publishing with GitHub Actions](https://packaging.python.org/en/latest/guides/publishing-package-distribution-releases-using-github-actions-ci-cd-workflows/).
+See also [creating a project with Trusted Publishing](https://docs.pypi.org/trusted-publishers/creating-a-project-through-oidc/).
