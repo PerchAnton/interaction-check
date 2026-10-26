@@ -16,13 +16,13 @@
 <text x="54" y="257" font-size="17" fill="#172438" font-weight="700" text-anchor="start">third-party Python packages</text>
 <text x="54" y="280" font-size="14" fill="#526176" font-weight="400" text-anchor="start">Runner uses the standard library</text>
 <rect x="364" y="178" width="312" height="120" rx="14" fill="#ffffff" stroke="#dce3ec"/>
-<text x="386" y="227" font-size="42" fill="#087c79" font-weight="700" text-anchor="start">41 + 6</text>
+<text x="386" y="227" font-size="42" fill="#087c79" font-weight="700" text-anchor="start">49 + 6</text>
 <text x="386" y="257" font-size="17" fill="#172438" font-weight="700" text-anchor="start">passing verification tests</text>
-<text x="386" y="280" font-size="14" fill="#526176" font-weight="400" text-anchor="start">41 runner + 6 focused Node tests</text>
+<text x="386" y="280" font-size="14" fill="#526176" font-weight="400" text-anchor="start">49 runner + 6 focused Node tests</text>
 <rect x="696" y="178" width="312" height="120" rx="14" fill="#ffffff" stroke="#dce3ec"/>
 <text x="718" y="227" font-size="42" fill="#087c79" font-weight="700" text-anchor="start">10 / 79</text>
 <text x="718" y="257" font-size="17" fill="#172438" font-weight="700" text-anchor="start">PdfCraft scenarios / steps</text>
-<text x="718" y="280" font-size="14" fill="#526176" font-weight="400" text-anchor="start">Fresh UI + engine replay passes</text>
+<text x="718" y="280" font-size="14" fill="#526176" font-weight="400" text-anchor="start">Recorded UI + engine replay</text>
 <rect x="32" y="320" width="486" height="282" rx="14" fill="#ffffff" stroke="#dce3ec"/>
 <text x="54" y="355" font-size="21" fill="#172438" font-weight="700" text-anchor="start">A smaller XState example install</text>
 <text x="54" y="380" font-size="14" fill="#526176" font-weight="400" text-anchor="start">Non-root package entries in npm lockfiles</text>
@@ -52,5 +52,5 @@
 <text x="560" y="553" font-size="14" fill="#526176" font-weight="400" text-anchor="start">30 paired samples · macOS arm64</text>
 <text x="560" y="577" font-size="14" fill="#526176" font-weight="400" text-anchor="start">Install and JSON report writing are excluded.</text>
 <text x="32" y="631" font-size="14" fill="#526176" font-weight="400" text-anchor="start">Both methods detect 3 / 3 controlled mutations in our example model; these are not upstream bugs.</text>
-<text x="32" y="655" font-size="14" fill="#526176" font-weight="400" text-anchor="start">Experimental alpha.4 · Python 3.10+ · Raw samples, exact sources and limitations below.</text>
+<text x="32" y="655" font-size="14" fill="#526176" font-weight="400" text-anchor="start">Experimental alpha.5 · Python 3.10+ · Raw samples, exact sources and limitations below.</text>
 </g></svg>

@@ -16,7 +16,7 @@ import tempfile
 import time
 import xml.etree.ElementTree as ET
 
-VERSION = "0.1.0-alpha.4"
+VERSION = "0.1.0a5"
 LIMIT = 1024 * 1024
 MAX_DEPTH = 64
 
@@ -28,6 +28,7 @@ class CheckError(Exception):
         super().__init__(message)
         self.stderr = stderr
         self.trace = None
+        self.failure_step = None
 
 
 def validate_json(value):
@@ -213,7 +214,9 @@ def replay(scenario, command, timeout=5.0, *, trace=False):
                     entry["differences"] = errors
                 entries.append(entry)
             if errors:
-                raise CheckError(f"Step {index} ({step['event']}): " + "; ".join(errors))
+                error = CheckError(f"Step {index} ({step['event']}): " + "; ".join(errors))
+                error.failure_step = index
+                raise error
     except CheckError as error:
         error.stderr = stderr
         if trace:
@@ -275,12 +278,17 @@ def junit_report(results):
 def main(argv=None):
     argv = list(sys.argv[1:] if argv is None else argv)
     parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--version", action="version", version=f"interaction-check {VERSION}")
     parser.add_argument("--timeout", type=float, default=5.0)
     parser.add_argument("--report", type=Path, help="write a JSON report atomically")
     parser.add_argument("--trace", action="store_true",
                         help="include checked events, expectations and actual states in --report")
     parser.add_argument("--junit", type=Path, help="write a JUnit XML report atomically")
+    parser.add_argument("--failure-dir", type=Path,
+                        help="create a new directory for scenarios ending at their first state mismatch")
     parser.add_argument("scenarios", nargs="+", type=Path)
+    if argv in (["--help"], ["-h"], ["--version"]):
+        parser.parse_args(argv)
     if "--" not in argv:
         parser.error("Separate the adapter command with --")
     boundary = argv.index("--")
@@ -291,11 +299,20 @@ def main(argv=None):
     if args.trace and args.report is None:
         parser.error("--trace requires --report")
     try:
-        check_report_paths([path for path in (args.report, args.junit) if path], args.scenarios)
+        destinations = [path for path in (args.report, args.junit) if path]
+        if args.failure_dir is not None:
+            destinations += [args.failure_dir]
+            destinations += [args.failure_dir / f"{index:04d}.json"
+                             for index in range(1, len(args.scenarios) + 1)]
+        check_report_paths(destinations, args.scenarios)
+        if args.failure_dir is not None:
+            # A fresh directory prevents stale exports from looking like this run's results.
+            # The parent must already exist, like the JSON/JUnit report destinations.
+            args.failure_dir.mkdir()
     except (CheckError, OSError, RuntimeError) as error:
         parser.error(str(error))
     results = []
-    for path in args.scenarios:
+    for index, path in enumerate(args.scenarios, 1):
         name = path.name
         try:
             if path.stat().st_size > LIMIT:
@@ -310,11 +327,24 @@ def main(argv=None):
                 result["stderr"] = error.stderr
             if isinstance(error, CheckError) and error.trace is not None:
                 result["trace"] = error.trace
+            if (args.failure_dir is not None and isinstance(error, CheckError)
+                    and error.failure_step is not None):
+                destination = args.failure_dir / f"{index:04d}.json"
+                prefix = dict(scenario, steps=scenario["steps"][:error.failure_step])
+                try:
+                    write_report(destination, json.dumps(prefix, ensure_ascii=False, indent=2) + "\n")
+                    result["failure_scenario"] = str(destination)
+                except (OSError, UnicodeError) as export_error:
+                    result["export_error"] = str(export_error)
+                    print(f"ERROR writing failure scenario {destination}: {export_error}",
+                          file=sys.stderr)
         result["source"] = str(path)
         results.append(result)
         print(("PASS " if result["passed"] else "FAIL ") + result["name"])
         if not result["passed"]:
             print("  " + result["error"])
+            if result.get("failure_scenario"):
+                print("  Scenario: " + result["failure_scenario"])
     report_failed = False
     for destination, render in [
         (args.report, lambda: json.dumps({"version": VERSION, "results": results},
