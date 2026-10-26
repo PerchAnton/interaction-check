@@ -46,6 +46,7 @@ The native candidate, not an extra framework, is the proposed contribution.
 [extended baseline](../../docs/evidence/pyee/baseline-with-candidate.log) ·
 [mutation without candidate](../../docs/evidence/pyee/mutated-original-suite.log) ·
 [mutation with candidate](../../docs/evidence/pyee/mutated-with-candidate.log).
+Logs normalize temporary paths and trailing whitespace; test counts come from JUnit XML.
 
 ## Reproduce
 

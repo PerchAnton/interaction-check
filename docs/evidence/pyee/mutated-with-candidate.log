@@ -6,21 +6,21 @@ __________________ test_once_is_removed_before_reentrant_emit __________________
         """A once handler must not run again during its own nested emission."""
         ee = EventEmitter()
         calls = []
-    
+
         @ee.once("event")
         def once_handler(value):
             calls.append(("once", value))
             if value == 1:
                 assert ee.emit("event", 2) is True
-    
+
         @ee.on("event")
         def persistent_handler(value):
             calls.append(("persistent", value))
-    
+
         assert ee.emit("event", 1) is True
 >       assert calls == [("once", 1), ("persistent", 2), ("persistent", 1)]
 E       AssertionError: assert [('once', 1),...rsistent', 1)] == [('once', 1),...rsistent', 1)]
-E         
+E
 E         At index 1 diff: ('once', 2) != ('persistent', 2)
 E         Left contains one more item: ('persistent', 1)
 E         Use -v to get more diff

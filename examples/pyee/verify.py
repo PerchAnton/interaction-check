@@ -79,6 +79,7 @@ def verify(source, output):
                     mutated.splitlines(True),
                     fromfile="a/pyee/base.py",
                     tofile="b/pyee/base.py",
+                    n=0,
                 )
                 (output / "remove-after-callback.patch").write_text(
                     "".join(diff), encoding="utf-8"
@@ -108,7 +109,14 @@ def verify(source, output):
                 )
                 log = result.stdout + result.stderr
                 (output / (name + ".log")).write_text(
-                    log.replace(str(temp), "<temporary-directory>"), encoding="utf-8"
+                    "\n".join(
+                        line.rstrip()
+                        for line in log.replace(
+                            str(temp), "<temporary-directory>"
+                        ).splitlines()
+                    )
+                    + "\n",
+                    encoding="utf-8",
                 )
                 suite = ET.parse(xml).getroot().find("testsuite")
                 if suite is None:
