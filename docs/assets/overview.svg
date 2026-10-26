@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1040" height="680" viewBox="0 0 1040 680" role="img" aria-labelledby="title description">
+<title id="title">Replay events. Inspect every checked state.</title>
+<desc id="description">A portable JSON trace and a report showing where expectations diverge.</desc>
+<!-- Evidence snapshot: 2026-10-26. Sources and update notes: docs/assets/README.md. -->
+<g font-family="Arial, Helvetica, sans-serif">
+<rect x="0" y="0" width="1040" height="680" rx="20" fill="#f4f7fb"/>
+<rect x="0" y="0" width="1040" height="154" rx="20" fill="#152238"/>
+<rect x="0" y="130" width="1040" height="24" rx="0" fill="#152238"/>
+<rect x="32" y="30" width="5" height="82" rx="2" fill="#6de0cd"/>
+<text x="52" y="48" font-size="14" fill="#c4cede" font-weight="700" text-anchor="start">INTERACTION-CHECK / DEVELOPER TOOL</text>
+<text x="52" y="89" font-size="32" fill="#ffffff" font-weight="700" text-anchor="start">Replay events. Inspect every checked state.</text>
+<text x="52" y="119" font-size="17" fill="#dae3f1" font-weight="400" text-anchor="start">A portable JSON trace and a report showing where expectations diverge.</text>
+<text x="1008" y="48" font-size="13" fill="#c4cede" font-weight="400" text-anchor="end">EVIDENCE · 26 OCT 2026</text>
+<rect x="32" y="178" width="312" height="120" rx="14" fill="#ffffff" stroke="#dce3ec"/>
+<text x="54" y="227" font-size="42" fill="#087c79" font-weight="700" text-anchor="start">0</text>
+<text x="54" y="257" font-size="17" fill="#172438" font-weight="700" text-anchor="start">third-party Python packages</text>
+<text x="54" y="280" font-size="14" fill="#526176" font-weight="400" text-anchor="start">Runner uses the standard library</text>
+<rect x="364" y="178" width="312" height="120" rx="14" fill="#ffffff" stroke="#dce3ec"/>
+<text x="386" y="227" font-size="42" fill="#087c79" font-weight="700" text-anchor="start">41 + 6</text>
+<text x="386" y="257" font-size="17" fill="#172438" font-weight="700" text-anchor="start">passing verification tests</text>
+<text x="386" y="280" font-size="14" fill="#526176" font-weight="400" text-anchor="start">41 runner + 6 focused Node tests</text>
+<rect x="696" y="178" width="312" height="120" rx="14" fill="#ffffff" stroke="#dce3ec"/>
+<text x="718" y="227" font-size="42" fill="#087c79" font-weight="700" text-anchor="start">10 / 79</text>
+<text x="718" y="257" font-size="17" fill="#172438" font-weight="700" text-anchor="start">PdfCraft scenarios / steps</text>
+<text x="718" y="280" font-size="14" fill="#526176" font-weight="400" text-anchor="start">Fresh UI + engine replay passes</text>
+<rect x="32" y="320" width="486" height="282" rx="14" fill="#ffffff" stroke="#dce3ec"/>
+<text x="54" y="355" font-size="21" fill="#172438" font-weight="700" text-anchor="start">A smaller XState example install</text>
+<text x="54" y="380" font-size="14" fill="#526176" font-weight="400" text-anchor="start">Non-root package entries in npm lockfiles</text>
+<text x="54" y="416" font-size="16" fill="#526176" font-weight="400" text-anchor="start">Earlier ten-consumer bundle</text>
+<text x="496" y="416" font-size="19" fill="#526176" font-weight="700" text-anchor="end">120</text>
+<rect x="54" y="429" width="442" height="12" rx="6" fill="#e8edf4"/>
+<rect x="54" y="429" width="442.0" height="12" rx="6" fill="#aab5c5"/>
+<text x="54" y="469" font-size="17" fill="#172438" font-weight="400" text-anchor="start">Focused XState example</text>
+<text x="496" y="469" font-size="19" fill="#087c79" font-weight="700" text-anchor="end">1</text>
+<rect x="54" y="482" width="442" height="12" rx="6" fill="#e8edf4"/>
+<rect x="54" y="482" width="3.683" height="12" rx="1.8416666666666666" fill="#087c79"/>
+<text x="54" y="527" font-size="21" fill="#087c79" font-weight="700" text-anchor="start">119 fewer package entries · 99.2%</text>
+<text x="54" y="553" font-size="14" fill="#526176" font-weight="400" text-anchor="start">Other consumers and formatter are excluded.</text>
+<text x="54" y="577" font-size="14" fill="#526176" font-weight="400" text-anchor="start">XState itself is unchanged; native tests also need 1.</text>
+<rect x="538" y="320" width="470" height="282" rx="14" fill="#ffffff" stroke="#dce3ec"/>
+<text x="560" y="355" font-size="21" fill="#172438" font-weight="700" text-anchor="start">Execution time, including startup</text>
+<text x="560" y="380" font-size="14" fill="#526176" font-weight="400" text-anchor="start">Median wall time · lower is faster</text>
+<text x="560" y="416" font-size="17" fill="#172438" font-weight="400" text-anchor="start">Native tests</text>
+<text x="986" y="416" font-size="19" fill="#526176" font-weight="700" text-anchor="end">74.6 ms</text>
+<rect x="560" y="429" width="426" height="12" rx="6" fill="#e8edf4"/>
+<rect x="560" y="429" width="158.936" height="12" rx="6" fill="#aab5c5"/>
+<text x="560" y="469" font-size="17" fill="#172438" font-weight="400" text-anchor="start">Replay</text>
+<text x="986" y="469" font-size="19" fill="#087c79" font-weight="700" text-anchor="end">183.9 ms</text>
+<rect x="560" y="482" width="426" height="12" rx="6" fill="#e8edf4"/>
+<rect x="560" y="482" width="391.768" height="12" rx="6" fill="#087c79"/>
+<text x="560" y="527" font-size="20" fill="#172438" font-weight="700" text-anchor="start">Replay is 2.46× slower in this pilot.</text>
+<text x="560" y="553" font-size="14" fill="#526176" font-weight="400" text-anchor="start">30 paired samples · macOS arm64</text>
+<text x="560" y="577" font-size="14" fill="#526176" font-weight="400" text-anchor="start">Install and JSON report writing are excluded.</text>
+<text x="32" y="631" font-size="14" fill="#526176" font-weight="400" text-anchor="start">Both methods detect 3 / 3 controlled mutations in our example model; these are not upstream bugs.</text>
+<text x="32" y="655" font-size="14" fill="#526176" font-weight="400" text-anchor="start">Experimental alpha.4 · Python 3.10+ · Raw samples, exact sources and limitations below.</text>
+</g></svg>

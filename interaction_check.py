@@ -16,7 +16,7 @@ import tempfile
 import time
 import xml.etree.ElementTree as ET
 
-VERSION = "0.1.0-alpha.3"
+VERSION = "0.1.0-alpha.4"
 LIMIT = 1024 * 1024
 MAX_DEPTH = 64
 
@@ -27,6 +27,7 @@ class CheckError(Exception):
     def __init__(self, message, *, stderr=""):
         super().__init__(message)
         self.stderr = stderr
+        self.trace = None
 
 
 def validate_json(value):
@@ -170,7 +171,8 @@ def run_adapter(command, payload, timeout):
     return stdout, stderr
 
 
-def replay(scenario, command, timeout=5.0):
+def replay(scenario, command, timeout=5.0, *, trace=False):
+    """Replay a scenario; optionally retain each checked event/expectation/actual state."""
     validate(scenario)
     if not command or not math.isfinite(timeout) or timeout <= 0:
         raise CheckError("A command and a positive finite timeout are required")
@@ -183,6 +185,7 @@ def replay(scenario, command, timeout=5.0):
     if len(payload) > LIMIT:
         raise CheckError("Scenario exceeds 1 MiB")
     stdout, stderr = run_adapter(command, payload, timeout)
+    entries = []
     try:
         try:
             # JSONL is delimited by LF, not Unicode line separators inside strings.
@@ -203,12 +206,23 @@ def replay(scenario, command, timeout=5.0):
                     or response["id"] != index or not isinstance(response.get("state"), dict)):
                 raise CheckError(f"Step {index}: invalid envelope or mismatched reply id")
             errors = differences(step["expect"], response["state"])
+            if trace:
+                entry = {"step": index, "event": step["event"], "expect": step["expect"],
+                         "actual": response["state"], "passed": not errors}
+                if errors:
+                    entry["differences"] = errors
+                entries.append(entry)
             if errors:
                 raise CheckError(f"Step {index} ({step['event']}): " + "; ".join(errors))
     except CheckError as error:
         error.stderr = stderr
+        if trace:
+            error.trace = entries
         raise
-    return {"name": scenario["name"], "passed": True, "steps": len(lines), "stderr": stderr}
+    result = {"name": scenario["name"], "passed": True, "steps": len(lines), "stderr": stderr}
+    if trace:
+        result["trace"] = entries
+    return result
 
 
 def check_report_paths(destinations, scenarios):
@@ -263,6 +277,8 @@ def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--timeout", type=float, default=5.0)
     parser.add_argument("--report", type=Path, help="write a JSON report atomically")
+    parser.add_argument("--trace", action="store_true",
+                        help="include checked events, expectations and actual states in --report")
     parser.add_argument("--junit", type=Path, help="write a JUnit XML report atomically")
     parser.add_argument("scenarios", nargs="+", type=Path)
     if "--" not in argv:
@@ -272,6 +288,8 @@ def main(argv=None):
     command = argv[boundary + 1:]
     if not command or not math.isfinite(args.timeout) or args.timeout <= 0:
         parser.error("Specify an adapter command and a positive finite timeout")
+    if args.trace and args.report is None:
+        parser.error("--trace requires --report")
     try:
         check_report_paths([path for path in (args.report, args.junit) if path], args.scenarios)
     except (CheckError, OSError, RuntimeError) as error:
@@ -285,11 +303,13 @@ def main(argv=None):
             scenario = strict_json(path.read_text(encoding="utf-8"))
             if isinstance(scenario, dict) and isinstance(scenario.get("name"), str) and scenario["name"].strip():
                 name = scenario["name"]
-            result = replay(scenario, command, args.timeout)
+            result = replay(scenario, command, args.timeout, trace=args.trace)
         except (CheckError, OSError, UnicodeError) as error:
             result = {"name": name, "passed": False, "error": str(error)}
             if isinstance(error, CheckError) and error.stderr:
                 result["stderr"] = error.stderr
+            if isinstance(error, CheckError) and error.trace is not None:
+                result["trace"] = error.trace
         result["source"] = str(path)
         results.append(result)
         print(("PASS " if result["passed"] else "FAIL ") + result["name"])

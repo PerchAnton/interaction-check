@@ -1,5 +1,25 @@
 # Validation evidence
 
+## Alpha 4: reviewable trace evidence — 26 October 2026
+
+- 41 runner tests pass locally (34 existing + 7 trace-report tests). The new cases were
+  added before the feature; 5 failed with the previous API/CLI and pass after implementation.
+- `--trace --report FILE` records the checked prefix and mismatching observed state,
+  preserving strict JSONL validation, expectation isolation and compact default reports.
+- The focused XState example passes 3 scenarios / 18 steps and 6 Node tests. Both native
+  assertions and replay detect all 3 deliberately changed example behaviors. These are
+  controlled mutations in our model, not bugs found in XState.
+- A fresh build of PdfCraft's adapter at `255a4e87c320ff0c7007008fb9a62dac6eaf8551`
+  passes all 10 scenarios / 79 steps with the new trace option. The
+  [report](evidence/pdfcraft-alpha4.json) contains actual states and the built executable's
+  hash. Rust 1.99.1/macOS arm64, English locale, system fonts disabled. The full app suite
+  was not repeated for this runner change; consumer dependency pins are unchanged.
+- [Value analysis](VALUE.md) includes all 30 paired timing samples, source counts and
+  install scope. Native tests are faster here; no speed or total-code reduction is claimed.
+
+The new `Replay evidence` workflow checks the focused example and mutations on Linux,
+Windows and macOS. A local pass is not a claim that remote CI has completed.
+
 ## Alpha 3 runner review - 25 October 2026
 
 Local environment: macOS arm64, Python 3.12. The runner is still standard-library-only.
