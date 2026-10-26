@@ -22,6 +22,9 @@ Release snapshot: **49 runner tests**, **0 runtime dependencies**, **12.6 KiB wh
 These are dated release facts; the CI badges above track current main. The handoff is
 manual, and an export must be replayed before sharing. Examples and adapters are separate.
 
+Trying the alpha? [Report a bug](https://github.com/PerchAnton/interaction-check/issues/new?template=bug_report.yml)
+with your runner and adapter versions, or read the [alpha compatibility policy](docs/RELEASING.md#alpha-compatibility).
+
 ## Install the released command
 
 Download the wheel above, then run these commands in its directory:
