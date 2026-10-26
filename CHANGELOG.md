@@ -1,6 +1,10 @@
 # Changelog
 
-## 0.1.0a6 / v0.1.0-alpha.6 — unpublished candidate
+## 0.1.0a6 / v0.1.0-alpha.6
+
+Published to [PyPI](https://pypi.org/project/interaction-check/0.1.0a6/) on
+27 October 2026 (Europe/Kyiv; 26 October UTC). Clean installation, CLI replay,
+failure export and archive hashes were verified. [Evidence](docs/evidence/release-alpha6.json).
 
 - Prepare PyPI metadata, installation instructions and a manual Trusted Publishing
   workflow. Its default mode builds and checks packages without uploading them.

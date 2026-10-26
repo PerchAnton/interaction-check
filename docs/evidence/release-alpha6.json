@@ -1,0 +1,52 @@
+{
+  "recorded_date": "2026-10-27",
+  "timezone": "Europe/Kyiv",
+  "status": "published",
+  "runtime_dependencies": 0,
+  "license": "MIT OR Apache-2.0",
+  "scope": "Package and installation evidence; no claim of upstream adoption or application performance.",
+  "package": "interaction-check",
+  "version": "0.1.0a6",
+  "source_commit": "22bb80ee50d8f469f4a8dda50a060ffeefe70a8a",
+  "tag": "v0.1.0-alpha.6",
+  "registry": "https://pypi.org/project/interaction-check/0.1.0a6/",
+  "registry_metadata": "https://pypi.org/pypi/interaction-check/0.1.0a6/json",
+  "publish_workflow": "https://github.com/PerchAnton/interaction-check/actions/runs/40409505289",
+  "tag_ci": [
+    "https://github.com/PerchAnton/interaction-check/actions/runs/40407934773",
+    "https://github.com/PerchAnton/interaction-check/actions/runs/40407930222"
+  ],
+  "runner_tests": 49,
+  "python_requirement": ">=3.10",
+  "installation": {
+    "system": "macOS arm64",
+    "python": "3.14.3",
+    "fresh_venv": true,
+    "index": "https://pypi.org/simple",
+    "checks": [
+      "exact prerelease install",
+      "pip check",
+      "metadata/version/license/no dependencies",
+      "installed CLI PASS scenario",
+      "original failure expectations exported",
+      "export reproduces mismatch at step 2",
+      "registry archive hashes match upload artifacts"
+    ]
+  },
+  "files": [
+    {
+      "name": "interaction_check-0.1.0a6-py3-none-any.whl",
+      "bytes": 13170,
+      "sha256": "c6e189f37c7995be36b8c4633da08880fed81b4bffb13f7e9a70d540a3cd4555",
+      "url": "https://files.pythonhosted.org/packages/c4/31/4de6750f7bb907a927d3d0915ca3dd42ac95e708171b4b79692db8c32226/interaction_check-0.1.0a6-py3-none-any.whl",
+      "uploaded_at_utc": "2026-10-26T22:06:08.997943Z"
+    },
+    {
+      "name": "interaction_check-0.1.0a6.tar.gz",
+      "bytes": 31051,
+      "sha256": "18f7692170b29603afeaff5cb8c3aaef227612b4e9c437eec45456404b59f596",
+      "url": "https://files.pythonhosted.org/packages/dc/95/b0a6ec0de16f586991fe713a4f9b99bd109b83aa0f3fe0934cff8c1fbcbd/interaction_check-0.1.0a6.tar.gz",
+      "uploaded_at_utc": "2026-10-26T22:06:10.286707Z"
+    }
+  ]
+}

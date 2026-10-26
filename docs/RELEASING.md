@@ -2,16 +2,18 @@
 
 ## Published prerelease
 
-**[v0.1.0-alpha.5](https://github.com/PerchAnton/interaction-check/releases/tag/v0.1.0-alpha.5)**
-was published on **26 October 2026**, with a wheel, source archive and SHA-256
-checksums. Python package metadata and `--version` use **0.1.0a5**. The package is
-not published on PyPI. See the [installation instructions](../README.md#install-the-released-command).
+**[0.1.0a6 on PyPI](https://pypi.org/project/interaction-check/0.1.0a6/)** was published
+on **27 October 2026 (Europe/Kyiv; 26 October UTC)**. The wheel and source archive
+match the checked workflow artifacts. A fresh environment installed the PyPI package
+and verified metadata, the command, failure export and replay.
+[Evidence](evidence/release-alpha6.json) · [Installation](../README.md#install-the-released-command).
+The previous alpha.5 GitHub prerelease remains unchanged.
 
 ## Alpha compatibility
 
 - Alpha releases are experimental. CLI options, Python APIs, report fields and
   adapter behavior may change between releases, even within `0.1.0`.
-- Alpha.5 keeps scenario schema **1** and JSONL protocol **1**. This describes the
+- Alpha.6 keeps scenario schema **1** and JSONL protocol **1**. This describes the
   current release; it does not promise compatibility with every future alpha.
 - Pin the runner release or Git revision and the adapter/consumer revisions
   separately. Before upgrading, read the [changelog](../CHANGELOG.md) and replay
@@ -47,15 +49,19 @@ an alpha as the latest stable release.
 
 ## Registry publication
 
-### Prepared candidate
+### Published version
 
-`0.1.0a6` / `v0.1.0-alpha.6` is prepared, **not published**. Runtime behavior is
+`0.1.0a6` / `v0.1.0-alpha.6` is **published on PyPI**. Runtime behavior is
 unchanged from alpha.5; the new version keeps the changed package documentation and
-metadata separate from the immutable alpha.5 archives. The public PyPI JSON endpoint
-returned HTTP 404 for `interaction-check` on 26 October 2026. This does not reserve
-the name or guarantee that PyPI will accept it; recheck immediately before upload.
+metadata separate from the immutable alpha.5 archives. The first upload used
+[workflow 40409505289](https://github.com/PerchAnton/interaction-check/actions/runs/40409505289)
+and the configured `pypi` environment. Do not rerun this version's upload; prepare
+a new version for any future package change.
 
 ### One-time owner setup
+
+This setup is complete for `PerchAnton/interaction-check`. Keep these identity fields
+unchanged when updating the workflow; the steps below document the configuration.
 
 1. Sign in to the intended PyPI owner account, verify its email and enable 2FA.
 2. In [Publishing](https://pypi.org/manage/account/publishing/), add a pending GitHub
@@ -78,17 +84,14 @@ these repository files do not configure either service automatically.
 
 ### Rehearsal and publication
 
-After merging, run **Prepare or publish to PyPI** from `main`, with `publish=false`
+For future candidates, run **Prepare or publish to PyPI** from `main`, with `publish=false`
 (the default). The workflow tests the runner, builds wheel + sdist, checks metadata
 and the installed command, and saves `pypi-distributions` with SHA-256 checksums.
 It has no upload permission in this mode. Neither pushes nor PRs trigger publishing.
 
 For an approved release, require green CI on the exact commit, create and push its
-matching version tag, then run the workflow from that tag with `publish=true`:
-
-```sh
-gh workflow run publish.yml --ref v0.1.0-alpha.6 -f publish=true
-```
+matching **new** version tag, then run the workflow from that tag with `publish=true`.
+The published `v0.1.0-alpha.6` is a reference for the process, not a tag to upload again.
 
 The build job requires a matching package version and a commit contained in `main`.
 The upload job waits for the `pypi` environment, downloads the verified distributions,
@@ -104,7 +107,7 @@ python -m pip install --index-url https://pypi.org/simple 'interaction-check==0.
 interaction-check --version
 ```
 
-Only then change the README's candidate status to published and add registry badges.
+Only then change the README's candidate status to published.
 Keep GitHub release assets consistent with the uploaded artifacts. A failed or partial
 upload must be inspected before retrying; never replace a published version's files.
 
