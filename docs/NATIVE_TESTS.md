@@ -63,10 +63,12 @@ For [pyee](../examples/pyee/test_once_reentrant.py), the behavior of interest li
 **inside** the callback: the once handler emits the same event again. Preserve that
 ordering in the native test instead of replacing it with two top-level emits. The
 complete pytest candidate asserts the callback order, remaining listeners and another
-later emit. Run it using [the pinned audit environment](../examples/pyee/README.md):
+later emit. After setting up [the pinned audit environment](../examples/pyee/README.md),
+run from the pyee source checkout so Python imports that exact source without installing it:
 
 ```sh
-python -m pytest examples/pyee/test_once_reentrant.py
+cd .artifacts/pyee-source
+python -m pytest ../../examples/pyee/test_once_reentrant.py
 ```
 
 Inspect existing tests first. The full pyee audit found one gap: 53 existing tests miss
