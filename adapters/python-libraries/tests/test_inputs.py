@@ -1,6 +1,8 @@
 """Invalid trace arguments must not partially mutate native fixtures."""
 
+import os
 import sys
+import tempfile
 import types
 import unittest
 from pathlib import Path
@@ -83,6 +85,16 @@ class InputBoundaryTests(unittest.TestCase):
         self.assertEqual(second["hits"], 0)
         self.assertEqual(second["entries"], {"a": 1, "b": 2})
 
+    def test_publishers_do_not_share_listeners_or_topic_state(self):
+        first = create("pypubsub")
+        second = create("pypubsub")
+        first.step({"op": "subscribe", "topic": "document"})
+        second.step({"op": "send", "topic": "document", "data": {"value": 1}})
+        self.assertEqual(first.log, [])
+        first.step({"op": "send", "topic": "document", "data": {"value": 2}})
+        self.assertEqual(first.log, [2])
+        self.assertEqual(second.log, [])
+
     def test_factory_does_not_import_unlisted_modules(self):
         for name in ("os", "../jsonpatch", "consumers.helpers"):
             with self.subTest(name=name), self.assertRaises(ValueError):
@@ -99,6 +111,30 @@ class InputBoundaryTests(unittest.TestCase):
             ),
         ):
             self.assertEqual(replay.main(), 1)
+
+    def test_relative_reports_stay_in_callers_directory(self):
+        previous = Path.cwd()
+        with tempfile.TemporaryDirectory() as directory:
+            try:
+                os.chdir(directory)
+                expected = Path(directory).resolve() / "reports" / "pydantic.json"
+                with (
+                    patch.object(sys, "argv", ["replay.py", "--reports", "reports"]),
+                    patch.object(replay, "MODULES", {"pydantic": "pydantic_model"}),
+                    patch.object(
+                        replay.subprocess,
+                        "run",
+                        return_value=types.SimpleNamespace(returncode=0),
+                    ) as run,
+                ):
+                    self.assertEqual(replay.main(), 0)
+                    command = run.call_args.args[0]
+                    self.assertEqual(
+                        command[command.index("--report") + 1], str(expected)
+                    )
+                    self.assertTrue(expected.parent.is_dir())
+            finally:
+                os.chdir(previous)
 
 
 if __name__ == "__main__":

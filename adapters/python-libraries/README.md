@@ -28,7 +28,7 @@ the runner; adapters receive only events and return observed native state.
 
 ## Coverage
 
-**60 hand-authored scenarios / 222 steps**, plus seven adapter boundary tests.
+**60 hand-authored scenarios / 223 steps**, plus nine adapter boundary tests.
 Versions of direct and transitive dependencies are pinned in `requirements.txt`;
 `requirements.in` lists the twenty direct consumers. Full native upstream test
 suites are not part of these examples. CI replays this collection on Python 3.12
@@ -44,7 +44,7 @@ under Linux, Windows and macOS.
 | [python-jsonschema/referencing](https://github.com/python-jsonschema/referencing) | 0.37.0 | [referencing](consumers/references.py) | 3 / 12 |
 | [holoviz/param](https://github.com/holoviz/param) | 2.4.2 | [param](consumers/parameters.py) | 3 / 10 |
 | [ipython/traitlets](https://github.com/ipython/traitlets) | 5.16.1 | [traitlets](consumers/traits.py) | 3 / 9 |
-| [pallets-eco/blinker](https://github.com/pallets-eco/blinker) | 1.9.0 | [blinker](consumers/blinker_signals.py) | 3 / 13 |
+| [schollii/pypubsub](https://github.com/schollii/pypubsub) | 4.0.7 | [pypubsub](consumers/pubsub_topics.py) | 3 / 14 |
 | [jfhbrook/pyee](https://github.com/jfhbrook/pyee) | 16.0.0 | [pyee](consumers/pyee_events.py) | 3 / 12 |
 | [pyapp-kit/psygnal](https://github.com/pyapp-kit/psygnal) | 0.16.1 | [psygnal](consumers/psygnal_signals.py) | 3 / 9 |
 | [nocarryr/python-dispatch](https://github.com/nocarryr/python-dispatch) | 0.2.3 | [python-dispatch](consumers/dispatch_properties.py) | 3 / 9 |
@@ -67,7 +67,7 @@ under Linux, Windows and macOS.
 - **referencing:** Immutable Registry replacement, JSON pointers and missing-reference recovery. Only explicitly registered resources; no network retrieval.
 - **param:** Native batching, discarded notifications and watcher removal. A batch retains the last Event.old, not necessarily the value before the batch.
 - **traitlets:** Held notifications, rollback on TraitError and observer removal. This fixture covers bounded built-in traits, not arbitrary custom validators.
-- **blinker:** Sender filtering, disconnect/reconnect and muted sends. Receiver lifetime is explicit; no multi-listener ordering or GC timing claim.
+- **pypubsub:** Hierarchical topics, required/unknown message arguments and unsubscribe/reconnect. Explicit topic specifications, isolated Publisher instances and synchronous delivery only.
 - **pyee:** Synchronous once removal before a reentrant emit, no-listener return values and unhandled error recovery. No asyncio, Trio or executor coverage.
 - **psygnal:** Blocked versus paused signals, delivery after context exit, last-event reduction and disconnect. No Qt or threaded delivery.
 - **python-dispatch:** Property equality, coalescing emission locks and unbind. One retained receiver; no assumption about listener ordering.

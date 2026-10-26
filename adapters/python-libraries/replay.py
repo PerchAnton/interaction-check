@@ -16,6 +16,8 @@ def main():
     parser.add_argument("--reports", type=pathlib.Path)
     args = parser.parse_args()
     if args.reports:
+        # Child runners use ROOT as cwd; keep relative paths anchored to the caller.
+        args.reports = args.reports.resolve()
         args.reports.mkdir(parents=True, exist_ok=True)
     status = 0
     for consumer in MODULES:

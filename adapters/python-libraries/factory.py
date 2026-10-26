@@ -11,7 +11,7 @@ MODULES = {
     "referencing": "references",
     "param": "parameters",
     "traitlets": "traits",
-    "blinker": "blinker_signals",
+    "pypubsub": "pubsub_topics",
     "pyee": "pyee_events",
     "psygnal": "psygnal_signals",
     "python-dispatch": "dispatch_properties",

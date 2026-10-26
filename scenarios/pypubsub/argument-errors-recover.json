@@ -1,0 +1,56 @@
+{
+  "schema": 1,
+  "name": "pypubsub / argument-errors-recover",
+  "steps": [
+    {
+      "event": {
+        "op": "subscribe",
+        "topic": "document.changed"
+      },
+      "expect": {
+        "log": [],
+        "error": null
+      }
+    },
+    {
+      "event": {
+        "op": "send",
+        "topic": "document.changed",
+        "data": {}
+      },
+      "expect": {
+        "log": [],
+        "error": "SenderMissingReqdMsgDataError"
+      }
+    },
+    {
+      "event": {
+        "op": "send",
+        "topic": "document.changed",
+        "data": {
+          "value": 1,
+          "extra": 2
+        }
+      },
+      "expect": {
+        "log": [],
+        "error": "SenderUnknownMsgDataError"
+      }
+    },
+    {
+      "event": {
+        "op": "send",
+        "topic": "document.changed",
+        "data": {
+          "value": 3
+        }
+      },
+      "expect": {
+        "log": [
+          3
+        ],
+        "error": null
+      }
+    }
+  ]
+}

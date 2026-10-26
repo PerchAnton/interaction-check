@@ -39,11 +39,6 @@
     "package": "traitlets",
     "version": "5.16.1"
   },
-  "blinker": {
-    "repository": "pallets-eco/blinker",
-    "package": "blinker",
-    "version": "1.9.0"
-  },
   "pyee": {
     "repository": "jfhbrook/pyee",
     "package": "pyee",
@@ -98,5 +93,10 @@
     "repository": "mahmoud/boltons",
     "package": "boltons",
     "version": "26.2.0"
+  },
+  "pypubsub": {
+    "repository": "schollii/pypubsub",
+    "package": "Pypubsub",
+    "version": "4.0.7"
   }
 }

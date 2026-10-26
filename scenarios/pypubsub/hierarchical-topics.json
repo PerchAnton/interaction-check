@@ -1,0 +1,70 @@
+{
+  "schema": 1,
+  "name": "pypubsub / hierarchical-topics",
+  "steps": [
+    {
+      "event": {
+        "op": "subscribe",
+        "topic": "document"
+      },
+      "expect": {
+        "log": [],
+        "error": null
+      }
+    },
+    {
+      "event": {
+        "op": "send",
+        "topic": "document.changed",
+        "data": {
+          "value": 1
+        }
+      },
+      "expect": {
+        "log": [
+          1
+        ],
+        "error": null
+      }
+    },
+    {
+      "event": {
+        "op": "unsubscribe",
+        "topic": "document"
+      },
+      "expect": {
+        "log": [
+          1
+        ],
+        "error": null
+      }
+    },
+    {
+      "event": {
+        "op": "subscribe",
+        "topic": "document.changed"
+      },
+      "expect": {
+        "log": [
+          1
+        ],
+        "error": null
+      }
+    },
+    {
+      "event": {
+        "op": "send",
+        "topic": "document",
+        "data": {
+          "value": 2
+        }
+      },
+      "expect": {
+        "log": [
+          1
+        ],
+        "error": null
+      }
+    }
+  ]
+}
