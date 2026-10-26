@@ -1,0 +1,38 @@
+{
+  "snapshot_date": "2026-10-26",
+  "timezone": "Europe/Kiev",
+  "tag": "v0.1.0-alpha.5",
+  "commit": "72e6f09159fd8dfa11fb6f72e7f0a92264d0ff22",
+  "published_at": "2026-10-26T10:46:34Z",
+  "release_url": "https://github.com/PerchAnton/interaction-check/releases/tag/v0.1.0-alpha.5",
+  "status": "prerelease",
+  "runtime_dependencies": 0,
+  "checks": {
+    "runner_python": 49
+  },
+  "ci": [
+    "https://github.com/PerchAnton/interaction-check/actions/runs/40309500116",
+    "https://github.com/PerchAnton/interaction-check/actions/runs/40309500127"
+  ],
+  "assets": [
+    {
+      "name": "interaction_check-0.1.0a5-py3-none-any.whl",
+      "bytes": 12937,
+      "sha256": "f9db8a25354b61d057da230c8fc7580be34272fb9216fa3c762f71fe74ad4245",
+      "url": "https://github.com/PerchAnton/interaction-check/releases/download/v0.1.0-alpha.5/interaction_check-0.1.0a5-py3-none-any.whl"
+    },
+    {
+      "name": "interaction_check-0.1.0a5.tar.gz",
+      "bytes": 28736,
+      "sha256": "8e334b2e862af0454d2fe4d11cdb6bdfb0406f0f1c2e8a2a8b8c0e5ec16ff7f2",
+      "url": "https://github.com/PerchAnton/interaction-check/releases/download/v0.1.0-alpha.5/interaction_check-0.1.0a5.tar.gz"
+    },
+    {
+      "name": "SHA256SUMS",
+      "bytes": 208,
+      "sha256": "fc90eb081c29ff9987f6584efd2f6c98bc072bca9390305a303b455f18b8b9fc",
+      "url": "https://github.com/PerchAnton/interaction-check/releases/download/v0.1.0-alpha.5/SHA256SUMS"
+    }
+  ],
+  "scope": "Snapshot of the published GitHub release. Asset sizes are compressed downloads, not runtime memory; test counts are scoped checks, not overall coverage."
+}
