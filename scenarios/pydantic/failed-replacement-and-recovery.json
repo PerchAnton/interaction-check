@@ -1,0 +1,66 @@
+{
+  "schema": 1,
+  "name": "pydantic / failed-replacement-and-recovery",
+  "steps": [
+    {
+      "event": {
+        "op": "new",
+        "data": {
+          "count": "bad"
+        }
+      },
+      "expect": {
+        "value": {
+          "name": "Ada",
+          "count": 1,
+          "enabled": true
+        },
+        "valid": false,
+        "paths": [
+          "count",
+          "name"
+        ]
+      }
+    },
+    {
+      "event": {
+        "op": "new",
+        "data": {
+          "name": "B",
+          "count": 2,
+          "extra": 1
+        }
+      },
+      "expect": {
+        "value": {
+          "name": "Ada",
+          "count": 1,
+          "enabled": true
+        },
+        "valid": false,
+        "paths": [
+          "extra"
+        ]
+      }
+    },
+    {
+      "event": {
+        "op": "new",
+        "data": {
+          "name": "B",
+          "count": 0,
+          "enabled": false
+        }
+      },
+      "expect": {
+        "value": {
+          "name": "B",
+          "count": 0,
+          "enabled": false
+        },
+        "valid": true,
+        "paths": []
+      }
+    }
+  ]
+}

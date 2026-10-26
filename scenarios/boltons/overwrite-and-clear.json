@@ -1,0 +1,72 @@
+{
+  "schema": 1,
+  "name": "boltons / overwrite-and-clear",
+  "steps": [
+    {
+      "event": {
+        "op": "put",
+        "key": "a",
+        "value": 1
+      },
+      "expect": {
+        "entries": {
+          "a": 1
+        }
+      }
+    },
+    {
+      "event": {
+        "op": "put",
+        "key": "a",
+        "value": 2
+      },
+      "expect": {
+        "entries": {
+          "a": 2
+        }
+      }
+    },
+    {
+      "event": {
+        "op": "get",
+        "key": "a"
+      },
+      "expect": {
+        "value": 2,
+        "hits": 1
+      }
+    },
+    {
+      "event": {
+        "op": "clear"
+      },
+      "expect": {
+        "entries": {}
+      }
+    },
+    {
+      "event": {
+        "op": "put",
+        "key": "b",
+        "value": 3
+      },
+      "expect": {
+        "entries": {
+          "b": 3
+        }
+      }
+    },
+    {
+      "event": {
+        "op": "get",
+        "key": "b"
+      },
+      "expect": {
+        "value": 3,
+        "entries": {
+          "b": 3
+        }
+      }
+    }
+  ]
+}

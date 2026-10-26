@@ -1,0 +1,85 @@
+{
+  "schema": 1,
+  "name": "jsonschema / defaults-are-annotations",
+  "steps": [
+    {
+      "event": {
+        "op": "validate",
+        "data": {
+          "name": "A",
+          "count": 1
+        }
+      },
+      "expect": {
+        "valid": true,
+        "output": {
+          "name": "A",
+          "count": 1
+        },
+        "paths": [],
+        "input_unchanged": true,
+        "keys": [
+          "count",
+          "name"
+        ],
+        "validators": []
+      }
+    },
+    {
+      "event": {
+        "op": "validate",
+        "data": {
+          "name": "A",
+          "count": 1,
+          "enabled": false
+        }
+      },
+      "expect": {
+        "valid": true,
+        "output": {
+          "name": "A",
+          "count": 1,
+          "enabled": false
+        },
+        "paths": [],
+        "input_unchanged": true,
+        "keys": [
+          "count",
+          "enabled",
+          "name"
+        ],
+        "validators": []
+      }
+    },
+    {
+      "event": {
+        "op": "validate",
+        "data": {
+          "name": "A",
+          "count": 1,
+          "extra": 2
+        }
+      },
+      "expect": {
+        "valid": false,
+        "output": {
+          "name": "A",
+          "count": 1,
+          "extra": 2
+        },
+        "paths": [
+          ""
+        ],
+        "input_unchanged": true,
+        "keys": [
+          "count",
+          "extra",
+          "name"
+        ],
+        "validators": [
+          "additionalProperties"
+        ]
+      }
+    }
+  ]
+}

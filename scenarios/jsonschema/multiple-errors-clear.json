@@ -1,0 +1,85 @@
+{
+  "schema": 1,
+  "name": "jsonschema / multiple-errors-clear",
+  "steps": [
+    {
+      "event": {
+        "op": "validate",
+        "data": {
+          "name": "",
+          "count": -1
+        }
+      },
+      "expect": {
+        "valid": false,
+        "output": {
+          "name": "",
+          "count": -1
+        },
+        "paths": [
+          "count",
+          "name"
+        ],
+        "input_unchanged": true,
+        "keys": [
+          "count",
+          "name"
+        ],
+        "validators": [
+          "minLength",
+          "minimum"
+        ]
+      }
+    },
+    {
+      "event": {
+        "op": "validate",
+        "data": {
+          "name": "B",
+          "count": 0
+        }
+      },
+      "expect": {
+        "valid": true,
+        "output": {
+          "name": "B",
+          "count": 0
+        },
+        "paths": [],
+        "input_unchanged": true,
+        "keys": [
+          "count",
+          "name"
+        ],
+        "validators": []
+      }
+    },
+    {
+      "event": {
+        "op": "validate",
+        "data": {
+          "name": "B",
+          "count": 1.5
+        }
+      },
+      "expect": {
+        "valid": false,
+        "output": {
+          "name": "B",
+          "count": 1.5
+        },
+        "paths": [
+          "count"
+        ],
+        "input_unchanged": true,
+        "keys": [
+          "count",
+          "name"
+        ],
+        "validators": [
+          "type"
+        ]
+      }
+    }
+  ]
+}

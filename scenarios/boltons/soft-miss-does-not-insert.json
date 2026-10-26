@@ -1,0 +1,53 @@
+{
+  "schema": 1,
+  "name": "boltons / soft-miss-does-not-insert",
+  "steps": [
+    {
+      "event": {
+        "op": "get",
+        "key": "missing"
+      },
+      "expect": {
+        "entries": {},
+        "value": null,
+        "misses": 1,
+        "soft_misses": 1
+      }
+    },
+    {
+      "event": {
+        "op": "get",
+        "key": "missing"
+      },
+      "expect": {
+        "entries": {},
+        "value": null,
+        "misses": 2,
+        "soft_misses": 2
+      }
+    },
+    {
+      "event": {
+        "op": "put",
+        "key": "missing",
+        "value": 4
+      },
+      "expect": {
+        "entries": {
+          "missing": 4
+        }
+      }
+    },
+    {
+      "event": {
+        "op": "get",
+        "key": "missing"
+      },
+      "expect": {
+        "value": 4,
+        "hits": 1,
+        "misses": 2
+      }
+    }
+  ]
+}

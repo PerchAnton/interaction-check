@@ -1,0 +1,65 @@
+{
+  "schema": 1,
+  "name": "msgspec / constraints-and-recovery",
+  "steps": [
+    {
+      "event": {
+        "op": "validate",
+        "data": {
+          "name": "",
+          "count": 1
+        },
+        "strict": true
+      },
+      "expect": {
+        "valid": false,
+        "output": null,
+        "paths": [],
+        "input_unchanged": true,
+        "keys": []
+      }
+    },
+    {
+      "event": {
+        "op": "validate",
+        "data": {
+          "name": "A",
+          "count": -1
+        },
+        "strict": true
+      },
+      "expect": {
+        "valid": false,
+        "output": null,
+        "paths": [],
+        "input_unchanged": true,
+        "keys": []
+      }
+    },
+    {
+      "event": {
+        "op": "validate",
+        "data": {
+          "name": "A",
+          "count": 0
+        },
+        "strict": true
+      },
+      "expect": {
+        "valid": true,
+        "output": {
+          "name": "A",
+          "count": 0,
+          "enabled": true
+        },
+        "paths": [],
+        "input_unchanged": true,
+        "keys": [
+          "count",
+          "enabled",
+          "name"
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,58 @@
+{
+  "schema": 1,
+  "name": "referencing / pointers-and-missing-paths",
+  "steps": [
+    {
+      "event": {
+        "op": "register",
+        "uri": "urn:config",
+        "data": {
+          "type": "object",
+          "properties": {
+            "x": {
+              "type": "integer"
+            }
+          }
+        }
+      },
+      "expect": {
+        "resources": 1
+      }
+    },
+    {
+      "event": {
+        "op": "lookup",
+        "ref": "urn:config#/properties/x",
+        "previous": false
+      },
+      "expect": {
+        "value": {
+          "type": "integer"
+        },
+        "error": null
+      }
+    },
+    {
+      "event": {
+        "op": "lookup",
+        "ref": "urn:config#/missing",
+        "previous": false
+      },
+      "expect": {
+        "value": null,
+        "error": "PointerToNowhere"
+      }
+    },
+    {
+      "event": {
+        "op": "lookup",
+        "ref": "urn:config#/type",
+        "previous": false
+      },
+      "expect": {
+        "value": "object",
+        "error": null
+      }
+    }
+  ]
+}

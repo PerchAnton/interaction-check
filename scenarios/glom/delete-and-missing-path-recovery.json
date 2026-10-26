@@ -1,0 +1,59 @@
+{
+  "schema": 1,
+  "name": "glom / delete-and-missing-path-recovery",
+  "steps": [
+    {
+      "event": {
+        "op": "new",
+        "data": {
+          "name": "A"
+        }
+      },
+      "expect": {
+        "document": {
+          "name": "A"
+        }
+      }
+    },
+    {
+      "event": {
+        "op": "delete",
+        "path": [
+          "name"
+        ]
+      },
+      "expect": {
+        "document": {},
+        "error": null
+      }
+    },
+    {
+      "event": {
+        "op": "get",
+        "path": [
+          "name"
+        ]
+      },
+      "expect": {
+        "document": {},
+        "value": null,
+        "error": "PathAccessError"
+      }
+    },
+    {
+      "event": {
+        "op": "assign",
+        "path": [
+          "name"
+        ],
+        "value": "B"
+      },
+      "expect": {
+        "document": {
+          "name": "B"
+        },
+        "error": null
+      }
+    }
+  ]
+}

@@ -1,0 +1,78 @@
+{
+  "schema": 1,
+  "name": "cerberus / missing-fields-and-recovery",
+  "steps": [
+    {
+      "event": {
+        "op": "validate",
+        "data": {}
+      },
+      "expect": {
+        "valid": false,
+        "output": {
+          "enabled": true
+        },
+        "paths": [
+          "count",
+          "name"
+        ],
+        "input_unchanged": true,
+        "keys": [
+          "enabled"
+        ]
+      }
+    },
+    {
+      "event": {
+        "op": "validate",
+        "data": {
+          "name": "A",
+          "count": 1,
+          "enabled": "false"
+        }
+      },
+      "expect": {
+        "valid": false,
+        "output": {
+          "name": "A",
+          "count": 1,
+          "enabled": "false"
+        },
+        "paths": [
+          "enabled"
+        ],
+        "input_unchanged": true,
+        "keys": [
+          "count",
+          "enabled",
+          "name"
+        ]
+      }
+    },
+    {
+      "event": {
+        "op": "validate",
+        "data": {
+          "name": "A",
+          "count": 1,
+          "enabled": false
+        }
+      },
+      "expect": {
+        "valid": true,
+        "output": {
+          "name": "A",
+          "count": 1,
+          "enabled": false
+        },
+        "paths": [],
+        "input_unchanged": true,
+        "keys": [
+          "count",
+          "enabled",
+          "name"
+        ]
+      }
+    }
+  ]
+}

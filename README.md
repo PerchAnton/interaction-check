@@ -195,3 +195,11 @@ The third adapter batch adds ten native API examples. Textual and gocui delibera
 | [promptkit](adapters/promptkit/README.md) | 3 / 15 | Native API observations; optional test tooling |
 | [tcell](adapters/tcell/README.md) | 3 / 13 | Native API observations; optional test tooling |
 | [gocui](adapters/gocui/README.md) | 3 / 12 | Native API observations; optional test tooling |
+
+## Optional Python library examples
+
+[Twenty native Python adapters](adapters/python-libraries/README.md) provide
+60 portable traces for validation, notifications, state machines, patch/revert
+and cache behavior. Their pinned dependencies are separate from the stdlib-only
+runner. They are external examples; upstream adoption is pending. See the adapter
+guide for reproduction commands and the precise limits of each fixture.

@@ -1,0 +1,76 @@
+{
+  "schema": 1,
+  "name": "param / discard-does-not-revert-values",
+  "steps": [
+    {
+      "event": {
+        "op": "write",
+        "mode": "discard",
+        "updates": [
+          {
+            "field": "count",
+            "value": 5
+          },
+          {
+            "field": "label",
+            "value": "B"
+          }
+        ]
+      },
+      "expect": {
+        "count": 5,
+        "label": "B",
+        "log": []
+      }
+    },
+    {
+      "event": {
+        "op": "write",
+        "mode": "plain",
+        "updates": [
+          {
+            "field": "count",
+            "value": 6
+          }
+        ]
+      },
+      "expect": {
+        "count": 6,
+        "log": [
+          {
+            "field": "count",
+            "old": 5,
+            "new": 6
+          }
+        ]
+      }
+    },
+    {
+      "event": {
+        "op": "write",
+        "mode": "plain",
+        "updates": [
+          {
+            "field": "label",
+            "value": "C"
+          }
+        ]
+      },
+      "expect": {
+        "label": "C",
+        "log": [
+          {
+            "field": "count",
+            "old": 5,
+            "new": 6
+          },
+          {
+            "field": "label",
+            "old": "B",
+            "new": "C"
+          }
+        ]
+      }
+    }
+  ]
+}

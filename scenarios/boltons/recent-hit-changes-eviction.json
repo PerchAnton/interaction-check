@@ -1,0 +1,78 @@
+{
+  "schema": 1,
+  "name": "boltons / recent-hit-changes-eviction",
+  "steps": [
+    {
+      "event": {
+        "op": "put",
+        "key": "a",
+        "value": 1
+      },
+      "expect": {
+        "entries": {
+          "a": 1
+        },
+        "hits": 0
+      }
+    },
+    {
+      "event": {
+        "op": "put",
+        "key": "b",
+        "value": 2
+      },
+      "expect": {
+        "entries": {
+          "a": 1,
+          "b": 2
+        },
+        "hits": 0
+      }
+    },
+    {
+      "event": {
+        "op": "get",
+        "key": "a"
+      },
+      "expect": {
+        "value": 1,
+        "hits": 1
+      }
+    },
+    {
+      "event": {
+        "op": "put",
+        "key": "c",
+        "value": 3
+      },
+      "expect": {
+        "entries": {
+          "a": 1,
+          "c": 3
+        },
+        "hits": 1
+      }
+    },
+    {
+      "event": {
+        "op": "get",
+        "key": "b"
+      },
+      "expect": {
+        "value": null,
+        "misses": 1,
+        "soft_misses": 1
+      }
+    },
+    {
+      "event": {
+        "op": "get",
+        "key": "a"
+      },
+      "expect": {
+        "value": 1,
+        "hits": 2
+      }
+    }
+  ]
+}

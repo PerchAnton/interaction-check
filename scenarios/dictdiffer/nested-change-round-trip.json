@@ -1,0 +1,87 @@
+{
+  "schema": 1,
+  "name": "dictdiffer / nested-change-round-trip",
+  "steps": [
+    {
+      "event": {
+        "op": "new",
+        "data": {
+          "node": {
+            "count": 1
+          }
+        }
+      },
+      "expect": {
+        "document": {
+          "node": {
+            "count": 1
+          }
+        },
+        "original": {
+          "node": {
+            "count": 1
+          }
+        }
+      }
+    },
+    {
+      "event": {
+        "op": "plan",
+        "target": {
+          "node": {
+            "count": 2
+          }
+        }
+      },
+      "expect": {
+        "document": {
+          "node": {
+            "count": 1
+          }
+        },
+        "original": {
+          "node": {
+            "count": 1
+          }
+        },
+        "changes": 1
+      }
+    },
+    {
+      "event": {
+        "op": "apply"
+      },
+      "expect": {
+        "document": {
+          "node": {
+            "count": 2
+          }
+        },
+        "original": {
+          "node": {
+            "count": 1
+          }
+        },
+        "changes": 1
+      }
+    },
+    {
+      "event": {
+        "op": "revert"
+      },
+      "expect": {
+        "document": {
+          "node": {
+            "count": 1
+          }
+        },
+        "original": {
+          "node": {
+            "count": 1
+          }
+        },
+        "changes": 1
+      }
+    }
+  ]
+}

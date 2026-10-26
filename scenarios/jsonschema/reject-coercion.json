@@ -1,0 +1,83 @@
+{
+  "schema": 1,
+  "name": "jsonschema / reject-coercion",
+  "steps": [
+    {
+      "event": {
+        "op": "validate",
+        "data": {
+          "name": "A",
+          "count": "2"
+        }
+      },
+      "expect": {
+        "valid": false,
+        "output": {
+          "name": "A",
+          "count": "2"
+        },
+        "paths": [
+          "count"
+        ],
+        "input_unchanged": true,
+        "keys": [
+          "count",
+          "name"
+        ],
+        "validators": [
+          "type"
+        ]
+      }
+    },
+    {
+      "event": {
+        "op": "validate",
+        "data": {
+          "name": "A",
+          "count": false
+        }
+      },
+      "expect": {
+        "valid": false,
+        "output": {
+          "name": "A",
+          "count": false
+        },
+        "paths": [
+          "count"
+        ],
+        "input_unchanged": true,
+        "keys": [
+          "count",
+          "name"
+        ],
+        "validators": [
+          "type"
+        ]
+      }
+    },
+    {
+      "event": {
+        "op": "validate",
+        "data": {
+          "name": "A",
+          "count": 2
+        }
+      },
+      "expect": {
+        "valid": true,
+        "output": {
+          "name": "A",
+          "count": 2
+        },
+        "paths": [],
+        "input_unchanged": true,
+        "keys": [
+          "count",
+          "name"
+        ],
+        "validators": []
+      }
+    }
+  ]
+}

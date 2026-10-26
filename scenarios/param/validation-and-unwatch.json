@@ -1,0 +1,83 @@
+{
+  "schema": 1,
+  "name": "param / validation-and-unwatch",
+  "steps": [
+    {
+      "event": {
+        "op": "write",
+        "mode": "plain",
+        "updates": [
+          {
+            "field": "count",
+            "value": 99
+          }
+        ]
+      },
+      "expect": {
+        "count": 0,
+        "log": [],
+        "rejected": true
+      }
+    },
+    {
+      "event": {
+        "op": "write",
+        "mode": "plain",
+        "updates": [
+          {
+            "field": "count",
+            "value": 2
+          }
+        ]
+      },
+      "expect": {
+        "count": 2,
+        "log": [
+          {
+            "field": "count",
+            "old": 0,
+            "new": 2
+          }
+        ],
+        "rejected": false
+      }
+    },
+    {
+      "event": {
+        "op": "unwatch"
+      },
+      "expect": {
+        "count": 2,
+        "log": [
+          {
+            "field": "count",
+            "old": 0,
+            "new": 2
+          }
+        ]
+      }
+    },
+    {
+      "event": {
+        "op": "write",
+        "mode": "plain",
+        "updates": [
+          {
+            "field": "count",
+            "value": 3
+          }
+        ]
+      },
+      "expect": {
+        "count": 3,
+        "log": [
+          {
+            "field": "count",
+            "old": 0,
+            "new": 2
+          }
+        ]
+      }
+    }
+  ]
+}

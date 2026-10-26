@@ -1,0 +1,60 @@
+{
+  "schema": 1,
+  "name": "python-dispatch / lock-coalesces-last-value",
+  "steps": [
+    {
+      "event": {
+        "op": "write",
+        "values": [
+          1,
+          2,
+          3
+        ],
+        "locked": true
+      },
+      "expect": {
+        "count": 3,
+        "log": [
+          3
+        ]
+      }
+    },
+    {
+      "event": {
+        "op": "write",
+        "values": [
+          4,
+          5
+        ],
+        "locked": false
+      },
+      "expect": {
+        "count": 5,
+        "log": [
+          3,
+          4,
+          5
+        ]
+      }
+    },
+    {
+      "event": {
+        "op": "write",
+        "values": [
+          6,
+          7
+        ],
+        "locked": true
+      },
+      "expect": {
+        "count": 7,
+        "log": [
+          3,
+          4,
+          5,
+          7
+        ]
+      }
+    }
+  ]
+}

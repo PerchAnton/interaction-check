@@ -1,0 +1,56 @@
+{
+  "schema": 1,
+  "name": "pydantic / conversion-and-false",
+  "steps": [
+    {
+      "event": {
+        "op": "new",
+        "data": {
+          "name": " Ada ",
+          "count": "2"
+        }
+      },
+      "expect": {
+        "value": {
+          "name": "Ada",
+          "count": 2,
+          "enabled": true
+        },
+        "valid": true,
+        "paths": []
+      }
+    },
+    {
+      "event": {
+        "op": "assign",
+        "field": "count",
+        "value": "5"
+      },
+      "expect": {
+        "value": {
+          "name": "Ada",
+          "count": 5,
+          "enabled": true
+        },
+        "valid": true,
+        "paths": []
+      }
+    },
+    {
+      "event": {
+        "op": "assign",
+        "field": "enabled",
+        "value": false
+      },
+      "expect": {
+        "value": {
+          "name": "Ada",
+          "count": 5,
+          "enabled": false
+        },
+        "valid": true,
+        "paths": []
+      }
+    }
+  ]
+}

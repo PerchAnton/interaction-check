@@ -1,0 +1,61 @@
+{
+  "schema": 1,
+  "name": "psygnal / paused-values-replay-in-order",
+  "steps": [
+    {
+      "event": {
+        "op": "emit",
+        "mode": "paused",
+        "values": [
+          1,
+          2
+        ]
+      },
+      "expect": {
+        "log": [
+          1,
+          2
+        ],
+        "during": 0
+      }
+    },
+    {
+      "event": {
+        "op": "emit",
+        "mode": "paused",
+        "values": [
+          3,
+          4
+        ]
+      },
+      "expect": {
+        "log": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "during": 2
+      }
+    },
+    {
+      "event": {
+        "op": "emit",
+        "mode": "plain",
+        "values": [
+          5
+        ]
+      },
+      "expect": {
+        "log": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "during": 5
+      }
+    }
+  ]
+}

@@ -1,0 +1,82 @@
+{
+  "schema": 1,
+  "name": "param / batch-coalesces-notifications",
+  "steps": [
+    {
+      "event": {
+        "op": "write",
+        "mode": "batch",
+        "updates": [
+          {
+            "field": "count",
+            "value": 1
+          },
+          {
+            "field": "count",
+            "value": 2
+          }
+        ]
+      },
+      "expect": {
+        "count": 2,
+        "log": [
+          {
+            "field": "count",
+            "old": 1,
+            "new": 2
+          }
+        ],
+        "rejected": false
+      }
+    },
+    {
+      "event": {
+        "op": "write",
+        "mode": "plain",
+        "updates": [
+          {
+            "field": "count",
+            "value": 2
+          }
+        ]
+      },
+      "expect": {
+        "count": 2,
+        "log": [
+          {
+            "field": "count",
+            "old": 1,
+            "new": 2
+          }
+        ]
+      }
+    },
+    {
+      "event": {
+        "op": "write",
+        "mode": "plain",
+        "updates": [
+          {
+            "field": "count",
+            "value": 3
+          }
+        ]
+      },
+      "expect": {
+        "count": 3,
+        "log": [
+          {
+            "field": "count",
+            "old": 1,
+            "new": 2
+          },
+          {
+            "field": "count",
+            "old": 2,
+            "new": 3
+          }
+        ]
+      }
+    }
+  ]
+}

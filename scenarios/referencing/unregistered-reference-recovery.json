@@ -1,0 +1,54 @@
+{
+  "schema": 1,
+  "name": "referencing / unregistered-reference-recovery",
+  "steps": [
+    {
+      "event": {
+        "op": "lookup",
+        "ref": "urn:missing",
+        "previous": false
+      },
+      "expect": {
+        "error": "Unresolvable",
+        "resources": 0
+      }
+    },
+    {
+      "event": {
+        "op": "register",
+        "uri": "urn:missing",
+        "data": {
+          "type": "boolean"
+        }
+      },
+      "expect": {
+        "error": null,
+        "resources": 1
+      }
+    },
+    {
+      "event": {
+        "op": "lookup",
+        "ref": "urn:missing",
+        "previous": false
+      },
+      "expect": {
+        "value": {
+          "type": "boolean"
+        },
+        "error": null
+      }
+    },
+    {
+      "event": {
+        "op": "lookup",
+        "ref": "urn:missing",
+        "previous": true
+      },
+      "expect": {
+        "error": "Unresolvable",
+        "previous_resources": 0
+      }
+    }
+  ]
+}
