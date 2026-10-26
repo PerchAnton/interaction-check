@@ -95,6 +95,11 @@ jobs:
       - run: rustup toolchain install 1.96.0 --profile minimal
       - run: python examples/eldiron/verify_source.py
         if: matrix.example == 'eldiron'
+      - name: Install Eldiron's clipboard/portal build dependencies
+        if: matrix.example == 'eldiron'
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libwayland-dev pkg-config
       - run: cargo +1.96.0 test --locked --manifest-path examples/${{ matrix.example }}/Cargo.toml
       - run: cargo +1.96.0 build --locked --manifest-path examples/${{ matrix.example }}/Cargo.toml
       - run: python examples/verify_rust_consumers.py ${{ matrix.example }}

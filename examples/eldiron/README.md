@@ -28,3 +28,5 @@ Cargo.lock fix the source and dependency resolution. A verified sparse checkout
 avoids fetching the complete game repository through Cargo. On Windows set
 `git -C .artifacts/eldiron-source config core.longpaths true` before expanding the
 sparse checkout if needed for the Xcode asset paths.
+Ubuntu needs `libwayland-dev` and `pkg-config` for the framework's clipboard/portal
+dependencies even though these scenarios do not open a window or use a clipboard.
