@@ -1,0 +1,55 @@
+{
+  "schema": 1,
+  "name": "02-unchanged-presence-preserves-lifecycle",
+  "steps": [
+    {
+      "event": {
+        "op": "new"
+      },
+      "expect": {
+        "builds": 1,
+        "teardowns": 0
+      }
+    },
+    {
+      "event": {
+        "op": "show",
+        "present": true
+      },
+      "expect": {
+        "builds": 1,
+        "teardowns": 0
+      }
+    },
+    {
+      "event": {
+        "op": "show",
+        "present": false
+      },
+      "expect": {
+        "builds": 1,
+        "teardowns": 1
+      }
+    },
+    {
+      "event": {
+        "op": "show",
+        "present": false
+      },
+      "expect": {
+        "builds": 1,
+        "teardowns": 1
+      }
+    },
+    {
+      "event": {
+        "op": "show",
+        "present": true
+      },
+      "expect": {
+        "builds": 2,
+        "teardowns": 1
+      }
+    }
+  ]
+}

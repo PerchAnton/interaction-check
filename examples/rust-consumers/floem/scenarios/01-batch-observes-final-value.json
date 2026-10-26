@@ -1,0 +1,38 @@
+{
+  "schema": 1,
+  "name": "01-batch-observes-final-value",
+  "steps": [
+    {
+      "event": {
+        "op": "new"
+      },
+      "expect": {
+        "observed": 1,
+        "runs": 1,
+        "disposed": false
+      }
+    },
+    {
+      "event": {
+        "op": "set",
+        "left": 3,
+        "right": 4
+      },
+      "expect": {
+        "observed": 3,
+        "runs": 2
+      }
+    },
+    {
+      "event": {
+        "op": "set",
+        "left": 5,
+        "right": 6
+      },
+      "expect": {
+        "observed": 5,
+        "runs": 3
+      }
+    }
+  ]
+}

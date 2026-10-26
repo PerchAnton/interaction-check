@@ -1,0 +1,56 @@
+{
+  "schema": 1,
+  "name": "01-unicode-save-marker-undo",
+  "steps": [
+    {
+      "event": {
+        "op": "new"
+      },
+      "expect": {
+        "text": "",
+        "cursor": 0,
+        "dirty": false
+      }
+    },
+    {
+      "event": {
+        "op": "write",
+        "text": "λ🦀"
+      },
+      "expect": {
+        "text": "λ🦀",
+        "cursor": 6,
+        "dirty": true
+      }
+    },
+    {
+      "event": {
+        "op": "mark_clean"
+      },
+      "expect": {
+        "text": "λ🦀",
+        "dirty": false
+      }
+    },
+    {
+      "event": {
+        "op": "undo"
+      },
+      "expect": {
+        "text": "",
+        "cursor": 0,
+        "dirty": true
+      }
+    },
+    {
+      "event": {
+        "op": "redo"
+      },
+      "expect": {
+        "text": "λ🦀",
+        "cursor": 6,
+        "dirty": false
+      }
+    }
+  ]
+}

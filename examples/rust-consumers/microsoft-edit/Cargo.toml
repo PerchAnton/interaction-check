@@ -1,0 +1,11 @@
+[package]
+name = "pilot-microsoft-edit"
+version = "0.0.0"
+edition = "2024"
+publish = false
+
+[dependencies]
+serde.workspace = true
+serde_json.workspace = true
+pilot-protocol.workspace = true
+edit = { git = "https://github.com/microsoft/edit", rev = "cb6de0a8966aecd01d19a3541dab1829d0e679ca" }

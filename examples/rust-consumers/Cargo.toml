@@ -1,0 +1,12 @@
+[workspace]
+resolver = "2"
+members = ["protocol", "floem", "helix", "microsoft-edit", "xilem"]
+
+[workspace.dependencies]
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+pilot-protocol = { path = "protocol" }
+
+[profile.dev]
+debug = 0
+incremental = false

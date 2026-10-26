@@ -18,9 +18,13 @@ These examples exercise real, separately pinned libraries through interaction-ch
 | [PyQtGraph](../examples/pyqtgraph/README.md) | pyqtgraph 0.14.0, PyQt6 6.11.0, numpy 2.5.4 | 3 / 13 | Observe real parameter-tree notifications, batched changes, no-op writes, and save/restore with offscreen Qt. |
 | [napari](../examples/napari/README.md) | napari 0.9.2, numpy 2.5.4 | 3 / 17 | Use real image layers and LayerList to remove selected unlocked layers, retain locked layers, and toggle visibility. |
 | [Toga](../examples/toga/README.md) | toga-dummy 0.5.7 | 3 / 11 | Use the official dummy backend to observe real Selection data and callbacks through removal, clear, and append. |
+| [Floem reactive](../examples/rust-consumers/README.md) | Git `1351ffb1` | 3 / 13 | Batch effects, unsubscribe a dynamic dependency, and recreate a disposed scope. |
+| [Helix core](../examples/rust-consumers/README.md) | Git `ba40e547` | 3 / 15 | Invert Unicode transactions, select the latest history branch, and stop at history boundaries. |
+| [Microsoft Edit](../examples/rust-consumers/README.md) | Git `cb6de0a8` | 3 / 15 | Restore dirty/clean markers through history and normalize CRLF before moving by UTF-8 byte offsets. |
+| [Xilem Core](../examples/rust-consumers/README.md) | Git `271a27a6` | 3 / 20 | Rebuild an optional no-element view and reject messages for previous generations. |
 
-Windows local validation: 26 native/boundary tests, 38 passing traces / 177 steps, and five shared Python transport tests. The TanStack Form pending-reset trace is a separate known failure, not a passing test. Hosted CI must be checked independently.
+Windows local validation: 34 native/boundary tests, 50 passing traces / 240 steps, five shared Python transport tests, and two Rust protocol tests. The TanStack Form pending-reset trace is a separate known failure, not a passing test. Hosted CI must be checked independently.
 
 SurveyJS has merged its own [survey-core/tester harness](https://github.com/surveyjs/survey-library/pull/11723). Prefer that project-specific tool for upstream scenarios; this external example is a comparison, not a request to add a competing dependency. Toga requires prior permission for unsolicited AI-assisted contributions.
 
-These are the first thirteen implementations from the 20-project investigation. The remaining projects are not implemented by this change.
+These are the first seventeen implementations from the 20-project investigation. Icy Draw, Eldiron, and Amp are not implemented by this change. The Rust source revisions and narrower model-only scope are documented in their README.

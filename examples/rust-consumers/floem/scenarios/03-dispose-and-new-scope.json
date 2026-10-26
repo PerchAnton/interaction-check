@@ -1,0 +1,56 @@
+{
+  "schema": 1,
+  "name": "03-dispose-and-new-scope",
+  "steps": [
+    {
+      "event": {
+        "op": "new"
+      },
+      "expect": {
+        "observed": 1,
+        "runs": 1,
+        "disposed": false
+      }
+    },
+    {
+      "event": {
+        "op": "dispose"
+      },
+      "expect": {
+        "observed": 1,
+        "runs": 1,
+        "disposed": true
+      }
+    },
+    {
+      "event": {
+        "op": "dispose"
+      },
+      "expect": {
+        "observed": 1,
+        "runs": 1,
+        "disposed": true
+      }
+    },
+    {
+      "event": {
+        "op": "new"
+      },
+      "expect": {
+        "observed": 1,
+        "runs": 1,
+        "disposed": false
+      }
+    },
+    {
+      "event": {
+        "op": "set_left",
+        "value": 8
+      },
+      "expect": {
+        "observed": 8,
+        "runs": 2
+      }
+    }
+  ]
+}

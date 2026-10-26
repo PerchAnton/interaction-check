@@ -1,0 +1,11 @@
+[package]
+name = "pilot-helix"
+version = "0.0.0"
+edition = "2024"
+publish = false
+
+[dependencies]
+serde.workspace = true
+serde_json.workspace = true
+pilot-protocol.workspace = true
+helix-core = { git = "https://github.com/helix-editor/helix", rev = "ba40e547426b0f9896c8bdc699a4ab11f2b37dbc" }

@@ -1,0 +1,48 @@
+{
+  "schema": 1,
+  "name": "01-unicode-undo-redo",
+  "steps": [
+    {
+      "event": {
+        "op": "new",
+        "text": "aλ🦀b"
+      },
+      "expect": {
+        "text": "aλ🦀b",
+        "revision": 0,
+        "at_root": true
+      }
+    },
+    {
+      "event": {
+        "op": "replace",
+        "from": 1,
+        "to": 3,
+        "text": "é"
+      },
+      "expect": {
+        "text": "aéb",
+        "revision": 1,
+        "at_root": false
+      }
+    },
+    {
+      "event": {
+        "op": "undo"
+      },
+      "expect": {
+        "text": "aλ🦀b",
+        "revision": 0
+      }
+    },
+    {
+      "event": {
+        "op": "redo"
+      },
+      "expect": {
+        "text": "aéb",
+        "revision": 1
+      }
+    }
+  ]
+}

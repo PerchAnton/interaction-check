@@ -1,0 +1,11 @@
+[package]
+name = "pilot-xilem"
+version = "0.0.0"
+edition = "2024"
+publish = false
+
+[dependencies]
+serde.workspace = true
+serde_json.workspace = true
+pilot-protocol.workspace = true
+xilem_core = { git = "https://github.com/linebender/xilem", rev = "271a27a6d4a930f7878d404f9014e3c50a3a9b88" }

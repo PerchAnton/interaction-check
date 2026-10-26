@@ -1,0 +1,52 @@
+{
+  "schema": 1,
+  "name": "03-crlf-and-multibyte-cursor",
+  "steps": [
+    {
+      "event": {
+        "op": "new"
+      },
+      "expect": {
+        "text": ""
+      }
+    },
+    {
+      "event": {
+        "op": "write",
+        "text": "a\r\nλ"
+      },
+      "expect": {
+        "text": "a\nλ",
+        "cursor": 4
+      }
+    },
+    {
+      "event": {
+        "op": "move",
+        "offset": 2
+      },
+      "expect": {
+        "text": "a\nλ",
+        "cursor": 2
+      }
+    },
+    {
+      "event": {
+        "op": "write",
+        "text": "🦀"
+      },
+      "expect": {
+        "text": "a\n🦀λ",
+        "cursor": 6
+      }
+    },
+    {
+      "event": {
+        "op": "undo"
+      },
+      "expect": {
+        "text": "a\nλ"
+      }
+    }
+  ]
+}
