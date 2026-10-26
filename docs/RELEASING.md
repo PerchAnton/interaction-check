@@ -1,9 +1,31 @@
-# Release preparation
+# Releases and alpha compatibility
 
-The next candidate is **v0.1.0-alpha.5**; Python package metadata uses **0.1.0a5**.
-The package is not yet published on PyPI. A GitHub prerelease can distribute a wheel
-and source archive while the alpha CLI is evaluated. A stable release needs consumer
-feedback and a documented compatibility policy beyond these experimental formats.
+## Published prerelease
+
+**[v0.1.0-alpha.5](https://github.com/PerchAnton/interaction-check/releases/tag/v0.1.0-alpha.5)**
+was published on **26 October 2026**, with a wheel, source archive and SHA-256
+checksums. Python package metadata and `--version` use **0.1.0a5**. The package is
+not published on PyPI. See the [installation instructions](../README.md#install-the-released-command).
+
+## Alpha compatibility
+
+- Alpha releases are experimental. CLI options, Python APIs, report fields and
+  adapter behavior may change between releases, even within `0.1.0`.
+- Alpha.5 keeps scenario schema **1** and JSONL protocol **1**. This describes the
+  current release; it does not promise compatibility with every future alpha.
+- Pin the runner release or Git revision and the adapter/consumer revisions
+  separately. Before upgrading, read the [changelog](../CHANGELOG.md) and replay
+  your scenarios with their original expectations.
+- Breaking changes must be called out in the changelog with migration guidance.
+  Existing release tags and assets must not be replaced; fixes need a new version.
+
+If an upgrade changes a result, [report the old and new versions with a reproducer](https://github.com/PerchAnton/interaction-check/issues/new?template=bug_report.yml).
+A stable release needs experience maintaining real consumer integrations and a
+compatibility contract beyond this alpha policy.
+
+## Preparing a future release
+
+Update the version and changelog for the new candidate, then run:
 
 ```sh
 python -m unittest -v
@@ -22,6 +44,8 @@ Before publishing, use an empty `dist/`, review its contents, require green CI o
 exact release commit, and record SHA-256 checksums for both assets. Attach only the
 verified artifacts and changelog to a prerelease pointing to that commit. Do not mark
 an alpha as the latest stable release. No automated registry upload is configured.
+
+## Registry publication
 
 PyPI publication is a separate step: confirm the package name/account, choose a scoped
 publishing method, and upload the already checked artifacts. A built wheel or GitHub

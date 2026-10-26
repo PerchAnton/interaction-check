@@ -10,4 +10,5 @@
   now use the standard Python spelling `0.1.0a5` (previous report: `0.1.0-alpha.4`).
 - Schema 1, JSONL protocol 1, comparison rules and adapter commands are unchanged.
 
-Alpha releases may change CLI/report APIs. Package preparation is not registry publication.
+Published as a GitHub prerelease on 26 October 2026; not published on PyPI.
+See the [alpha compatibility policy](docs/RELEASING.md#alpha-compatibility) before upgrading.
