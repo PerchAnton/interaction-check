@@ -1,0 +1,68 @@
+{
+  "schema": 1,
+  "name": "Native InputField handles Unicode editing and completion callbacks",
+  "steps": [
+    {
+      "event": {
+        "op": "new",
+        "width": 20,
+        "text": "a界🙂z"
+      },
+      "expect": {
+        "value": "a界🙂z",
+        "changes": 0,
+        "done": []
+      }
+    },
+    {
+      "event": {
+        "op": "key",
+        "key": "end"
+      },
+      "expect": {
+        "value": "a界🙂z"
+      }
+    },
+    {
+      "event": {
+        "op": "key",
+        "key": "left"
+      },
+      "expect": {
+        "value": "a界🙂z"
+      }
+    },
+    {
+      "event": {
+        "op": "key",
+        "key": "backspace"
+      },
+      "expect": {
+        "value": "a界z",
+        "changes": 1
+      }
+    },
+    {
+      "event": {
+        "op": "text",
+        "text": "é"
+      },
+      "expect": {
+        "value": "a界éz",
+        "changes": 2
+      }
+    },
+    {
+      "event": {
+        "op": "key",
+        "key": "enter"
+      },
+      "expect": {
+        "done": [
+          "enter"
+        ],
+        "value": "a界éz"
+      }
+    }
+  ]
+}

@@ -43,8 +43,13 @@ See [reproduction instructions](https://github.com/PerchAnton/pdfcraft/blob/535d
 | [Bubbles](adapters/bubbles/README.md) | Real textinput update/layout, Unicode rune cursor, focus and resize | 3 / 20 steps |
 | [Huh](adapters/huh/README.md) | Real two-field form, validation, Tab/Shift+Tab, submit and abort | 3 / 19 steps |
 | [Cursive](adapters/cursive/README.md) | Real EditView, UTF-8 byte cursor, graphemes, layout and callbacks | 3 / 17 steps |
+| [tview](adapters/tview/README.md) | Real InputField callbacks and tcell SimulationScreen | 3 / 15 steps |
+| [tui-input](adapters/tui-input/README.md) | Native requests, grapheme editing, codepoint and display-column positions | 3 / 16 steps |
+| [tui-textarea](adapters/tui-textarea/README.md) | Native selection/deletion/Undo/Redo; proposed #121 fix | 3 / 14 steps |
 
-These are external prototypes, not accepted upstream integrations. Preliminary discussions
+These are external prototypes, not accepted upstream integrations. The tui-textarea adapter
+pins our proposed [fix #126](https://github.com/rhysd/tui-textarea/pull/126); all three
+traces fail on upstream main and pass on the patch. It is not a claim that upstream main is fixed. Preliminary discussions
 are [Bubbles #1076](https://github.com/charmbracelet/bubbles/discussions/1076) and
 [Huh #838](https://github.com/charmbracelet/huh/discussions/838). Each adapter has its own
 pinned dependencies, documented boundary and replay instructions. No runtime integration

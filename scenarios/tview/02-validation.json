@@ -1,0 +1,49 @@
+{
+  "schema": 1,
+  "name": "Rejected input does not fire the changed callback",
+  "steps": [
+    {
+      "event": {
+        "op": "new",
+        "width": 12,
+        "digits_only": true
+      },
+      "expect": {
+        "value": "",
+        "changes": 0
+      }
+    },
+    {
+      "event": {
+        "op": "text",
+        "text": "1a2"
+      },
+      "expect": {
+        "value": "12",
+        "changes": 2
+      }
+    },
+    {
+      "event": {
+        "op": "key",
+        "key": "backspace"
+      },
+      "expect": {
+        "value": "1",
+        "changes": 3
+      }
+    },
+    {
+      "event": {
+        "op": "key",
+        "key": "tab"
+      },
+      "expect": {
+        "done": [
+          "tab"
+        ],
+        "value": "1"
+      }
+    }
+  ]
+}

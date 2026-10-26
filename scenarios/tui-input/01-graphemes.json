@@ -1,0 +1,68 @@
+{
+  "schema": 1,
+  "name": "Move and delete by grapheme while reporting codepoint offsets",
+  "steps": [
+    {
+      "event": {
+        "op": "new",
+        "text": "xé界",
+        "width": 10
+      },
+      "expect": {
+        "value": "xé界",
+        "position_codepoints": 4,
+        "visual_cursor": 4
+      }
+    },
+    {
+      "event": {
+        "op": "key",
+        "key": "left"
+      },
+      "expect": {
+        "position_codepoints": 3,
+        "visual_cursor": 2
+      }
+    },
+    {
+      "event": {
+        "op": "key",
+        "key": "left"
+      },
+      "expect": {
+        "position_codepoints": 1,
+        "visual_cursor": 1
+      }
+    },
+    {
+      "event": {
+        "op": "key",
+        "key": "delete"
+      },
+      "expect": {
+        "value": "x界",
+        "position_codepoints": 1
+      }
+    },
+    {
+      "event": {
+        "op": "key",
+        "key": "end"
+      },
+      "expect": {
+        "position_codepoints": 2,
+        "visual_cursor": 3
+      }
+    },
+    {
+      "event": {
+        "op": "key",
+        "key": "backspace"
+      },
+      "expect": {
+        "value": "x",
+        "position_codepoints": 1
+      }
+    }
+  ]
+}
