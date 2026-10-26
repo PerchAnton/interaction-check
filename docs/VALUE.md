@@ -39,7 +39,7 @@ selected fields in Python. Neither implementation uses timing-sensitive state ch
 
 | Checked-in source | Physical lines | UTF-8 bytes |
 | --- | ---: | ---: |
-| Shared example machine | 29 | 696 |
+| Shared example machine | 28 | 695 |
 | Native tests, including snapshot projection | 60 | 2,662 |
 | Three JSON scenarios | 36 | 1,947 |
 | Replay adapter + entry point + bounded JSONL transport | 158 | 4,339 |
@@ -61,10 +61,10 @@ for each scenario. Those isolation/startup costs are part of the comparison.
 
 | Command | Median | p95 (nearest rank) | Range |
 | --- | ---: | ---: | ---: |
-| Native `node --test` | 74.1 ms | 78.2 ms | 71.4–81.2 ms |
-| interaction-check replay | 167.0 ms | 173.3 ms | 160.6–182.4 ms |
+| Native `node --test` | 74.6 ms | 80.5 ms | 71.6–153.3 ms |
+| interaction-check replay | 183.9 ms | 191.9 ms | 174.7–192.0 ms |
 
-Replay is about **2.25× slower** for this small workload. There is no speed advantage
+Replay is about **2.46× slower** for this small workload. There is no speed advantage
 to advertise. These are descriptive local measurements, not a controlled multi-machine
 benchmark or a prediction for another application. Raw samples are retained, including
 the slowest samples. Reproduce on your machine (installation first):

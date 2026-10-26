@@ -86,9 +86,11 @@ class TraceTests(unittest.TestCase):
             self.assertIn("Step 2", junit.read_text(encoding="utf-8"))
 
     def test_cli_trace_requires_json_report(self):
-        with contextlib.redirect_stderr(io.StringIO()), self.assertRaises(SystemExit) as caught:
+        diagnostic = io.StringIO()
+        with contextlib.redirect_stderr(diagnostic), self.assertRaises(SystemExit) as caught:
             main(["--trace", "unused.json", "--", *self.command()])
         self.assertEqual(caught.exception.code, 2)
+        self.assertIn("--trace requires --report", diagnostic.getvalue())
 
 
 if __name__ == "__main__":
