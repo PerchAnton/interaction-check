@@ -22,3 +22,10 @@ When new measurements are available, update the SVG, README table and snapshot d
 together. Retain raw data, label package scope and show the native baseline even if
 it performs better. Render the SVG at README width to check labels and contrast.
 The CI badges update automatically; these measurement counts do not.
+
+`pyee-coverage.svg` supplements the overview with the native-test audit dated
+26 October 2026. Its source is [the four-run report](../evidence/pyee/results.json):
+53 baseline tests pass, 54 with the candidate pass; after one deliberate mutation,
+the original 53 still pass and only the candidate fails. It shows discrete outcomes,
+not a percentage or speed comparison. Scope, test and reproduction are in the
+[pyee audit](../../examples/pyee/README.md). These counts are separate from runner tests.

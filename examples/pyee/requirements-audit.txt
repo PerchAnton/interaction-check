@@ -1,0 +1,7 @@
+# Test tools from pyee cbeca176 requirements_dev.txt, not runner dependencies.
+pytest==9.1.1
+pytest-asyncio==1.4.0
+pytest-trio==0.8.0
+trio==0.34.0
+twisted==26.4.0
+typing-extensions==4.16.0

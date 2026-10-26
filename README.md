@@ -35,6 +35,20 @@ No PyPI release or upstream adoption is claimed. The first adapter uses a fixed
 edit-session revision and commits through PhotoCraft's actual `Session` command API;
 consumer-owned adapters also exercise the real PhotoCraft and PdfCraft dialogs.
 
+## A useful outcome can be one native test
+
+![Pyee native test audit: unchanged source passes 53 original tests or 54 with the candidate. A deliberate remove-after-callback mutation passes the original 53 tests but fails the new reentrant-once test. No current upstream bug or adoption is claimed.](docs/assets/pyee-coverage.svg)
+
+Following [maintainer feedback](https://github.com/jfhbrook/pyee/issues/226#issuecomment-6409488443),
+we checked the full pyee suite and translated one external trace into a native pytest
+candidate. On the pinned source: **53/53 existing tests pass; 54/54 with the candidate**.
+One deliberate local mutation escapes the original suite but is caught by the added test.
+The candidate needs **no new dependency** in pyee and no interaction-check runner.
+
+[Test, method, raw results and reproduction](examples/pyee/README.md).
+This is one demonstrated coverage gap, not a current pyee bug, a general coverage score
+or upstream adoption. These are pyee suite counts, separate from our 41 runner tests.
+
 ## Start with one reviewable reproduction
 
 The [XState walkthrough](examples/xstate/README.md) includes three small traces, the

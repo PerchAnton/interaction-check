@@ -1,0 +1,15 @@
+--- a/pyee/base.py
++++ b/pyee/base.py
+@@ -298,3 +298 @@
+-                    if event in self._events and f in self._events[event]:
+-                        self._remove_listener(event, f)
+-                    else:
++                    if event not in self._events or f not in self._events[event]:
+@@ -302,3 +300,4 @@
+-                # f may return a coroutine, so we need to return that
+-                # result here so that emit can schedule it
+-                return f(*args, **kwargs)
++                result = f(*args, **kwargs)
++                with self._lock:
++                    self._remove_listener(event, f)
++                return result
