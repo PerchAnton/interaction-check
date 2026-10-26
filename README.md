@@ -11,14 +11,14 @@ without the separate [edit-session](https://github.com/PerchAnton/edit-session) 
 
 ## Current prerelease
 
-**[v0.1.0-alpha.5](https://github.com/PerchAnton/interaction-check/releases/tag/v0.1.0-alpha.5) · released 26 October 2026 · Python 3.10+**
+**[0.1.0a6 on PyPI](https://pypi.org/project/interaction-check/0.1.0a6/) · published 27 October 2026 (Europe/Kyiv) · Python 3.10+**
 
-**[Download the wheel](https://github.com/PerchAnton/interaction-check/releases/download/v0.1.0-alpha.5/interaction_check-0.1.0a5-py3-none-any.whl)** · [Source archive](https://github.com/PerchAnton/interaction-check/releases/download/v0.1.0-alpha.5/interaction_check-0.1.0a5.tar.gz) · [SHA-256 checksums](https://github.com/PerchAnton/interaction-check/releases/download/v0.1.0-alpha.5/SHA256SUMS) · [Changelog](CHANGELOG.md)
+**[Wheel and source archive](https://pypi.org/project/interaction-check/0.1.0a6/#files)** · [SHA-256 and installation evidence](docs/evidence/release-alpha6.json) · [Changelog](CHANGELOG.md) · [Tagged source](https://github.com/PerchAnton/interaction-check/tree/v0.1.0-alpha.6)
 
-![interaction-check alpha 5, released 26 October 2026: 0 runtime dependencies, 49 runner tests, 12.6 KiB wheel. Replay a scenario, export its original expectations through the first mismatch, and manually translate useful behavior into a native test.](docs/assets/release.svg)
+![interaction-check alpha 6, published on PyPI 27 October 2026: 0 runtime dependencies, 49 runner tests, 12.9 KiB wheel. Replay a scenario, export its original expectations through the first mismatch, and manually translate useful behavior into a native test.](docs/assets/release.svg)
 
-Release snapshot: **49 runner tests**, **0 runtime dependencies**, **12.6 KiB wheel
-(12,937 bytes)**. [Exact files, hashes and release CI](docs/evidence/release-alpha5.json).
+Release snapshot: **49 runner tests**, **0 runtime dependencies**, **12.9 KiB wheel
+(13,170 bytes)**. [Exact files, hashes, release CI and clean installation](docs/evidence/release-alpha6.json).
 These are dated release facts; the CI badges above track current main. The handoff is
 manual, and an export must be replayed before sharing. Examples and adapters are separate.
 
@@ -27,23 +27,20 @@ with your runner and adapter versions, or read the [alpha compatibility policy](
 
 ## Install the released command
 
-**PyPI candidate: `0.1.0a6` (not published yet).** The [publishing guide](docs/RELEASING.md#registry-publication)
-records the remaining account setup and verification. After publication, installation
-will be `python -m pip install 'interaction-check==0.1.0a6'` in a virtual environment.
-Until then, use the existing GitHub release below.
-
-Download the wheel above, then run these commands in its directory:
+Install the exact published prerelease from PyPI in a virtual environment:
 
 ```sh
 python -m venv .venv
-.venv/bin/python -m pip install ./interaction_check-0.1.0a5-py3-none-any.whl
+.venv/bin/python -m pip install 'interaction-check==0.1.0a6'
 .venv/bin/interaction-check --version
 ```
 
 On Windows use `.venv\Scripts\python.exe` and `.venv\Scripts\interaction-check.exe`.
 For a source checkout, use `python -m pip install .` inside your virtual environment.
-The installed command uses Python version spelling `0.1.0a5`. Packages are available
-from GitHub Releases; there is no PyPI publication. Start with the
+The exact pin selects this alpha without opting into all future prereleases. Installation
+from PyPI, metadata, a passing scenario, failure export and replay were checked in a
+fresh environment. The [previous GitHub release](https://github.com/PerchAnton/interaction-check/releases/tag/v0.1.0-alpha.5)
+remains available. Start with the
 [XState walkthrough](examples/xstate/README.md) or the [native-test guide](docs/NATIVE_TESTS.md).
 
 ## Evidence and trade-offs
@@ -73,8 +70,8 @@ Replay is **2.46× slower** in this small pilot. Its value is a shareable trace 
 failure report. Native tests also need only XState; fewer total lines of code or faster
 application behavior are not demonstrated.
 
-**Experimental, 0.1.0a5 (alpha 5).** Maintained by [PerchAnton](https://github.com/PerchAnton).
-No PyPI release or upstream adoption is claimed. The first adapter uses a fixed
+**Experimental, 0.1.0a6 (alpha 6), available on PyPI.** Maintained by [PerchAnton](https://github.com/PerchAnton).
+Upstream adoption is not claimed. The first adapter uses a fixed
 edit-session revision and commits through PhotoCraft's actual `Session` command API;
 consumer-owned adapters also exercise the real PhotoCraft and PdfCraft dialogs.
 

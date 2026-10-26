@@ -1,13 +1,13 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1040" height="496" viewBox="0 0 1040 496" role="img" aria-labelledby="title description">
 <title id="title">Replay. Export. Share.</title>
-<desc id="description">Turn a failing check into a reviewable event sequence. Release alpha.5, 26 October 2026. 0 runtime dependencies Python 3.10+ · standard library; 49 passing runner tests Pinned release CI · 8 export/CLI checks; 12.6 KiB wheel download 12,937 bytes · compressed package. Workflow: 1 / REPLAY Run your scenario Compare expected states with the adapter’s observations.; 2 / EXPORT Save the failing prefix Keep the original expectations through the first mismatch.; 3 / MANUAL HANDOFF Keep a native test Translate the useful behavior into the consumer’s test suite..</desc>
+<desc id="description">Turn a failing check into a reviewable event sequence. Release alpha.6, 27 October 2026 (Europe/Kyiv). 0 runtime dependencies Python 3.10+ · standard library; 49 passing runner tests Pinned release CI · 8 export/CLI checks; 12.9 KiB wheel download 13,170 bytes · compressed package. Workflow: 1 / REPLAY Run your scenario Compare expected states with the adapter’s observations.; 2 / EXPORT Save the failing prefix Keep the original expectations through the first mismatch.; 3 / MANUAL HANDOFF Keep a native test Translate the useful behavior into the consumer’s test suite..</desc>
 <!-- Release snapshot and sources: docs/assets/README.md. No live counters. -->
 <defs><marker id="arrow" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0 0 L6 3 L0 6Z" fill="#526176"/></marker></defs>
 <rect width="1040" height="496" rx="20" fill="#f4f7fb"/>
 <path d="M20 0H1020Q1040 0 1040 20V128H0V20Q0 0 20 0Z" fill="#152238"/>
 <g font-family="Arial, Helvetica, sans-serif">
-<text x="32" y="34" font-size="14" fill="#c4cede" font-weight="700" text-anchor="start">INTERACTION-CHECK / GITHUB PRERELEASE</text>
-<text x="1008" y="34" font-size="14" fill="#c4cede" font-weight="700" text-anchor="end">ALPHA.5 · 26 OCT 2026</text>
+<text x="32" y="34" font-size="14" fill="#c4cede" font-weight="700" text-anchor="start">INTERACTION-CHECK / PYPI PRERELEASE</text>
+<text x="1008" y="34" font-size="14" fill="#c4cede" font-weight="700" text-anchor="end">ALPHA.6 · 27 OCT 2026</text>
 <text x="32" y="76" font-size="32" fill="#ffffff" font-weight="700" text-anchor="start">Replay. Export. Share.</text>
 <text x="32" y="105" font-size="17" fill="#dae3f1" font-weight="400" text-anchor="start">Turn a failing check into a reviewable event sequence.</text>
 <rect x="32" y="150" width="312" height="100" rx="14" fill="#ffffff" stroke="#dce3ec"/>
@@ -19,9 +19,9 @@
 <text x="384" y="221" font-size="17" fill="#172438" font-weight="700" text-anchor="start">passing runner tests</text>
 <text x="384" y="240" font-size="13" fill="#526176" font-weight="400" text-anchor="start">Pinned release CI · 8 export/CLI checks</text>
 <rect x="696" y="150" width="312" height="100" rx="14" fill="#ffffff" stroke="#dce3ec"/>
-<text x="716" y="194" font-size="38" fill="#087c79" font-weight="700" text-anchor="start">12.6 KiB</text>
+<text x="716" y="194" font-size="38" fill="#087c79" font-weight="700" text-anchor="start">12.9 KiB</text>
 <text x="716" y="221" font-size="17" fill="#172438" font-weight="700" text-anchor="start">wheel download</text>
-<text x="716" y="240" font-size="13" fill="#526176" font-weight="400" text-anchor="start">12,937 bytes · compressed package</text>
+<text x="716" y="240" font-size="13" fill="#526176" font-weight="400" text-anchor="start">13,170 bytes · compressed package</text>
 <rect x="32" y="280" width="312" height="138" rx="14" fill="#eaf6f3" stroke="#dce3ec"/>
 <text x="52" y="307" font-size="13" fill="#087c79" font-weight="700" text-anchor="start">1 / REPLAY</text>
 <text x="52" y="342" font-size="23" fill="#172438" font-weight="700" text-anchor="start">Run your scenario</text>
@@ -40,5 +40,5 @@
 <path d="M347 345H359" stroke="#526176" stroke-width="2" marker-end="url(#arrow)"/>
 <path d="M679 345H691" stroke="#526176" stroke-width="2" marker-end="url(#arrow)"/>
 <text x="32" y="451" font-size="15" fill="#172438" font-weight="400" text-anchor="start">Re-run the exported prefix before sharing. The adapter may already have processed all events.</text>
-<text x="32" y="476" font-size="14" fill="#526176" font-weight="400" text-anchor="start">Snapshot: 26 October 2026. Download size is not runtime memory. Native-test translation is manual.</text>
+<text x="32" y="476" font-size="14" fill="#526176" font-weight="400" text-anchor="start">Snapshot: 27 October 2026 (Kyiv). Download size is not runtime memory. Native-test translation is manual.</text>
 </g></svg>
