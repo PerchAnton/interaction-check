@@ -1,0 +1,13 @@
+{
+  "schema": 1,
+  "name": "xstate / 03-restore",
+  "steps": [
+    {"event": {"op": "new"}, "expect": {"value": "idle"}},
+    {"event": {"op": "send", "type": "EDIT"}, "expect": {"value": "editing"}},
+    {"event": {"op": "send", "type": "CHANGE", "value": "saved draft"}, "expect": {"context": {"draft": "saved draft"}}},
+    {"event": {"op": "checkpoint"}, "expect": {"value": "editing"}},
+    {"event": {"op": "send", "type": "CHANGE", "value": "later"}, "expect": {"context": {"draft": "later"}}},
+    {"event": {"op": "restore"}, "expect": {"value": "editing", "context": {"draft": "saved draft", "saved": "original"}}},
+    {"event": {"op": "send", "type": "SAVE"}, "expect": {"value": "idle", "context": {"saved": "saved draft"}}}
+  ]
+}

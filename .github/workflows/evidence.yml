@@ -1,0 +1,23 @@
+name: Replay evidence
+on: [push, pull_request]
+permissions:
+  contents: read
+jobs:
+  xstate:
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 10
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-24.04, windows-latest, macos-latest]
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+      - uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38
+        with:
+          node-version: '24.19.0'
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0
+        with:
+          python-version: '3.14'
+      - run: npm --prefix examples/xstate ci --ignore-scripts --no-audit --no-fund
+      - run: npm --prefix examples/xstate test
+      - run: python examples/xstate/verify.py --report .artifacts/xstate-evidence.json

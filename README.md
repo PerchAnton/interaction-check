@@ -1,6 +1,6 @@
 # interaction-check
 
-**Experimental, 0.1.0-alpha.3.** An independent development tool for replaying semantic
+**Experimental, 0.1.0-alpha.4.** An independent development tool for replaying semantic
 interaction traces against an explicit local adapter. No third-party Python packages.
 Maintained by [PerchAnton](https://github.com/PerchAnton); no PyPI release or upstream adoption.
 
@@ -8,6 +8,22 @@ The first adapter uses the independent [edit-session library](https://github.com
 from a fixed Git revision, and commits through PhotoCraft's actual `Session` command API.
 The tool itself knows nothing about opacity, PDF geometry, Rust, Go or a GUI framework.
 Consumer-owned adapters now also exercise the real PhotoCraft and PdfCraft dialogs.
+
+## Start with one reviewable reproduction
+
+The [XState walkthrough](examples/xstate/README.md) includes three small traces, the
+expected state after every event and a failure you can reproduce. Its focused install
+contains **1 npm package instead of the 120 entries in our earlier multi-consumer
+lockfile**. The Python runner itself still uses only the standard library.
+
+Use `--trace --report result.json` to retain each checked event, expectation and actual
+state. A failing report includes the checked prefix and the first mismatching state.
+This makes a regression report readable before someone runs the reproduction.
+
+[Measured value and trade-offs](docs/VALUE.md) includes native tests, source counts,
+30 paired timing samples and three controlled mutations. Both test paths detect all
+three mutations; native tests are shorter and faster here. The reason to choose replay
+is a shareable trace and common report format. Upstream adoption remains unconfirmed.
 
 ## Proposed PhotoCraft UI consumer
 
@@ -54,6 +70,14 @@ means all scenarios passed and requested reports were written; 1 means a scenari
 write failed; invalid CLI usage exits 2.
 
 ## Reports for CI
+
+Add `--trace` with `--report FILE` for per-step JSON evidence. Each entry has `step`
+(1-based), `event`, `expect`, `actual`, and `passed`; a mismatch also has `differences`.
+Only checked steps up to the first mismatch are included. Later events may already have
+executed: this is post-execution checking, not stop-on-first-failure execution. Malformed
+replies have no invented state; process crashes/timeouts do not produce a checked trace.
+The option does not change JSONL requests, default compact reports, or JUnit output.
+Reports include the event/state values chosen by the adapter; review them before sharing.
 
 `--report FILE` writes JSON and `--junit FILE` writes JUnit XML; either or both are optional.
 JUnit contains one test case per scenario, failure details and captured adapter stderr,

@@ -1,0 +1,911 @@
+{
+  "runner_version": "0.1.0-alpha.4",
+  "environment": {
+    "system": "Darwin",
+    "release": "27.0.0",
+    "machine": "arm64",
+    "python": "3.14.3",
+    "node": "v24.19.0"
+  },
+  "install": {
+    "baseline": {
+      "commit": "ae3bcefbf4a82d9e1baadecd2feec948f96a9195",
+      "path": "adapters/javascript/package-lock.json",
+      "sha256": "ebd16659212e0c3d46cef05a98b0c15fc2dd450a56a7c9c5826cba9dae5ff710",
+      "bytes": 58445,
+      "non_root_entries": 120
+    },
+    "focused_non_root_entries": 1,
+    "focused_lock_bytes": 735
+  },
+  "source_files": {
+    "examples/xstate/machine.mjs": {
+      "bytes": 696,
+      "physical_lines": 29,
+      "sha256": "63fbc79ba54bba81a05339fc05e2f8b3b86e6dc863978666b64396cdc717eab7"
+    },
+    "examples/xstate/native.test.mjs": {
+      "bytes": 2662,
+      "physical_lines": 60,
+      "sha256": "4f76d93792d75de350f2d61799a10ef116a003d16a8f5445b0b472aa0e74246f"
+    },
+    "examples/xstate/adapter.mjs": {
+      "bytes": 1578,
+      "physical_lines": 54,
+      "sha256": "556bb93c10900dddd3acd064cf0e60010e362219192a909fbc17777c89948d0c"
+    },
+    "examples/xstate/main.mjs": {
+      "bytes": 249,
+      "physical_lines": 12,
+      "sha256": "3079f78372e30f6753ec458b2546fd00287b24b483fdcd760a3c72f2f4cb9916"
+    },
+    "examples/xstate/protocol.mjs": {
+      "bytes": 2512,
+      "physical_lines": 92,
+      "sha256": "38f5ee2dbcfea7ac38899529de5ef88bcc25ede1cb700d4984cf3e9fa4e3cd7b"
+    },
+    "examples/xstate/scenarios/01-cancel.json": {
+      "bytes": 579,
+      "physical_lines": 11,
+      "sha256": "5ef1a35cf2294b9f96d26b2fe886cff186ba143d2c529ce55d11f786e6a44ff7"
+    },
+    "examples/xstate/scenarios/02-validation.json": {
+      "bytes": 624,
+      "physical_lines": 12,
+      "sha256": "1a5b2bf6a16d7ffeebe1073639f7c742c41ef82223c9d194f2bd0f23c4be2d10"
+    },
+    "examples/xstate/scenarios/03-restore.json": {
+      "bytes": 744,
+      "physical_lines": 13,
+      "sha256": "775ad85bb34e3e37eb3ac6cdbe31755bacff4245527ef0b101d0310a221b6502"
+    },
+    "interaction_check.py": {
+      "bytes": 15630,
+      "physical_lines": 334,
+      "sha256": "95e8bc05a6bfb7915c6d1b68fb787489bd5f8b74a68137f225cd9590fdaa426e"
+    }
+  },
+  "replay": [
+    {
+      "name": "xstate / 01-cancel",
+      "passed": true,
+      "steps": 5,
+      "stderr": "",
+      "trace": [
+        {
+          "step": 1,
+          "event": {
+            "op": "new"
+          },
+          "expect": {
+            "value": "idle",
+            "context": {
+              "saved": "original"
+            }
+          },
+          "actual": {
+            "value": "idle",
+            "context": {
+              "saved": "original",
+              "draft": "original"
+            },
+            "status": "active",
+            "can_save": false
+          },
+          "passed": true
+        },
+        {
+          "step": 2,
+          "event": {
+            "op": "send",
+            "type": "EDIT"
+          },
+          "expect": {
+            "value": "editing"
+          },
+          "actual": {
+            "value": "editing",
+            "context": {
+              "saved": "original",
+              "draft": "original"
+            },
+            "status": "active",
+            "can_save": true
+          },
+          "passed": true
+        },
+        {
+          "step": 3,
+          "event": {
+            "op": "send",
+            "type": "CHANGE",
+            "value": "preview"
+          },
+          "expect": {
+            "context": {
+              "draft": "preview",
+              "saved": "original"
+            }
+          },
+          "actual": {
+            "value": "editing",
+            "context": {
+              "saved": "original",
+              "draft": "preview"
+            },
+            "status": "active",
+            "can_save": true
+          },
+          "passed": true
+        },
+        {
+          "step": 4,
+          "event": {
+            "op": "send",
+            "type": "CANCEL"
+          },
+          "expect": {
+            "value": "idle",
+            "context": {
+              "saved": "original"
+            }
+          },
+          "actual": {
+            "value": "idle",
+            "context": {
+              "saved": "original",
+              "draft": "preview"
+            },
+            "status": "active",
+            "can_save": false
+          },
+          "passed": true
+        },
+        {
+          "step": 5,
+          "event": {
+            "op": "send",
+            "type": "EDIT"
+          },
+          "expect": {
+            "context": {
+              "draft": "original"
+            }
+          },
+          "actual": {
+            "value": "editing",
+            "context": {
+              "saved": "original",
+              "draft": "original"
+            },
+            "status": "active",
+            "can_save": true
+          },
+          "passed": true
+        }
+      ],
+      "source": "examples/xstate/scenarios/01-cancel.json"
+    },
+    {
+      "name": "xstate / 02-validation",
+      "passed": true,
+      "steps": 6,
+      "stderr": "",
+      "trace": [
+        {
+          "step": 1,
+          "event": {
+            "op": "new"
+          },
+          "expect": {
+            "value": "idle"
+          },
+          "actual": {
+            "value": "idle",
+            "context": {
+              "saved": "original",
+              "draft": "original"
+            },
+            "status": "active",
+            "can_save": false
+          },
+          "passed": true
+        },
+        {
+          "step": 2,
+          "event": {
+            "op": "send",
+            "type": "EDIT"
+          },
+          "expect": {
+            "value": "editing"
+          },
+          "actual": {
+            "value": "editing",
+            "context": {
+              "saved": "original",
+              "draft": "original"
+            },
+            "status": "active",
+            "can_save": true
+          },
+          "passed": true
+        },
+        {
+          "step": 3,
+          "event": {
+            "op": "send",
+            "type": "CHANGE",
+            "value": " "
+          },
+          "expect": {
+            "can_save": false
+          },
+          "actual": {
+            "value": "editing",
+            "context": {
+              "saved": "original",
+              "draft": " "
+            },
+            "status": "active",
+            "can_save": false
+          },
+          "passed": true
+        },
+        {
+          "step": 4,
+          "event": {
+            "op": "send",
+            "type": "SAVE"
+          },
+          "expect": {
+            "value": "editing",
+            "context": {
+              "saved": "original"
+            }
+          },
+          "actual": {
+            "value": "editing",
+            "context": {
+              "saved": "original",
+              "draft": " "
+            },
+            "status": "active",
+            "can_save": false
+          },
+          "passed": true
+        },
+        {
+          "step": 5,
+          "event": {
+            "op": "send",
+            "type": "CHANGE",
+            "value": "界🙂"
+          },
+          "expect": {
+            "can_save": true
+          },
+          "actual": {
+            "value": "editing",
+            "context": {
+              "saved": "original",
+              "draft": "界🙂"
+            },
+            "status": "active",
+            "can_save": true
+          },
+          "passed": true
+        },
+        {
+          "step": 6,
+          "event": {
+            "op": "send",
+            "type": "SAVE"
+          },
+          "expect": {
+            "value": "idle",
+            "context": {
+              "saved": "界🙂"
+            }
+          },
+          "actual": {
+            "value": "idle",
+            "context": {
+              "saved": "界🙂",
+              "draft": "界🙂"
+            },
+            "status": "active",
+            "can_save": false
+          },
+          "passed": true
+        }
+      ],
+      "source": "examples/xstate/scenarios/02-validation.json"
+    },
+    {
+      "name": "xstate / 03-restore",
+      "passed": true,
+      "steps": 7,
+      "stderr": "",
+      "trace": [
+        {
+          "step": 1,
+          "event": {
+            "op": "new"
+          },
+          "expect": {
+            "value": "idle"
+          },
+          "actual": {
+            "value": "idle",
+            "context": {
+              "saved": "original",
+              "draft": "original"
+            },
+            "status": "active",
+            "can_save": false
+          },
+          "passed": true
+        },
+        {
+          "step": 2,
+          "event": {
+            "op": "send",
+            "type": "EDIT"
+          },
+          "expect": {
+            "value": "editing"
+          },
+          "actual": {
+            "value": "editing",
+            "context": {
+              "saved": "original",
+              "draft": "original"
+            },
+            "status": "active",
+            "can_save": true
+          },
+          "passed": true
+        },
+        {
+          "step": 3,
+          "event": {
+            "op": "send",
+            "type": "CHANGE",
+            "value": "saved draft"
+          },
+          "expect": {
+            "context": {
+              "draft": "saved draft"
+            }
+          },
+          "actual": {
+            "value": "editing",
+            "context": {
+              "saved": "original",
+              "draft": "saved draft"
+            },
+            "status": "active",
+            "can_save": true
+          },
+          "passed": true
+        },
+        {
+          "step": 4,
+          "event": {
+            "op": "checkpoint"
+          },
+          "expect": {
+            "value": "editing"
+          },
+          "actual": {
+            "value": "editing",
+            "context": {
+              "saved": "original",
+              "draft": "saved draft"
+            },
+            "status": "active",
+            "can_save": true
+          },
+          "passed": true
+        },
+        {
+          "step": 5,
+          "event": {
+            "op": "send",
+            "type": "CHANGE",
+            "value": "later"
+          },
+          "expect": {
+            "context": {
+              "draft": "later"
+            }
+          },
+          "actual": {
+            "value": "editing",
+            "context": {
+              "saved": "original",
+              "draft": "later"
+            },
+            "status": "active",
+            "can_save": true
+          },
+          "passed": true
+        },
+        {
+          "step": 6,
+          "event": {
+            "op": "restore"
+          },
+          "expect": {
+            "value": "editing",
+            "context": {
+              "draft": "saved draft",
+              "saved": "original"
+            }
+          },
+          "actual": {
+            "value": "editing",
+            "context": {
+              "saved": "original",
+              "draft": "saved draft"
+            },
+            "status": "active",
+            "can_save": true
+          },
+          "passed": true
+        },
+        {
+          "step": 7,
+          "event": {
+            "op": "send",
+            "type": "SAVE"
+          },
+          "expect": {
+            "value": "idle",
+            "context": {
+              "saved": "saved draft"
+            }
+          },
+          "actual": {
+            "value": "idle",
+            "context": {
+              "saved": "saved draft",
+              "draft": "saved draft"
+            },
+            "status": "active",
+            "can_save": false
+          },
+          "passed": true
+        }
+      ],
+      "source": "examples/xstate/scenarios/03-restore.json"
+    }
+  ],
+  "controlled_mutations": [
+    {
+      "mutation": "cancel incorrectly commits",
+      "native_assertion_failed": true,
+      "trace_failure": {
+        "name": "xstate / 01-cancel",
+        "passed": false,
+        "error": "Step 4 ({'op': 'send', 'type': 'CANCEL'}): state.context.saved: expected 'original', got 'preview'",
+        "trace": [
+          {
+            "step": 1,
+            "event": {
+              "op": "new"
+            },
+            "expect": {
+              "value": "idle",
+              "context": {
+                "saved": "original"
+              }
+            },
+            "actual": {
+              "value": "idle",
+              "context": {
+                "saved": "original",
+                "draft": "original"
+              },
+              "status": "active",
+              "can_save": false
+            },
+            "passed": true
+          },
+          {
+            "step": 2,
+            "event": {
+              "op": "send",
+              "type": "EDIT"
+            },
+            "expect": {
+              "value": "editing"
+            },
+            "actual": {
+              "value": "editing",
+              "context": {
+                "saved": "original",
+                "draft": "original"
+              },
+              "status": "active",
+              "can_save": true
+            },
+            "passed": true
+          },
+          {
+            "step": 3,
+            "event": {
+              "op": "send",
+              "type": "CHANGE",
+              "value": "preview"
+            },
+            "expect": {
+              "context": {
+                "draft": "preview",
+                "saved": "original"
+              }
+            },
+            "actual": {
+              "value": "editing",
+              "context": {
+                "saved": "original",
+                "draft": "preview"
+              },
+              "status": "active",
+              "can_save": true
+            },
+            "passed": true
+          },
+          {
+            "step": 4,
+            "event": {
+              "op": "send",
+              "type": "CANCEL"
+            },
+            "expect": {
+              "value": "idle",
+              "context": {
+                "saved": "original"
+              }
+            },
+            "actual": {
+              "value": "idle",
+              "context": {
+                "saved": "preview",
+                "draft": "preview"
+              },
+              "status": "active",
+              "can_save": false
+            },
+            "passed": false,
+            "differences": [
+              "state.context.saved: expected 'original', got 'preview'"
+            ]
+          }
+        ],
+        "source": "examples/xstate/scenarios/01-cancel.json"
+      }
+    },
+    {
+      "mutation": "blank draft can save",
+      "native_assertion_failed": true,
+      "trace_failure": {
+        "name": "xstate / 02-validation",
+        "passed": false,
+        "error": "Step 3 ({'op': 'send', 'type': 'CHANGE', 'value': ' '}): state.can_save: expected False, got True",
+        "trace": [
+          {
+            "step": 1,
+            "event": {
+              "op": "new"
+            },
+            "expect": {
+              "value": "idle"
+            },
+            "actual": {
+              "value": "idle",
+              "context": {
+                "saved": "original",
+                "draft": "original"
+              },
+              "status": "active",
+              "can_save": false
+            },
+            "passed": true
+          },
+          {
+            "step": 2,
+            "event": {
+              "op": "send",
+              "type": "EDIT"
+            },
+            "expect": {
+              "value": "editing"
+            },
+            "actual": {
+              "value": "editing",
+              "context": {
+                "saved": "original",
+                "draft": "original"
+              },
+              "status": "active",
+              "can_save": true
+            },
+            "passed": true
+          },
+          {
+            "step": 3,
+            "event": {
+              "op": "send",
+              "type": "CHANGE",
+              "value": " "
+            },
+            "expect": {
+              "can_save": false
+            },
+            "actual": {
+              "value": "editing",
+              "context": {
+                "saved": "original",
+                "draft": " "
+              },
+              "status": "active",
+              "can_save": true
+            },
+            "passed": false,
+            "differences": [
+              "state.can_save: expected False, got True"
+            ]
+          }
+        ],
+        "source": "examples/xstate/scenarios/02-validation.json"
+      }
+    },
+    {
+      "mutation": "save loses text",
+      "native_assertion_failed": true,
+      "trace_failure": {
+        "name": "xstate / 03-restore",
+        "passed": false,
+        "error": "Step 7 ({'op': 'send', 'type': 'SAVE'}): state.context.saved: expected 'saved draft', got 'lost'",
+        "trace": [
+          {
+            "step": 1,
+            "event": {
+              "op": "new"
+            },
+            "expect": {
+              "value": "idle"
+            },
+            "actual": {
+              "value": "idle",
+              "context": {
+                "saved": "original",
+                "draft": "original"
+              },
+              "status": "active",
+              "can_save": false
+            },
+            "passed": true
+          },
+          {
+            "step": 2,
+            "event": {
+              "op": "send",
+              "type": "EDIT"
+            },
+            "expect": {
+              "value": "editing"
+            },
+            "actual": {
+              "value": "editing",
+              "context": {
+                "saved": "original",
+                "draft": "original"
+              },
+              "status": "active",
+              "can_save": true
+            },
+            "passed": true
+          },
+          {
+            "step": 3,
+            "event": {
+              "op": "send",
+              "type": "CHANGE",
+              "value": "saved draft"
+            },
+            "expect": {
+              "context": {
+                "draft": "saved draft"
+              }
+            },
+            "actual": {
+              "value": "editing",
+              "context": {
+                "saved": "original",
+                "draft": "saved draft"
+              },
+              "status": "active",
+              "can_save": true
+            },
+            "passed": true
+          },
+          {
+            "step": 4,
+            "event": {
+              "op": "checkpoint"
+            },
+            "expect": {
+              "value": "editing"
+            },
+            "actual": {
+              "value": "editing",
+              "context": {
+                "saved": "original",
+                "draft": "saved draft"
+              },
+              "status": "active",
+              "can_save": true
+            },
+            "passed": true
+          },
+          {
+            "step": 5,
+            "event": {
+              "op": "send",
+              "type": "CHANGE",
+              "value": "later"
+            },
+            "expect": {
+              "context": {
+                "draft": "later"
+              }
+            },
+            "actual": {
+              "value": "editing",
+              "context": {
+                "saved": "original",
+                "draft": "later"
+              },
+              "status": "active",
+              "can_save": true
+            },
+            "passed": true
+          },
+          {
+            "step": 6,
+            "event": {
+              "op": "restore"
+            },
+            "expect": {
+              "value": "editing",
+              "context": {
+                "draft": "saved draft",
+                "saved": "original"
+              }
+            },
+            "actual": {
+              "value": "editing",
+              "context": {
+                "saved": "original",
+                "draft": "saved draft"
+              },
+              "status": "active",
+              "can_save": true
+            },
+            "passed": true
+          },
+          {
+            "step": 7,
+            "event": {
+              "op": "send",
+              "type": "SAVE"
+            },
+            "expect": {
+              "value": "idle",
+              "context": {
+                "saved": "saved draft"
+              }
+            },
+            "actual": {
+              "value": "idle",
+              "context": {
+                "saved": "lost",
+                "draft": "saved draft"
+              },
+              "status": "active",
+              "can_save": false
+            },
+            "passed": false,
+            "differences": [
+              "state.context.saved: expected 'saved draft', got 'lost'"
+            ]
+          }
+        ],
+        "source": "examples/xstate/scenarios/03-restore.json"
+      }
+    }
+  ],
+  "timing": {
+    "native": {
+      "samples_ms": [
+        78.047334,
+        74.036542,
+        72.668,
+        78.206292,
+        81.197042,
+        75.489541,
+        73.088125,
+        73.115791,
+        72.838292,
+        73.009708,
+        75.037625,
+        71.415834,
+        75.202584,
+        75.040292,
+        75.076708,
+        74.819333,
+        73.94375,
+        74.406791,
+        76.0375,
+        74.124916,
+        72.869875,
+        74.059375,
+        75.753292,
+        72.943125,
+        72.567167,
+        72.963542,
+        74.868625,
+        73.469958,
+        74.570833,
+        72.593208
+      ],
+      "n": 30,
+      "median_ms": 74.0921455,
+      "p95_ms": 78.206292,
+      "min_ms": 71.415834,
+      "max_ms": 81.197042
+    },
+    "replay": {
+      "samples_ms": [
+        163.20625,
+        166.497792,
+        162.452833,
+        182.372542,
+        173.294583,
+        167.838583,
+        167.009416,
+        167.175125,
+        162.654791,
+        166.725125,
+        167.227,
+        165.458292,
+        164.44725,
+        164.412583,
+        167.772666,
+        166.161459,
+        168.6785,
+        167.339083,
+        166.083084,
+        167.040833,
+        167.913208,
+        160.63525,
+        165.412459,
+        166.954834,
+        167.79025,
+        167.405625,
+        163.406334,
+        166.788583,
+        167.364,
+        167.115042
+      ],
+      "n": 30,
+      "median_ms": 166.982125,
+      "p95_ms": 173.294583,
+      "min_ms": 160.63525,
+      "max_ms": 182.372542
+    }
+  }
+}

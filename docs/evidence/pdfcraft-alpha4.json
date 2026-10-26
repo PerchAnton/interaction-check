@@ -1,0 +1,3839 @@
+{
+  "version": "0.1.0-alpha.4",
+  "results": [
+    {
+      "name": "Document Properties: cancel-and-escape",
+      "passed": true,
+      "steps": 8,
+      "stderr": "",
+      "trace": [
+        {
+          "step": 1,
+          "event": {
+            "op": "open"
+          },
+          "expect": {
+            "error": null
+          },
+          "actual": {
+            "active": "A.pdf",
+            "document": {
+              "author": "Original author",
+              "custom": {
+                "Untouched": "Keep me"
+              },
+              "custom_count": 1,
+              "dirty": false,
+              "display_title": false,
+              "generation": 0,
+              "keywords": null,
+              "pages": 2,
+              "redo": null,
+              "subject": null,
+              "title": "Original",
+              "undo": null
+            },
+            "draft": {
+              "author": "Original author",
+              "custom": {
+                "Untouched": "Keep me"
+              },
+              "display_title": false,
+              "keywords": "",
+              "subject": "",
+              "title": "Original"
+            },
+            "error": null,
+            "notice": null,
+            "original_bytes": true,
+            "properties_open": true,
+            "reopened": null
+          },
+          "passed": true
+        },
+        {
+          "step": 2,
+          "event": {
+            "op": "type",
+            "field": "Title",
+            "value": "Discard by Cancel"
+          },
+          "expect": {
+            "error": null
+          },
+          "actual": {
+            "active": "A.pdf",
+            "document": {
+              "author": "Original author",
+              "custom": {
+                "Untouched": "Keep me"
+              },
+              "custom_count": 1,
+              "dirty": false,
+              "display_title": false,
+              "generation": 0,
+              "keywords": null,
+              "pages": 2,
+              "redo": null,
+              "subject": null,
+              "title": "Original",
+              "undo": null
+            },
+            "draft": {
+              "author": "Original author",
+              "custom": {
+                "Untouched": "Keep me"
+              },
+              "display_title": false,
+              "keywords": "",
+              "subject": "",
+              "title": "Discard by Cancel"
+            },
+            "error": null,
+            "notice": null,
+            "original_bytes": true,
+            "properties_open": true,
+            "reopened": null
+          },
+          "passed": true
+        },
+        {
+          "step": 3,
+          "event": {
+            "op": "click",
+            "label": "Cancel"
+          },
+          "expect": {
+            "error": null,
+            "properties_open": false,
+            "draft": null,
+            "document": {
+              "title": "Original",
+              "author": "Original author",
+              "custom": {
+                "Untouched": "Keep me"
+              },
+              "display_title": false,
+              "dirty": false,
+              "undo": null,
+              "redo": null,
+              "pages": 2,
+              "custom_count": 1
+            },
+            "original_bytes": true
+          },
+          "actual": {
+            "active": "A.pdf",
+            "document": {
+              "author": "Original author",
+              "custom": {
+                "Untouched": "Keep me"
+              },
+              "custom_count": 1,
+              "dirty": false,
+              "display_title": false,
+              "generation": 0,
+              "keywords": null,
+              "pages": 2,
+              "redo": null,
+              "subject": null,
+              "title": "Original",
+              "undo": null
+            },
+            "draft": null,
+            "error": null,
+            "notice": null,
+            "original_bytes": true,
+            "properties_open": false,
+            "reopened": null
+          },
+          "passed": true
+        },
+        {
+          "step": 4,
+          "event": {
+            "op": "open"
+          },
+          "expect": {
+            "error": null,
+            "draft": {
+              "title": "Original"
+            }
+          },
+          "actual": {
+            "active": "A.pdf",
+            "document": {
+              "author": "Original author",
+              "custom": {
+                "Untouched": "Keep me"
+              },
+              "custom_count": 1,
+              "dirty": false,
+              "display_title": false,
+              "generation": 0,
+              "keywords": null,
+              "pages": 2,
+              "redo": null,
+              "subject": null,
+              "title": "Original",
+              "undo": null
+            },
+            "draft": {
+              "author": "Original author",
+              "custom": {
+                "Untouched": "Keep me"
+              },
+              "display_title": false,
+              "keywords": "",
+              "subject": "",
+              "title": "Original"
+            },
+            "error": null,
+            "notice": null,
+            "original_bytes": true,
+            "properties_open": true,
+            "reopened": null
+          },
+          "passed": true
+        },
+        {
+          "step": 5,
+          "event": {
+            "op": "type",
+            "field": "Author",
+            "value": "Discard by Escape"
+          },
+          "expect": {
+            "error": null
+          },
+          "actual": {
+            "active": "A.pdf",
+            "document": {
+              "author": "Original author",
+              "custom": {
+                "Untouched": "Keep me"
+              },
+              "custom_count": 1,
+              "dirty": false,
+              "display_title": false,
+              "generation": 0,
+              "keywords": null,
+              "pages": 2,
+              "redo": null,
+              "subject": null,
+              "title": "Original",
+              "undo": null
+            },
+            "draft": {
+              "author": "Discard by Escape",
+              "custom": {
+                "Untouched": "Keep me"
+              },
+              "display_title": false,
+              "keywords": "",
+              "subject": "",
+              "title": "Original"
+            },
+            "error": null,
+            "notice": null,
+            "original_bytes": true,
+            "properties_open": true,
+            "reopened": null
+          },
+          "passed": true
+        },
+        {
+          "step": 6,
+          "event": {
+            "op": "escape"
+          },
+          "expect": {
+            "error": null,
+            "properties_open": false,
+            "draft": null,
+            "document": {
+              "title": "Original",
+              "author": "Original author",
+              "custom": {
+                "Untouched": "Keep me"
+              },
+              "display_title": false,
+              "dirty": false,
+              "undo": null,
+              "redo": null,
+              "pages": 2,
+              "custom_count": 1
+            },
+            "original_bytes": true
+          },
+          "actual": {
+            "active": "A.pdf",
+            "document": {
+              "author": "Original author",
+              "custom": {
+                "Untouched": "Keep me"
+              },
+              "custom_count": 1,
+              "dirty": false,
+              "display_title": false,
+              "generation": 0,
+              "keywords": null,
+              "pages": 2,
+              "redo": null,
+              "subject": null,
+              "title": "Original",
+              "undo": null
+            },
+            "draft": null,
+            "error": null,
+            "notice": null,
+            "original_bytes": true,
+            "properties_open": false,
+            "reopened": null
+          },
+          "passed": true
+        },
+        {
+          "step": 7,
+          "event": {
+            "op": "open"
+          },
+          "expect": {
+            "error": null,
+            "draft": {
+              "author": "Original author"
+            }
+          },
+          "actual": {
+            "active": "A.pdf",
+            "document": {
+              "author": "Original author",
+              "custom": {
+                "Untouched": "Keep me"
+              },
+              "custom_count": 1,
+              "dirty": false,
+              "display_title": false,
+              "generation": 0,
+              "keywords": null,
+              "pages": 2,
+              "redo": null,
+              "subject": null,
+              "title": "Original",
+              "undo": null
+            },
+            "draft": {
+              "author": "Original author",
+              "custom": {
+                "Untouched": "Keep me"
+              },
+              "display_title": false,
+              "keywords": "",
+              "subject": "",
+              "title": "Original"
+            },
+            "error": null,
+            "notice": null,
+            "original_bytes": true,
+            "properties_open": true,
+            "reopened": null
+          },
+          "passed": true
+        },
+        {
+          "step": 8,
+          "event": {
+            "op": "click",
+            "label": "Close"
+          },
+          "expect": {
+            "error": null,
+            "properties_open": false,
+            "draft": null,
+            "document": {
+              "title": "Original",
+              "author": "Original author",
+              "custom": {
+                "Untouched": "Keep me"
+              },
+              "display_title": false,
+              "dirty": false,
+              "undo": null,
+              "redo": null,
+              "pages": 2,
+              "custom_count": 1
+            },
+            "original_bytes": true
+          },
+          "actual": {
+            "active": "A.pdf",
+            "document": {
+              "author": "Original author",
+              "custom": {
+                "Untouched": "Keep me"
+              },
+              "custom_count": 1,
+              "dirty": false,
+              "display_title": false,
+              "generation": 0,
+              "keywords": null,
+              "pages": 2,
+              "redo": null,
+              "subject": null,
+              "title": "Original",
+              "undo": null
+            },
+            "draft": null,
+            "error": null,
+            "notice": null,
+            "original_bytes": true,
+            "properties_open": false,
+            "reopened": null
+          },
+          "passed": true
+        }
+      ],
+      "source": "tests/interactions/document-properties/cancel-and-escape.json"
+    },
+    {
+      "name": "Document Properties: close-document",
+      "passed": true,
+      "steps": 5,
+      "stderr": "",
+      "trace": [
+        {
+          "step": 1,
+          "event": {
+            "op": "open"
+          },
+          "expect": {
+            "error": null
+          },
+          "actual": {
+            "active": "A.pdf",
+            "document": {
+              "author": "Original author",
+              "custom": {
+                "Untouched": "Keep me"
+              },
+              "custom_count": 1,
+              "dirty": false,
+              "display_title": false,
+              "generation": 0,
+              "keywords": null,
+              "pages": 2,
+              "redo": null,
+              "subject": null,
+              "title": "Original",
+              "undo": null
+            },
+            "draft": {
+              "author": "Original author",
+              "custom": {
+                "Untouched": "Keep me"
+              },
+              "display_title": false,
+              "keywords": "",
+              "subject": "",
+              "title": "Original"
+            },
+            "error": null,
+            "notice": null,
+            "original_bytes": true,
+            "properties_open": true,
+            "reopened": null
+          },
+          "passed": true
+        },
+        {
+          "step": 2,
+          "event": {
+            "op": "type",
+            "field": "Title",
+            "value": "Stale"
+          },
+          "expect": {
+            "error": null
+          },
+          "actual": {
+            "active": "A.pdf",
+            "document": {
+              "author": "Original author",
+              "custom": {
+                "Untouched": "Keep me"
+              },
+              "custom_count": 1,
+              "dirty": false,
+              "display_title": false,
+              "generation": 0,
+              "keywords": null,
+              "pages": 2,
+              "redo": null,
+              "subject": null,
+              "title": "Original",
+              "undo": null
+            },
+            "draft": {
+              "author": "Original author",
+              "custom": {
+                "Untouched": "Keep me"
+              },
+              "display_title": false,
+              "keywords": "",
+              "subject": "",
+              "title": "Stale"
+            },
+            "error": null,
+            "notice": null,
+            "original_bytes": true,
+            "properties_open": true,
+            "reopened": null
+          },
+          "passed": true
+        },
+        {
+          "step": 3,
+          "event": {
+            "op": "close_document"
+          },
+          "expect": {
+            "error": null,
+            "properties_open": false,
+            "draft": null,
+            "active": "B.pdf",
+            "document": {
+              "title": "Second document",
+              "dirty": false,
+              "undo": null,
+              "redo": null
+            },
+            "original_bytes": true,
+            "notice": "The document changed. Reopen Document Properties to edit the current version."
+          },
+          "actual": {
+            "active": "B.pdf",
+            "document": {
+              "author": "Original author",
+              "custom": {
+                "Untouched": "Keep me"
+              },
+              "custom_count": 1,
+              "dirty": false,
+              "display_title": false,
+              "generation": 0,
+              "keywords": null,
+              "pages": 2,
+              "redo": null,
+              "subject": null,
+              "title": "Second document",
+              "undo": null
+            },
+            "draft": null,
+            "error": null,
+            "notice": "The document changed. Reopen Document Properties to edit the current version.",
+            "original_bytes": true,
+            "properties_open": false,
+            "reopened": null
+          },
+          "passed": true
+        },
+        {
+          "step": 4,
+          "event": {
+            "op": "open"
+          },
+          "expect": {
+            "error": null,
+            "draft": {
+              "title": "Second document"
+            }
+          },
+          "actual": {
+            "active": "B.pdf",
+            "document": {
+              "author": "Original author",
+              "custom": {
+                "Untouched": "Keep me"
+              },
+              "custom_count": 1,
+              "dirty": false,
+              "display_title": false,
+              "generation": 0,
+              "keywords": null,
+              "pages": 2,
+              "redo": null,
+              "subject": null,
+              "title": "Second document",
+              "undo": null
+            },
+            "draft": {
+              "author": "Original author",
+              "custom": {
+                "Untouched": "Keep me"
+              },
+              "display_title": false,
+              "keywords": "",
+              "subject": "",
+              "title": "Second document"
+            },
+            "error": null,
+            "notice": "The document changed. Reopen Document Properties to edit the current version.",
+            "original_bytes": true,
+            "properties_open": true,
+            "reopened": null
+          },
+          "passed": true
+        },
+        {
+          "step": 5,
+          "event": {
+            "op": "click",
+            "label": "Close"
+          },
+          "expect": {
+            "error": null
+          },
+          "actual": {
+            "active": "B.pdf",
+            "document": {
+              "author": "Original author",
+              "custom": {
+                "Untouched": "Keep me"
+              },
+              "custom_count": 1,
+              "dirty": false,
+              "display_title": false,
+              "generation": 0,
+              "keywords": null,
+              "pages": 2,
+              "redo": null,
+              "subject": null,
+              "title": "Second document",
+              "undo": null
+            },
+            "draft": null,
+            "error": null,
+            "notice": "The document changed. Reopen Document Properties to edit the current version.",
+            "original_bytes": true,
+            "properties_open": false,
+            "reopened": null
+          },
+          "passed": true
+        }
+      ],
+      "source": "tests/interactions/document-properties/close-document.json"
+    },
+    {
+      "name": "Document Properties: commit-save-undo",
+      "passed": true,
+      "steps": 14,
+      "stderr": "",
+      "trace": [
+        {
+          "step": 1,
+          "event": {
+            "op": "open"
+          },
+          "expect": {
+            "error": null,
+            "properties_open": true,
+            "document": {
+              "title": "Original",
+              "author": "Original author",
+              "custom": {
+                "Untouched": "Keep me"
+              },
+              "display_title": false,
+              "dirty": false,
+              "undo": null,
+              "redo": null,
+              "pages": 2,
+              "custom_count": 1
+            },
+            "original_bytes": true
+          },
+          "actual": {
+            "active": "A.pdf",
+            "document": {
+              "author": "Original author",
+              "custom": {
+                "Untouched": "Keep me"
+              },
+              "custom_count": 1,
+              "dirty": false,
+              "display_title": false,
+              "generation": 0,
+              "keywords": null,
+              "pages": 2,
+              "redo": null,
+              "subject": null,
+              "title": "Original",
+              "undo": null
+            },
+            "draft": {
+              "author": "Original author",
+              "custom": {
+                "Untouched": "Keep me"
+              },
+              "display_title": false,
+              "keywords": "",
+              "subject": "",
+              "title": "Original"
+            },
+            "error": null,
+            "notice": null,
+            "original_bytes": true,
+            "properties_open": true,
+            "reopened": null
+          },
+          "passed": true
+        },
+        {
+          "step": 2,
+          "event": {
+            "op": "type",
+            "field": "Title",
+            "value": "Preview 1"
+          },
+          "expect": {
+            "error": null,
+            "draft": {
+              "title": "Preview 1"
+            },
+            "document": {
+              "title": "Original",
+              "author": "Original author",
+              "custom": {
+                "Untouched": "Keep me"
+              },
+              "display_title": false,
+              "dirty": false,
+              "undo": null,
+              "redo": null,
+              "pages": 2,
+              "custom_count": 1
+            },
+            "original_bytes": true
+          },
+          "actual": {
+            "active": "A.pdf",
+            "document": {
+              "author": "Original author",
+              "custom": {
+                "Untouched": "Keep me"
+              },
+              "custom_count": 1,
+              "dirty": false,
+              "display_title": false,
+              "generation": 0,
+              "keywords": null,
+              "pages": 2,
+              "redo": null,
+              "subject": null,
+              "title": "Original",
+              "undo": null
+            },
+            "draft": {
+              "author": "Original author",
+              "custom": {
+                "Untouched": "Keep me"
+              },
+              "display_title": false,
+              "keywords": "",
+              "subject": "",
+              "title": "Preview 1"
+            },
+            "error": null,
+            "notice": null,
+            "original_bytes": true,
+            "properties_open": true,
+            "reopened": null
+          },
+          "passed": true
+        },
+        {
+          "step": 3,
+          "event": {
+            "op": "type",
+            "field": "Title",
+            "value": "Published title"
+          },
+          "expect": {
+            "error": null
+          },
+          "actual": {
+            "active": "A.pdf",
+            "document": {
+              "author": "Original author",
+              "custom": {
+                "Untouched": "Keep me"
+              },
+              "custom_count": 1,
+              "dirty": false,
+              "display_title": false,
+              "generation": 0,
+              "keywords": null,
+              "pages": 2,
+              "redo": null,
+              "subject": null,
+              "title": "Original",
+              "undo": null
+            },
+            "draft": {
+              "author": "Original author",
+              "custom": {
+                "Untouched": "Keep me"
+              },
+              "display_title": false,
+              "keywords": "",
+              "subject": "",
+              "title": "Published title"
+            },
+            "error": null,
+            "notice": null,
+            "original_bytes": true,
+            "properties_open": true,
+            "reopened": null
+          },
+          "passed": true
+        },
+        {
+          "step": 4,
+          "event": {
+            "op": "type",
+            "field": "Author",
+            "value": "Review team"
+          },
+          "expect": {
+            "error": null
+          },
+          "actual": {
+            "active": "A.pdf",
+            "document": {
+              "author": "Original author",
+              "custom": {
+                "Untouched": "Keep me"
+              },
+              "custom_count": 1,
+              "dirty": false,
+              "display_title": false,
+              "generation": 0,
+              "keywords": null,
+              "pages": 2,
+              "redo": null,
+              "subject": null,
+              "title": "Original",
+              "undo": null
+            },
+            "draft": {
+              "author": "Review team",
+              "custom": {
+                "Untouched": "Keep me"
+              },
+              "display_title": false,
+              "keywords": "",
+              "subject": "",
+              "title": "Published title"
+            },
+            "error": null,
+            "notice": null,
+            "original_bytes": true,
+            "properties_open": true,
+            "reopened": null
+          },
+          "passed": true
+        },
+        {
+          "step": 5,
+          "event": {
+            "op": "click",
+            "label": "Custom"
+          },
+          "expect": {
+            "error": null
+          },
+          "actual": {
+            "active": "A.pdf",
+            "document": {
+              "author": "Original author",
+              "custom": {
+                "Untouched": "Keep me"
+              },
+              "custom_count": 1,
+              "dirty": false,
+              "display_title": false,
+              "generation": 0,
+              "keywords": null,
+              "pages": 2,
+              "redo": null,
+              "subject": null,
+              "title": "Original",
+              "undo": null
+            },
+            "draft": {
+              "author": "Review team",
+              "custom": {
+                "Untouched": "Keep me"
+              },
+              "display_title": false,
+              "keywords": "",
+              "subject": "",
+              "title": "Published title"
+            },
+            "error": null,
+            "notice": null,
+            "original_bytes": true,
+            "properties_open": true,
+            "reopened": null
+          },
+          "passed": true
+        },
+        {
+          "step": 6,
+          "event": {
+            "op": "type",
+            "field": "Name:",
+            "value": "Project"
+          },
+          "expect": {
+            "error": null
+          },
+          "actual": {
+            "active": "A.pdf",
+            "document": {
+              "author": "Original author",
+              "custom": {
+                "Untouched": "Keep me"
+              },
+              "custom_count": 1,
+              "dirty": false,
+              "display_title": false,
+              "generation": 0,
+              "keywords": null,
+              "pages": 2,
+              "redo": null,
+              "subject": null,
+              "title": "Original",
+              "undo": null
+            },
+            "draft": {
+              "author": "Review team",
+              "custom": {
+                "Untouched": "Keep me"
+              },
+              "display_title": false,
+              "keywords": "",
+              "subject": "",
+              "title": "Published title"
+            },
+            "error": null,
+            "notice": null,
+            "original_bytes": true,
+            "properties_open": true,
+            "reopened": null
+          },
+          "passed": true
+        },
+        {
+          "step": 7,
+          "event": {
+            "op": "type",
+            "field": "Value:",
+            "value": "PdfCraft"
+          },
+          "expect": {
+            "error": null
+          },
+          "actual": {
+            "active": "A.pdf",
+            "document": {
+              "author": "Original author",
+              "custom": {
+                "Untouched": "Keep me"
+              },
+              "custom_count": 1,
+              "dirty": false,
+              "display_title": false,
+              "generation": 0,
+              "keywords": null,
+              "pages": 2,
+              "redo": null,
+              "subject": null,
+              "title": "Original",
+              "undo": null
+            },
+            "draft": {
+              "author": "Review team",
+              "custom": {
+                "Untouched": "Keep me"
+              },
+              "display_title": false,
+              "keywords": "",
+              "subject": "",
+              "title": "Published title"
+            },
+            "error": null,
+            "notice": null,
+            "original_bytes": true,
+            "properties_open": true,
+            "reopened": null
+          },
+          "passed": true
+        },
+        {
+          "step": 8,
+          "event": {
+            "op": "click",
+            "label": "Add"
+          },
+          "expect": {
+            "error": null,
+            "draft": {
+              "custom": {
+                "Project": "PdfCraft",
+                "Untouched": "Keep me"
+              }
+            },
+            "document": {
+              "title": "Original",
+              "author": "Original author",
+              "custom": {
+                "Untouched": "Keep me"
+              },
+              "display_title": false,
+              "dirty": false,
+              "undo": null,
+              "redo": null,
+              "pages": 2,
+              "custom_count": 1
+            },
+            "original_bytes": true
+          },
+          "actual": {
+            "active": "A.pdf",
+            "document": {
+              "author": "Original author",
+              "custom": {
+                "Untouched": "Keep me"
+              },
+              "custom_count": 1,
+              "dirty": false,
+              "display_title": false,
+              "generation": 0,
+              "keywords": null,
+              "pages": 2,
+              "redo": null,
+              "subject": null,
+              "title": "Original",
+              "undo": null
+            },
+            "draft": {
+              "author": "Review team",
+              "custom": {
+                "Project": "PdfCraft",
+                "Untouched": "Keep me"
+              },
+              "display_title": false,
+              "keywords": "",
+              "subject": "",
+              "title": "Published title"
+            },
+            "error": null,
+            "notice": null,
+            "original_bytes": true,
+            "properties_open": true,
+            "reopened": null
+          },
+          "passed": true
+        },
+        {
+          "step": 9,
+          "event": {
+            "op": "click",
+            "label": "Initial View"
+          },
+          "expect": {
+            "error": null
+          },
+          "actual": {
+            "active": "A.pdf",
+            "document": {
+              "author": "Original author",
+              "custom": {
+                "Untouched": "Keep me"
+              },
+              "custom_count": 1,
+              "dirty": false,
+              "display_title": false,
+              "generation": 0,
+              "keywords": null,
+              "pages": 2,
+              "redo": null,
+              "subject": null,
+              "title": "Original",
+              "undo": null
+            },
+            "draft": {
+              "author": "Review team",
+              "custom": {
+                "Project": "PdfCraft",
+                "Untouched": "Keep me"
+              },
+              "display_title": false,
+              "keywords": "",
+              "subject": "",
+              "title": "Published title"
+            },
+            "error": null,
+            "notice": null,
+            "original_bytes": true,
+            "properties_open": true,
+            "reopened": null
+          },
+          "passed": true
+        },
+        {
+          "step": 10,
+          "event": {
+            "op": "click",
+            "label": "Document Title"
+          },
+          "expect": {
+            "error": null,
+            "draft": {
+              "display_title": true
+            },
+            "document": {
+              "title": "Original",
+              "author": "Original author",
+              "custom": {
+                "Untouched": "Keep me"
+              },
+              "display_title": false,
+              "dirty": false,
+              "undo": null,
+              "redo": null,
+              "pages": 2,
+              "custom_count": 1
+            },
+            "original_bytes": true
+          },
+          "actual": {
+            "active": "A.pdf",
+            "document": {
+              "author": "Original author",
+              "custom": {
+                "Untouched": "Keep me"
+              },
+              "custom_count": 1,
+              "dirty": false,
+              "display_title": false,
+              "generation": 0,
+              "keywords": null,
+              "pages": 2,
+              "redo": null,
+              "subject": null,
+              "title": "Original",
+              "undo": null
+            },
+            "draft": {
+              "author": "Review team",
+              "custom": {
+                "Project": "PdfCraft",
+                "Untouched": "Keep me"
+              },
+              "display_title": true,
+              "keywords": "",
+              "subject": "",
+              "title": "Published title"
+            },
+            "error": null,
+            "notice": null,
+            "original_bytes": true,
+            "properties_open": true,
+            "reopened": null
+          },
+          "passed": true
+        },
+        {
+          "step": 11,
+          "event": {
+            "op": "click",
+            "label": "OK"
+          },
+          "expect": {
+            "error": null,
+            "properties_open": false,
+            "draft": null,
+            "document": {
+              "title": "Published title",
+              "author": "Review team",
+              "custom": {
+                "Project": "PdfCraft",
+                "Untouched": "Keep me"
+              },
+              "display_title": true,
+              "dirty": true,
+              "undo": "Change document properties",
+              "redo": null,
+              "custom_count": 2
+            }
+          },
+          "actual": {
+            "active": "A.pdf",
+            "document": {
+              "author": "Review team",
+              "custom": {
+                "Project": "PdfCraft",
+                "Untouched": "Keep me"
+              },
+              "custom_count": 2,
+              "dirty": true,
+              "display_title": true,
+              "generation": 1,
+              "keywords": null,
+              "pages": 2,
+              "redo": null,
+              "subject": null,
+              "title": "Published title",
+              "undo": "Change document properties"
+            },
+            "draft": null,
+            "error": null,
+            "notice": null,
+            "original_bytes": false,
+            "properties_open": false,
+            "reopened": null
+          },
+          "passed": true
+        },
+        {
+          "step": 12,
+          "event": {
+            "op": "undo"
+          },
+          "expect": {
+            "error": null,
+            "document": {
+              "title": "Original",
+              "author": "Original author",
+              "custom": {
+                "Untouched": "Keep me"
+              },
+              "display_title": false,
+              "undo": null,
+              "redo": "Change document properties",
+              "custom_count": 1
+            }
+          },
+          "actual": {
+            "active": "A.pdf",
+            "document": {
+              "author": "Original author",
+              "custom": {
+                "Untouched": "Keep me"
+              },
+              "custom_count": 1,
+              "dirty": false,
+              "display_title": false,
+              "generation": 2,
+              "keywords": null,
+              "pages": 2,
+              "redo": "Change document properties",
+              "subject": null,
+              "title": "Original",
+              "undo": null
+            },
+            "draft": null,
+            "error": null,
+            "notice": "Undid Change document properties",
+            "original_bytes": true,
+            "properties_open": false,
+            "reopened": null
+          },
+          "passed": true
+        },
+        {
+          "step": 13,
+          "event": {
+            "op": "redo"
+          },
+          "expect": {
+            "error": null,
+            "document": {
+              "title": "Published title",
+              "author": "Review team",
+              "display_title": true,
+              "undo": "Change document properties",
+              "redo": null
+            }
+          },
+          "actual": {
+            "active": "A.pdf",
+            "document": {
+              "author": "Review team",
+              "custom": {
+                "Project": "PdfCraft",
+                "Untouched": "Keep me"
+              },
+              "custom_count": 2,
+              "dirty": true,
+              "display_title": true,
+              "generation": 3,
+              "keywords": null,
+              "pages": 2,
+              "redo": null,
+              "subject": null,
+              "title": "Published title",
+              "undo": "Change document properties"
+            },
+            "draft": null,
+            "error": null,
+            "notice": "Redid Change document properties",
+            "original_bytes": false,
+            "properties_open": false,
+            "reopened": null
+          },
+          "passed": true
+        },
+        {
+          "step": 14,
+          "event": {
+            "op": "save_reopen"
+          },
+          "expect": {
+            "error": null,
+            "reopened": {
+              "title": "Published title",
+              "author": "Review team",
+              "custom": {
+                "Project": "PdfCraft",
+                "Untouched": "Keep me"
+              },
+              "display_title": true,
+              "dirty": false,
+              "pages": 2,
+              "undo": null,
+              "redo": null,
+              "custom_count": 2
+            }
+          },
+          "actual": {
+            "active": "A.pdf",
+            "document": {
+              "author": "Review team",
+              "custom": {
+                "Project": "PdfCraft",
+                "Untouched": "Keep me"
+              },
+              "custom_count": 2,
+              "dirty": true,
+              "display_title": true,
+              "generation": 3,
+              "keywords": null,
+              "pages": 2,
+              "redo": null,
+              "subject": null,
+              "title": "Published title",
+              "undo": "Change document properties"
+            },
+            "draft": null,
+            "error": null,
+            "notice": "Redid Change document properties",
+            "original_bytes": false,
+            "properties_open": false,
+            "reopened": {
+              "author": "Review team",
+              "custom": {
+                "Project": "PdfCraft",
+                "Untouched": "Keep me"
+              },
+              "custom_count": 2,
+              "dirty": false,
+              "display_title": true,
+              "generation": 0,
+              "keywords": null,
+              "pages": 2,
+              "redo": null,
+              "subject": null,
+              "title": "Published title",
+              "undo": null
+            }
+          },
+          "passed": true
+        }
+      ],
+      "source": "tests/interactions/document-properties/commit-save-undo.json"
+    },
+    {
+      "name": "Document Properties: custom-validation",
+      "passed": true,
+      "steps": 10,
+      "stderr": "",
+      "trace": [
+        {
+          "step": 1,
+          "event": {
+            "op": "open"
+          },
+          "expect": {
+            "error": null
+          },
+          "actual": {
+            "active": "A.pdf",
+            "document": {
+              "author": "Original author",
+              "custom": {
+                "Untouched": "Keep me"
+              },
+              "custom_count": 1,
+              "dirty": false,
+              "display_title": false,
+              "generation": 0,
+              "keywords": null,
+              "pages": 2,
+              "redo": null,
+              "subject": null,
+              "title": "Original",
+              "undo": null
+            },
+            "draft": {
+              "author": "Original author",
+              "custom": {
+                "Untouched": "Keep me"
+              },
+              "display_title": false,
+              "keywords": "",
+              "subject": "",
+              "title": "Original"
+            },
+            "error": null,
+            "notice": null,
+            "original_bytes": true,
+            "properties_open": true,
+            "reopened": null
+          },
+          "passed": true
+        },
+        {
+          "step": 2,
+          "event": {
+            "op": "click",
+            "label": "Custom"
+          },
+          "expect": {
+            "error": null
+          },
+          "actual": {
+            "active": "A.pdf",
+            "document": {
+              "author": "Original author",
+              "custom": {
+                "Untouched": "Keep me"
+              },
+              "custom_count": 1,
+              "dirty": false,
+              "display_title": false,
+              "generation": 0,
+              "keywords": null,
+              "pages": 2,
+              "redo": null,
+              "subject": null,
+              "title": "Original",
+              "undo": null
+            },
+            "draft": {
+              "author": "Original author",
+              "custom": {
+                "Untouched": "Keep me"
+              },
+              "display_title": false,
+              "keywords": "",
+              "subject": "",
+              "title": "Original"
+            },
+            "error": null,
+            "notice": null,
+            "original_bytes": true,
+            "properties_open": true,
+            "reopened": null
+          },
+          "passed": true
+        },
+        {
+          "step": 3,
+          "event": {
+            "op": "type",
+            "field": "Name:",
+            "value": "Title"
+          },
+          "expect": {
+            "error": null
+          },
+          "actual": {
+            "active": "A.pdf",
+            "document": {
+              "author": "Original author",
+              "custom": {
+                "Untouched": "Keep me"
+              },
+              "custom_count": 1,
+              "dirty": false,
+              "display_title": false,
+              "generation": 0,
+              "keywords": null,
+              "pages": 2,
+              "redo": null,
+              "subject": null,
+              "title": "Original",
+              "undo": null
+            },
+            "draft": {
+              "author": "Original author",
+              "custom": {
+                "Untouched": "Keep me"
+              },
+              "display_title": false,
+              "keywords": "",
+              "subject": "",
+              "title": "Original"
+            },
+            "error": null,
+            "notice": null,
+            "original_bytes": true,
+            "properties_open": true,
+            "reopened": null
+          },
+          "passed": true
+        },
+        {
+          "step": 4,
+          "event": {
+            "op": "type",
+            "field": "Value:",
+            "value": "Not an accepted property"
+          },
+          "expect": {
+            "error": null
+          },
+          "actual": {
+            "active": "A.pdf",
+            "document": {
+              "author": "Original author",
+              "custom": {
+                "Untouched": "Keep me"
+              },
+              "custom_count": 1,
+              "dirty": false,
+              "display_title": false,
+              "generation": 0,
+              "keywords": null,
+              "pages": 2,
+              "redo": null,
+              "subject": null,
+              "title": "Original",
+              "undo": null
+            },
+            "draft": {
+              "author": "Original author",
+              "custom": {
+                "Untouched": "Keep me"
+              },
+              "display_title": false,
+              "keywords": "",
+              "subject": "",
+              "title": "Original"
+            },
+            "error": null,
+            "notice": null,
+            "original_bytes": true,
+            "properties_open": true,
+            "reopened": null
+          },
+          "passed": true
+        },
+        {
+          "step": 5,
+          "event": {
+            "op": "click",
+            "label": "Add"
+          },
+          "expect": {
+            "error": "ambiguous or disabled action: Add",
+            "properties_open": true,
+            "document": {
+              "title": "Original",
+              "author": "Original author",
+              "custom": {
+                "Untouched": "Keep me"
+              },
+              "display_title": false,
+              "dirty": false,
+              "undo": null,
+              "redo": null,
+              "pages": 2,
+              "custom_count": 1
+            },
+            "original_bytes": true
+          },
+          "actual": {
+            "active": "A.pdf",
+            "document": {
+              "author": "Original author",
+              "custom": {
+                "Untouched": "Keep me"
+              },
+              "custom_count": 1,
+              "dirty": false,
+              "display_title": false,
+              "generation": 0,
+              "keywords": null,
+              "pages": 2,
+              "redo": null,
+              "subject": null,
+              "title": "Original",
+              "undo": null
+            },
+            "draft": {
+              "author": "Original author",
+              "custom": {
+                "Untouched": "Keep me"
+              },
+              "display_title": false,
+              "keywords": "",
+              "subject": "",
+              "title": "Original"
+            },
+            "error": "ambiguous or disabled action: Add",
+            "notice": null,
+            "original_bytes": true,
+            "properties_open": true,
+            "reopened": null
+          },
+          "passed": true
+        },
+        {
+          "step": 6,
+          "event": {
+            "op": "type",
+            "field": "Name:",
+            "value": "Project"
+          },
+          "expect": {
+            "error": null
+          },
+          "actual": {
+            "active": "A.pdf",
+            "document": {
+              "author": "Original author",
+              "custom": {
+                "Untouched": "Keep me"
+              },
+              "custom_count": 1,
+              "dirty": false,
+              "display_title": false,
+              "generation": 0,
+              "keywords": null,
+              "pages": 2,
+              "redo": null,
+              "subject": null,
+              "title": "Original",
+              "undo": null
+            },
+            "draft": {
+              "author": "Original author",
+              "custom": {
+                "Untouched": "Keep me"
+              },
+              "display_title": false,
+              "keywords": "",
+              "subject": "",
+              "title": "Original"
+            },
+            "error": null,
+            "notice": null,
+            "original_bytes": true,
+            "properties_open": true,
+            "reopened": null
+          },
+          "passed": true
+        },
+        {
+          "step": 7,
+          "event": {
+            "op": "type",
+            "field": "Value:",
+            "value": "Accepted"
+          },
+          "expect": {
+            "error": null
+          },
+          "actual": {
+            "active": "A.pdf",
+            "document": {
+              "author": "Original author",
+              "custom": {
+                "Untouched": "Keep me"
+              },
+              "custom_count": 1,
+              "dirty": false,
+              "display_title": false,
+              "generation": 0,
+              "keywords": null,
+              "pages": 2,
+              "redo": null,
+              "subject": null,
+              "title": "Original",
+              "undo": null
+            },
+            "draft": {
+              "author": "Original author",
+              "custom": {
+                "Untouched": "Keep me"
+              },
+              "display_title": false,
+              "keywords": "",
+              "subject": "",
+              "title": "Original"
+            },
+            "error": null,
+            "notice": null,
+            "original_bytes": true,
+            "properties_open": true,
+            "reopened": null
+          },
+          "passed": true
+        },
+        {
+          "step": 8,
+          "event": {
+            "op": "click",
+            "label": "Add"
+          },
+          "expect": {
+            "error": null,
+            "draft": {
+              "custom": {
+                "Untouched": "Keep me",
+                "Project": "Accepted"
+              }
+            },
+            "document": {
+              "title": "Original",
+              "author": "Original author",
+              "custom": {
+                "Untouched": "Keep me"
+              },
+              "display_title": false,
+              "dirty": false,
+              "undo": null,
+              "redo": null,
+              "pages": 2,
+              "custom_count": 1
+            },
+            "original_bytes": true
+          },
+          "actual": {
+            "active": "A.pdf",
+            "document": {
+              "author": "Original author",
+              "custom": {
+                "Untouched": "Keep me"
+              },
+              "custom_count": 1,
+              "dirty": false,
+              "display_title": false,
+              "generation": 0,
+              "keywords": null,
+              "pages": 2,
+              "redo": null,
+              "subject": null,
+              "title": "Original",
+              "undo": null
+            },
+            "draft": {
+              "author": "Original author",
+              "custom": {
+                "Project": "Accepted",
+                "Untouched": "Keep me"
+              },
+              "display_title": false,
+              "keywords": "",
+              "subject": "",
+              "title": "Original"
+            },
+            "error": null,
+            "notice": null,
+            "original_bytes": true,
+            "properties_open": true,
+            "reopened": null
+          },
+          "passed": true
+        },
+        {
+          "step": 9,
+          "event": {
+            "op": "click",
+            "label": "OK"
+          },
+          "expect": {
+            "error": null,
+            "document": {
+              "title": "Original",
+              "custom": {
+                "Untouched": "Keep me",
+                "Project": "Accepted"
+              },
+              "undo": "Change document properties",
+              "custom_count": 2
+            }
+          },
+          "actual": {
+            "active": "A.pdf",
+            "document": {
+              "author": "Original author",
+              "custom": {
+                "Project": "Accepted",
+                "Untouched": "Keep me"
+              },
+              "custom_count": 2,
+              "dirty": true,
+              "display_title": false,
+              "generation": 1,
+              "keywords": null,
+              "pages": 2,
+              "redo": null,
+              "subject": null,
+              "title": "Original",
+              "undo": "Change document properties"
+            },
+            "draft": null,
+            "error": null,
+            "notice": null,
+            "original_bytes": false,
+            "properties_open": false,
+            "reopened": null
+          },
+          "passed": true
+        },
+        {
+          "step": 10,
+          "event": {
+            "op": "save_reopen"
+          },
+          "expect": {
+            "error": null,
+            "reopened": {
+              "title": "Original",
+              "custom": {
+                "Untouched": "Keep me",
+                "Project": "Accepted"
+              },
+              "pages": 2,
+              "custom_count": 2
+            }
+          },
+          "actual": {
+            "active": "A.pdf",
+            "document": {
+              "author": "Original author",
+              "custom": {
+                "Project": "Accepted",
+                "Untouched": "Keep me"
+              },
+              "custom_count": 2,
+              "dirty": true,
+              "display_title": false,
+              "generation": 1,
+              "keywords": null,
+              "pages": 2,
+              "redo": null,
+              "subject": null,
+              "title": "Original",
+              "undo": "Change document properties"
+            },
+            "draft": null,
+            "error": null,
+            "notice": null,
+            "original_bytes": false,
+            "properties_open": false,
+            "reopened": {
+              "author": "Original author",
+              "custom": {
+                "Project": "Accepted",
+                "Untouched": "Keep me"
+              },
+              "custom_count": 2,
+              "dirty": false,
+              "display_title": false,
+              "generation": 0,
+              "keywords": null,
+              "pages": 2,
+              "redo": null,
+              "subject": null,
+              "title": "Original",
+              "undo": null
+            }
+          },
+          "passed": true
+        }
+      ],
+      "source": "tests/interactions/document-properties/custom-validation.json"
+    },
+    {
+      "name": "Document Properties: inspection tabs refresh only without pending input",
+      "passed": true,
+      "steps": 13,
+      "stderr": "",
+      "trace": [
+        {
+          "step": 1,
+          "event": {
+            "op": "open"
+          },
+          "expect": {
+            "error": null
+          },
+          "actual": {
+            "active": "A.pdf",
+            "document": {
+              "author": "Original author",
+              "custom": {
+                "Untouched": "Keep me"
+              },
+              "custom_count": 1,
+              "dirty": false,
+              "display_title": false,
+              "generation": 0,
+              "keywords": null,
+              "pages": 2,
+              "redo": null,
+              "subject": null,
+              "title": "Original",
+              "undo": null
+            },
+            "draft": {
+              "author": "Original author",
+              "custom": {
+                "Untouched": "Keep me"
+              },
+              "display_title": false,
+              "keywords": "",
+              "subject": "",
+              "title": "Original"
+            },
+            "error": null,
+            "notice": null,
+            "original_bytes": true,
+            "properties_open": true,
+            "reopened": null
+          },
+          "passed": true
+        },
+        {
+          "step": 2,
+          "event": {
+            "op": "click",
+            "label": "Space Audit"
+          },
+          "expect": {
+            "error": null
+          },
+          "actual": {
+            "active": "A.pdf",
+            "document": {
+              "author": "Original author",
+              "custom": {
+                "Untouched": "Keep me"
+              },
+              "custom_count": 1,
+              "dirty": false,
+              "display_title": false,
+              "generation": 0,
+              "keywords": null,
+              "pages": 2,
+              "redo": null,
+              "subject": null,
+              "title": "Original",
+              "undo": null
+            },
+            "draft": {
+              "author": "Original author",
+              "custom": {
+                "Untouched": "Keep me"
+              },
+              "display_title": false,
+              "keywords": "",
+              "subject": "",
+              "title": "Original"
+            },
+            "error": null,
+            "notice": null,
+            "original_bytes": true,
+            "properties_open": true,
+            "reopened": null
+          },
+          "passed": true
+        },
+        {
+          "step": 3,
+          "event": {
+            "op": "external_edit",
+            "key": "Title",
+            "value": "Updated"
+          },
+          "expect": {
+            "error": null,
+            "properties_open": true,
+            "draft": {
+              "title": "Updated"
+            },
+            "document": {
+              "title": "Updated",
+              "undo": "Change Title"
+            }
+          },
+          "actual": {
+            "active": "A.pdf",
+            "document": {
+              "author": "Original author",
+              "custom": {
+                "Untouched": "Keep me"
+              },
+              "custom_count": 1,
+              "dirty": true,
+              "display_title": false,
+              "generation": 1,
+              "keywords": null,
+              "pages": 2,
+              "redo": null,
+              "subject": null,
+              "title": "Updated",
+              "undo": "Change Title"
+            },
+            "draft": {
+              "author": "Original author",
+              "custom": {
+                "Untouched": "Keep me"
+              },
+              "display_title": false,
+              "keywords": "",
+              "subject": "",
+              "title": "Updated"
+            },
+            "error": null,
+            "notice": null,
+            "original_bytes": false,
+            "properties_open": true,
+            "reopened": null
+          },
+          "passed": true
+        },
+        {
+          "step": 4,
+          "event": {
+            "op": "click",
+            "label": "Description"
+          },
+          "expect": {
+            "error": null
+          },
+          "actual": {
+            "active": "A.pdf",
+            "document": {
+              "author": "Original author",
+              "custom": {
+                "Untouched": "Keep me"
+              },
+              "custom_count": 1,
+              "dirty": true,
+              "display_title": false,
+              "generation": 1,
+              "keywords": null,
+              "pages": 2,
+              "redo": null,
+              "subject": null,
+              "title": "Updated",
+              "undo": "Change Title"
+            },
+            "draft": {
+              "author": "Original author",
+              "custom": {
+                "Untouched": "Keep me"
+              },
+              "display_title": false,
+              "keywords": "",
+              "subject": "",
+              "title": "Updated"
+            },
+            "error": null,
+            "notice": null,
+            "original_bytes": false,
+            "properties_open": true,
+            "reopened": null
+          },
+          "passed": true
+        },
+        {
+          "step": 5,
+          "event": {
+            "op": "type",
+            "field": "Title",
+            "value": "Pending"
+          },
+          "expect": {
+            "error": null
+          },
+          "actual": {
+            "active": "A.pdf",
+            "document": {
+              "author": "Original author",
+              "custom": {
+                "Untouched": "Keep me"
+              },
+              "custom_count": 1,
+              "dirty": true,
+              "display_title": false,
+              "generation": 1,
+              "keywords": null,
+              "pages": 2,
+              "redo": null,
+              "subject": null,
+              "title": "Updated",
+              "undo": "Change Title"
+            },
+            "draft": {
+              "author": "Original author",
+              "custom": {
+                "Untouched": "Keep me"
+              },
+              "display_title": false,
+              "keywords": "",
+              "subject": "",
+              "title": "Pending"
+            },
+            "error": null,
+            "notice": null,
+            "original_bytes": false,
+            "properties_open": true,
+            "reopened": null
+          },
+          "passed": true
+        },
+        {
+          "step": 6,
+          "event": {
+            "op": "click",
+            "label": "Space Audit"
+          },
+          "expect": {
+            "error": null
+          },
+          "actual": {
+            "active": "A.pdf",
+            "document": {
+              "author": "Original author",
+              "custom": {
+                "Untouched": "Keep me"
+              },
+              "custom_count": 1,
+              "dirty": true,
+              "display_title": false,
+              "generation": 1,
+              "keywords": null,
+              "pages": 2,
+              "redo": null,
+              "subject": null,
+              "title": "Updated",
+              "undo": "Change Title"
+            },
+            "draft": {
+              "author": "Original author",
+              "custom": {
+                "Untouched": "Keep me"
+              },
+              "display_title": false,
+              "keywords": "",
+              "subject": "",
+              "title": "Pending"
+            },
+            "error": null,
+            "notice": null,
+            "original_bytes": false,
+            "properties_open": true,
+            "reopened": null
+          },
+          "passed": true
+        },
+        {
+          "step": 7,
+          "event": {
+            "op": "external_edit",
+            "key": "Subject",
+            "value": "New subject"
+          },
+          "expect": {
+            "error": null,
+            "properties_open": false,
+            "draft": null,
+            "notice": "The document changed. Reopen Document Properties to edit the current version.",
+            "document": {
+              "title": "Updated",
+              "subject": "New subject",
+              "undo": "Change Subject"
+            }
+          },
+          "actual": {
+            "active": "A.pdf",
+            "document": {
+              "author": "Original author",
+              "custom": {
+                "Untouched": "Keep me"
+              },
+              "custom_count": 1,
+              "dirty": true,
+              "display_title": false,
+              "generation": 2,
+              "keywords": null,
+              "pages": 2,
+              "redo": null,
+              "subject": "New subject",
+              "title": "Updated",
+              "undo": "Change Subject"
+            },
+            "draft": null,
+            "error": null,
+            "notice": "The document changed. Reopen Document Properties to edit the current version.",
+            "original_bytes": false,
+            "properties_open": false,
+            "reopened": null
+          },
+          "passed": true
+        },
+        {
+          "step": 8,
+          "event": {
+            "op": "open"
+          },
+          "expect": {
+            "error": null
+          },
+          "actual": {
+            "active": "A.pdf",
+            "document": {
+              "author": "Original author",
+              "custom": {
+                "Untouched": "Keep me"
+              },
+              "custom_count": 1,
+              "dirty": true,
+              "display_title": false,
+              "generation": 2,
+              "keywords": null,
+              "pages": 2,
+              "redo": null,
+              "subject": "New subject",
+              "title": "Updated",
+              "undo": "Change Subject"
+            },
+            "draft": {
+              "author": "Original author",
+              "custom": {
+                "Untouched": "Keep me"
+              },
+              "display_title": false,
+              "keywords": "",
+              "subject": "New subject",
+              "title": "Updated"
+            },
+            "error": null,
+            "notice": "The document changed. Reopen Document Properties to edit the current version.",
+            "original_bytes": false,
+            "properties_open": true,
+            "reopened": null
+          },
+          "passed": true
+        },
+        {
+          "step": 9,
+          "event": {
+            "op": "click",
+            "label": "Custom"
+          },
+          "expect": {
+            "error": null
+          },
+          "actual": {
+            "active": "A.pdf",
+            "document": {
+              "author": "Original author",
+              "custom": {
+                "Untouched": "Keep me"
+              },
+              "custom_count": 1,
+              "dirty": true,
+              "display_title": false,
+              "generation": 2,
+              "keywords": null,
+              "pages": 2,
+              "redo": null,
+              "subject": "New subject",
+              "title": "Updated",
+              "undo": "Change Subject"
+            },
+            "draft": {
+              "author": "Original author",
+              "custom": {
+                "Untouched": "Keep me"
+              },
+              "display_title": false,
+              "keywords": "",
+              "subject": "New subject",
+              "title": "Updated"
+            },
+            "error": null,
+            "notice": "The document changed. Reopen Document Properties to edit the current version.",
+            "original_bytes": false,
+            "properties_open": true,
+            "reopened": null
+          },
+          "passed": true
+        },
+        {
+          "step": 10,
+          "event": {
+            "op": "type",
+            "field": "Name:",
+            "value": "Project"
+          },
+          "expect": {
+            "error": null
+          },
+          "actual": {
+            "active": "A.pdf",
+            "document": {
+              "author": "Original author",
+              "custom": {
+                "Untouched": "Keep me"
+              },
+              "custom_count": 1,
+              "dirty": true,
+              "display_title": false,
+              "generation": 2,
+              "keywords": null,
+              "pages": 2,
+              "redo": null,
+              "subject": "New subject",
+              "title": "Updated",
+              "undo": "Change Subject"
+            },
+            "draft": {
+              "author": "Original author",
+              "custom": {
+                "Untouched": "Keep me"
+              },
+              "display_title": false,
+              "keywords": "",
+              "subject": "New subject",
+              "title": "Updated"
+            },
+            "error": null,
+            "notice": "The document changed. Reopen Document Properties to edit the current version.",
+            "original_bytes": false,
+            "properties_open": true,
+            "reopened": null
+          },
+          "passed": true
+        },
+        {
+          "step": 11,
+          "event": {
+            "op": "type",
+            "field": "Value:",
+            "value": "Unaccepted"
+          },
+          "expect": {
+            "error": null
+          },
+          "actual": {
+            "active": "A.pdf",
+            "document": {
+              "author": "Original author",
+              "custom": {
+                "Untouched": "Keep me"
+              },
+              "custom_count": 1,
+              "dirty": true,
+              "display_title": false,
+              "generation": 2,
+              "keywords": null,
+              "pages": 2,
+              "redo": null,
+              "subject": "New subject",
+              "title": "Updated",
+              "undo": "Change Subject"
+            },
+            "draft": {
+              "author": "Original author",
+              "custom": {
+                "Untouched": "Keep me"
+              },
+              "display_title": false,
+              "keywords": "",
+              "subject": "New subject",
+              "title": "Updated"
+            },
+            "error": null,
+            "notice": "The document changed. Reopen Document Properties to edit the current version.",
+            "original_bytes": false,
+            "properties_open": true,
+            "reopened": null
+          },
+          "passed": true
+        },
+        {
+          "step": 12,
+          "event": {
+            "op": "click",
+            "label": "Space Audit"
+          },
+          "expect": {
+            "error": null
+          },
+          "actual": {
+            "active": "A.pdf",
+            "document": {
+              "author": "Original author",
+              "custom": {
+                "Untouched": "Keep me"
+              },
+              "custom_count": 1,
+              "dirty": true,
+              "display_title": false,
+              "generation": 2,
+              "keywords": null,
+              "pages": 2,
+              "redo": null,
+              "subject": "New subject",
+              "title": "Updated",
+              "undo": "Change Subject"
+            },
+            "draft": {
+              "author": "Original author",
+              "custom": {
+                "Untouched": "Keep me"
+              },
+              "display_title": false,
+              "keywords": "",
+              "subject": "New subject",
+              "title": "Updated"
+            },
+            "error": null,
+            "notice": "The document changed. Reopen Document Properties to edit the current version.",
+            "original_bytes": false,
+            "properties_open": true,
+            "reopened": null
+          },
+          "passed": true
+        },
+        {
+          "step": 13,
+          "event": {
+            "op": "external_edit",
+            "key": "Author",
+            "value": "New author"
+          },
+          "expect": {
+            "error": null,
+            "properties_open": false,
+            "draft": null,
+            "notice": "The document changed. Reopen Document Properties to edit the current version.",
+            "document": {
+              "title": "Updated",
+              "author": "New author",
+              "custom": {
+                "Untouched": "Keep me"
+              },
+              "custom_count": 1
+            }
+          },
+          "actual": {
+            "active": "A.pdf",
+            "document": {
+              "author": "New author",
+              "custom": {
+                "Untouched": "Keep me"
+              },
+              "custom_count": 1,
+              "dirty": true,
+              "display_title": false,
+              "generation": 3,
+              "keywords": null,
+              "pages": 2,
+              "redo": null,
+              "subject": "New subject",
+              "title": "Updated",
+              "undo": "Change Author"
+            },
+            "draft": null,
+            "error": null,
+            "notice": "The document changed. Reopen Document Properties to edit the current version.",
+            "original_bytes": false,
+            "properties_open": false,
+            "reopened": null
+          },
+          "passed": true
+        }
+      ],
+      "source": "tests/interactions/document-properties/inspection-tabs.json"
+    },
+    {
+      "name": "Document Properties: newer-edit",
+      "passed": true,
+      "steps": 6,
+      "stderr": "",
+      "trace": [
+        {
+          "step": 1,
+          "event": {
+            "op": "open"
+          },
+          "expect": {
+            "error": null
+          },
+          "actual": {
+            "active": "A.pdf",
+            "document": {
+              "author": "Original author",
+              "custom": {
+                "Untouched": "Keep me"
+              },
+              "custom_count": 1,
+              "dirty": false,
+              "display_title": false,
+              "generation": 0,
+              "keywords": null,
+              "pages": 2,
+              "redo": null,
+              "subject": null,
+              "title": "Original",
+              "undo": null
+            },
+            "draft": {
+              "author": "Original author",
+              "custom": {
+                "Untouched": "Keep me"
+              },
+              "display_title": false,
+              "keywords": "",
+              "subject": "",
+              "title": "Original"
+            },
+            "error": null,
+            "notice": null,
+            "original_bytes": true,
+            "properties_open": true,
+            "reopened": null
+          },
+          "passed": true
+        },
+        {
+          "step": 2,
+          "event": {
+            "op": "type",
+            "field": "Title",
+            "value": "Stale"
+          },
+          "expect": {
+            "error": null
+          },
+          "actual": {
+            "active": "A.pdf",
+            "document": {
+              "author": "Original author",
+              "custom": {
+                "Untouched": "Keep me"
+              },
+              "custom_count": 1,
+              "dirty": false,
+              "display_title": false,
+              "generation": 0,
+              "keywords": null,
+              "pages": 2,
+              "redo": null,
+              "subject": null,
+              "title": "Original",
+              "undo": null
+            },
+            "draft": {
+              "author": "Original author",
+              "custom": {
+                "Untouched": "Keep me"
+              },
+              "display_title": false,
+              "keywords": "",
+              "subject": "",
+              "title": "Stale"
+            },
+            "error": null,
+            "notice": null,
+            "original_bytes": true,
+            "properties_open": true,
+            "reopened": null
+          },
+          "passed": true
+        },
+        {
+          "step": 3,
+          "event": {
+            "op": "external_edit",
+            "key": "Title",
+            "value": "Newer"
+          },
+          "expect": {
+            "error": null,
+            "properties_open": false,
+            "draft": null,
+            "document": {
+              "title": "Newer",
+              "undo": "Change Title",
+              "redo": null
+            },
+            "notice": "The document changed. Reopen Document Properties to edit the current version."
+          },
+          "actual": {
+            "active": "A.pdf",
+            "document": {
+              "author": "Original author",
+              "custom": {
+                "Untouched": "Keep me"
+              },
+              "custom_count": 1,
+              "dirty": true,
+              "display_title": false,
+              "generation": 1,
+              "keywords": null,
+              "pages": 2,
+              "redo": null,
+              "subject": null,
+              "title": "Newer",
+              "undo": "Change Title"
+            },
+            "draft": null,
+            "error": null,
+            "notice": "The document changed. Reopen Document Properties to edit the current version.",
+            "original_bytes": false,
+            "properties_open": false,
+            "reopened": null
+          },
+          "passed": true
+        },
+        {
+          "step": 4,
+          "event": {
+            "op": "open"
+          },
+          "expect": {
+            "error": null,
+            "draft": {
+              "title": "Newer"
+            }
+          },
+          "actual": {
+            "active": "A.pdf",
+            "document": {
+              "author": "Original author",
+              "custom": {
+                "Untouched": "Keep me"
+              },
+              "custom_count": 1,
+              "dirty": true,
+              "display_title": false,
+              "generation": 1,
+              "keywords": null,
+              "pages": 2,
+              "redo": null,
+              "subject": null,
+              "title": "Newer",
+              "undo": "Change Title"
+            },
+            "draft": {
+              "author": "Original author",
+              "custom": {
+                "Untouched": "Keep me"
+              },
+              "display_title": false,
+              "keywords": "",
+              "subject": "",
+              "title": "Newer"
+            },
+            "error": null,
+            "notice": "The document changed. Reopen Document Properties to edit the current version.",
+            "original_bytes": false,
+            "properties_open": true,
+            "reopened": null
+          },
+          "passed": true
+        },
+        {
+          "step": 5,
+          "event": {
+            "op": "click",
+            "label": "Close"
+          },
+          "expect": {
+            "error": null
+          },
+          "actual": {
+            "active": "A.pdf",
+            "document": {
+              "author": "Original author",
+              "custom": {
+                "Untouched": "Keep me"
+              },
+              "custom_count": 1,
+              "dirty": true,
+              "display_title": false,
+              "generation": 1,
+              "keywords": null,
+              "pages": 2,
+              "redo": null,
+              "subject": null,
+              "title": "Newer",
+              "undo": "Change Title"
+            },
+            "draft": null,
+            "error": null,
+            "notice": "The document changed. Reopen Document Properties to edit the current version.",
+            "original_bytes": false,
+            "properties_open": false,
+            "reopened": null
+          },
+          "passed": true
+        },
+        {
+          "step": 6,
+          "event": {
+            "op": "undo"
+          },
+          "expect": {
+            "error": null,
+            "document": {
+              "title": "Original",
+              "undo": null
+            }
+          },
+          "actual": {
+            "active": "A.pdf",
+            "document": {
+              "author": "Original author",
+              "custom": {
+                "Untouched": "Keep me"
+              },
+              "custom_count": 1,
+              "dirty": false,
+              "display_title": false,
+              "generation": 2,
+              "keywords": null,
+              "pages": 2,
+              "redo": "Change Title",
+              "subject": null,
+              "title": "Original",
+              "undo": null
+            },
+            "draft": null,
+            "error": null,
+            "notice": "Undid Change Title",
+            "original_bytes": true,
+            "properties_open": false,
+            "reopened": null
+          },
+          "passed": true
+        }
+      ],
+      "source": "tests/interactions/document-properties/newer-edit.json"
+    },
+    {
+      "name": "Document Properties: no-op-preserves-redo",
+      "passed": true,
+      "steps": 6,
+      "stderr": "",
+      "trace": [
+        {
+          "step": 1,
+          "event": {
+            "op": "external_edit_undo",
+            "key": "Subject",
+            "value": "Future"
+          },
+          "expect": {
+            "error": null,
+            "document": {
+              "title": "Original",
+              "subject": null,
+              "undo": null,
+              "redo": "Change Subject"
+            }
+          },
+          "actual": {
+            "active": "A.pdf",
+            "document": {
+              "author": "Original author",
+              "custom": {
+                "Untouched": "Keep me"
+              },
+              "custom_count": 1,
+              "dirty": false,
+              "display_title": false,
+              "generation": 2,
+              "keywords": null,
+              "pages": 2,
+              "redo": "Change Subject",
+              "subject": null,
+              "title": "Original",
+              "undo": null
+            },
+            "draft": null,
+            "error": null,
+            "notice": null,
+            "original_bytes": true,
+            "properties_open": false,
+            "reopened": null
+          },
+          "passed": true
+        },
+        {
+          "step": 2,
+          "event": {
+            "op": "open"
+          },
+          "expect": {
+            "error": null
+          },
+          "actual": {
+            "active": "A.pdf",
+            "document": {
+              "author": "Original author",
+              "custom": {
+                "Untouched": "Keep me"
+              },
+              "custom_count": 1,
+              "dirty": false,
+              "display_title": false,
+              "generation": 2,
+              "keywords": null,
+              "pages": 2,
+              "redo": "Change Subject",
+              "subject": null,
+              "title": "Original",
+              "undo": null
+            },
+            "draft": {
+              "author": "Original author",
+              "custom": {
+                "Untouched": "Keep me"
+              },
+              "display_title": false,
+              "keywords": "",
+              "subject": "",
+              "title": "Original"
+            },
+            "error": null,
+            "notice": null,
+            "original_bytes": true,
+            "properties_open": true,
+            "reopened": null
+          },
+          "passed": true
+        },
+        {
+          "step": 3,
+          "event": {
+            "op": "type",
+            "field": "Title",
+            "value": "Transient"
+          },
+          "expect": {
+            "error": null
+          },
+          "actual": {
+            "active": "A.pdf",
+            "document": {
+              "author": "Original author",
+              "custom": {
+                "Untouched": "Keep me"
+              },
+              "custom_count": 1,
+              "dirty": false,
+              "display_title": false,
+              "generation": 2,
+              "keywords": null,
+              "pages": 2,
+              "redo": "Change Subject",
+              "subject": null,
+              "title": "Original",
+              "undo": null
+            },
+            "draft": {
+              "author": "Original author",
+              "custom": {
+                "Untouched": "Keep me"
+              },
+              "display_title": false,
+              "keywords": "",
+              "subject": "",
+              "title": "Transient"
+            },
+            "error": null,
+            "notice": null,
+            "original_bytes": true,
+            "properties_open": true,
+            "reopened": null
+          },
+          "passed": true
+        },
+        {
+          "step": 4,
+          "event": {
+            "op": "type",
+            "field": "Title",
+            "value": "  Original  "
+          },
+          "expect": {
+            "error": null,
+            "draft": {
+              "title": "  Original  "
+            },
+            "document": {
+              "title": "Original",
+              "undo": null,
+              "redo": "Change Subject"
+            }
+          },
+          "actual": {
+            "active": "A.pdf",
+            "document": {
+              "author": "Original author",
+              "custom": {
+                "Untouched": "Keep me"
+              },
+              "custom_count": 1,
+              "dirty": false,
+              "display_title": false,
+              "generation": 2,
+              "keywords": null,
+              "pages": 2,
+              "redo": "Change Subject",
+              "subject": null,
+              "title": "Original",
+              "undo": null
+            },
+            "draft": {
+              "author": "Original author",
+              "custom": {
+                "Untouched": "Keep me"
+              },
+              "display_title": false,
+              "keywords": "",
+              "subject": "",
+              "title": "  Original  "
+            },
+            "error": null,
+            "notice": null,
+            "original_bytes": true,
+            "properties_open": true,
+            "reopened": null
+          },
+          "passed": true
+        },
+        {
+          "step": 5,
+          "event": {
+            "op": "click",
+            "label": "Close"
+          },
+          "expect": {
+            "error": null,
+            "properties_open": false,
+            "draft": null,
+            "document": {
+              "title": "Original",
+              "undo": null,
+              "redo": "Change Subject"
+            }
+          },
+          "actual": {
+            "active": "A.pdf",
+            "document": {
+              "author": "Original author",
+              "custom": {
+                "Untouched": "Keep me"
+              },
+              "custom_count": 1,
+              "dirty": false,
+              "display_title": false,
+              "generation": 2,
+              "keywords": null,
+              "pages": 2,
+              "redo": "Change Subject",
+              "subject": null,
+              "title": "Original",
+              "undo": null
+            },
+            "draft": null,
+            "error": null,
+            "notice": null,
+            "original_bytes": true,
+            "properties_open": false,
+            "reopened": null
+          },
+          "passed": true
+        },
+        {
+          "step": 6,
+          "event": {
+            "op": "redo"
+          },
+          "expect": {
+            "error": null,
+            "document": {
+              "subject": "Future"
+            }
+          },
+          "actual": {
+            "active": "A.pdf",
+            "document": {
+              "author": "Original author",
+              "custom": {
+                "Untouched": "Keep me"
+              },
+              "custom_count": 1,
+              "dirty": true,
+              "display_title": false,
+              "generation": 3,
+              "keywords": null,
+              "pages": 2,
+              "redo": null,
+              "subject": "Future",
+              "title": "Original",
+              "undo": "Change Subject"
+            },
+            "draft": null,
+            "error": null,
+            "notice": "Redid Change Subject",
+            "original_bytes": false,
+            "properties_open": false,
+            "reopened": null
+          },
+          "passed": true
+        }
+      ],
+      "source": "tests/interactions/document-properties/no-op-preserves-redo.json"
+    },
+    {
+      "name": "Document Properties: reload-same-document",
+      "passed": true,
+      "steps": 7,
+      "stderr": "",
+      "trace": [
+        {
+          "step": 1,
+          "event": {
+            "op": "open"
+          },
+          "expect": {
+            "error": null
+          },
+          "actual": {
+            "active": "A.pdf",
+            "document": {
+              "author": "Original author",
+              "custom": {
+                "Untouched": "Keep me"
+              },
+              "custom_count": 1,
+              "dirty": false,
+              "display_title": false,
+              "generation": 0,
+              "keywords": null,
+              "pages": 2,
+              "redo": null,
+              "subject": null,
+              "title": "Original",
+              "undo": null
+            },
+            "draft": {
+              "author": "Original author",
+              "custom": {
+                "Untouched": "Keep me"
+              },
+              "display_title": false,
+              "keywords": "",
+              "subject": "",
+              "title": "Original"
+            },
+            "error": null,
+            "notice": null,
+            "original_bytes": true,
+            "properties_open": true,
+            "reopened": null
+          },
+          "passed": true
+        },
+        {
+          "step": 2,
+          "event": {
+            "op": "type",
+            "field": "Title",
+            "value": "Stale"
+          },
+          "expect": {
+            "error": null
+          },
+          "actual": {
+            "active": "A.pdf",
+            "document": {
+              "author": "Original author",
+              "custom": {
+                "Untouched": "Keep me"
+              },
+              "custom_count": 1,
+              "dirty": false,
+              "display_title": false,
+              "generation": 0,
+              "keywords": null,
+              "pages": 2,
+              "redo": null,
+              "subject": null,
+              "title": "Original",
+              "undo": null
+            },
+            "draft": {
+              "author": "Original author",
+              "custom": {
+                "Untouched": "Keep me"
+              },
+              "display_title": false,
+              "keywords": "",
+              "subject": "",
+              "title": "Stale"
+            },
+            "error": null,
+            "notice": null,
+            "original_bytes": true,
+            "properties_open": true,
+            "reopened": null
+          },
+          "passed": true
+        },
+        {
+          "step": 3,
+          "event": {
+            "op": "reload",
+            "title": "Reloaded"
+          },
+          "expect": {
+            "error": null,
+            "properties_open": false,
+            "draft": null,
+            "active": "A.pdf",
+            "document": {
+              "title": "Reloaded",
+              "dirty": false,
+              "undo": null,
+              "redo": null
+            },
+            "notice": "The document changed. Reopen Document Properties to edit the current version."
+          },
+          "actual": {
+            "active": "A.pdf",
+            "document": {
+              "author": "Original author",
+              "custom": {
+                "Untouched": "Keep me"
+              },
+              "custom_count": 1,
+              "dirty": false,
+              "display_title": false,
+              "generation": 1,
+              "keywords": null,
+              "pages": 2,
+              "redo": null,
+              "subject": null,
+              "title": "Reloaded",
+              "undo": null
+            },
+            "draft": null,
+            "error": null,
+            "notice": "The document changed. Reopen Document Properties to edit the current version.",
+            "original_bytes": false,
+            "properties_open": false,
+            "reopened": null
+          },
+          "passed": true
+        },
+        {
+          "step": 4,
+          "event": {
+            "op": "open"
+          },
+          "expect": {
+            "error": null,
+            "draft": {
+              "title": "Reloaded"
+            }
+          },
+          "actual": {
+            "active": "A.pdf",
+            "document": {
+              "author": "Original author",
+              "custom": {
+                "Untouched": "Keep me"
+              },
+              "custom_count": 1,
+              "dirty": false,
+              "display_title": false,
+              "generation": 1,
+              "keywords": null,
+              "pages": 2,
+              "redo": null,
+              "subject": null,
+              "title": "Reloaded",
+              "undo": null
+            },
+            "draft": {
+              "author": "Original author",
+              "custom": {
+                "Untouched": "Keep me"
+              },
+              "display_title": false,
+              "keywords": "",
+              "subject": "",
+              "title": "Reloaded"
+            },
+            "error": null,
+            "notice": "The document changed. Reopen Document Properties to edit the current version.",
+            "original_bytes": false,
+            "properties_open": true,
+            "reopened": null
+          },
+          "passed": true
+        },
+        {
+          "step": 5,
+          "event": {
+            "op": "type",
+            "field": "Title",
+            "value": "After reload"
+          },
+          "expect": {
+            "error": null
+          },
+          "actual": {
+            "active": "A.pdf",
+            "document": {
+              "author": "Original author",
+              "custom": {
+                "Untouched": "Keep me"
+              },
+              "custom_count": 1,
+              "dirty": false,
+              "display_title": false,
+              "generation": 1,
+              "keywords": null,
+              "pages": 2,
+              "redo": null,
+              "subject": null,
+              "title": "Reloaded",
+              "undo": null
+            },
+            "draft": {
+              "author": "Original author",
+              "custom": {
+                "Untouched": "Keep me"
+              },
+              "display_title": false,
+              "keywords": "",
+              "subject": "",
+              "title": "After reload"
+            },
+            "error": null,
+            "notice": "The document changed. Reopen Document Properties to edit the current version.",
+            "original_bytes": false,
+            "properties_open": true,
+            "reopened": null
+          },
+          "passed": true
+        },
+        {
+          "step": 6,
+          "event": {
+            "op": "click",
+            "label": "OK"
+          },
+          "expect": {
+            "error": null,
+            "document": {
+              "title": "After reload"
+            }
+          },
+          "actual": {
+            "active": "A.pdf",
+            "document": {
+              "author": "Original author",
+              "custom": {
+                "Untouched": "Keep me"
+              },
+              "custom_count": 1,
+              "dirty": true,
+              "display_title": false,
+              "generation": 2,
+              "keywords": null,
+              "pages": 2,
+              "redo": null,
+              "subject": null,
+              "title": "After reload",
+              "undo": "Change document properties"
+            },
+            "draft": null,
+            "error": null,
+            "notice": "The document changed. Reopen Document Properties to edit the current version.",
+            "original_bytes": false,
+            "properties_open": false,
+            "reopened": null
+          },
+          "passed": true
+        },
+        {
+          "step": 7,
+          "event": {
+            "op": "undo"
+          },
+          "expect": {
+            "error": null,
+            "document": {
+              "title": "Reloaded",
+              "undo": null
+            }
+          },
+          "actual": {
+            "active": "A.pdf",
+            "document": {
+              "author": "Original author",
+              "custom": {
+                "Untouched": "Keep me"
+              },
+              "custom_count": 1,
+              "dirty": false,
+              "display_title": false,
+              "generation": 3,
+              "keywords": null,
+              "pages": 2,
+              "redo": "Change document properties",
+              "subject": null,
+              "title": "Reloaded",
+              "undo": null
+            },
+            "draft": null,
+            "error": null,
+            "notice": "Undid Change document properties",
+            "original_bytes": false,
+            "properties_open": false,
+            "reopened": null
+          },
+          "passed": true
+        }
+      ],
+      "source": "tests/interactions/document-properties/reload-same-document.json"
+    },
+    {
+      "name": "Document Properties: switch-document",
+      "passed": true,
+      "steps": 6,
+      "stderr": "",
+      "trace": [
+        {
+          "step": 1,
+          "event": {
+            "op": "open"
+          },
+          "expect": {
+            "error": null
+          },
+          "actual": {
+            "active": "A.pdf",
+            "document": {
+              "author": "Original author",
+              "custom": {
+                "Untouched": "Keep me"
+              },
+              "custom_count": 1,
+              "dirty": false,
+              "display_title": false,
+              "generation": 0,
+              "keywords": null,
+              "pages": 2,
+              "redo": null,
+              "subject": null,
+              "title": "Original",
+              "undo": null
+            },
+            "draft": {
+              "author": "Original author",
+              "custom": {
+                "Untouched": "Keep me"
+              },
+              "display_title": false,
+              "keywords": "",
+              "subject": "",
+              "title": "Original"
+            },
+            "error": null,
+            "notice": null,
+            "original_bytes": true,
+            "properties_open": true,
+            "reopened": null
+          },
+          "passed": true
+        },
+        {
+          "step": 2,
+          "event": {
+            "op": "type",
+            "field": "Title",
+            "value": "Stale"
+          },
+          "expect": {
+            "error": null
+          },
+          "actual": {
+            "active": "A.pdf",
+            "document": {
+              "author": "Original author",
+              "custom": {
+                "Untouched": "Keep me"
+              },
+              "custom_count": 1,
+              "dirty": false,
+              "display_title": false,
+              "generation": 0,
+              "keywords": null,
+              "pages": 2,
+              "redo": null,
+              "subject": null,
+              "title": "Original",
+              "undo": null
+            },
+            "draft": {
+              "author": "Original author",
+              "custom": {
+                "Untouched": "Keep me"
+              },
+              "display_title": false,
+              "keywords": "",
+              "subject": "",
+              "title": "Stale"
+            },
+            "error": null,
+            "notice": null,
+            "original_bytes": true,
+            "properties_open": true,
+            "reopened": null
+          },
+          "passed": true
+        },
+        {
+          "step": 3,
+          "event": {
+            "op": "switch",
+            "document": 2
+          },
+          "expect": {
+            "error": null,
+            "properties_open": false,
+            "draft": null,
+            "active": "B.pdf",
+            "document": {
+              "title": "Second document",
+              "dirty": false,
+              "undo": null,
+              "redo": null
+            },
+            "original_bytes": true,
+            "notice": "The document changed. Reopen Document Properties to edit the current version."
+          },
+          "actual": {
+            "active": "B.pdf",
+            "document": {
+              "author": "Original author",
+              "custom": {
+                "Untouched": "Keep me"
+              },
+              "custom_count": 1,
+              "dirty": false,
+              "display_title": false,
+              "generation": 0,
+              "keywords": null,
+              "pages": 2,
+              "redo": null,
+              "subject": null,
+              "title": "Second document",
+              "undo": null
+            },
+            "draft": null,
+            "error": null,
+            "notice": "The document changed. Reopen Document Properties to edit the current version.",
+            "original_bytes": true,
+            "properties_open": false,
+            "reopened": null
+          },
+          "passed": true
+        },
+        {
+          "step": 4,
+          "event": {
+            "op": "switch",
+            "document": 1
+          },
+          "expect": {
+            "error": null,
+            "active": "A.pdf",
+            "document": {
+              "title": "Original",
+              "author": "Original author",
+              "custom": {
+                "Untouched": "Keep me"
+              },
+              "display_title": false,
+              "dirty": false,
+              "undo": null,
+              "redo": null,
+              "pages": 2,
+              "custom_count": 1
+            },
+            "original_bytes": true
+          },
+          "actual": {
+            "active": "A.pdf",
+            "document": {
+              "author": "Original author",
+              "custom": {
+                "Untouched": "Keep me"
+              },
+              "custom_count": 1,
+              "dirty": false,
+              "display_title": false,
+              "generation": 0,
+              "keywords": null,
+              "pages": 2,
+              "redo": null,
+              "subject": null,
+              "title": "Original",
+              "undo": null
+            },
+            "draft": null,
+            "error": null,
+            "notice": "The document changed. Reopen Document Properties to edit the current version.",
+            "original_bytes": true,
+            "properties_open": false,
+            "reopened": null
+          },
+          "passed": true
+        },
+        {
+          "step": 5,
+          "event": {
+            "op": "open"
+          },
+          "expect": {
+            "error": null,
+            "draft": {
+              "title": "Original"
+            }
+          },
+          "actual": {
+            "active": "A.pdf",
+            "document": {
+              "author": "Original author",
+              "custom": {
+                "Untouched": "Keep me"
+              },
+              "custom_count": 1,
+              "dirty": false,
+              "display_title": false,
+              "generation": 0,
+              "keywords": null,
+              "pages": 2,
+              "redo": null,
+              "subject": null,
+              "title": "Original",
+              "undo": null
+            },
+            "draft": {
+              "author": "Original author",
+              "custom": {
+                "Untouched": "Keep me"
+              },
+              "display_title": false,
+              "keywords": "",
+              "subject": "",
+              "title": "Original"
+            },
+            "error": null,
+            "notice": "The document changed. Reopen Document Properties to edit the current version.",
+            "original_bytes": true,
+            "properties_open": true,
+            "reopened": null
+          },
+          "passed": true
+        },
+        {
+          "step": 6,
+          "event": {
+            "op": "click",
+            "label": "Close"
+          },
+          "expect": {
+            "error": null,
+            "document": {
+              "title": "Original",
+              "author": "Original author",
+              "custom": {
+                "Untouched": "Keep me"
+              },
+              "display_title": false,
+              "dirty": false,
+              "undo": null,
+              "redo": null,
+              "pages": 2,
+              "custom_count": 1
+            }
+          },
+          "actual": {
+            "active": "A.pdf",
+            "document": {
+              "author": "Original author",
+              "custom": {
+                "Untouched": "Keep me"
+              },
+              "custom_count": 1,
+              "dirty": false,
+              "display_title": false,
+              "generation": 0,
+              "keywords": null,
+              "pages": 2,
+              "redo": null,
+              "subject": null,
+              "title": "Original",
+              "undo": null
+            },
+            "draft": null,
+            "error": null,
+            "notice": "The document changed. Reopen Document Properties to edit the current version.",
+            "original_bytes": true,
+            "properties_open": false,
+            "reopened": null
+          },
+          "passed": true
+        }
+      ],
+      "source": "tests/interactions/document-properties/switch-document.json"
+    },
+    {
+      "name": "Document Properties: undo-aba",
+      "passed": true,
+      "steps": 4,
+      "stderr": "",
+      "trace": [
+        {
+          "step": 1,
+          "event": {
+            "op": "open"
+          },
+          "expect": {
+            "error": null
+          },
+          "actual": {
+            "active": "A.pdf",
+            "document": {
+              "author": "Original author",
+              "custom": {
+                "Untouched": "Keep me"
+              },
+              "custom_count": 1,
+              "dirty": false,
+              "display_title": false,
+              "generation": 0,
+              "keywords": null,
+              "pages": 2,
+              "redo": null,
+              "subject": null,
+              "title": "Original",
+              "undo": null
+            },
+            "draft": {
+              "author": "Original author",
+              "custom": {
+                "Untouched": "Keep me"
+              },
+              "display_title": false,
+              "keywords": "",
+              "subject": "",
+              "title": "Original"
+            },
+            "error": null,
+            "notice": null,
+            "original_bytes": true,
+            "properties_open": true,
+            "reopened": null
+          },
+          "passed": true
+        },
+        {
+          "step": 2,
+          "event": {
+            "op": "type",
+            "field": "Title",
+            "value": "Stale"
+          },
+          "expect": {
+            "error": null
+          },
+          "actual": {
+            "active": "A.pdf",
+            "document": {
+              "author": "Original author",
+              "custom": {
+                "Untouched": "Keep me"
+              },
+              "custom_count": 1,
+              "dirty": false,
+              "display_title": false,
+              "generation": 0,
+              "keywords": null,
+              "pages": 2,
+              "redo": null,
+              "subject": null,
+              "title": "Original",
+              "undo": null
+            },
+            "draft": {
+              "author": "Original author",
+              "custom": {
+                "Untouched": "Keep me"
+              },
+              "display_title": false,
+              "keywords": "",
+              "subject": "",
+              "title": "Stale"
+            },
+            "error": null,
+            "notice": null,
+            "original_bytes": true,
+            "properties_open": true,
+            "reopened": null
+          },
+          "passed": true
+        },
+        {
+          "step": 3,
+          "event": {
+            "op": "external_edit_undo",
+            "key": "Title",
+            "value": "Temporary"
+          },
+          "expect": {
+            "error": null,
+            "properties_open": false,
+            "draft": null,
+            "document": {
+              "title": "Original",
+              "undo": null,
+              "redo": "Change Title"
+            },
+            "notice": "The document changed. Reopen Document Properties to edit the current version."
+          },
+          "actual": {
+            "active": "A.pdf",
+            "document": {
+              "author": "Original author",
+              "custom": {
+                "Untouched": "Keep me"
+              },
+              "custom_count": 1,
+              "dirty": false,
+              "display_title": false,
+              "generation": 2,
+              "keywords": null,
+              "pages": 2,
+              "redo": "Change Title",
+              "subject": null,
+              "title": "Original",
+              "undo": null
+            },
+            "draft": null,
+            "error": null,
+            "notice": "The document changed. Reopen Document Properties to edit the current version.",
+            "original_bytes": true,
+            "properties_open": false,
+            "reopened": null
+          },
+          "passed": true
+        },
+        {
+          "step": 4,
+          "event": {
+            "op": "redo"
+          },
+          "expect": {
+            "error": null,
+            "document": {
+              "title": "Temporary",
+              "undo": "Change Title",
+              "redo": null
+            }
+          },
+          "actual": {
+            "active": "A.pdf",
+            "document": {
+              "author": "Original author",
+              "custom": {
+                "Untouched": "Keep me"
+              },
+              "custom_count": 1,
+              "dirty": true,
+              "display_title": false,
+              "generation": 3,
+              "keywords": null,
+              "pages": 2,
+              "redo": null,
+              "subject": null,
+              "title": "Temporary",
+              "undo": "Change Title"
+            },
+            "draft": null,
+            "error": null,
+            "notice": "Redid Change Title",
+            "original_bytes": false,
+            "properties_open": false,
+            "reopened": null
+          },
+          "passed": true
+        }
+      ],
+      "source": "tests/interactions/document-properties/undo-aba.json"
+    }
+  ],
+  "consumer": {
+    "repository": "https://github.com/PerchAnton/pdfcraft",
+    "commit": "255a4e87c320ff0c7007008fb9a62dac6eaf8551",
+    "binary_sha256": "bf8675049412c81b73a205625ab29e97756128ecbe469f2b5e1db4b667e20473",
+    "build": "cargo build --locked --offline -p pdfcraft-ui-egui --example properties_scenarios",
+    "rust": "1.99.1",
+    "environment": {
+      "PDFCRAFT_SYSTEM_FONTS": "0",
+      "PDFCRAFT_LOCALE": "en-US"
+    },
+    "note": "Fresh build and replay on macOS arm64; full application suite not rerun."
+  }
+}

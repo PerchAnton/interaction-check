@@ -1,0 +1,11 @@
+{
+  "schema": 1,
+  "name": "xstate / 01-cancel",
+  "steps": [
+    {"event": {"op": "new"}, "expect": {"value": "idle", "context": {"saved": "original"}}},
+    {"event": {"op": "send", "type": "EDIT"}, "expect": {"value": "editing"}},
+    {"event": {"op": "send", "type": "CHANGE", "value": "preview"}, "expect": {"context": {"draft": "preview", "saved": "original"}}},
+    {"event": {"op": "send", "type": "CANCEL"}, "expect": {"value": "idle", "context": {"saved": "original"}}},
+    {"event": {"op": "send", "type": "EDIT"}, "expect": {"context": {"draft": "original"}}}
+  ]
+}

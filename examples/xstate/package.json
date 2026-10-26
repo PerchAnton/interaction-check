@@ -1,0 +1,9 @@
+{
+  "name": "interaction-check-xstate-example",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "engines": { "node": ">=24.15.0" },
+  "scripts": { "test": "node --test native.test.mjs adapter.test.mjs" },
+  "dependencies": { "xstate": "5.33.3" }
+}
