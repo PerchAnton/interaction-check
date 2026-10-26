@@ -1,0 +1,44 @@
+{
+  "schema": 1,
+  "name": "02-selection-survives-restore",
+  "steps": [
+    {
+      "event": {
+        "op": "new"
+      },
+      "expect": {
+        "selected": []
+      }
+    },
+    {
+      "event": {
+        "op": "select",
+        "id": "a"
+      },
+      "expect": {
+        "selected": [
+          "a"
+        ]
+      }
+    },
+    {
+      "event": {
+        "op": "remove",
+        "id": "a"
+      },
+      "expect": {
+        "selected": []
+      }
+    },
+    {
+      "event": {
+        "op": "restore"
+      },
+      "expect": {
+        "selected": [
+          "a"
+        ]
+      }
+    }
+  ]
+}

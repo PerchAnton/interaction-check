@@ -1,0 +1,64 @@
+{
+  "schema": 1,
+  "name": "01-normal-validation",
+  "steps": [
+    {
+      "event": {
+        "op": "new"
+      },
+      "expect": {
+        "values": {
+          "name": "original"
+        },
+        "errors": []
+      }
+    },
+    {
+      "event": {
+        "op": "set",
+        "value": "edited"
+      },
+      "expect": {
+        "values": {
+          "name": "edited"
+        },
+        "dirty": true
+      }
+    },
+    {
+      "event": {
+        "op": "start"
+      },
+      "expect": {
+        "values": {
+          "name": "edited"
+        },
+        "errors": []
+      }
+    },
+    {
+      "event": {
+        "op": "resolve",
+        "error": "invalid"
+      },
+      "expect": {
+        "errors": [
+          "invalid"
+        ],
+        "validating": false
+      }
+    },
+    {
+      "event": {
+        "op": "reset"
+      },
+      "expect": {
+        "values": {
+          "name": "original"
+        },
+        "errors": [],
+        "dirty": false
+      }
+    }
+  ]
+}

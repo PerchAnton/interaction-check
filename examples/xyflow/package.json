@@ -1,0 +1,16 @@
+{
+  "name": "interaction-check-xyflow-example",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=24.15.0"
+  },
+  "scripts": {
+    "test": "node --test native.test.mjs"
+  },
+  "dependencies": {
+    "@xyflow/react": "12.12.0",
+    "react": "19.2.0",
+    "react-dom": "19.2.0"
+  }
+}

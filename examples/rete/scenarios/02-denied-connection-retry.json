@@ -1,0 +1,81 @@
+{
+  "schema": 1,
+  "name": "02-denied-connection-retry",
+  "steps": [
+    {
+      "event": {
+        "op": "new"
+      },
+      "expect": {
+        "edges": []
+      }
+    },
+    {
+      "event": {
+        "op": "add_node",
+        "id": "a"
+      },
+      "expect": {
+        "nodes": [
+          "a"
+        ]
+      }
+    },
+    {
+      "event": {
+        "op": "add_node",
+        "id": "b"
+      },
+      "expect": {
+        "nodes": [
+          "a",
+          "b"
+        ]
+      }
+    },
+    {
+      "event": {
+        "op": "block",
+        "signal": "connectioncreate"
+      },
+      "expect": {
+        "edges": []
+      }
+    },
+    {
+      "event": {
+        "op": "add_edge",
+        "id": "ab",
+        "source": "a",
+        "target": "b"
+      },
+      "expect": {
+        "edges": [],
+        "result": false
+      }
+    },
+    {
+      "event": {
+        "op": "block",
+        "signal": null
+      },
+      "expect": {
+        "edges": []
+      }
+    },
+    {
+      "event": {
+        "op": "add_edge",
+        "id": "ab",
+        "source": "a",
+        "target": "b"
+      },
+      "expect": {
+        "edges": [
+          "ab"
+        ],
+        "result": true
+      }
+    }
+  ]
+}

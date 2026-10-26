@@ -1,0 +1,59 @@
+{
+  "schema": 1,
+  "name": "02-noop-preserves-redo",
+  "steps": [
+    {
+      "event": {
+        "op": "new"
+      },
+      "expect": {
+        "stack": 0
+      }
+    },
+    {
+      "event": {
+        "op": "rename",
+        "name": "one"
+      },
+      "expect": {
+        "name": "one"
+      }
+    },
+    {
+      "event": {
+        "op": "rename",
+        "name": "two"
+      },
+      "expect": {
+        "name": "two"
+      }
+    },
+    {
+      "event": {
+        "op": "undo"
+      },
+      "expect": {
+        "name": "one",
+        "redo": true
+      }
+    },
+    {
+      "event": {
+        "op": "rename",
+        "name": "one"
+      },
+      "expect": {
+        "name": "one",
+        "redo": true
+      }
+    },
+    {
+      "event": {
+        "op": "redo"
+      },
+      "expect": {
+        "name": "two"
+      }
+    }
+  ]
+}

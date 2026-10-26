@@ -1,0 +1,14 @@
+{
+  "name": "interaction-check-fabric-example",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=24.15.0"
+  },
+  "scripts": {
+    "test": "node --test native.test.mjs"
+  },
+  "dependencies": {
+    "fabric": "7.4.0"
+  }
+}

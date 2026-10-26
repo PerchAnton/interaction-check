@@ -1,0 +1,74 @@
+{
+  "schema": 1,
+  "name": "02-hidden-value-cleared",
+  "steps": [
+    {
+      "event": {
+        "op": "new"
+      },
+      "expect": {
+        "visible": [
+          "name",
+          "extra"
+        ]
+      }
+    },
+    {
+      "event": {
+        "op": "set",
+        "name": "extra",
+        "value": true
+      },
+      "expect": {
+        "visible": [
+          "name",
+          "extra",
+          "detail"
+        ]
+      }
+    },
+    {
+      "event": {
+        "op": "set",
+        "name": "detail",
+        "value": "temporary"
+      },
+      "expect": {
+        "data": {
+          "detail": "temporary"
+        }
+      }
+    },
+    {
+      "event": {
+        "op": "set",
+        "name": "extra",
+        "value": false
+      },
+      "expect": {
+        "visible": [
+          "name",
+          "extra"
+        ],
+        "detail_value": null
+      }
+    },
+    {
+      "event": {
+        "op": "set",
+        "name": "extra",
+        "value": true
+      },
+      "expect": {
+        "data": {
+          "extra": true
+        },
+        "visible": [
+          "name",
+          "extra",
+          "detail"
+        ]
+      }
+    }
+  ]
+}

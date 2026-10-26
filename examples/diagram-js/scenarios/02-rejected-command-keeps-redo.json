@@ -1,0 +1,51 @@
+{
+  "schema": 1,
+  "name": "02-rejected-command-keeps-redo",
+  "steps": [
+    {
+      "event": {
+        "op": "new"
+      },
+      "expect": {
+        "value": 0
+      }
+    },
+    {
+      "event": {
+        "op": "set",
+        "value": 4
+      },
+      "expect": {
+        "value": 4
+      }
+    },
+    {
+      "event": {
+        "op": "undo"
+      },
+      "expect": {
+        "value": 0,
+        "redo": true
+      }
+    },
+    {
+      "event": {
+        "op": "set",
+        "value": 11
+      },
+      "expect": {
+        "value": 0,
+        "allowed": false,
+        "redo": true
+      }
+    },
+    {
+      "event": {
+        "op": "redo"
+      },
+      "expect": {
+        "value": 4
+      }
+    }
+  ]
+}

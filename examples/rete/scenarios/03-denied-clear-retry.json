@@ -1,0 +1,67 @@
+{
+  "schema": 1,
+  "name": "03-denied-clear-retry",
+  "steps": [
+    {
+      "event": {
+        "op": "new"
+      },
+      "expect": {
+        "nodes": []
+      }
+    },
+    {
+      "event": {
+        "op": "add_node",
+        "id": "a"
+      },
+      "expect": {
+        "nodes": [
+          "a"
+        ]
+      }
+    },
+    {
+      "event": {
+        "op": "block",
+        "signal": "clear"
+      },
+      "expect": {
+        "nodes": [
+          "a"
+        ]
+      }
+    },
+    {
+      "event": {
+        "op": "clear"
+      },
+      "expect": {
+        "nodes": [
+          "a"
+        ],
+        "result": false
+      }
+    },
+    {
+      "event": {
+        "op": "block",
+        "signal": null
+      },
+      "expect": {
+        "nodes": [
+          "a"
+        ]
+      }
+    },
+    {
+      "event": {
+        "op": "clear"
+      },
+      "expect": {
+        "nodes": [],
+        "result": true
+      }
+    }
+  ]
+}

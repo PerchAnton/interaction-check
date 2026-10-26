@@ -1,0 +1,53 @@
+{
+  "schema": 1,
+  "name": "03-unknown-node-is-ignored",
+  "steps": [
+    {
+      "event": {
+        "op": "new"
+      },
+      "expect": {
+        "nodes": [
+          {
+            "id": "a"
+          },
+          {
+            "id": "b"
+          }
+        ]
+      }
+    },
+    {
+      "event": {
+        "op": "select",
+        "id": "missing"
+      },
+      "expect": {
+        "nodes": [
+          {
+            "selected": false
+          },
+          {
+            "selected": false
+          }
+        ]
+      }
+    },
+    {
+      "event": {
+        "op": "remove",
+        "id": "missing"
+      },
+      "expect": {
+        "nodes": [
+          {
+            "id": "a"
+          },
+          {
+            "id": "b"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,81 @@
+{
+  "schema": 1,
+  "name": "01-idempotent-remove-restore",
+  "steps": [
+    {
+      "event": {
+        "op": "new"
+      },
+      "expect": {
+        "nodes": [
+          "a",
+          "b"
+        ],
+        "events": {
+          "remove": 0
+        }
+      }
+    },
+    {
+      "event": {
+        "op": "remove",
+        "id": "a"
+      },
+      "expect": {
+        "nodes": [
+          "b"
+        ],
+        "edges": [],
+        "events": {
+          "remove": 2
+        }
+      }
+    },
+    {
+      "event": {
+        "op": "remove_again"
+      },
+      "expect": {
+        "nodes": [
+          "b"
+        ],
+        "events": {
+          "remove": 2
+        }
+      }
+    },
+    {
+      "event": {
+        "op": "restore"
+      },
+      "expect": {
+        "nodes": [
+          "a",
+          "b"
+        ],
+        "edges": [
+          {
+            "id": "ab",
+            "source": "a",
+            "target": "b"
+          }
+        ],
+        "events": {
+          "add": 2,
+          "remove": 2
+        }
+      }
+    },
+    {
+      "event": {
+        "op": "restore"
+      },
+      "expect": {
+        "events": {
+          "add": 2,
+          "remove": 2
+        }
+      }
+    }
+  ]
+}

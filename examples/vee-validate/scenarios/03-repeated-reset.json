@@ -1,0 +1,48 @@
+{
+  "schema": 1,
+  "name": "03-repeated-reset",
+  "steps": [
+    {
+      "event": {
+        "op": "new"
+      },
+      "expect": {
+        "dirty": false,
+        "error_names": []
+      }
+    },
+    {
+      "event": {
+        "op": "set",
+        "value": "changed"
+      },
+      "expect": {
+        "dirty": true
+      }
+    },
+    {
+      "event": {
+        "op": "reset"
+      },
+      "expect": {
+        "values": {
+          "name": "original"
+        },
+        "dirty": false,
+        "error_names": []
+      }
+    },
+    {
+      "event": {
+        "op": "reset"
+      },
+      "expect": {
+        "values": {
+          "name": "original"
+        },
+        "dirty": false,
+        "error_names": []
+      }
+    }
+  ]
+}

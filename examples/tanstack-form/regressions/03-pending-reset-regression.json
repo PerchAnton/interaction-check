@@ -1,0 +1,62 @@
+{
+  "schema": 1,
+  "name": "03-pending-reset-regression",
+  "steps": [
+    {
+      "event": {
+        "op": "new"
+      },
+      "expect": {
+        "values": {
+          "name": "original"
+        },
+        "errors": []
+      }
+    },
+    {
+      "event": {
+        "op": "set",
+        "value": "edited"
+      },
+      "expect": {
+        "values": {
+          "name": "edited"
+        }
+      }
+    },
+    {
+      "event": {
+        "op": "start"
+      },
+      "expect": {
+        "values": {
+          "name": "edited"
+        },
+        "errors": []
+      }
+    },
+    {
+      "event": {
+        "op": "reset"
+      },
+      "expect": {
+        "values": {
+          "name": "original"
+        },
+        "errors": []
+      }
+    },
+    {
+      "event": {
+        "op": "resolve",
+        "error": "error for the old value"
+      },
+      "expect": {
+        "values": {
+          "name": "original"
+        },
+        "errors": []
+      }
+    }
+  ]
+}

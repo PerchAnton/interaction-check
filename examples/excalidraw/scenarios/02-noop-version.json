@@ -1,0 +1,60 @@
+{
+  "schema": 1,
+  "name": "02-noop-version",
+  "steps": [
+    {
+      "event": {
+        "op": "new"
+      },
+      "expect": {
+        "elements": [
+          {
+            "version": 2
+          }
+        ]
+      }
+    },
+    {
+      "event": {
+        "op": "move",
+        "x": 10,
+        "y": 20
+      },
+      "expect": {
+        "elements": [
+          {
+            "version": 2
+          }
+        ]
+      }
+    },
+    {
+      "event": {
+        "op": "move",
+        "x": 50,
+        "y": 60
+      },
+      "expect": {
+        "elements": [
+          {
+            "version": 3
+          }
+        ]
+      }
+    },
+    {
+      "event": {
+        "op": "move",
+        "x": 50,
+        "y": 60
+      },
+      "expect": {
+        "elements": [
+          {
+            "version": 3
+          }
+        ]
+      }
+    }
+  ]
+}

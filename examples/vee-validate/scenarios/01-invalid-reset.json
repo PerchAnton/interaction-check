@@ -1,0 +1,63 @@
+{
+  "schema": 1,
+  "name": "01-invalid-reset",
+  "steps": [
+    {
+      "event": {
+        "op": "new"
+      },
+      "expect": {
+        "values": {
+          "name": "original"
+        },
+        "dirty": false,
+        "error_names": []
+      }
+    },
+    {
+      "event": {
+        "op": "set",
+        "value": ""
+      },
+      "expect": {
+        "values": {
+          "name": ""
+        },
+        "dirty": true
+      }
+    },
+    {
+      "event": {
+        "op": "validate"
+      },
+      "expect": {
+        "errors": {
+          "name": "Required"
+        }
+      }
+    },
+    {
+      "event": {
+        "op": "reset"
+      },
+      "expect": {
+        "values": {
+          "name": "original"
+        },
+        "dirty": false,
+        "error_names": []
+      }
+    },
+    {
+      "event": {
+        "op": "validate"
+      },
+      "expect": {
+        "values": {
+          "name": "original"
+        },
+        "error_names": []
+      }
+    }
+  ]
+}

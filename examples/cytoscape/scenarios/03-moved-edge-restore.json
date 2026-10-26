@@ -1,0 +1,64 @@
+{
+  "schema": 1,
+  "name": "03-moved-edge-restore",
+  "steps": [
+    {
+      "event": {
+        "op": "new"
+      },
+      "expect": {
+        "edges": [
+          {
+            "id": "ab",
+            "source": "a",
+            "target": "b"
+          }
+        ]
+      }
+    },
+    {
+      "event": {
+        "op": "reverse_edge"
+      },
+      "expect": {
+        "edges": [
+          {
+            "id": "ab",
+            "source": "b",
+            "target": "a"
+          }
+        ]
+      }
+    },
+    {
+      "event": {
+        "op": "remove",
+        "id": "b"
+      },
+      "expect": {
+        "nodes": [
+          "a"
+        ],
+        "edges": []
+      }
+    },
+    {
+      "event": {
+        "op": "restore"
+      },
+      "expect": {
+        "nodes": [
+          "a",
+          "b"
+        ],
+        "edges": [
+          {
+            "id": "ab",
+            "source": "b",
+            "target": "a"
+          }
+        ]
+      }
+    }
+  ]
+}

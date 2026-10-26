@@ -1,0 +1,46 @@
+{
+  "schema": 1,
+  "name": "02-valid-response",
+  "steps": [
+    {
+      "event": {
+        "op": "new"
+      },
+      "expect": {
+        "errors": []
+      }
+    },
+    {
+      "event": {
+        "op": "set",
+        "value": "valid"
+      },
+      "expect": {
+        "values": {
+          "name": "valid"
+        }
+      }
+    },
+    {
+      "event": {
+        "op": "start"
+      },
+      "expect": {
+        "values": {
+          "name": "valid"
+        },
+        "errors": []
+      }
+    },
+    {
+      "event": {
+        "op": "resolve",
+        "error": null
+      },
+      "expect": {
+        "errors": [],
+        "validating": false
+      }
+    }
+  ]
+}
