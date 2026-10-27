@@ -39,6 +39,8 @@ adapters remain in the repository and may have their own dependencies. The separ
 Rust library edit-session is not required.
 
 - [Scenario and adapter protocol](https://github.com/PerchAnton/interaction-check#scenario-format)
+- [First example: no application or extra packages](https://github.com/PerchAnton/interaction-check/tree/main/examples/quickstart)
+- [Native tests or replay?](https://github.com/PerchAnton/interaction-check/blob/main/docs/CHOOSING.md)
 - [Worked XState example](https://github.com/PerchAnton/interaction-check/tree/main/examples/xstate)
 - [Moving a useful scenario into a native test](https://github.com/PerchAnton/interaction-check/blob/main/docs/NATIVE_TESTS.md)
 - [Measured benefits and costs](https://github.com/PerchAnton/interaction-check/blob/main/docs/VALUE.md)

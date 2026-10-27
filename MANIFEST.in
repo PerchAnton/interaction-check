@@ -2,3 +2,6 @@ include README.md PACKAGE.md CHANGELOG.md LICENSE-MIT LICENSE-APACHE
 include test_*.py
 include tools/check_distribution.py
 include docs/NATIVE_TESTS.md docs/RELEASING.md
+recursive-include examples/quickstart *.py *.json *.md
+include docs/CHOOSING.md docs/REPORTING.md
+include tools/render_quickstart.py docs/evidence/quickstart.json docs/assets/quickstart.svg

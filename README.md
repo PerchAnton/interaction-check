@@ -1,13 +1,48 @@
 # interaction-check
 
-Replay a semantic event sequence and inspect each checked state. A standalone Python
-development tool that uses an explicit local adapter. It can test consumers with or
-without the separate [edit-session](https://github.com/PerchAnton/edit-session) Rust library.
+Describe actions such as Open → Type → Cancel in JSON, call your code through a small
+adapter, and compare the returned state with your expectations. A standalone Python
+development tool, with no runtime dependencies. Python 3.10+.
 
 [![CI](https://github.com/PerchAnton/interaction-check/actions/workflows/ci.yml/badge.svg?branch=main&event=push)](https://github.com/PerchAnton/interaction-check/actions/workflows/ci.yml)
 [![Replay evidence](https://github.com/PerchAnton/interaction-check/actions/workflows/evidence.yml/badge.svg?branch=main&event=push)](https://github.com/PerchAnton/interaction-check/actions/workflows/evidence.yml)
 
-**[Download](#current-prerelease)** · **[Install](#install-the-released-command)** · **[Export a failure](#export-a-failure-and-keep-a-native-test)** · **[Evidence](#evidence-and-trade-offs)** · **[License](#license)**
+**[First example](#try-it-without-an-application)** · **[When to use it](docs/CHOOSING.md)** · **[Install](#install-the-released-command)** · **[Report a failure](docs/REPORTING.md)** · **[Evidence](#evidence-and-trade-offs)**
+
+## Try it without an application
+
+![A deliberate Cancel defect: the scenario expects Original, the adapter observes Preview, and the runner reports a mismatch at step 3. Three native tests and three replay scenarios pass on the correct model; both detect the defect.](docs/assets/quickstart.svg)
+
+From a checkout of this repository, run:
+
+```sh
+python examples/quickstart/verify.py
+```
+
+No package installation is needed. The command tests a small in-memory title editor,
+breaks Cancel **in a temporary copy**, exports the failing case and reruns it. It also
+runs equivalent ordinary Python tests. An expected `FAIL` is followed by `Verified`;
+the command exits successfully only when the whole demonstration checks out.
+
+**Recorded 27 October 2026:** 3 native tests and 3 replay scenarios / 12 steps pass
+on the correct model. Both detect the same deliberate Cancel defect. This is an
+original teaching example, not an upstream bug or a claim of additional coverage.
+[Read the code and commands](examples/quickstart/README.md) · [Raw evidence](docs/evidence/quickstart.json).
+
+The adapter translates actions into calls and returns state; it does not receive
+expected values. The runner compares states after the adapter runs. **The full batch
+may already have executed when the first mismatch is reported.** Export saves a
+checked prefix, which must be rerun; it does not automatically minimize a failure.
+
+| Your need | Start here |
+| --- | --- |
+| Check behavior inside one project | Its ordinary test framework; the example includes [native tests](examples/quickstart/native_tests.py) |
+| Share an action sequence and a consistent mismatch report | Evaluate this runner, including the cost of writing and maintaining an adapter |
+| Test actual mouse input, rendering or a GUI widget | Your application's UI harness; a model adapter does not establish GUI behavior |
+| Protect a Rust draft from stale document changes | Evaluate the separate [edit-session library](https://github.com/PerchAnton/edit-session); neither project requires the other |
+
+[Choosing a tool](docs/CHOOSING.md) connects these decisions to maintainer feedback.
+[A short useful bug report](docs/REPORTING.md) shows how to share one actionable failure.
 
 ## Current prerelease
 
@@ -15,12 +50,17 @@ without the separate [edit-session](https://github.com/PerchAnton/edit-session) 
 
 **[Wheel and source archive](https://pypi.org/project/interaction-check/0.1.0a6/#files)** · [SHA-256 and installation evidence](docs/evidence/release-alpha6.json) · [Changelog](CHANGELOG.md) · [Tagged source](https://github.com/PerchAnton/interaction-check/tree/v0.1.0-alpha.6)
 
+<details>
+<summary>Published package snapshot and verification</summary>
+
 ![interaction-check alpha 6, published on PyPI 27 October 2026: 0 runtime dependencies, 49 runner tests, 12.9 KiB wheel. Replay a scenario, export its original expectations through the first mismatch, and manually translate useful behavior into a native test.](docs/assets/release.svg)
 
 Release snapshot: **49 runner tests**, **0 runtime dependencies**, **12.9 KiB wheel
 (13,170 bytes)**. [Exact files, hashes, release CI and clean installation](docs/evidence/release-alpha6.json).
 These are dated release facts; the CI badges above track current main. The handoff is
 manual, and an export must be replayed before sharing. Examples and adapters are separate.
+
+</details>
 
 Trying the alpha? [Report a bug](https://github.com/PerchAnton/interaction-check/issues/new?template=bug_report.yml)
 with your runner and adapter versions, or read the [alpha compatibility policy](docs/RELEASING.md#alpha-compatibility).
@@ -41,7 +81,8 @@ The exact pin selects this alpha without opting into all future prereleases. Ins
 from PyPI, metadata, a passing scenario, failure export and replay were checked in a
 fresh environment. The [previous GitHub release](https://github.com/PerchAnton/interaction-check/releases/tag/v0.1.0-alpha.5)
 remains available. Start with the
-[XState walkthrough](examples/xstate/README.md) or the [native-test guide](docs/NATIVE_TESTS.md).
+[dependency-free first example](examples/quickstart/README.md), then the
+[XState walkthrough](examples/xstate/README.md) or [native-test guide](docs/NATIVE_TESTS.md).
 
 ## Evidence and trade-offs
 
@@ -79,6 +120,9 @@ consumer-owned adapters also exercise the real PhotoCraft and PdfCraft dialogs.
 
 ## A useful outcome can be one native test
 
+<details>
+<summary>Pyee: one native candidate catches a deliberate mutation missed by the original suite</summary>
+
 ![Pyee native test audit: unchanged source passes 53 original tests or 54 with the candidate. A deliberate remove-after-callback mutation passes the original 53 tests but fails the new reentrant-once test. No current upstream bug or adoption is claimed.](docs/assets/pyee-coverage.svg)
 
 Following [maintainer feedback](https://github.com/jfhbrook/pyee/issues/226#issuecomment-6409488443),
@@ -90,6 +134,8 @@ The candidate needs **no new dependency** in pyee and no interaction-check runne
 [Test, method, raw results and reproduction](examples/pyee/README.md).
 This is one demonstrated coverage gap, not a current pyee bug, a general coverage score
 or upstream adoption. These are pyee suite counts, separate from our 49 runner tests.
+
+</details>
 
 ## Start with one reviewable reproduction
 

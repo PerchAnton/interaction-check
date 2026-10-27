@@ -1,0 +1,9 @@
+{
+  "schema": 1,
+  "name": "Save replaces the saved title",
+  "steps": [
+    {"event": {"op": "open"}, "expect": {"saved": "Original", "draft": "Original"}},
+    {"event": {"op": "type", "text": "Edited"}, "expect": {"saved": "Original", "draft": "Edited"}},
+    {"event": {"op": "save"}, "expect": {"saved": "Edited", "draft": null, "error": null}}
+  ]
+}

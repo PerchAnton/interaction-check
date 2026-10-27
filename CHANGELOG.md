@@ -1,5 +1,15 @@
 # Changelog
 
+## Unreleased
+
+- Add a dependency-free first example with three native tests and three replay
+  scenarios: correct behavior, a deliberate Cancel defect, export and verified rerun.
+- Generate the front-page diagram from recorded output and source hashes; verify
+  the walkthrough and graphic across the existing Python/OS CI matrix.
+- Explain adapter costs, full-batch execution, native-test alternatives and concise
+  failure reporting in response to maintainer feedback. Include the example in sdist.
+- Runner behavior, public CLI, schemas and published package versions are unchanged.
+
 ## 0.1.0a6 / v0.1.0-alpha.6
 
 Published to [PyPI](https://pypi.org/project/interaction-check/0.1.0a6/) on

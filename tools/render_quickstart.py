@@ -1,0 +1,75 @@
+"""Render the README diagram from the verified quickstart snapshot."""
+import argparse
+import hashlib
+from html import escape
+import json
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parents[1]
+REPORT = ROOT / "docs/evidence/quickstart.json"
+SVG = ROOT / "docs/assets/quickstart.svg"
+
+
+def render(data):
+    mismatch = data["first_mismatch"]
+    expected = escape(mismatch["expect"]["saved"])
+    actual = escape(mismatch["actual"]["saved"])
+    step = mismatch["step"]
+    native, replay = data["native"], data["replay"]
+    return f'''<svg xmlns="http://www.w3.org/2000/svg" width="1040" height="470" viewBox="0 0 1040 470" role="img" aria-labelledby="title description">
+<title id="title">A readable reproduction of a Cancel defect</title>
+<desc id="description">Original teaching model. A JSON scenario expects Cancel to keep the saved title {expected}. A deliberately broken model returns {actual}. The runner reports the first mismatch at step {step}. Native tests and replay both detect this same deliberate defect; no extra coverage or upstream bug is claimed.</desc>
+<defs><marker id="arrow" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M0 0L7 3.5L0 7Z" fill="#526176"/></marker></defs>
+<rect width="1040" height="470" rx="20" fill="#f4f7fb"/>
+<path d="M20 0H1020Q1040 0 1040 20V116H0V20Q0 0 20 0Z" fill="#152238"/>
+<g font-family="Arial, Helvetica, sans-serif">
+<text x="32" y="34" font-size="14" fill="#c4cede" font-weight="700">INTERACTION-CHECK / RUNNABLE FIRST EXAMPLE</text>
+<text x="32" y="75" font-size="30" fill="#fff" font-weight="700">See the action. Read the mismatch.</text>
+<text x="32" y="101" font-size="16" fill="#dae3f1">A small JSON case, a real call into the example model, and an expected result.</text>
+<rect x="32" y="140" width="296" height="160" rx="14" fill="#fff" stroke="#dce3ec"/>
+<text x="52" y="168" font-size="14" fill="#087c79" font-weight="700">1 / YOU WRITE THE CASE</text>
+<text x="52" y="203" font-size="24" fill="#172438" font-weight="700">Open → Type → Cancel</text>
+<text x="52" y="238" font-size="17" fill="#526176">Expected saved title:</text>
+<text x="52" y="272" font-size="25" fill="#172438" font-weight="700">{expected}</text>
+<path d="M335 220H359" stroke="#526176" stroke-width="2" marker-end="url(#arrow)"/>
+<rect x="368" y="140" width="300" height="160" rx="14" fill="#eaf6f3" stroke="#9acfc4"/>
+<text x="388" y="168" font-size="14" fill="#087c79" font-weight="700">2 / THE ADAPTER CALLS CODE</text>
+<text x="388" y="203" font-size="24" fill="#172438" font-weight="700">editor.cancel()</text>
+<text x="388" y="238" font-size="17" fill="#526176">Returns the observed state.</text>
+<text x="388" y="272" font-size="16" fill="#526176">Expectations stay in the runner.</text>
+<path d="M675 220H699" stroke="#526176" stroke-width="2" marker-end="url(#arrow)"/>
+<rect x="708" y="140" width="300" height="160" rx="14" fill="#fff1e9" stroke="#edc8ae"/>
+<text x="728" y="168" font-size="14" fill="#9a461b" font-weight="700">3 / FIRST MISMATCH: STEP {step}</text>
+<text x="728" y="203" font-size="24" fill="#172438" font-weight="700">saved: {actual}</text>
+<text x="728" y="238" font-size="17" fill="#526176">Cancel saved a value by mistake.</text>
+<text x="728" y="272" font-size="16" fill="#526176">Export the case, then rerun it.</text>
+<text x="32" y="337" font-size="18" fill="#172438" font-weight="700">Same three behaviors, two ways to test them</text>
+<text x="32" y="368" font-size="17" fill="#526176">Native tests: {native['baseline_passed']}/3 pass</text>
+<text x="370" y="368" font-size="17" fill="#526176">Replay: {replay['baseline_passed']}/3 pass · {replay['baseline_steps']} steps</text>
+<text x="32" y="397" font-size="17" fill="#087c79" font-weight="700">Both detect the one deliberate Cancel defect. Native tests remain the simpler option here.</text>
+<text x="32" y="430" font-size="14" fill="#526176">Teaching model · verified {data['recorded_date']} · zero third-party packages for this example.</text>
+<text x="32" y="452" font-size="14" fill="#526176">The full batch may already have run. A checked prefix is not automatic minimization or stopped execution.</text>
+</g></svg>
+'''
+
+
+def main():
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--check", action="store_true")
+    args = parser.parse_args()
+    data = json.loads(REPORT.read_text(encoding="utf-8"))
+    for name, digest in data["source_files"].items():
+        actual = hashlib.sha256((ROOT / name).read_bytes().replace(b"\r\n", b"\n")).hexdigest()
+        if actual != digest:
+            raise SystemExit(f"Refresh quickstart evidence: {name} changed")
+    result = render(data)
+    if args.check:
+        if SVG.read_text(encoding="utf-8") != result:
+            raise SystemExit("Run python tools/render_quickstart.py to refresh the diagram")
+    else:
+        SVG.write_text(result, encoding="utf-8")
+    print("Quickstart diagram and source hashes verified")
+
+
+if __name__ == "__main__":
+    main()

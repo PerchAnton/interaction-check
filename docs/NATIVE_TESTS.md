@@ -4,6 +4,10 @@ The useful deliverable can be a normal test in the consumer's own suite. Its CI 
 not need to keep interaction-check. This guide uses the existing executable pyee and
 XState examples; it does not generate code or claim that every replay exposes a new bug.
 
+New here? The [dependency-free first example](../examples/quickstart/README.md)
+demonstrates pass, deliberate failure, export and rerun beside three ordinary Python
+tests. [Reporting guidance](REPORTING.md) helps keep the result short and actionable.
+
 ## 1. Save the checked prefix
 
 From the repository root, with the XState example installed as described in its README:

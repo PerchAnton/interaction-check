@@ -1,0 +1,60 @@
+{
+  "recorded_date": "2026-10-27",
+  "scope": "Original teaching model; no upstream bug or adoption claim",
+  "python": "3.14.3",
+  "system": "Darwin",
+  "runner": "source checkout",
+  "native": {
+    "baseline_passed": 3,
+    "mutant_passed": 2,
+    "mutant_failures": 1,
+    "mutant_errors": 0
+  },
+  "replay": {
+    "baseline_passed": 3,
+    "baseline_steps": 12,
+    "mutant_passed": 2,
+    "mutant_failures": 1
+  },
+  "mutation": "Cancel incorrectly writes the draft to the saved title",
+  "first_mismatch": {
+    "step": 3,
+    "event": {
+      "op": "cancel"
+    },
+    "expect": {
+      "saved": "Original",
+      "draft": null,
+      "error": null
+    },
+    "actual": {
+      "saved": "Preview",
+      "draft": null,
+      "error": null
+    },
+    "passed": false,
+    "differences": [
+      "state.saved: expected 'Original', got 'Preview'"
+    ]
+  },
+  "batch_execution": {
+    "events_processed": 4,
+    "checked_prefix_steps": 3
+  },
+  "export": {
+    "steps": 3,
+    "preserves_expectations": true,
+    "rerun_same_mismatch": true
+  },
+  "source_hash_format": "SHA-256 of UTF-8 text with LF line endings",
+  "source_files": {
+    "interaction_check.py": "171a2b1159f51a9db1d2f3e85959c34b7c78263a8f4f073ea4828f15f76e326a",
+    "examples/quickstart/verify.py": "095587e81236d34a44b9046d9b2f03e304bf58cdac519d903af749ffe0ce25a4",
+    "examples/quickstart/editor.py": "0fcb587a689a94c012c8723631b1884aaf0433967d92fab5bc0785218a73acd8",
+    "examples/quickstart/adapter.py": "8964e160f85c7f0c19151d5d285b3fa658cb85514e2273bdf86f10dfa5b38818",
+    "examples/quickstart/native_tests.py": "772b23b7b03ce86665a0ad1622091533641ccd87e4ccd62e5daa562e20a33195",
+    "examples/quickstart/scenarios/01-cancel.json": "4bd6e2fef4c3e9baaa881c0f2f5b348fd19e151a0e07bfa2b8c3d1ffdd02c22d",
+    "examples/quickstart/scenarios/02-save.json": "72b9d44980be39e37db9eefd8e802222fc7d1fa8f4f11e34346ced7c74947bc7",
+    "examples/quickstart/scenarios/03-correction.json": "9c1266dd0086bc7ef5d049118ad88df68499786f0faf240518cae309106a1516"
+  }
+}
