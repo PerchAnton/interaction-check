@@ -42,9 +42,18 @@ jobs:
           PY
           git merge-base --is-ancestor HEAD origin/main
       - run: python -m unittest -v
+      - run: python examples/quickstart/verify.py
+      - run: python tools/render_quickstart.py --check
       - run: python -m build
       - run: python -m twine check --strict dist/*
       - run: python tools/check_distribution.py dist
+      - name: Verify the packaged first example and diagram
+        run: |
+          mkdir packaged
+          tar -xzf dist/interaction_check-*.tar.gz -C packaged
+          cd packaged/interaction_check-*
+          python examples/quickstart/verify.py
+          python tools/render_quickstart.py --check
       - name: Record the verified artifacts
         run: sha256sum dist/* > SHA256SUMS
       - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
