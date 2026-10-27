@@ -2,6 +2,10 @@
 
 ## 0.1.0a7 / v0.1.0-alpha.7
 
+Published on 27 October 2026 (Europe/Kyiv) to [PyPI](https://pypi.org/project/interaction-check/0.1.0a7/)
+and as a [GitHub prerelease](https://github.com/PerchAnton/interaction-check/releases/tag/v0.1.0-alpha.7).
+Clean installation, original failure export/replay and archive hashes verified. [Evidence](docs/evidence/release-alpha7.json).
+
 Examples and documentation release. Runtime behavior is unchanged.
 
 - Add a dependency-free first example with three native tests and three replay

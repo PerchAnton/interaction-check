@@ -1,26 +1,21 @@
 # Releases and alpha compatibility
 
-## Current candidate
-
-`0.1.0a7` / `v0.1.0-alpha.7` packages the first example and feedback-driven
-documentation. Publication is pending. CLI options, runtime behavior, schema 1 and
-protocol 1 are unchanged from alpha.6. The release workflow also runs the example and
-checks its diagram from the extracted sdist. Earlier published files stay unchanged.
-
 ## Published prerelease
 
-**[0.1.0a6 on PyPI](https://pypi.org/project/interaction-check/0.1.0a6/)** was published
-on **27 October 2026 (Europe/Kyiv; 26 October UTC)**. The wheel and source archive
-match the checked workflow artifacts. A fresh environment installed the PyPI package
-and verified metadata, the command, failure export and replay.
-[Evidence](evidence/release-alpha6.json) · [Installation](../README.md#install-the-released-command).
-The previous alpha.5 GitHub prerelease remains unchanged.
+**[0.1.0a7 on PyPI](https://pypi.org/project/interaction-check/0.1.0a7/)** was published
+on **27 October 2026 (Europe/Kyiv)**. The
+[GitHub prerelease](https://github.com/PerchAnton/interaction-check/releases/tag/v0.1.0-alpha.7)
+attaches the same wheel and source archive with checksums. A fresh environment
+installed the package and verified the complete quickstart, including deliberate
+failure detection, original-expectation export and replay. The source archive also
+passes the example and diagram checks. [Evidence](evidence/release-alpha7.json).
+Earlier alpha.6 registry files and alpha.5 GitHub assets remain unchanged.
 
 ## Alpha compatibility
 
 - Alpha releases are experimental. CLI options, Python APIs, report fields and
   adapter behavior may change between releases, even within `0.1.0`.
-- Alpha.6 keeps scenario schema **1** and JSONL protocol **1**. This describes the
+- Alpha.7 keeps scenario schema **1** and JSONL protocol **1**. This describes the
   current release; it does not promise compatibility with every future alpha.
 - Pin the runner release or Git revision and the adapter/consumer revisions
   separately. Before upgrading, read the [changelog](../CHANGELOG.md) and replay
@@ -38,7 +33,8 @@ Update the version and changelog for the new candidate, then run:
 
 ```sh
 python -m unittest -v
-python examples/quickstart/verify.py
+python examples/quickstart/verify.py --report docs/evidence/quickstart.json
+python tools/render_quickstart.py
 python tools/render_quickstart.py --check
 python -m pip install build twine
 python -m build
@@ -60,10 +56,10 @@ an alpha as the latest stable release.
 
 ### Published version
 
-`0.1.0a6` / `v0.1.0-alpha.6` is **published on PyPI**. Runtime behavior is
-unchanged from alpha.5; the new version keeps the changed package documentation and
-metadata separate from the immutable alpha.5 archives. The first upload used
-[workflow 40409505289](https://github.com/PerchAnton/interaction-check/actions/runs/40409505289)
+`0.1.0a7` / `v0.1.0-alpha.7` is **published on PyPI**. Runtime behavior, CLI options,
+scenario schema 1 and JSONL protocol 1 are unchanged from alpha.6. The new version
+packages the first example and clearer documentation. Publication used
+[workflow 40464385275](https://github.com/PerchAnton/interaction-check/actions/runs/40464385275)
 and the configured `pypi` environment. Do not rerun this version's upload; prepare
 a new version for any future package change.
 
@@ -100,7 +96,7 @@ It has no upload permission in this mode. Neither pushes nor PRs trigger publish
 
 For an approved release, require green CI on the exact commit, create and push its
 matching **new** version tag, then run the workflow from that tag with `publish=true`.
-The published `v0.1.0-alpha.6` is a reference for the process, not a tag to upload again.
+The published `v0.1.0-alpha.7` is a reference for the process, not a tag to upload again.
 
 The build job requires a matching package version and a commit contained in `main`.
 The upload job waits for the `pypi` environment, downloads the verified distributions,
@@ -112,7 +108,7 @@ After success, verify the [project](https://pypi.org/project/interaction-check/)
 version, license, Python requirement and both archive hashes. In a fresh venv:
 
 ```sh
-python -m pip install --index-url https://pypi.org/simple 'interaction-check==0.1.0a6'
+python -m pip install --index-url https://pypi.org/simple 'interaction-check==0.1.0a7'
 interaction-check --version
 ```
 

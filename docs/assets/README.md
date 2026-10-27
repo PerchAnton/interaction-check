@@ -50,7 +50,7 @@ not a percentage or speed comparison. Scope, test and reproduction are in the
 
 `release.svg` is a dated release summary and a three-step workflow diagram. Its
 version, publication date, exact compressed file size and CI references come from
-the [release snapshot](../evidence/release-alpha6.json). KiB means bytes / 1024,
+the [release snapshot](../evidence/release-alpha7.json). KiB means bytes / 1024,
 rounded to one decimal; this is download size, not runtime memory or a comparison
 between projects. The README repeats the scoped counts and links to the real assets.
 
