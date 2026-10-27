@@ -46,19 +46,20 @@ checked prefix, which must be rerun; it does not automatically minimize a failur
 
 ## Current prerelease
 
-**[0.1.0a6 on PyPI](https://pypi.org/project/interaction-check/0.1.0a6/) · published 27 October 2026 (Europe/Kyiv) · Python 3.10+**
+**[0.1.0a7 on PyPI](https://pypi.org/project/interaction-check/0.1.0a7/) · published 27 October 2026 (Europe/Kyiv) · Python 3.10+**
 
-**[Wheel and source archive](https://pypi.org/project/interaction-check/0.1.0a6/#files)** · [SHA-256 and installation evidence](docs/evidence/release-alpha6.json) · [Changelog](CHANGELOG.md) · [Tagged source](https://github.com/PerchAnton/interaction-check/tree/v0.1.0-alpha.6)
+**[GitHub prerelease and checksums](https://github.com/PerchAnton/interaction-check/releases/tag/v0.1.0-alpha.7)** · **[Wheel and source archive](https://pypi.org/project/interaction-check/0.1.0a7/#files)** · [SHA-256 and installation evidence](docs/evidence/release-alpha7.json) · [Changelog](CHANGELOG.md) · [Tagged source](https://github.com/PerchAnton/interaction-check/tree/v0.1.0-alpha.7)
 
 <details>
 <summary>Published package snapshot and verification</summary>
 
-![interaction-check alpha 6, published on PyPI 27 October 2026: 0 runtime dependencies, 49 runner tests, 12.9 KiB wheel. Replay a scenario, export its original expectations through the first mismatch, and manually translate useful behavior into a native test.](docs/assets/release.svg)
+![interaction-check alpha 7, published on PyPI 27 October 2026: 0 runtime dependencies, 49 runner tests, 12.9 KiB wheel. Replay a scenario, export its original expectations through the first mismatch, and manually translate useful behavior into a native test.](docs/assets/release.svg)
 
 Release snapshot: **49 runner tests**, **0 runtime dependencies**, **12.9 KiB wheel
-(13,170 bytes)**. [Exact files, hashes, release CI and clean installation](docs/evidence/release-alpha6.json).
+(13,227 bytes)**. [Exact files, hashes, release CI and clean installation](docs/evidence/release-alpha7.json).
 These are dated release facts; the CI badges above track current main. The handoff is
-manual, and an export must be replayed before sharing. Examples and adapters are separate.
+manual, and an export must be replayed before sharing. The wheel installs the runner;
+the source archive includes the complete first example. Application adapters remain separate.
 
 </details>
 
@@ -71,15 +72,15 @@ Install the exact published prerelease from PyPI in a virtual environment:
 
 ```sh
 python -m venv .venv
-.venv/bin/python -m pip install 'interaction-check==0.1.0a6'
+.venv/bin/python -m pip install 'interaction-check==0.1.0a7'
 .venv/bin/interaction-check --version
 ```
 
 On Windows use `.venv\Scripts\python.exe` and `.venv\Scripts\interaction-check.exe`.
 For a source checkout, use `python -m pip install .` inside your virtual environment.
 The exact pin selects this alpha without opting into all future prereleases. Installation
-from PyPI, metadata, a passing scenario, failure export and replay were checked in a
-fresh environment. The [previous GitHub release](https://github.com/PerchAnton/interaction-check/releases/tag/v0.1.0-alpha.5)
+from PyPI, metadata, all three quickstart scenarios, deliberate failure detection,
+export and replay were checked in a fresh environment. The [previous GitHub release](https://github.com/PerchAnton/interaction-check/releases/tag/v0.1.0-alpha.5)
 remains available. Start with the
 [dependency-free first example](examples/quickstart/README.md), then the
 [XState walkthrough](examples/xstate/README.md) or [native-test guide](docs/NATIVE_TESTS.md).
@@ -111,7 +112,7 @@ Replay is **2.46× slower** in this small pilot. Its value is a shareable trace 
 failure report. Native tests also need only XState; fewer total lines of code or faster
 application behavior are not demonstrated.
 
-**Experimental, 0.1.0a6 (alpha 6), available on PyPI.** Maintained by [PerchAnton](https://github.com/PerchAnton).
+**Experimental, 0.1.0a7 (alpha 7), available on PyPI.** Maintained by [PerchAnton](https://github.com/PerchAnton).
 Upstream adoption is not claimed. The first adapter uses a fixed
 edit-session revision and commits through PhotoCraft's actual `Session` command API;
 consumer-owned adapters also exercise the real PhotoCraft and PdfCraft dialogs.

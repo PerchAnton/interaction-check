@@ -102,4 +102,5 @@ older XState/pyee measurements; those counts are not silently combined.
 To verify with a package already installed in a virtual environment, run that
 environment's Python with `examples/quickstart/verify.py --installed`. The example
 files belong to the source checkout; the wheel contains the runner. The walkthrough
-uses protocol 1 and works with the published `0.1.0a6` package.
+uses protocol 1 and works with the published `0.1.0a7` package. It was also verified
+with the earlier `0.1.0a6` package; the runner behavior is unchanged.

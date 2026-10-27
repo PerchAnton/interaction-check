@@ -1,0 +1,66 @@
+{
+  "recorded_date": "2026-10-27",
+  "timezone": "Europe/Kyiv",
+  "status": "published",
+  "package": "interaction-check",
+  "version": "0.1.0a7",
+  "tag": "v0.1.0-alpha.7",
+  "source_commit": "a77c1e3e25513480b77f505ea048a5c2d12845a6",
+  "runtime_dependencies": 0,
+  "license": "MIT OR Apache-2.0",
+  "python_requirement": ">=3.10",
+  "scope": "Examples and documentation release; runtime behavior and CLI options unchanged. No upstream adoption or speed/coverage superiority claim.",
+  "registry": "https://pypi.org/project/interaction-check/0.1.0a7/",
+  "registry_metadata": "https://pypi.org/pypi/interaction-check/0.1.0a7/json",
+  "github_release": "https://github.com/PerchAnton/interaction-check/releases/tag/v0.1.0-alpha.7",
+  "publish_workflow": "https://github.com/PerchAnton/interaction-check/actions/runs/40464385275",
+  "release_commit_ci": [
+    "https://github.com/PerchAnton/interaction-check/actions/runs/40464120264",
+    "https://github.com/PerchAnton/interaction-check/actions/runs/40464120356"
+  ],
+  "tag_ci": [
+    "https://github.com/PerchAnton/interaction-check/actions/runs/40464384285",
+    "https://github.com/PerchAnton/interaction-check/actions/runs/40464384279"
+  ],
+  "runner_tests": 49,
+  "quickstart": {
+    "native_tests": 3,
+    "replay_scenarios": 3,
+    "replay_steps": 12,
+    "deliberate_defects_detected_by_both": 1,
+    "export_preserves_original_expectations": true,
+    "export_rerun_reproduces_same_mismatch": true
+  },
+  "installation": {
+    "system": "macOS arm64",
+    "python": "3.14.3",
+    "fresh_venv": true,
+    "index": "https://pypi.org/simple",
+    "checks": [
+      "exact prerelease install using standard package name/version",
+      "pip check",
+      "isolated import from installed venv",
+      "metadata/version/license/no dependencies",
+      "three-scenario quickstart passes with installed runner",
+      "temporary Cancel mutation detected",
+      "failure export preserves original expectations and reruns with same mismatch",
+      "pip download hash and registry hashes equal workflow artifacts"
+    ]
+  },
+  "files": [
+    {
+      "name": "interaction_check-0.1.0a7-py3-none-any.whl",
+      "bytes": 13227,
+      "sha256": "c81c90daf27e59599271792c4ac94340df69654e8dd900d80fa90c074f6e83a4",
+      "url": "https://files.pythonhosted.org/packages/05/eb/508fa585e0b9001b57d6faf98a58f9261feefdd3eea18be59897e5eb7e7d/interaction_check-0.1.0a7-py3-none-any.whl",
+      "uploaded_at_utc": "2026-10-27T07:08:14.493467Z"
+    },
+    {
+      "name": "interaction_check-0.1.0a7.tar.gz",
+      "bytes": 43969,
+      "sha256": "6e3acf92ab1249e0a649bc864bd5827c38f7d5ca0adf8b72b3f552c86941944a",
+      "url": "https://files.pythonhosted.org/packages/e1/08/4aed29a2c5f454bf5c92a72eff9b8f1dcb40b65dbb6ed4728eb5dc91d91a/interaction_check-0.1.0a7.tar.gz",
+      "uploaded_at_utc": "2026-10-27T07:08:15.982387Z"
+    }
+  ]
+}
