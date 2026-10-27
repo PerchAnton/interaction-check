@@ -1,0 +1,11 @@
+{
+  "schema": 1,
+  "name": "Correct a rejected title",
+  "steps": [
+    {"event": {"op": "open"}, "expect": {"saved": "Original", "draft": "Original"}},
+    {"event": {"op": "type", "text": " "}, "expect": {"draft": " "}},
+    {"event": {"op": "save"}, "expect": {"saved": "Original", "draft": " ", "error": "Enter a title"}},
+    {"event": {"op": "type", "text": "Corrected"}, "expect": {"draft": "Corrected", "error": null}},
+    {"event": {"op": "save"}, "expect": {"saved": "Corrected", "draft": null, "error": null}}
+  ]
+}

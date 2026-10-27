@@ -1,0 +1,10 @@
+{
+  "schema": 1,
+  "name": "Cancel keeps the saved title",
+  "steps": [
+    {"event": {"op": "open"}, "expect": {"saved": "Original", "draft": "Original", "error": null}},
+    {"event": {"op": "type", "text": "Preview"}, "expect": {"saved": "Original", "draft": "Preview"}},
+    {"event": {"op": "cancel"}, "expect": {"saved": "Original", "draft": null, "error": null}},
+    {"event": {"op": "open"}, "expect": {"saved": "Original", "draft": "Original"}}
+  ]
+}

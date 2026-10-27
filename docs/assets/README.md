@@ -1,5 +1,21 @@
 # README overview asset
 
+## Executable first example
+
+`quickstart.svg` is generated from [quickstart.json](../evidence/quickstart.json),
+recorded on 27 October 2026. The original teaching model passes three native tests
+and three replay scenarios / 12 steps. A deliberately broken temporary copy is caught
+by both methods. The exported three-step prefix reruns with the same mismatch.
+This is neither an upstream bug nor a general coverage or speed comparison.
+
+From the repository root, run
+`python examples/quickstart/verify.py --report docs/evidence/quickstart.json`, then
+`python tools/render_quickstart.py`. Add `--check` to the renderer to verify the
+SVG and LF-normalized source hashes without writing files. CI also reruns the example
+on the existing Python/OS matrix. [Method and limitations](../../examples/quickstart/README.md).
+
+## Earlier measured overview
+
 `overview.svg` is an editable, self-contained vector graphic with system fonts,
 explicit colors, a title and description. It contains no scripts, external fonts,
 images or trackers. The repository README also provides accessible text and sources.
