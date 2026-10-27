@@ -9,7 +9,7 @@ Licensed under MIT OR Apache-2.0. Experimental alpha: formats and CLI may still 
 Install a published copy of this prerelease from PyPI:
 
 ```sh
-python -m pip install 'interaction-check==0.1.0a6'
+python -m pip install 'interaction-check==0.1.0a7'
 ```
 
 An exact version selects this prerelease without opting into all future prereleases.

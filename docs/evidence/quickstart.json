@@ -48,7 +48,7 @@
   },
   "source_hash_format": "SHA-256 of UTF-8 text with LF line endings",
   "source_files": {
-    "interaction_check.py": "171a2b1159f51a9db1d2f3e85959c34b7c78263a8f4f073ea4828f15f76e326a",
+    "interaction_check.py": "bc5db645bdbfa1d2fa09a5a3c856d6a46ebac54d8b10811392a0929af4c7124c",
     "examples/quickstart/verify.py": "095587e81236d34a44b9046d9b2f03e304bf58cdac519d903af749ffe0ce25a4",
     "examples/quickstart/editor.py": "0fcb587a689a94c012c8723631b1884aaf0433967d92fab5bc0785218a73acd8",
     "examples/quickstart/adapter.py": "8964e160f85c7f0c19151d5d285b3fa658cb85514e2273bdf86f10dfa5b38818",

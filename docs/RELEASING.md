@@ -1,5 +1,12 @@
 # Releases and alpha compatibility
 
+## Current candidate
+
+`0.1.0a7` / `v0.1.0-alpha.7` packages the first example and feedback-driven
+documentation. Publication is pending. CLI options, runtime behavior, schema 1 and
+protocol 1 are unchanged from alpha.6. The release workflow also runs the example and
+checks its diagram from the extracted sdist. Earlier published files stay unchanged.
+
 ## Published prerelease
 
 **[0.1.0a6 on PyPI](https://pypi.org/project/interaction-check/0.1.0a6/)** was published
@@ -31,6 +38,8 @@ Update the version and changelog for the new candidate, then run:
 
 ```sh
 python -m unittest -v
+python examples/quickstart/verify.py
+python tools/render_quickstart.py --check
 python -m pip install build twine
 python -m build
 python -m twine check --strict dist/*

@@ -1,6 +1,8 @@
 # Changelog
 
-## Unreleased
+## 0.1.0a7 / v0.1.0-alpha.7
+
+Examples and documentation release. Runtime behavior is unchanged.
 
 - Add a dependency-free first example with three native tests and three replay
   scenarios: correct behavior, a deliberate Cancel defect, export and verified rerun.
@@ -8,7 +10,9 @@
   the walkthrough and graphic across the existing Python/OS CI matrix.
 - Explain adapter costs, full-batch execution, native-test alternatives and concise
   failure reporting in response to maintainer feedback. Include the example in sdist.
-- Runner behavior, public CLI, schemas and published package versions are unchanged.
+- Verify the walkthrough and diagram from the unpacked source archive before upload.
+- Runner behavior and CLI options are unchanged. Scenario schema 1 and JSONL protocol
+  1 are unchanged; the CLI/report version advances to `0.1.0a7`. No new dependencies.
 
 ## 0.1.0a6 / v0.1.0-alpha.6
 
