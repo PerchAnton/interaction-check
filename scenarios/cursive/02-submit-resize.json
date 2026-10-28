@@ -1,0 +1,72 @@
+{
+  "schema": 1,
+  "name": "Resizing retains input and Enter invokes the real submit callback",
+  "steps": [
+    {
+      "event": {
+        "op": "new",
+        "width": 4,
+        "text": "abcdefgh"
+      },
+      "expect": {
+        "value": "abcdefgh",
+        "width": 4,
+        "submitted": []
+      }
+    },
+    {
+      "event": {
+        "op": "resize",
+        "width": 2
+      },
+      "expect": {
+        "value": "abcdefgh",
+        "width": 2,
+        "position_bytes": 8
+      }
+    },
+    {
+      "event": {
+        "op": "key",
+        "key": "left"
+      },
+      "expect": {
+        "position_bytes": 7
+      }
+    },
+    {
+      "event": {
+        "op": "text",
+        "text": "!"
+      },
+      "expect": {
+        "value": "abcdefg!h",
+        "position_bytes": 8
+      }
+    },
+    {
+      "event": {
+        "op": "key",
+        "key": "enter"
+      },
+      "expect": {
+        "value": "abcdefg!h",
+        "submitted": [
+          "abcdefg!h"
+        ]
+      }
+    },
+    {
+      "event": {
+        "op": "key",
+        "key": "escape"
+      },
+      "expect": {
+        "value": "abcdefg!h",
+        "submitted": [
+          "abcdefg!h"
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+[package]
+name = "interaction-check-cursive"
+version = "0.1.0"
+edition = "2024"
+publish = false
+license = "MIT OR Apache-2.0"
+
+[dependencies]
+cursive_core = { git = "https://github.com/gyscos/cursive", rev = "9250e09c00b0c94b216178d07e45bd79b317dcec", default-features = false }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"

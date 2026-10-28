@@ -1,0 +1,65 @@
+{
+  "schema": 1,
+  "name": "EditView moves by graphemes with UTF-8 byte cursor positions",
+  "steps": [
+    {
+      "event": {
+        "op": "new",
+        "width": 5,
+        "text": "a界🙂z"
+      },
+      "expect": {
+        "value": "a界🙂z",
+        "position_bytes": 9
+      }
+    },
+    {
+      "event": {
+        "op": "key",
+        "key": "left"
+      },
+      "expect": {
+        "position_bytes": 8
+      }
+    },
+    {
+      "event": {
+        "op": "key",
+        "key": "backspace"
+      },
+      "expect": {
+        "value": "a界z",
+        "position_bytes": 4
+      }
+    },
+    {
+      "event": {
+        "op": "text",
+        "text": "é"
+      },
+      "expect": {
+        "value": "a界éz",
+        "position_bytes": 6
+      }
+    },
+    {
+      "event": {
+        "op": "key",
+        "key": "home"
+      },
+      "expect": {
+        "position_bytes": 0
+      }
+    },
+    {
+      "event": {
+        "op": "key",
+        "key": "delete"
+      },
+      "expect": {
+        "value": "界éz",
+        "position_bytes": 0
+      }
+    }
+  ]
+}

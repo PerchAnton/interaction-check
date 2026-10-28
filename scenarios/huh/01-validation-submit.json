@@ -1,0 +1,82 @@
+{
+  "schema": 1,
+  "name": "Validation blocks navigation until input is corrected",
+  "steps": [
+    {
+      "event": {
+        "op": "new",
+        "width": 40
+      },
+      "expect": {
+        "first": "",
+        "second": "",
+        "focused": "first",
+        "status": "normal",
+        "validation": ""
+      }
+    },
+    {
+      "event": {
+        "op": "key",
+        "key": "tab"
+      },
+      "expect": {
+        "focused": "first",
+        "validation": "required",
+        "status": "normal"
+      }
+    },
+    {
+      "event": {
+        "op": "text",
+        "text": "Ada"
+      },
+      "expect": {
+        "first": "Ada",
+        "validation": ""
+      }
+    },
+    {
+      "event": {
+        "op": "key",
+        "key": "tab"
+      },
+      "expect": {
+        "focused": "second",
+        "status": "normal"
+      }
+    },
+    {
+      "event": {
+        "op": "key",
+        "key": "enter"
+      },
+      "expect": {
+        "focused": "second",
+        "status": "normal",
+        "validation": "required"
+      }
+    },
+    {
+      "event": {
+        "op": "text",
+        "text": "Kyiv"
+      },
+      "expect": {
+        "second": "Kyiv",
+        "validation": ""
+      }
+    },
+    {
+      "event": {
+        "op": "key",
+        "key": "enter"
+      },
+      "expect": {
+        "first": "Ada",
+        "second": "Kyiv",
+        "status": "completed"
+      }
+    }
+  ]
+}

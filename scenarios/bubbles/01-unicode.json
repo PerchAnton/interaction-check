@@ -1,0 +1,75 @@
+{
+  "schema": 1,
+  "name": "Unicode editing preserves rune cursor semantics",
+  "steps": [
+    {
+      "event": {
+        "op": "new",
+        "width": 5,
+        "text": "a界🙂z"
+      },
+      "expect": {
+        "value": "a界🙂z",
+        "position_runes": 4,
+        "focused": true
+      }
+    },
+    {
+      "event": {
+        "op": "key",
+        "key": "left"
+      },
+      "expect": {
+        "position_runes": 3
+      }
+    },
+    {
+      "event": {
+        "op": "key",
+        "key": "backspace"
+      },
+      "expect": {
+        "value": "a界z",
+        "position_runes": 2
+      }
+    },
+    {
+      "event": {
+        "op": "text",
+        "text": "é"
+      },
+      "expect": {
+        "value": "a界éz",
+        "position_runes": 3
+      }
+    },
+    {
+      "event": {
+        "op": "key",
+        "key": "home"
+      },
+      "expect": {
+        "position_runes": 0
+      }
+    },
+    {
+      "event": {
+        "op": "key",
+        "key": "delete"
+      },
+      "expect": {
+        "value": "界éz",
+        "position_runes": 0
+      }
+    },
+    {
+      "event": {
+        "op": "key",
+        "key": "end"
+      },
+      "expect": {
+        "position_runes": 3
+      }
+    }
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "schema": 1,
+  "name": "Abort keeps live bound input values without completing",
+  "steps": [
+    {
+      "event": {
+        "op": "new",
+        "width": 40
+      },
+      "expect": {
+        "status": "normal"
+      }
+    },
+    {
+      "event": {
+        "op": "text",
+        "text": "draft"
+      },
+      "expect": {
+        "first": "draft"
+      }
+    },
+    {
+      "event": {
+        "op": "key",
+        "key": "ctrl+c"
+      },
+      "expect": {
+        "status": "aborted",
+        "first": "draft",
+        "second": ""
+      }
+    },
+    {
+      "event": {
+        "op": "text",
+        "text": "ignored"
+      },
+      "expect": {
+        "status": "aborted",
+        "first": "draft"
+      }
+    }
+  ]
+}

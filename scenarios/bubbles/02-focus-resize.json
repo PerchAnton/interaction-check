@@ -1,0 +1,74 @@
+{
+  "schema": 1,
+  "name": "Blur ignores text and resize preserves editing state",
+  "steps": [
+    {
+      "event": {
+        "op": "new",
+        "width": 4,
+        "text": "abcdefgh"
+      },
+      "expect": {
+        "value": "abcdefgh",
+        "position_runes": 8,
+        "width": 4
+      }
+    },
+    {
+      "event": {
+        "op": "blur"
+      },
+      "expect": {
+        "focused": false
+      }
+    },
+    {
+      "event": {
+        "op": "text",
+        "text": "ignored"
+      },
+      "expect": {
+        "value": "abcdefgh",
+        "position_runes": 8
+      }
+    },
+    {
+      "event": {
+        "op": "resize",
+        "width": 2
+      },
+      "expect": {
+        "width": 2,
+        "value": "abcdefgh",
+        "position_runes": 8
+      }
+    },
+    {
+      "event": {
+        "op": "focus"
+      },
+      "expect": {
+        "focused": true
+      }
+    },
+    {
+      "event": {
+        "op": "key",
+        "key": "left"
+      },
+      "expect": {
+        "position_runes": 7
+      }
+    },
+    {
+      "event": {
+        "op": "text",
+        "text": "!"
+      },
+      "expect": {
+        "value": "abcdefg!h",
+        "position_runes": 8
+      }
+    }
+  ]
+}

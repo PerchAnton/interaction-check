@@ -204,6 +204,20 @@ Local scoped UI tests, strict Clippy, assets, parity and wasm checks pass. Both 
 are pinned; upstream review of the source-policy exception and adoption is pending.
 See [reproduction instructions](https://github.com/PerchAnton/pdfcraft/blob/535d990d10832baf3b0a64910c51b280c224bd5c/docs/document-properties-sessions.md).
 
+## External widget adapters
+
+| Consumer | Scope | Scenarios |
+| --- | --- | --- |
+| [Bubbles](adapters/bubbles/README.md) | Real textinput update/layout, Unicode rune cursor, focus and resize | 3 / 20 steps |
+| [Huh](adapters/huh/README.md) | Real two-field form, validation, Tab/Shift+Tab, submit and abort | 3 / 19 steps |
+| [Cursive](adapters/cursive/README.md) | Real EditView, UTF-8 byte cursor, graphemes, layout and callbacks | 3 / 17 steps |
+
+These are external prototypes, not accepted upstream integrations. Preliminary discussions
+are [Bubbles #1076](https://github.com/charmbracelet/bubbles/discussions/1076) and
+[Huh #838](https://github.com/charmbracelet/huh/discussions/838). Each adapter has its own
+pinned dependencies, documented boundary and replay instructions. No runtime integration
+with the runner is needed by the upstream project.
+
 ## Run
 
 Requires Python 3.10+ (tested with Python 3.14 on macOS arm64).
@@ -306,8 +320,9 @@ and a machine-readable report; it does not replace those tools or discover bugs 
 The bundled engine-only PhotoCraft adapter drives real commands and history in a headless process. It does
 not connect to the live application's UI or test its renderer, saved files or native input.
 Upstream adoption is pending. The [PdfCraft adapter](adapters/pdfcraft/README.md) is owned
-by the consumer repository and also uses engine save/reopen. No Bubbles adapter,
-auto-recording or shrinking is implemented.
+by the consumer repository and also uses engine save/reopen. The external [Bubbles](adapters/bubbles/README.md), [Huh](adapters/huh/README.md) and
+[Cursive](adapters/cursive/README.md) adapters exercise their actual widget APIs.
+Auto-recording and shrinking are not implemented.
 
 Adapters are trusted local test programs, launched without a shell. A per-scenario timeout
 defaults to five seconds. Input is limited to 1 MiB. Stdin and output capture use temporary
