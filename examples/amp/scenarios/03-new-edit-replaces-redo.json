@@ -1,0 +1,57 @@
+{
+  "schema": 1,
+  "name": "03-new-edit-replaces-redo",
+  "steps": [
+    {
+      "event": {
+        "op": "new"
+      },
+      "expect": {
+        "text": ""
+      }
+    },
+    {
+      "event": {
+        "op": "type",
+        "text": "a"
+      },
+      "expect": {
+        "text": "a"
+      }
+    },
+    {
+      "event": {
+        "op": "undo"
+      },
+      "expect": {
+        "text": ""
+      }
+    },
+    {
+      "event": {
+        "op": "home"
+      },
+      "expect": {
+        "text": "",
+        "offset": 0
+      }
+    },
+    {
+      "event": {
+        "op": "type",
+        "text": "b"
+      },
+      "expect": {
+        "text": "b"
+      }
+    },
+    {
+      "event": {
+        "op": "redo"
+      },
+      "expect": {
+        "text": "b"
+      }
+    }
+  ]
+}

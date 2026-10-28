@@ -1,0 +1,78 @@
+{
+  "schema": 1,
+  "name": "03-each-generation-rejects-previous",
+  "steps": [
+    {
+      "event": {
+        "op": "new"
+      },
+      "expect": {
+        "builds": 1
+      }
+    },
+    {
+      "event": {
+        "op": "show",
+        "present": false
+      },
+      "expect": {
+        "teardowns": 1
+      }
+    },
+    {
+      "event": {
+        "op": "show",
+        "present": true
+      },
+      "expect": {
+        "builds": 2
+      }
+    },
+    {
+      "event": {
+        "op": "save_path"
+      },
+      "expect": {
+        "builds": 2
+      }
+    },
+    {
+      "event": {
+        "op": "send",
+        "saved": true
+      },
+      "expect": {
+        "accepted": 1,
+        "last": "accepted"
+      }
+    },
+    {
+      "event": {
+        "op": "show",
+        "present": false
+      },
+      "expect": {
+        "teardowns": 2
+      }
+    },
+    {
+      "event": {
+        "op": "show",
+        "present": true
+      },
+      "expect": {
+        "builds": 3
+      }
+    },
+    {
+      "event": {
+        "op": "send",
+        "saved": true
+      },
+      "expect": {
+        "accepted": 1,
+        "last": "stale"
+      }
+    }
+  ]
+}

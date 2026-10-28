@@ -1,0 +1,42 @@
+{
+  "schema": 1,
+  "name": "01-unicode-native-history",
+  "steps": [
+    {
+      "event": {
+        "op": "new"
+      },
+      "expect": {
+        "text": "",
+        "line": 0,
+        "offset": 0
+      }
+    },
+    {
+      "event": {
+        "op": "type",
+        "text": "λ"
+      },
+      "expect": {
+        "text": "λ",
+        "offset": 1
+      }
+    },
+    {
+      "event": {
+        "op": "undo"
+      },
+      "expect": {
+        "text": ""
+      }
+    },
+    {
+      "event": {
+        "op": "redo"
+      },
+      "expect": {
+        "text": "λ"
+      }
+    }
+  ]
+}

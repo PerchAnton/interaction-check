@@ -1,0 +1,74 @@
+{
+  "schema": 1,
+  "name": "02-no-selection-no-delete",
+  "steps": [
+    {
+      "event": {
+        "op": "new"
+      },
+      "expect": {
+        "selected": []
+      }
+    },
+    {
+      "event": {
+        "op": "remove_selected"
+      },
+      "expect": {
+        "layers": [
+          {
+            "name": "a"
+          },
+          {
+            "name": "b"
+          }
+        ],
+        "selected": []
+      }
+    },
+    {
+      "event": {
+        "op": "select",
+        "name": "b"
+      },
+      "expect": {
+        "selected": [
+          "b"
+        ]
+      }
+    },
+    {
+      "event": {
+        "op": "remove_selected"
+      },
+      "expect": {
+        "layers": [
+          {
+            "name": "a"
+          }
+        ],
+        "selected": [
+          "a"
+        ]
+      }
+    },
+    {
+      "event": {
+        "op": "remove_selected"
+      },
+      "expect": {
+        "layers": [],
+        "selected": []
+      }
+    },
+    {
+      "event": {
+        "op": "remove_selected"
+      },
+      "expect": {
+        "layers": [],
+        "selected": []
+      }
+    }
+  ]
+}

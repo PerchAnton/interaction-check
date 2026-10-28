@@ -1,0 +1,49 @@
+{
+  "schema": 1,
+  "name": "03-repeat-remove",
+  "steps": [
+    {
+      "event": {
+        "op": "new"
+      },
+      "expect": {
+        "members": [
+          "a",
+          "b"
+        ]
+      }
+    },
+    {
+      "event": {
+        "op": "remove",
+        "id": "a"
+      },
+      "expect": {
+        "members": [
+          "b"
+        ]
+      }
+    },
+    {
+      "event": {
+        "op": "remove",
+        "id": "a"
+      },
+      "expect": {
+        "members": [
+          "b"
+        ],
+        "objects": [
+          {
+            "x": 10,
+            "y": 10
+          },
+          {
+            "x": 30,
+            "y": 10
+          }
+        ]
+      }
+    }
+  ]
+}

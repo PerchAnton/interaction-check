@@ -1,0 +1,59 @@
+{
+  "schema": 1,
+  "name": "03-history-branch",
+  "steps": [
+    {
+      "event": {
+        "op": "new"
+      },
+      "expect": {
+        "value": 0
+      }
+    },
+    {
+      "event": {
+        "op": "set",
+        "value": 4
+      },
+      "expect": {
+        "value": 4
+      }
+    },
+    {
+      "event": {
+        "op": "undo"
+      },
+      "expect": {
+        "value": 0
+      }
+    },
+    {
+      "event": {
+        "op": "set",
+        "value": 7
+      },
+      "expect": {
+        "value": 7,
+        "redo": false
+      }
+    },
+    {
+      "event": {
+        "op": "redo"
+      },
+      "expect": {
+        "value": 7
+      }
+    },
+    {
+      "event": {
+        "op": "clear"
+      },
+      "expect": {
+        "value": 7,
+        "undo": false,
+        "redo": false
+      }
+    }
+  ]
+}

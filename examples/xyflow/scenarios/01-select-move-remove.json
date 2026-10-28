@@ -1,0 +1,83 @@
+{
+  "schema": 1,
+  "name": "01-select-move-remove",
+  "steps": [
+    {
+      "event": {
+        "op": "new"
+      },
+      "expect": {
+        "nodes": [
+          {
+            "id": "a",
+            "position": {
+              "x": 0,
+              "y": 0
+            }
+          },
+          {
+            "id": "b",
+            "position": {
+              "x": 100,
+              "y": 0
+            }
+          }
+        ]
+      }
+    },
+    {
+      "event": {
+        "op": "select",
+        "id": "a"
+      },
+      "expect": {
+        "nodes": [
+          {
+            "selected": true
+          },
+          {
+            "selected": false
+          }
+        ]
+      }
+    },
+    {
+      "event": {
+        "op": "move",
+        "id": "a",
+        "x": 20,
+        "y": 30
+      },
+      "expect": {
+        "nodes": [
+          {
+            "position": {
+              "x": 20,
+              "y": 30
+            },
+            "selected": true
+          },
+          {
+            "position": {
+              "x": 100,
+              "y": 0
+            }
+          }
+        ]
+      }
+    },
+    {
+      "event": {
+        "op": "remove",
+        "id": "a"
+      },
+      "expect": {
+        "nodes": [
+          {
+            "id": "b"
+          }
+        ]
+      }
+    }
+  ]
+}

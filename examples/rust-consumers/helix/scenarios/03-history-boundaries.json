@@ -1,0 +1,55 @@
+{
+  "schema": 1,
+  "name": "03-history-boundaries",
+  "steps": [
+    {
+      "event": {
+        "op": "new",
+        "text": ""
+      },
+      "expect": {
+        "text": "",
+        "revision": 0
+      }
+    },
+    {
+      "event": {
+        "op": "undo"
+      },
+      "expect": {
+        "text": "",
+        "revision": 0
+      }
+    },
+    {
+      "event": {
+        "op": "redo"
+      },
+      "expect": {
+        "text": "",
+        "revision": 0
+      }
+    },
+    {
+      "event": {
+        "op": "replace",
+        "from": 0,
+        "to": 0,
+        "text": "x"
+      },
+      "expect": {
+        "text": "x",
+        "revision": 1
+      }
+    },
+    {
+      "event": {
+        "op": "redo"
+      },
+      "expect": {
+        "text": "x",
+        "revision": 1
+      }
+    }
+  ]
+}

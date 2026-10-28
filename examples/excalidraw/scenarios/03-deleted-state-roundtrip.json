@@ -1,0 +1,55 @@
+{
+  "schema": 1,
+  "name": "03-deleted-state-roundtrip",
+  "steps": [
+    {
+      "event": {
+        "op": "new"
+      },
+      "expect": {
+        "elements": [
+          {
+            "deleted": false
+          }
+        ]
+      }
+    },
+    {
+      "event": {
+        "op": "delete"
+      },
+      "expect": {
+        "elements": [
+          {
+            "deleted": true
+          }
+        ]
+      }
+    },
+    {
+      "event": {
+        "op": "save"
+      },
+      "expect": {
+        "elements": [
+          {
+            "deleted": true
+          }
+        ]
+      }
+    },
+    {
+      "event": {
+        "op": "restore"
+      },
+      "expect": {
+        "elements": [
+          {
+            "id": "a",
+            "deleted": true
+          }
+        ]
+      }
+    }
+  ]
+}

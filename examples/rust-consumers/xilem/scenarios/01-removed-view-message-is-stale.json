@@ -1,0 +1,76 @@
+{
+  "schema": 1,
+  "name": "01-removed-view-message-is-stale",
+  "steps": [
+    {
+      "event": {
+        "op": "new"
+      },
+      "expect": {
+        "present": true,
+        "builds": 1,
+        "accepted": 0
+      }
+    },
+    {
+      "event": {
+        "op": "send",
+        "saved": true
+      },
+      "expect": {
+        "last": "accepted",
+        "accepted": 1
+      }
+    },
+    {
+      "event": {
+        "op": "show",
+        "present": false
+      },
+      "expect": {
+        "present": false,
+        "teardowns": 1
+      }
+    },
+    {
+      "event": {
+        "op": "send",
+        "saved": true
+      },
+      "expect": {
+        "last": "stale",
+        "accepted": 1
+      }
+    },
+    {
+      "event": {
+        "op": "show",
+        "present": true
+      },
+      "expect": {
+        "present": true,
+        "builds": 2
+      }
+    },
+    {
+      "event": {
+        "op": "send",
+        "saved": true
+      },
+      "expect": {
+        "last": "stale",
+        "accepted": 1
+      }
+    },
+    {
+      "event": {
+        "op": "send",
+        "saved": false
+      },
+      "expect": {
+        "last": "accepted",
+        "accepted": 2
+      }
+    }
+  ]
+}

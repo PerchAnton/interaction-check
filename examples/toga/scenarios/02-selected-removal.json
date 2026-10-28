@@ -1,0 +1,51 @@
+{
+  "schema": 1,
+  "name": "02-selected-removal",
+  "steps": [
+    {
+      "event": {
+        "op": "new"
+      },
+      "expect": {
+        "value": "a"
+      }
+    },
+    {
+      "event": {
+        "op": "remove",
+        "index": 0
+      },
+      "expect": {
+        "items": [
+          "b"
+        ],
+        "value": "b",
+        "changes": 1
+      }
+    },
+    {
+      "event": {
+        "op": "append",
+        "value": "c"
+      },
+      "expect": {
+        "items": [
+          "b",
+          "c"
+        ],
+        "value": "b",
+        "changes": 1
+      }
+    },
+    {
+      "event": {
+        "op": "select",
+        "value": "c"
+      },
+      "expect": {
+        "value": "c",
+        "changes": 2
+      }
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+[package]
+name = "pilot-eldiron"
+version = "0.0.0"
+edition = "2024"
+publish = false
+
+[workspace]
+
+[dependencies]
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+pilot-protocol = { path = "../rust-consumers/protocol" }
+theframework = { path = "../../.artifacts/eldiron-source/crates/theframework", default-features = false, features = ["ui"] }
+
+[profile.dev]
+debug = 0
+incremental = false

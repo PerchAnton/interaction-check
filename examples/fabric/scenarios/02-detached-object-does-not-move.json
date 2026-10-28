@@ -1,0 +1,69 @@
+{
+  "schema": 1,
+  "name": "02-detached-object-does-not-move",
+  "steps": [
+    {
+      "event": {
+        "op": "new"
+      },
+      "expect": {
+        "members": [
+          "a",
+          "b"
+        ]
+      }
+    },
+    {
+      "event": {
+        "op": "remove",
+        "id": "a"
+      },
+      "expect": {
+        "members": [
+          "b"
+        ]
+      }
+    },
+    {
+      "event": {
+        "op": "move",
+        "dx": 5,
+        "dy": 2
+      },
+      "expect": {
+        "objects": [
+          {
+            "x": 10,
+            "y": 10
+          },
+          {
+            "x": 35,
+            "y": 12
+          }
+        ]
+      }
+    },
+    {
+      "event": {
+        "op": "add",
+        "id": "a"
+      },
+      "expect": {
+        "members": [
+          "a",
+          "b"
+        ],
+        "objects": [
+          {
+            "x": 10,
+            "y": 10
+          },
+          {
+            "x": 35,
+            "y": 12
+          }
+        ]
+      }
+    }
+  ]
+}

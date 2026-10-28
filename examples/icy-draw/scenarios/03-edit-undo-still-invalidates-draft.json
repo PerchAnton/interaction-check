@@ -1,0 +1,72 @@
+{
+  "schema": 1,
+  "name": "03-edit-undo-still-invalidates-draft",
+  "steps": [
+    {
+      "event": {
+        "op": "new"
+      },
+      "expect": {
+        "name": "original",
+        "undo": 0
+      }
+    },
+    {
+      "event": {
+        "op": "open"
+      },
+      "expect": {
+        "open": true
+      }
+    },
+    {
+      "event": {
+        "op": "propose",
+        "name": "stale"
+      },
+      "expect": {
+        "name": "original"
+      }
+    },
+    {
+      "event": {
+        "op": "direct",
+        "name": "other"
+      },
+      "expect": {
+        "name": "other",
+        "undo": 1
+      }
+    },
+    {
+      "event": {
+        "op": "undo"
+      },
+      "expect": {
+        "name": "original",
+        "can_redo": true
+      }
+    },
+    {
+      "event": {
+        "op": "confirm"
+      },
+      "expect": {
+        "name": "original",
+        "undo": 0,
+        "can_redo": true,
+        "last": "stale",
+        "open": false
+      }
+    },
+    {
+      "event": {
+        "op": "redo"
+      },
+      "expect": {
+        "name": "other",
+        "undo": 1
+      }
+    }
+  ]
+}

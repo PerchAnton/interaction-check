@@ -322,6 +322,10 @@ adapter process, not a tree of spawned descendants. Adapters must manage their c
 
 ## Evidence
 
+- [External consumer model pilots](docs/CONSUMER_PILOTS.md): separately pinned examples,
+  native controls, replay reports, and an explicitly failing TanStack Form reset baseline.
+  These are external experiments; upstream adoption is pending.
+
 - [PdfCraft UI report](reports/pdfcraft-properties.json): ten scenarios / 79 steps; see the
   [adapter instructions](adapters/pdfcraft/README.md) for immutable source pins and replay.
 

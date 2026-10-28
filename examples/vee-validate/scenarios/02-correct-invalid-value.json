@@ -1,0 +1,56 @@
+{
+  "schema": 1,
+  "name": "02-correct-invalid-value",
+  "steps": [
+    {
+      "event": {
+        "op": "new"
+      },
+      "expect": {
+        "dirty": false,
+        "error_names": []
+      }
+    },
+    {
+      "event": {
+        "op": "set",
+        "value": ""
+      },
+      "expect": {
+        "dirty": true
+      }
+    },
+    {
+      "event": {
+        "op": "validate"
+      },
+      "expect": {
+        "errors": {
+          "name": "Required"
+        }
+      }
+    },
+    {
+      "event": {
+        "op": "set",
+        "value": "valid"
+      },
+      "expect": {
+        "values": {
+          "name": "valid"
+        }
+      }
+    },
+    {
+      "event": {
+        "op": "validate"
+      },
+      "expect": {
+        "values": {
+          "name": "valid"
+        },
+        "error_names": []
+      }
+    }
+  ]
+}

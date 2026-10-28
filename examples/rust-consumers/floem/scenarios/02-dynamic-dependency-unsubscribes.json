@@ -1,0 +1,55 @@
+{
+  "schema": 1,
+  "name": "02-dynamic-dependency-unsubscribes",
+  "steps": [
+    {
+      "event": {
+        "op": "new"
+      },
+      "expect": {
+        "observed": 1,
+        "runs": 1
+      }
+    },
+    {
+      "event": {
+        "op": "choose",
+        "left": false
+      },
+      "expect": {
+        "observed": 2,
+        "runs": 2
+      }
+    },
+    {
+      "event": {
+        "op": "set_left",
+        "value": 99
+      },
+      "expect": {
+        "observed": 2,
+        "runs": 2
+      }
+    },
+    {
+      "event": {
+        "op": "choose",
+        "left": true
+      },
+      "expect": {
+        "observed": 99,
+        "runs": 3
+      }
+    },
+    {
+      "event": {
+        "op": "set_left",
+        "value": 7
+      },
+      "expect": {
+        "observed": 7,
+        "runs": 4
+      }
+    }
+  ]
+}

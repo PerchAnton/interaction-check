@@ -1,0 +1,40 @@
+{
+  "schema": 1,
+  "name": "03-clear-repopulate",
+  "steps": [
+    {
+      "event": {
+        "op": "new"
+      },
+      "expect": {
+        "items": [
+          "a",
+          "b"
+        ]
+      }
+    },
+    {
+      "event": {
+        "op": "clear"
+      },
+      "expect": {
+        "items": [],
+        "value": null,
+        "changes": 1
+      }
+    },
+    {
+      "event": {
+        "op": "append",
+        "value": "c"
+      },
+      "expect": {
+        "items": [
+          "c"
+        ],
+        "value": "c",
+        "changes": 2
+      }
+    }
+  ]
+}

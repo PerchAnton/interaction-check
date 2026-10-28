@@ -1,0 +1,68 @@
+{
+  "schema": 1,
+  "name": "02-stale-change-after-removal",
+  "steps": [
+    {
+      "event": {
+        "op": "new"
+      },
+      "expect": {
+        "edges": [
+          {
+            "id": "ab"
+          }
+        ]
+      }
+    },
+    {
+      "event": {
+        "op": "remove",
+        "id": "a"
+      },
+      "expect": {
+        "nodes": [
+          {
+            "id": "b"
+          }
+        ]
+      }
+    },
+    {
+      "event": {
+        "op": "move",
+        "id": "a",
+        "x": 5,
+        "y": 6
+      },
+      "expect": {
+        "nodes": [
+          {
+            "id": "b",
+            "position": {
+              "x": 100,
+              "y": 0
+            }
+          }
+        ]
+      }
+    },
+    {
+      "event": {
+        "op": "remove_edge",
+        "id": "ab"
+      },
+      "expect": {
+        "edges": []
+      }
+    },
+    {
+      "event": {
+        "op": "remove_edge",
+        "id": "ab"
+      },
+      "expect": {
+        "edges": []
+      }
+    }
+  ]
+}

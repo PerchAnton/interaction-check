@@ -1,0 +1,1 @@
+{"name":"interaction-check-tanstack-form-example","private":true,"type":"module","engines":{"node":">=24.15.0"},"scripts":{"test":"node --test native.test.mjs"},"dependencies":{"@tanstack/form-core":"1.33.5"}}

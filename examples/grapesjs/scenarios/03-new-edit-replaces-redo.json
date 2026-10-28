@@ -1,0 +1,49 @@
+{
+  "schema": 1,
+  "name": "03-new-edit-replaces-redo",
+  "steps": [
+    {
+      "event": {
+        "op": "new"
+      },
+      "expect": {
+        "stack": 0
+      }
+    },
+    {
+      "event": {
+        "op": "rename",
+        "name": "old"
+      },
+      "expect": {
+        "name": "old"
+      }
+    },
+    {
+      "event": {
+        "op": "undo"
+      },
+      "expect": {
+        "redo": true
+      }
+    },
+    {
+      "event": {
+        "op": "rename",
+        "name": "new"
+      },
+      "expect": {
+        "name": "new",
+        "redo": false
+      }
+    },
+    {
+      "event": {
+        "op": "redo"
+      },
+      "expect": {
+        "name": "new"
+      }
+    }
+  ]
+}

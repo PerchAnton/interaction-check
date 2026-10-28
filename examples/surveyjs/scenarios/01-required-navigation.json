@@ -1,0 +1,61 @@
+{
+  "schema": 1,
+  "name": "01-required-navigation",
+  "steps": [
+    {
+      "event": {
+        "op": "new"
+      },
+      "expect": {
+        "page": "identity",
+        "completed": false
+      }
+    },
+    {
+      "event": {
+        "op": "next"
+      },
+      "expect": {
+        "page": "identity",
+        "errors": [
+          "name"
+        ],
+        "result": false
+      }
+    },
+    {
+      "event": {
+        "op": "set",
+        "name": "name",
+        "value": "Test"
+      },
+      "expect": {
+        "data": {
+          "name": "Test"
+        }
+      }
+    },
+    {
+      "event": {
+        "op": "next"
+      },
+      "expect": {
+        "page": "details",
+        "errors": [],
+        "result": true
+      }
+    },
+    {
+      "event": {
+        "op": "back"
+      },
+      "expect": {
+        "page": "identity",
+        "data": {
+          "name": "Test"
+        },
+        "result": true
+      }
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+[package]
+name = "pilot-floem"
+version = "0.0.0"
+edition = "2024"
+publish = false
+
+[dependencies]
+serde.workspace = true
+serde_json.workspace = true
+pilot-protocol.workspace = true
+floem_reactive = { git = "https://github.com/lapce/floem", rev = "1351ffb162faeb8be983f1301d718a0d5fb59c27" }

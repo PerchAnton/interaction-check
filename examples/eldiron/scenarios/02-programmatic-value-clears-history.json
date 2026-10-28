@@ -1,0 +1,48 @@
+{
+  "schema": 1,
+  "name": "02-programmatic-value-clears-history",
+  "steps": [
+    {
+      "event": {
+        "op": "new"
+      },
+      "expect": {
+        "text": ""
+      }
+    },
+    {
+      "event": {
+        "op": "paste",
+        "text": "old"
+      },
+      "expect": {
+        "text": "old"
+      }
+    },
+    {
+      "event": {
+        "op": "set",
+        "text": "replacement"
+      },
+      "expect": {
+        "text": "replacement"
+      }
+    },
+    {
+      "event": {
+        "op": "undo"
+      },
+      "expect": {
+        "text": "replacement"
+      }
+    },
+    {
+      "event": {
+        "op": "redo"
+      },
+      "expect": {
+        "text": "replacement"
+      }
+    }
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "schema": 1,
+  "name": "02-backspace-unicode-and-empty",
+  "steps": [
+    {
+      "event": {
+        "op": "new"
+      },
+      "expect": {
+        "text": ""
+      }
+    },
+    {
+      "event": {
+        "op": "type",
+        "text": "🦀"
+      },
+      "expect": {
+        "text": "🦀",
+        "offset": 1
+      }
+    },
+    {
+      "event": {
+        "op": "backspace"
+      },
+      "expect": {
+        "text": "",
+        "offset": 0
+      }
+    },
+    {
+      "event": {
+        "op": "backspace"
+      },
+      "expect": {
+        "text": "",
+        "offset": 0
+      }
+    }
+  ]
+}

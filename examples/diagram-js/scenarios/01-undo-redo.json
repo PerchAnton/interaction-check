@@ -1,0 +1,44 @@
+{
+  "schema": 1,
+  "name": "01-undo-redo",
+  "steps": [
+    {
+      "event": {
+        "op": "new"
+      },
+      "expect": {
+        "value": 0,
+        "undo": false,
+        "redo": false
+      }
+    },
+    {
+      "event": {
+        "op": "set",
+        "value": 4
+      },
+      "expect": {
+        "value": 4,
+        "undo": true
+      }
+    },
+    {
+      "event": {
+        "op": "undo"
+      },
+      "expect": {
+        "value": 0,
+        "redo": true
+      }
+    },
+    {
+      "event": {
+        "op": "redo"
+      },
+      "expect": {
+        "value": 4,
+        "redo": false
+      }
+    }
+  ]
+}

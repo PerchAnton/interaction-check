@@ -1,0 +1,128 @@
+name: Consumer model pilots
+on:
+  push:
+    branches: [main]
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  replay:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 12
+    strategy:
+      fail-fast: false
+      matrix:
+        example: [cytoscape, rete, surveyjs, tanstack-form, xyflow, diagram-js, grapesjs, fabric, vee-validate, excalidraw]
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38
+        with:
+          node-version: '24.16.0'
+      - run: node --version
+      - run: npm ci --ignore-scripts --no-audit --no-fund
+        working-directory: examples/${{ matrix.example }}
+      - run: python examples/verify_consumers.py ${{ matrix.example }}
+  python-models:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        example: [pyqtgraph, napari, toga]
+    env:
+      QT_QPA_PLATFORM: offscreen
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -r examples/${{ matrix.example }}/requirements.txt
+      - name: Install Qt offscreen runtime libraries
+        if: matrix.example == 'pyqtgraph'
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libegl1
+      - run: python -m pip check
+      - run: python examples/verify_python_consumers.py ${{ matrix.example }}
+  rust-models:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    strategy:
+      fail-fast: false
+      matrix:
+        example: [floem, helix, microsoft-edit, xilem]
+    env:
+      CARGO_TARGET_DIR: ${{ github.workspace }}/.artifacts/rust-consumers
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0
+        with:
+          python-version: '3.12'
+      - run: rustup toolchain install 1.96.0 --profile minimal
+      - name: Install Edit's ICU runtime
+        if: matrix.example == 'microsoft-edit'
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libicu-dev
+      - run: cargo +1.96.0 test --locked --manifest-path examples/rust-consumers/Cargo.toml -p pilot-protocol -p pilot-${{ matrix.example }}
+      - run: cargo +1.96.0 build --locked --manifest-path examples/rust-consumers/Cargo.toml -p pilot-${{ matrix.example }}
+      - run: python examples/verify_rust_consumers.py ${{ matrix.example }}
+  rust-app-models:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    strategy:
+      fail-fast: false
+      matrix:
+        example: [icy-draw, eldiron]
+    env:
+      CARGO_TARGET_DIR: ${{ github.workspace }}/.artifacts/rust-consumers
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        if: matrix.example == 'eldiron'
+        with:
+          repository: markusmoenig/Eldiron
+          ref: c1ac529b501745a38d78f633ba23d2254c2ec71c
+          path: .artifacts/eldiron-source
+          sparse-checkout: crates/theframework
+          persist-credentials: false
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0
+        with:
+          python-version: '3.12'
+      - run: rustup toolchain install 1.96.0 --profile minimal
+      - run: python examples/eldiron/verify_source.py
+        if: matrix.example == 'eldiron'
+      - name: Install Eldiron's clipboard/portal build dependencies
+        if: matrix.example == 'eldiron'
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libwayland-dev pkg-config
+      - run: cargo +1.96.0 test --locked --manifest-path examples/${{ matrix.example }}/Cargo.toml
+      - run: cargo +1.96.0 build --locked --manifest-path examples/${{ matrix.example }}/Cargo.toml
+      - run: python examples/verify_rust_consumers.py ${{ matrix.example }}
+  amp-commands:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    env:
+      CARGO_TARGET_DIR: ${{ github.workspace }}/.artifacts/amp-target
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          repository: jmacdonald/amp
+          ref: df97a3c01e6021a464af4204dd64d10eb205f149
+          path: .artifacts/amp-source
+          persist-credentials: false
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0
+        with:
+          python-version: '3.12'
+      - run: rustup toolchain install 1.96.0 --profile minimal
+      - run: |
+          sudo apt-get update
+          sudo apt-get install -y libxcb1-dev libxcb-render0-dev libxcb-shape0-dev libxcb-xfixes0-dev pkg-config
+      - run: python examples/amp/prepare.py .artifacts/amp-source
+      - run: cargo +1.96.0 test --locked --manifest-path .artifacts/amp-source/Cargo.toml --no-run --lib --message-format=json > .artifacts/amp-build.jsonl
+      - run: python examples/amp/verify.py --source .artifacts/amp-source --build-log .artifacts/amp-build.jsonl

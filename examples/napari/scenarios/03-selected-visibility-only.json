@@ -1,0 +1,62 @@
+{
+  "schema": 1,
+  "name": "03-selected-visibility-only",
+  "steps": [
+    {
+      "event": {
+        "op": "new"
+      },
+      "expect": {
+        "layers": [
+          {
+            "visible": true
+          },
+          {
+            "visible": true
+          }
+        ]
+      }
+    },
+    {
+      "event": {
+        "op": "select",
+        "name": "b"
+      },
+      "expect": {
+        "selected": [
+          "b"
+        ]
+      }
+    },
+    {
+      "event": {
+        "op": "toggle_visibility"
+      },
+      "expect": {
+        "layers": [
+          {
+            "visible": true
+          },
+          {
+            "visible": false
+          }
+        ]
+      }
+    },
+    {
+      "event": {
+        "op": "toggle_visibility"
+      },
+      "expect": {
+        "layers": [
+          {
+            "visible": true
+          },
+          {
+            "visible": true
+          }
+        ]
+      }
+    }
+  ]
+}

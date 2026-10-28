@@ -1,0 +1,100 @@
+{
+  "schema": 1,
+  "name": "01-cancel-and-single-commit",
+  "steps": [
+    {
+      "event": {
+        "op": "new"
+      },
+      "expect": {
+        "name": "original",
+        "undo": 0
+      }
+    },
+    {
+      "event": {
+        "op": "open"
+      },
+      "expect": {
+        "open": true
+      }
+    },
+    {
+      "event": {
+        "op": "propose",
+        "name": "cancelled"
+      },
+      "expect": {
+        "name": "original",
+        "undo": 0
+      }
+    },
+    {
+      "event": {
+        "op": "cancel"
+      },
+      "expect": {
+        "name": "original",
+        "undo": 0,
+        "open": false
+      }
+    },
+    {
+      "event": {
+        "op": "open"
+      },
+      "expect": {
+        "open": true
+      }
+    },
+    {
+      "event": {
+        "op": "propose",
+        "name": "committed"
+      },
+      "expect": {
+        "name": "original",
+        "undo": 0
+      }
+    },
+    {
+      "event": {
+        "op": "confirm"
+      },
+      "expect": {
+        "name": "committed",
+        "undo": 1,
+        "open": false,
+        "last": "applied"
+      }
+    },
+    {
+      "event": {
+        "op": "confirm"
+      },
+      "expect": {
+        "name": "committed",
+        "undo": 1,
+        "last": "closed"
+      }
+    },
+    {
+      "event": {
+        "op": "undo"
+      },
+      "expect": {
+        "name": "original",
+        "can_redo": true
+      }
+    },
+    {
+      "event": {
+        "op": "redo"
+      },
+      "expect": {
+        "name": "committed",
+        "undo": 1
+      }
+    }
+  ]
+}

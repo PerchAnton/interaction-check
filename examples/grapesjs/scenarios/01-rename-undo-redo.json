@@ -1,0 +1,43 @@
+{
+  "schema": 1,
+  "name": "01-rename-undo-redo",
+  "steps": [
+    {
+      "event": {
+        "op": "new"
+      },
+      "expect": {
+        "name": "",
+        "stack": 0
+      }
+    },
+    {
+      "event": {
+        "op": "rename",
+        "name": "one"
+      },
+      "expect": {
+        "name": "one",
+        "undo": true
+      }
+    },
+    {
+      "event": {
+        "op": "undo"
+      },
+      "expect": {
+        "name": "",
+        "redo": true
+      }
+    },
+    {
+      "event": {
+        "op": "redo"
+      },
+      "expect": {
+        "name": "one",
+        "redo": false
+      }
+    }
+  ]
+}

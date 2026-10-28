@@ -1,0 +1,67 @@
+{
+  "schema": 1,
+  "name": "02-redo-selects-new-branch",
+  "steps": [
+    {
+      "event": {
+        "op": "new",
+        "text": "a"
+      },
+      "expect": {
+        "text": "a",
+        "revision": 0
+      }
+    },
+    {
+      "event": {
+        "op": "replace",
+        "from": 1,
+        "to": 1,
+        "text": "b"
+      },
+      "expect": {
+        "text": "ab",
+        "revision": 1
+      }
+    },
+    {
+      "event": {
+        "op": "undo"
+      },
+      "expect": {
+        "text": "a",
+        "revision": 0
+      }
+    },
+    {
+      "event": {
+        "op": "replace",
+        "from": 1,
+        "to": 1,
+        "text": "c"
+      },
+      "expect": {
+        "text": "ac",
+        "revision": 2
+      }
+    },
+    {
+      "event": {
+        "op": "undo"
+      },
+      "expect": {
+        "text": "a",
+        "revision": 0
+      }
+    },
+    {
+      "event": {
+        "op": "redo"
+      },
+      "expect": {
+        "text": "ac",
+        "revision": 2
+      }
+    }
+  ]
+}

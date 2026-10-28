@@ -1,0 +1,62 @@
+{
+  "schema": 1,
+  "name": "03-complete-clear-reuse",
+  "steps": [
+    {
+      "event": {
+        "op": "new"
+      },
+      "expect": {
+        "completed": false,
+        "completions": 0
+      }
+    },
+    {
+      "event": {
+        "op": "set",
+        "name": "name",
+        "value": "Test"
+      },
+      "expect": {
+        "data": {
+          "name": "Test"
+        }
+      }
+    },
+    {
+      "event": {
+        "op": "next"
+      },
+      "expect": {
+        "page": "details"
+      }
+    },
+    {
+      "event": {
+        "op": "complete"
+      },
+      "expect": {
+        "completed": true,
+        "completions": 1
+      }
+    },
+    {
+      "event": {
+        "op": "clear"
+      },
+      "expect": {
+        "completed": false,
+        "page": "identity"
+      }
+    },
+    {
+      "event": {
+        "op": "next"
+      },
+      "expect": {
+        "result": false,
+        "completions": 1
+      }
+    }
+  ]
+}

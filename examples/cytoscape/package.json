@@ -1,0 +1,1 @@
+{"name":"interaction-check-cytoscape-example","private":true,"type":"module","engines":{"node":">=24.15.0"},"scripts":{"test":"node --test native.test.mjs"},"dependencies":{"cytoscape":"3.34.4"}}
