@@ -1,5 +1,14 @@
 # Changelog
 
+## Unreleased
+
+- Add a focused python-dispatch example with native tests, optional expected/observed
+  Mermaid diagrams and tables that separate property writes, new callbacks, cumulative
+  log and the property value. Demonstrate the first mismatch with a wrong expectation.
+- Explain the existing rat-salsa case through five real API calls, adapter costs and
+  UI limits; link the existing pyee native-test PR without duplicating it.
+- Runner behavior, protocol, CLI options and runtime dependencies are unchanged.
+
 ## 0.1.0a7 / v0.1.0-alpha.7
 
 Published on 27 October 2026 (Europe/Kyiv) to [PyPI](https://pypi.org/project/interaction-check/0.1.0a7/)

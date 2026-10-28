@@ -5,3 +5,5 @@ include docs/NATIVE_TESTS.md docs/RELEASING.md
 recursive-include examples/quickstart *.py *.json *.md
 include docs/CHOOSING.md docs/REPORTING.md
 include tools/render_quickstart.py docs/evidence/quickstart.json docs/assets/quickstart.svg
+recursive-include examples/dispatch *.py *.json *.md *.txt
+include docs/REAL_API_WALKTHROUGH.md docs/evidence/dispatch.json

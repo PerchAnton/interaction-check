@@ -2,6 +2,7 @@ __pycache__/
 *.pyc
 .venv/
 .venv-pyee/
+.venv-dispatch/
 **/target/
 /.artifacts/
 **/node_modules/
