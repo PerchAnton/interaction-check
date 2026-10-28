@@ -1,0 +1,47 @@
+{
+  "checked_at": "2026-10-28T08:18:23.854953+00:00",
+  "status": "published",
+  "package": "interaction-check",
+  "version": "0.1.0a8",
+  "tag": "v0.1.0-alpha.8",
+  "source_commit": "1cda979491ba9af9b6a1de5c59cae4aaaa899aa3",
+  "runtime_dependencies": 0,
+  "license": "MIT OR Apache-2.0",
+  "python_requirement": ">=3.10",
+  "runner_tests": 54,
+  "registry": "https://pypi.org/project/interaction-check/0.1.0a8/",
+  "github_release": "https://github.com/PerchAnton/interaction-check/releases/tag/v0.1.0-alpha.8",
+  "installation": {
+    "fresh_venv": true,
+    "python": "3.14.3",
+    "system": "Darwin",
+    "pip_check": "pass",
+    "quickstart": "3 native tests; 3 scenarios / 12 steps; Cancel mutation, export and replay pass",
+    "dispatch_installed_runner": "5 steps pass; wrong expectation caught at step 2",
+    "packaged_dispatch_native_and_diagrams": "pass"
+  },
+  "registry_archives_match_workflow": true,
+  "files": [
+    {
+      "name": "interaction_check-0.1.0a8-py3-none-any.whl",
+      "bytes": 13259,
+      "sha256": "d4fdfc4ae7f27c2b6f8c685bcb7cc83192982856537e4529112a5ab2ad0523c9",
+      "url": "https://files.pythonhosted.org/packages/40/7b/2210ba0a6e2cbec573db2af21f01be29773a8f5f05393666aedd27590545/interaction_check-0.1.0a8-py3-none-any.whl",
+      "uploaded_at_utc": "2026-10-28T08:17:56.638799Z"
+    },
+    {
+      "name": "interaction_check-0.1.0a8.tar.gz",
+      "bytes": 53011,
+      "sha256": "90179421509472c89c37131573aba15cff6e11ff3596ef79e82815061e445f30",
+      "url": "https://files.pythonhosted.org/packages/cd/47/0b91600214d4e0c03b26b3f84c6199563411c2dff49e29e9ed8e91200e2b/interaction_check-0.1.0a8.tar.gz",
+      "uploaded_at_utc": "2026-10-28T08:17:58.199191Z"
+    }
+  ],
+  "publish_workflow": "https://github.com/PerchAnton/interaction-check/actions/runs/40655587083",
+  "rehearsal_workflow": "https://github.com/PerchAnton/interaction-check/actions/runs/40655062781",
+  "release_commit_ci": [
+    "https://github.com/PerchAnton/interaction-check/actions/runs/40655039698",
+    "https://github.com/PerchAnton/interaction-check/actions/runs/40655039707"
+  ],
+  "scope": "Examples and documentation release. Runner behavior, schema 1 and protocol 1 unchanged. No upstream bug, adoption or performance advantage claimed."
+}

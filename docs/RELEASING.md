@@ -2,20 +2,22 @@
 
 ## Published prerelease
 
-**[0.1.0a7 on PyPI](https://pypi.org/project/interaction-check/0.1.0a7/)** was published
-on **27 October 2026 (Europe/Kyiv)**. The
-[GitHub prerelease](https://github.com/PerchAnton/interaction-check/releases/tag/v0.1.0-alpha.7)
+**[0.1.0a8 on PyPI](https://pypi.org/project/interaction-check/0.1.0a8/)** was published
+on **28 October 2026 (Europe/Kyiv)**. The
+[GitHub prerelease](https://github.com/PerchAnton/interaction-check/releases/tag/v0.1.0-alpha.8)
 attaches the same wheel and source archive with checksums. A fresh environment
 installed the package and verified the complete quickstart, including deliberate
-failure detection, original-expectation export and replay. The source archive also
-passes the example and diagram checks. [Evidence](evidence/release-alpha7.json).
-Earlier alpha.6 registry files and alpha.5 GitHub assets remain unchanged.
+failure detection, original-expectation export and replay. The installed runner also
+passes the real dispatch scenario and catches its deliberately wrong expectation.
+The source archive passes native dispatch and Mermaid report checks.
+[Hashes, installation and workflow evidence](evidence/release-alpha8.json).
+Earlier registry versions, tags and release assets remain unchanged.
 
 ## Alpha compatibility
 
 - Alpha releases are experimental. CLI options, Python APIs, report fields and
   adapter behavior may change between releases, even within `0.1.0`.
-- Alpha.7 keeps scenario schema **1** and JSONL protocol **1**. This describes the
+- Alpha.8 keeps scenario schema **1** and JSONL protocol **1**. This describes the
   current release; it does not promise compatibility with every future alpha.
 - Pin the runner release or Git revision and the adapter/consumer revisions
   separately. Before upgrading, read the [changelog](../CHANGELOG.md) and replay
@@ -29,10 +31,9 @@ compatibility contract beyond this alpha policy.
 
 ## Preparing a future release
 
-The current candidate is `0.1.0a8` / `v0.1.0-alpha.8`. It packages the real-property
-walkthrough and optional Mermaid renderer. It is not published until the registry
-and release assets have been verified. Runtime behavior, schema 1 and protocol 1 are
-unchanged. Verify the new source example as well:
+Alpha.8 is already published; do not reuse its version or tag. It packages the real-property
+walkthrough and optional Mermaid renderer. Runtime behavior, schema 1 and protocol 1
+are unchanged. For the next candidate, verify the source example as well:
 
 ```sh
 python -m pip install -r examples/dispatch/requirements.txt
@@ -68,12 +69,12 @@ an alpha as the latest stable release.
 
 ### Published version
 
-`0.1.0a7` / `v0.1.0-alpha.7` is **published on PyPI**. Runtime behavior, CLI options,
-scenario schema 1 and JSONL protocol 1 are unchanged from alpha.6. The new version
-packages the first example and clearer documentation. Publication used
-[workflow 40464385275](https://github.com/PerchAnton/interaction-check/actions/runs/40464385275)
-and the configured `pypi` environment. Do not rerun this version's upload; prepare
-a new version for any future package change.
+`0.1.0a8` / `v0.1.0-alpha.8` is **published on PyPI**. Runtime behavior, CLI options,
+scenario schema 1 and JSONL protocol 1 are unchanged from alpha.7. This release
+packages the real-property walkthrough, optional Mermaid reports and clearer limits.
+Publication used [workflow 40655587083](https://github.com/PerchAnton/interaction-check/actions/runs/40655587083)
+and the configured `pypi` environment after the rehearsal and release-commit CI passed.
+Do not rerun this version's upload; prepare a new version for any future package change.
 
 ### One-time owner setup
 
@@ -108,7 +109,7 @@ It has no upload permission in this mode. Neither pushes nor PRs trigger publish
 
 For an approved release, require green CI on the exact commit, create and push its
 matching **new** version tag, then run the workflow from that tag with `publish=true`.
-The published `v0.1.0-alpha.7` is a reference for the process, not a tag to upload again.
+The published `v0.1.0-alpha.8` is a reference for the process, not a tag to upload again.
 
 The build job requires a matching package version and a commit contained in `main`.
 The upload job waits for the `pypi` environment, downloads the verified distributions,
@@ -120,7 +121,7 @@ After success, verify the [project](https://pypi.org/project/interaction-check/)
 version, license, Python requirement and both archive hashes. In a fresh venv:
 
 ```sh
-python -m pip install --index-url https://pypi.org/simple 'interaction-check==0.1.0a7'
+python -m pip install --index-url https://pypi.org/simple 'interaction-check==0.1.0a8'
 interaction-check --version
 ```
 

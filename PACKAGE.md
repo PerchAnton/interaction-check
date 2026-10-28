@@ -6,7 +6,7 @@ Licensed under MIT OR Apache-2.0. Experimental alpha: formats and CLI may still 
 
 ## Installation
 
-After publication, install this prerelease from PyPI:
+Install this published prerelease from PyPI:
 
 ```sh
 python -m pip install 'interaction-check==0.1.0a8'
