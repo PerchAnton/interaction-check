@@ -2,7 +2,7 @@
 
 This example calls **python-dispatch 0.2.3**, not a simulation. It is external
 evaluation code maintained here, not an upstream integration or a discovered bug.
-From current source (these files are newer than the alpha.7 tag), in a virtual environment:
+Included in the alpha.8 source archive and tagged checkout. In a virtual environment:
 
 ```sh
 python -m pip install -r examples/dispatch/requirements.txt

@@ -1,6 +1,9 @@
 # Changelog
 
-## Unreleased
+## 0.1.0a8 / v0.1.0-alpha.8
+
+28 October 2026. Examples and documentation release; runtime behavior is unchanged.
+Publication status is tracked in the linked registry and GitHub release pages.
 
 - Add a focused python-dispatch example with native tests, optional expected/observed
   Mermaid diagrams and tables that separate property writes, new callbacks, cumulative
@@ -8,6 +11,8 @@
 - Explain the existing rat-salsa case through five real API calls, adapter costs and
   UI limits; link the existing pyee native-test PR without duplicating it.
 - Runner behavior, protocol, CLI options and runtime dependencies are unchanged.
+- The source archive includes the dispatch example and diagrams; the release workflow
+  verifies them from the unpacked archive. The wheel remains the dependency-free runner.
 
 ## 0.1.0a7 / v0.1.0-alpha.7
 

@@ -6,10 +6,10 @@ Licensed under MIT OR Apache-2.0. Experimental alpha: formats and CLI may still 
 
 ## Installation
 
-Install a published copy of this prerelease from PyPI:
+After publication, install this prerelease from PyPI:
 
 ```sh
-python -m pip install 'interaction-check==0.1.0a7'
+python -m pip install 'interaction-check==0.1.0a8'
 ```
 
 An exact version selects this prerelease without opting into all future prereleases.
@@ -40,6 +40,7 @@ Rust library edit-session is not required.
 
 - [Scenario and adapter protocol](https://github.com/PerchAnton/interaction-check#scenario-format)
 - [First example: no application or extra packages](https://github.com/PerchAnton/interaction-check/tree/main/examples/quickstart)
+- [Real callbacks and Mermaid diagrams](https://github.com/PerchAnton/interaction-check/tree/v0.1.0-alpha.8/examples/dispatch)
 - [Native tests or replay?](https://github.com/PerchAnton/interaction-check/blob/main/docs/CHOOSING.md)
 - [Worked XState example](https://github.com/PerchAnton/interaction-check/tree/main/examples/xstate)
 - [Moving a useful scenario into a native test](https://github.com/PerchAnton/interaction-check/blob/main/docs/NATIVE_TESTS.md)

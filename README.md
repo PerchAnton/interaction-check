@@ -50,9 +50,22 @@ Current source includes **[property writes and callbacks](examples/dispatch/READ
 [expected/observed Mermaid diagrams](examples/dispatch/trace.md), a
 [deliberate first mismatch](examples/dispatch/mismatch.md), and ordinary native tests.
 For terminal widgets, see [five rat-salsa calls and their limits](docs/REAL_API_WALKTHROUGH.md).
-These examples are newer than the published package; the runner protocol is unchanged.
+These examples are included in the **0.1.0a8 source archive**; the runner protocol
+is unchanged. The optional renderer runs from source, not as a new CLI flag.
 
-## Current prerelease
+## Release 0.1.0a8 / alpha.8
+
+This examples-and-documentation release adds the real-property walkthrough and optional
+Mermaid reports. It keeps Python 3.10+, zero runtime dependencies, schema 1 and protocol 1.
+The wheel installs the runner; the source archive includes both walkthroughs.
+
+[PyPI version and files](https://pypi.org/project/interaction-check/0.1.0a8/) ·
+[GitHub prerelease and checksums](https://github.com/PerchAnton/interaction-check/releases/tag/v0.1.0-alpha.8) ·
+[Changes](CHANGELOG.md). The linked registry/release pages confirm publication status.
+Validation covers 54 unit tests, the three native dispatch tests and five replay steps,
+including the intentionally incorrect expectation. No upstream defect or speedup is claimed.
+
+## Previous publication: alpha.7
 
 **[0.1.0a7 on PyPI](https://pypi.org/project/interaction-check/0.1.0a7/) · published 27 October 2026 (Europe/Kyiv) · Python 3.10+**
 
@@ -80,7 +93,7 @@ Install the exact published prerelease from PyPI in a virtual environment:
 
 ```sh
 python -m venv .venv
-.venv/bin/python -m pip install 'interaction-check==0.1.0a7'
+.venv/bin/python -m pip install 'interaction-check==0.1.0a8'
 .venv/bin/interaction-check --version
 ```
 
