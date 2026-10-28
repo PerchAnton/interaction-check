@@ -1,0 +1,207 @@
+{
+  "package": "python-dispatch==0.2.3",
+  "native_tests": 3,
+  "synthetic_wrong_expectation": true,
+  "source_sha256": {
+    "examples/dispatch/adapter.py": "f986bea18171e9d875b2e6ed9c706a3f9a425261abb3c1bbd1a5ed9b3e0b41dd",
+    "examples/dispatch/native_tests.py": "50c0b900ead484bbbc7171e15385339c3eb5c14a5e267c3fb15e6e743b60db79",
+    "examples/dispatch/scenario.json": "84c731627683dd79093f97c6a3244c0ac4d539c97bcdf5d638b97e10155c2f07",
+    "examples/dispatch/render.py": "c3897660a53ee8a2505318032db25521951bcabe1201910439f40e1da5347f15",
+    "examples/dispatch/verify.py": "8a138d1ce86697f8a72a58db166affce1c4b5dbcfd03a70a4540b202a93bb125",
+    "examples/dispatch/requirements.txt": "485695df5b9bcd20665e0a74d7619dad44c469004de763390c5752ff249bd91c"
+  },
+  "results": [
+    {
+      "name": "Property writes are not callback counts",
+      "passed": true,
+      "steps": 5,
+      "stderr": "",
+      "trace": [
+        {
+          "step": 1,
+          "event": {
+            "op": "write",
+            "values": [
+              1,
+              1
+            ],
+            "locked": false
+          },
+          "expect": {
+            "count": 1,
+            "log": [
+              1
+            ]
+          },
+          "actual": {
+            "count": 1,
+            "log": [
+              1
+            ]
+          },
+          "passed": true
+        },
+        {
+          "step": 2,
+          "event": {
+            "op": "write",
+            "values": [
+              2,
+              3,
+              4
+            ],
+            "locked": true
+          },
+          "expect": {
+            "count": 4,
+            "log": [
+              1,
+              4
+            ]
+          },
+          "actual": {
+            "count": 4,
+            "log": [
+              1,
+              4
+            ]
+          },
+          "passed": true
+        },
+        {
+          "step": 3,
+          "event": {
+            "op": "write",
+            "values": [
+              4
+            ],
+            "locked": false
+          },
+          "expect": {
+            "count": 4,
+            "log": [
+              1,
+              4
+            ]
+          },
+          "actual": {
+            "count": 4,
+            "log": [
+              1,
+              4
+            ]
+          },
+          "passed": true
+        },
+        {
+          "step": 4,
+          "event": {
+            "op": "unbind"
+          },
+          "expect": {
+            "count": 4,
+            "log": [
+              1,
+              4
+            ]
+          },
+          "actual": {
+            "count": 4,
+            "log": [
+              1,
+              4
+            ]
+          },
+          "passed": true
+        },
+        {
+          "step": 5,
+          "event": {
+            "op": "write",
+            "values": [
+              5
+            ],
+            "locked": false
+          },
+          "expect": {
+            "count": 5,
+            "log": [
+              1,
+              4
+            ]
+          },
+          "actual": {
+            "count": 5,
+            "log": [
+              1,
+              4
+            ]
+          },
+          "passed": true
+        }
+      ]
+    },
+    {
+      "passed": false,
+      "error": "Step 2 ({'op': 'write', 'values': [2, 3, 4], 'locked': True}): state.log: expected [1, 2, 3, 4], got [1, 4]",
+      "trace": [
+        {
+          "step": 1,
+          "event": {
+            "op": "write",
+            "values": [
+              1,
+              1
+            ],
+            "locked": false
+          },
+          "expect": {
+            "count": 1,
+            "log": [
+              1
+            ]
+          },
+          "actual": {
+            "count": 1,
+            "log": [
+              1
+            ]
+          },
+          "passed": true
+        },
+        {
+          "step": 2,
+          "event": {
+            "op": "write",
+            "values": [
+              2,
+              3,
+              4
+            ],
+            "locked": true
+          },
+          "expect": {
+            "count": 4,
+            "log": [
+              1,
+              2,
+              3,
+              4
+            ]
+          },
+          "actual": {
+            "count": 4,
+            "log": [
+              1,
+              4
+            ]
+          },
+          "passed": false,
+          "differences": [
+            "state.log: expected [1, 2, 3, 4], got [1, 4]"
+          ]
+        }
+      ]
+    }
+  ]
+}

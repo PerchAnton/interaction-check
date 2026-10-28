@@ -1,0 +1,11 @@
+{
+  "schema": 1,
+  "name": "Property writes are not callback counts",
+  "steps": [
+    {"event": {"op": "write", "values": [1, 1], "locked": false}, "expect": {"count": 1, "log": [1]}},
+    {"event": {"op": "write", "values": [2, 3, 4], "locked": true}, "expect": {"count": 4, "log": [1, 4]}},
+    {"event": {"op": "write", "values": [4], "locked": false}, "expect": {"count": 4, "log": [1, 4]}},
+    {"event": {"op": "unbind"}, "expect": {"count": 4, "log": [1, 4]}},
+    {"event": {"op": "write", "values": [5], "locked": false}, "expect": {"count": 5, "log": [1, 4]}}
+  ]
+}

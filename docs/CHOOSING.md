@@ -42,6 +42,11 @@ The two projects are independent:
 
 ## What the feedback changed
 
+For a real-library walkthrough and expected/observed diagrams, see
+[python-dispatch](../examples/dispatch/README.md). For the precise scope of the terminal
+widget proposal, see [rat-salsa](REAL_API_WALKTHROUGH.md). The pyee native scenario is
+already in [PR #228](https://github.com/jfhbrook/pyee/pull/228); no duplicate is needed.
+
 | Question from maintainers | Concrete response in this repository |
 | --- | --- |
 | [Redux: what problem and upstream change?](https://github.com/reduxjs/redux/discussions/4962#discussioncomment-19203020) | Use the decision table above. Current core-store examples justify no change to Redux's CI. |

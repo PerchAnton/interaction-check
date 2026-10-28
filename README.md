@@ -44,6 +44,14 @@ checked prefix, which must be rerun; it does not automatically minimize a failur
 [Choosing a tool](docs/CHOOSING.md) connects these decisions to maintainer feedback.
 [A short useful bug report](docs/REPORTING.md) shows how to share one actionable failure.
 
+## Read a real API trace
+
+Current source includes **[property writes and callbacks](examples/dispatch/README.md)**,
+[expected/observed Mermaid diagrams](examples/dispatch/trace.md), a
+[deliberate first mismatch](examples/dispatch/mismatch.md), and ordinary native tests.
+For terminal widgets, see [five rat-salsa calls and their limits](docs/REAL_API_WALKTHROUGH.md).
+These examples are newer than the published package; the runner protocol is unchanged.
+
 ## Current prerelease
 
 **[0.1.0a7 on PyPI](https://pypi.org/project/interaction-check/0.1.0a7/) · published 27 October 2026 (Europe/Kyiv) · Python 3.10+**
