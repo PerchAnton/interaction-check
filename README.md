@@ -24,7 +24,7 @@ breaks Cancel **in a temporary copy**, exports the failing case and reruns it. I
 runs equivalent ordinary Python tests. An expected `FAIL` is followed by `Verified`;
 the command exits successfully only when the whole demonstration checks out.
 
-**Recorded 27 October 2026:** 3 native tests and 3 replay scenarios / 12 steps pass
+**Recorded 28 October 2026:** 3 native tests and 3 replay scenarios / 12 steps pass
 on the correct model. Both detect the same deliberate Cancel defect. This is an
 original teaching example, not an upstream bug or a claim of additional coverage.
 [Read the code and commands](examples/quickstart/README.md) · [Raw evidence](docs/evidence/quickstart.json).
@@ -61,7 +61,9 @@ The wheel installs the runner; the source archive includes both walkthroughs.
 
 [PyPI version and files](https://pypi.org/project/interaction-check/0.1.0a8/) ·
 [GitHub prerelease and checksums](https://github.com/PerchAnton/interaction-check/releases/tag/v0.1.0-alpha.8) ·
-[Changes](CHANGELOG.md). The linked registry/release pages confirm publication status.
+[Changes](CHANGELOG.md) · [Hashes and clean-install verification](docs/evidence/release-alpha8.json).
+Published and verified **28 October 2026 (Europe/Kyiv)**. Both registry archives match
+the GitHub assets; a fresh PyPI install passes the quickstart and real dispatch scenario.
 Validation covers 54 unit tests, the three native dispatch tests and five replay steps,
 including the intentionally incorrect expectation. No upstream defect or speedup is claimed.
 
