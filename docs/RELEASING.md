@@ -29,6 +29,18 @@ compatibility contract beyond this alpha policy.
 
 ## Preparing a future release
 
+The current candidate is `0.1.0a8` / `v0.1.0-alpha.8`. It packages the real-property
+walkthrough and optional Mermaid renderer. It is not published until the registry
+and release assets have been verified. Runtime behavior, schema 1 and protocol 1 are
+unchanged. Verify the new source example as well:
+
+```sh
+python -m pip install -r examples/dispatch/requirements.txt
+python examples/dispatch/verify.py --check
+```
+
+The publication workflow runs those checks in the checkout and unpacked source archive.
+
 Update the version and changelog for the new candidate, then run:
 
 ```sh
