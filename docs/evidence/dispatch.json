@@ -6,7 +6,7 @@
     "examples/dispatch/adapter.py": "f986bea18171e9d875b2e6ed9c706a3f9a425261abb3c1bbd1a5ed9b3e0b41dd",
     "examples/dispatch/native_tests.py": "50c0b900ead484bbbc7171e15385339c3eb5c14a5e267c3fb15e6e743b60db79",
     "examples/dispatch/scenario.json": "84c731627683dd79093f97c6a3244c0ac4d539c97bcdf5d638b97e10155c2f07",
-    "examples/dispatch/render.py": "6ed4b9c5f9ab45ee5b6cdce7346cbff6fcffdae356350f783e739d1173f2bea2",
+    "examples/dispatch/render.py": "c3897660a53ee8a2505318032db25521951bcabe1201910439f40e1da5347f15",
     "examples/dispatch/verify.py": "8a138d1ce86697f8a72a58db166affce1c4b5dbcfd03a70a4540b202a93bb125",
     "examples/dispatch/requirements.txt": "485695df5b9bcd20665e0a74d7619dad44c469004de763390c5752ff249bd91c"
   },

@@ -19,12 +19,12 @@ sequenceDiagram
     participant L as Callback log
     Note over A,L: Step 1 - pass
     A->>M: writes [1, 1], lock off
-    Note over M,L: Callbacks during step = [1]
-    Note over M,L: Property count = 1, cumulative log = [1]
+    Note over A,L: Callbacks during step = [1]
+    Note over A,L: Property count = 1, cumulative log = [1]
     Note over A,L: Step 2 - MISMATCH
     A->>M: writes [2, 3, 4], lock on
-    Note over M,L: Callbacks during step = [2, 3, 4]
-    Note over M,L: Property count = 4, cumulative log = [1, 2, 3, 4]
+    Note over A,L: Callbacks during step = [2, 3, 4]
+    Note over A,L: Property count = 4, cumulative log = [1, 2, 3, 4]
 ```
 
 ## Observed
@@ -41,10 +41,10 @@ sequenceDiagram
     participant L as Callback log
     Note over A,L: Step 1 - pass
     A->>M: writes [1, 1], lock off
-    Note over M,L: Callbacks during step = [1]
-    Note over M,L: Property count = 1, cumulative log = [1]
+    Note over A,L: Callbacks during step = [1]
+    Note over A,L: Property count = 1, cumulative log = [1]
     Note over A,L: Step 2 - MISMATCH
     A->>M: writes [2, 3, 4], lock on
-    Note over M,L: Callbacks during step = [4]
-    Note over M,L: Property count = 4, cumulative log = [1, 4]
+    Note over A,L: Callbacks during step = [4]
+    Note over A,L: Property count = 4, cumulative log = [1, 4]
 ```

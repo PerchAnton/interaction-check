@@ -59,8 +59,8 @@ def render(result):
             # Semicolons separate Mermaid statements; replace our label delimiter.
             lines += [f"    Note over A,L: Step {i} - {'pass' if passed else 'MISMATCH'}",
                       f"    A->>M: {action.replace(';', ',')}",
-                      f"    Note over M,L: Callbacks during step = {delta}",
-                      f"    Note over M,L: Property count = {count}, cumulative log = {log}"]
+                      f"    Note over A,L: Callbacks during step = {delta}",
+                      f"    Note over A,L: Property count = {count}, cumulative log = {log}"]
         lines += ["```", ""]
     return "\n".join(lines)
 
