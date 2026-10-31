@@ -7,3 +7,6 @@ include docs/CHOOSING.md docs/REPORTING.md
 include tools/render_quickstart.py docs/evidence/quickstart.json docs/assets/quickstart.svg
 recursive-include examples/dispatch *.py *.json *.md *.txt
 include docs/REAL_API_WALKTHROUGH.md docs/evidence/dispatch.json
+include examples/tui-input/README.md examples/tui-input/Cargo.toml examples/tui-input/Cargo.lock examples/tui-input/graphemes.json examples/tui-input/verify.py
+recursive-include examples/tui-input/src *.rs
+recursive-include examples/tui-input/tests *.rs

@@ -1,5 +1,11 @@
 # What an adapter does: rat-salsa
 
+The maintainer subsequently declined this integration: simple API checks did not
+justify another runner, while complex event/rendering behavior is explored through
+interactive examples. This historical walkthrough is not a renewed proposal.
+For an executable current-source Rust/native comparison, use
+[the tui-input walkthrough](../examples/tui-input/README.md).
+
 The [rat-salsa question](https://github.com/thscharler/rat-salsa/issues/36#issuecomment-6461513249)
 was about what we proposed: an optional external reproduction maintained by us.
 It does not justify an upstream dependency or CI change.

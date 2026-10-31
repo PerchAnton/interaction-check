@@ -1,5 +1,12 @@
 # Changelog
 
+## Unreleased
+
+- Add a current-source tui-input walkthrough with the same four actions in JSON
+  and an ordinary Rust test, a deliberately wrong expectation, exported replay,
+  and CI verification. Explain Python/Rust responsibilities, rendering limits and
+  maintenance costs; no net advantage over the native test is claimed.
+
 ## 0.1.0a8 / v0.1.0-alpha.8
 
 28 October 2026. Examples and documentation release; runtime behavior is unchanged.
