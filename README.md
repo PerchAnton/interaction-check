@@ -9,6 +9,41 @@ development tool, with no runtime dependencies. Python 3.10+.
 
 **[First example](#try-it-without-an-application)** · **[When to use it](docs/CHOOSING.md)** · **[Install](#install-the-released-command)** · **[Report a failure](docs/REPORTING.md)** · **[Evidence](#evidence-and-trade-offs)**
 
+## A concrete Rust example
+
+On the pinned tui-input API, these actions remove one grapheme:
+
+| Action | Expected state |
+| --- | --- |
+| Create `xé界` (`e` + combining accent) | text `xé界`, codepoint cursor 4 |
+| Left | cursor 3 |
+| Left | cursor 1 |
+| Delete | text `x界`, cursor 1 |
+
+With Python 3.10+ and Rust 1.99.1, run from the current source checkout:
+
+```sh
+python examples/tui-input/verify.py
+```
+
+This runs a [short native Rust test](examples/tui-input/tests/native.rs) and the
+same [JSON actions](examples/tui-input/graphemes.json) through a real Rust adapter.
+Both pass. It then deliberately changes the final expectation and checks the
+first mismatch: **step 4, `state.value: expected 'xé界', got 'x界'`**. The exported
+case reproduces that mismatch. This is not a tui-input bug.
+
+**Python sequences actions and compares results; Rust calls `Input::handle` and
+returns actual text/cursor state.** Python is a development tool, not an application
+runtime requirement. Replay adds an adapter, JSON serialization, process overhead
+and maintenance. Its extra output is a shareable action trace and checked prefix
+within that adapter's contract. A normal Rust test is simpler for this single case;
+**a net benefit over native tests has not been demonstrated for tui-input**.
+
+This checks state, not terminal rendering or real keyboard delivery. Interactive
+examples and native UI tests remain necessary for those behaviors. See the
+[commands, output, dependency costs and limitations](examples/tui-input/README.md).
+The walkthrough is in current source; the published alpha.8 archives are unchanged.
+
 ## Try it without an application
 
 ![A deliberate Cancel defect: the scenario expects Original, the adapter observes Preview, and the runner reports a mismatch at step 3. Three native tests and three replay scenarios pass on the correct model; both detect the defect.](docs/assets/quickstart.svg)

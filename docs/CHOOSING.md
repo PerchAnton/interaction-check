@@ -42,6 +42,13 @@ The two projects are independent:
 
 ## What the feedback changed
 
+The [current-source Rust example](../examples/tui-input/README.md) shows four real
+tui-input actions beside a short native test, including a reproducible first
+mismatch and export. It makes the runner's role visible without asserting extra
+coverage. The rat-salsa maintainer preferred interactive examples for complex
+behavior and declined the extra runner; that decision does not call for another
+integration proposal.
+
 For a real-library walkthrough and expected/observed diagrams, see
 [python-dispatch](../examples/dispatch/README.md). For the precise scope of the terminal
 widget proposal, see [rat-salsa](REAL_API_WALKTHROUGH.md). The pyee native scenario is

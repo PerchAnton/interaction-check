@@ -40,3 +40,13 @@ jobs:
       - run: cargo +1.99.1 build --locked --manifest-path adapters/photocraft/Cargo.toml
       - run: cargo +1.99.1 clippy --locked --manifest-path adapters/photocraft/Cargo.toml --all-targets -- -D warnings
       - run: python3 interaction_check.py scenarios/photocraft/*.json -- adapters/photocraft/target/debug/edit-session-photocraft-probe
+  rust-walkthrough:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - run: rustup toolchain install 1.99.1 --profile minimal --component rustfmt,clippy
+      - run: cargo +1.99.1 fmt --check --manifest-path examples/tui-input/Cargo.toml
+      - run: cargo +1.99.1 clippy --locked --manifest-path examples/tui-input/Cargo.toml --all-targets -- -D warnings
+      - run: rustup default 1.99.1
+      - run: python3 examples/tui-input/verify.py
