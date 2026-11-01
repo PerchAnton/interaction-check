@@ -1,19 +1,19 @@
 # interaction-check
 
-**Beta candidate:** this checkout prepares `0.1.0b1`; it is not published.
-The latest published package remains `0.1.0a8`. See the
-[CLI/report compatibility contract](docs/COMPATIBILITY.md).
+**Published beta:** `0.1.0b1` is available on
+[PyPI](https://pypi.org/project/interaction-check/0.1.0b1/), verified 1 November 2026
+(Europe/Kyiv). Read the [CLI/report compatibility contract](https://github.com/PerchAnton/interaction-check/blob/main/docs/COMPATIBILITY.md).
 
 A small Python command-line tool that replays semantic JSON event sequences against
 an explicitly selected local adapter. Python 3.10+; **zero runtime dependencies**.
-Licensed under MIT OR Apache-2.0. Experimental alpha: formats and CLI may still change.
+Licensed under MIT OR Apache-2.0. Experimental beta; compatibility and upgrade limits are documented above.
 
 ## Installation
 
 Install this published prerelease from PyPI:
 
 ```sh
-python -m pip install 'interaction-check==0.1.0a8'
+python -m pip install 'interaction-check==0.1.0b1'
 ```
 
 An exact version selects this prerelease without opting into all future prereleases.

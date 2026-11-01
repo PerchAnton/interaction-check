@@ -1,8 +1,8 @@
 # interaction-check
 
-**Beta candidate:** this checkout prepares `0.1.0b1`; it is not published.
-The latest published package remains `0.1.0a8`. See the
-[CLI/report compatibility contract](docs/COMPATIBILITY.md).
+**Published beta:** `0.1.0b1` is available on
+[PyPI](https://pypi.org/project/interaction-check/0.1.0b1/), verified 1 November 2026
+(Europe/Kyiv). Read the [CLI/report compatibility contract](https://github.com/PerchAnton/interaction-check/blob/main/docs/COMPATIBILITY.md).
 
 Describe actions such as Open → Type → Cancel in JSON, call your code through a small
 adapter, and compare the returned state with your expectations. A standalone Python
@@ -92,7 +92,19 @@ For terminal widgets, see [five rat-salsa calls and their limits](docs/REAL_API_
 These examples are included in the **0.1.0a8 source archive**; the runner protocol
 is unchanged. The optional renderer runs from source, not as a new CLI flag.
 
-## Release 0.1.0a8 / alpha.8
+## Current prerelease: 0.1.0b1
+
+Published **1 November 2026 (Europe/Kyiv)**. Beta documents the CLI/JSON contract
+and adds report `schema: 1` and a machine-readable `failure_step` for mismatches.
+Scenario schema 1, JSONL protocol 1, native examples and Mermaid output remain.
+
+[PyPI files](https://pypi.org/project/interaction-check/0.1.0b1/) ·
+[GitHub prerelease and checksums](https://github.com/PerchAnton/interaction-check/releases/tag/v0.1.0b1) ·
+[Publication receipt](docs/evidence/release-beta1.json) · [Changes](CHANGELOG.md).
+Both archives match the checked Actions artifacts. A fresh PyPI install passes
+quickstart and dispatch, including deliberate mismatch, export and replay checks.
+
+## Previous publication: 0.1.0a8 / alpha.8
 
 This examples-and-documentation release adds the real-property walkthrough and optional
 Mermaid reports. It keeps Python 3.10+, zero runtime dependencies, schema 1 and protocol 1.
@@ -125,8 +137,8 @@ the source archive includes the complete first example. Application adapters rem
 
 </details>
 
-Trying the alpha? [Report a bug](https://github.com/PerchAnton/interaction-check/issues/new?template=bug_report.yml)
-with your runner and adapter versions, or read the [alpha compatibility policy](docs/RELEASING.md#alpha-compatibility).
+Trying the beta? [Report a bug](https://github.com/PerchAnton/interaction-check/issues/new?template=bug_report.yml)
+with your runner and adapter versions, or read the [beta compatibility policy](docs/COMPATIBILITY.md).
 
 ## Install the released command
 
@@ -134,13 +146,13 @@ Install the exact published prerelease from PyPI in a virtual environment:
 
 ```sh
 python -m venv .venv
-.venv/bin/python -m pip install 'interaction-check==0.1.0a8'
+.venv/bin/python -m pip install 'interaction-check==0.1.0b1'
 .venv/bin/interaction-check --version
 ```
 
 On Windows use `.venv\Scripts\python.exe` and `.venv\Scripts\interaction-check.exe`.
 For a source checkout, use `python -m pip install .` inside your virtual environment.
-The exact pin selects this alpha without opting into all future prereleases. Installation
+The exact pin selects this beta without opting into all future prereleases. Installation
 from PyPI, metadata, all three quickstart scenarios, deliberate failure detection,
 export and replay were checked in a fresh environment. The [previous GitHub release](https://github.com/PerchAnton/interaction-check/releases/tag/v0.1.0-alpha.5)
 remains available. Start with the

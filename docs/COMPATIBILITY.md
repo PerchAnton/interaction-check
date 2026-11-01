@@ -1,7 +1,8 @@
 # Beta CLI and report contract
 
-The checkout prepares **0.1.0b1**, not yet published. The latest published package
-is **0.1.0a8**. Beta consolidates the CLI and JSON contract; it does not establish
+**0.1.0b1** was published on 1 November 2026 (Europe/Kyiv); it remains a prerelease.
+[Publication and clean-install checks](evidence/release-beta1.json).
+Beta consolidates the CLI and JSON contract; it does not establish
 that another runner improves a project's native tests or approve its CI use.
 
 ## Supported interface
@@ -45,7 +46,7 @@ control characters are replaced. Exact formatting and timings are not contractua
 
 ## Migration and scope
 
-Pin the exact prerelease after publication (`interaction-check==0.1.0b1`). Existing
+Pin the exact prerelease (`interaction-check==0.1.0b1`). Existing
 schema-1 scenarios/adapters do not need changes. JSON consumers should handle the
 two additive fields without comparing complete objects or parsing message prose.
 The installed-wheel gate checks reports, trace, JUnit, failure export and replay
