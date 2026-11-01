@@ -1,11 +1,18 @@
-# Releases and alpha compatibility
+# Releases and compatibility
 
-The next candidate is `0.1.0b1`; use the matching tag `v0.1.0b1` only after
-review and green exact-head CI. [The beta contract](COMPATIBILITY.md) describes
-additive report changes and upgrade limits. It is not yet published; the alpha
-history below remains evidence for older versions, not a beta release receipt.
+## Published beta
 
-## Published prerelease
+**[0.1.0b1 on PyPI](https://pypi.org/project/interaction-check/0.1.0b1/)** was published
+on **1 November 2026 (Europe/Kyiv)** through
+[Trusted Publishing](https://github.com/PerchAnton/interaction-check/actions/runs/41309451060).
+The [GitHub prerelease](https://github.com/PerchAnton/interaction-check/releases/tag/v0.1.0b1)
+attaches the exact checked wheel and source archive. Both match PyPI downloads.
+A fresh registry install passes quickstart, dispatch and deliberate mismatch/export/replay
+checks, including report schema and failure_step. [Receipt](evidence/release-beta1.json).
+[The beta contract](COMPATIBILITY.md) describes additive report changes and upgrade limits.
+Do not upload this version again.
+
+## Previous published prerelease: alpha.8
 
 **[0.1.0a8 on PyPI](https://pypi.org/project/interaction-check/0.1.0a8/)** was published
 on **28 October 2026 (Europe/Kyiv)**. The
@@ -36,9 +43,9 @@ compatibility contract beyond this alpha policy.
 
 ## Preparing a future release
 
-Alpha.8 is already published; do not reuse its version or tag. It packages the real-property
-walkthrough and optional Mermaid renderer. Runtime behavior, schema 1 and protocol 1
-are unchanged. For the next candidate, verify the source example as well:
+Beta.1 and earlier alphas are already published; do not reuse their versions or tags.
+Preserve the real-property walkthrough and optional Mermaid renderer. For the next
+candidate, verify the source example as well:
 
 ```sh
 python -m pip install -r examples/dispatch/requirements.txt
@@ -72,7 +79,7 @@ an alpha as the latest stable release.
 
 ## Registry publication
 
-### Published version
+### Earlier publication: alpha.8
 
 `0.1.0a8` / `v0.1.0-alpha.8` is **published on PyPI**. Runtime behavior, CLI options,
 scenario schema 1 and JSONL protocol 1 are unchanged from alpha.7. This release
@@ -126,7 +133,7 @@ After success, verify the [project](https://pypi.org/project/interaction-check/)
 version, license, Python requirement and both archive hashes. In a fresh venv:
 
 ```sh
-python -m pip install --index-url https://pypi.org/simple 'interaction-check==0.1.0a8'
+python -m pip install --index-url https://pypi.org/simple 'interaction-check==0.1.0b1'
 interaction-check --version
 ```
 

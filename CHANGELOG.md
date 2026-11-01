@@ -1,6 +1,10 @@
 # Changelog
 
-## 0.1.0b1 (candidate, not published)
+## 0.1.0b1
+
+Published on 1 November 2026 (Europe/Kyiv) to [PyPI](https://pypi.org/project/interaction-check/0.1.0b1/)
+and as a [GitHub prerelease](https://github.com/PerchAnton/interaction-check/releases/tag/v0.1.0b1).
+[Archive hashes and clean-install checks](docs/evidence/release-beta1.json).
 
 - Define the beta CLI/scenario/JSONL and report boundary, separate from internal Python helpers and prototype adapters.
 - Add `schema: 1` to JSON reports and `failure_step` only for state mismatches; compact reports no longer require parsing error prose to locate the mismatch. Existing scenario/protocol versions are unchanged.

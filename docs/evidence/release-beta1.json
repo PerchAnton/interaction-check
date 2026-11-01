@@ -1,0 +1,61 @@
+{
+  "checked_at": "2026-11-01T15:18:35.626565+02:00",
+  "version": "0.1.0b1",
+  "commit": "e53fd2c77d45dc6b57dded7c089c64c78e00c24f",
+  "tag": "v0.1.0b1",
+  "registry": {
+    "version": "0.1.0b1",
+    "requires_python": ">=3.10",
+    "requires_dist": null,
+    "files": [
+      {
+        "name": "interaction_check-0.1.0b1-py3-none-any.whl",
+        "sha256": "c6d4ed2e14dd289052e4c8d73f7c757437425335659638eb615bfa5957e9d220",
+        "url": "https://files.pythonhosted.org/packages/1b/7d/0cdabddc58182247911c866f6f70abaa44959513f2f87de1629df27b3e1d/interaction_check-0.1.0b1-py3-none-any.whl",
+        "workflow_match": true
+      },
+      {
+        "name": "interaction_check-0.1.0b1.tar.gz",
+        "sha256": "a84f4d4a018c87296f534904d35c36c7a4bd92071d460ffd791f4cdc23e6fde4",
+        "url": "https://files.pythonhosted.org/packages/3c/c0/a88931e2cfd810ecaa4101524f3111515453f0271bdb96789599f8624a3d/interaction_check-0.1.0b1.tar.gz",
+        "workflow_match": true
+      }
+    ]
+  },
+  "github_release": "https://github.com/PerchAnton/interaction-check/releases/tag/v0.1.0b1",
+  "prerelease": true,
+  "workflow": {
+    "url": "https://github.com/PerchAnton/interaction-check/actions/runs/41309451060",
+    "conclusion": "success",
+    "head_sha": "e53fd2c77d45dc6b57dded7c089c64c78e00c24f"
+  },
+  "github_assets": [
+    {
+      "name": "interaction_check-0.1.0b1-py3-none-any.whl",
+      "sha256": "c6d4ed2e14dd289052e4c8d73f7c757437425335659638eb615bfa5957e9d220",
+      "bytes": 13376,
+      "url": "https://github.com/PerchAnton/interaction-check/releases/download/v0.1.0b1/interaction_check-0.1.0b1-py3-none-any.whl"
+    },
+    {
+      "name": "interaction_check-0.1.0b1.tar.gz",
+      "sha256": "a84f4d4a018c87296f534904d35c36c7a4bd92071d460ffd791f4cdc23e6fde4",
+      "bytes": 62736,
+      "url": "https://github.com/PerchAnton/interaction-check/releases/download/v0.1.0b1/interaction_check-0.1.0b1.tar.gz"
+    },
+    {
+      "name": "SHA256SUMS",
+      "sha256": "0eb4773db1d025b510a944c8a17624438bc60d90157b84256488109ad8dd0576",
+      "bytes": 208,
+      "url": "https://github.com/PerchAnton/interaction-check/releases/download/v0.1.0b1/SHA256SUMS"
+    }
+  ],
+  "installed_checks": {
+    "python": "3.14.10",
+    "source": "PyPI exact version in a fresh venv outside checkout",
+    "quickstart": "native 3/3, replay 3/3 (12 steps); deliberate defect and exported-prefix rerun detected",
+    "dispatch": "5 steps pass; deliberate mismatch at step 2 and exported-prefix rerun fail as expected",
+    "report": "schema=1, version=0.1.0b1, failure_step=2 for deliberate mismatch",
+    "result": "passed"
+  },
+  "limitations": "These checks validate the published package and documented examples, not external adoption or consumer source-policy approval. Release archives and tags remain immutable; this receipt is recorded after publication."
+}
