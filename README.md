@@ -13,6 +13,13 @@ development tool, with no runtime dependencies. Python 3.10+.
 
 **[First example](#try-it-without-an-application)** · **[When to use it](docs/CHOOSING.md)** · **[Install](#install-the-released-command)** · **[Report a failure](docs/REPORTING.md)** · **[Evidence](#evidence-and-trade-offs)**
 
+**Try a failing case with Python alone.** From the beta source checkout, run
+`python3 examples/quickstart/verify.py`. Open a title, type `Preview`, then
+cancel. In the deliberately broken copy step 3 reports
+`state.saved: expected 'Original', got 'Preview'`. The verifier replays that
+failure and finishes with `Verified`. The native test catches it too.
+Does a teammate need a shareable case? [Try a two-person reproduction](docs/CHOOSING.md#try-a-handoff).
+
 ## A concrete Rust example
 
 On the pinned tui-input API, these actions remove one grapheme:
@@ -46,7 +53,7 @@ within that adapter's contract. A normal Rust test is simpler for this single ca
 This checks state, not terminal rendering or real keyboard delivery. Interactive
 examples and native UI tests remain necessary for those behaviors. See the
 [commands, output, dependency costs and limitations](examples/tui-input/README.md).
-The walkthrough is in current source; the published alpha.8 archives are unchanged.
+The walkthrough and adapter are in the [beta source tree](https://github.com/PerchAnton/interaction-check/tree/v0.1.0b1/examples/tui-input). The wheel supplies the runner.
 
 ## Try it without an application
 
@@ -194,6 +201,10 @@ consumer-owned adapters also exercise the real PhotoCraft and PdfCraft dialogs.
 </details>
 
 ## A useful outcome can be one native test
+
+pyee contributor [MbappeWU's merged test](https://github.com/jfhbrook/pyee/pull/228)
+covers a reentrant one-shot listener in pyee's own suite. It uses the native test
+framework and adds no interaction-check dependency.
 
 <details>
 <summary>Pyee: one native candidate catches a deliberate mutation missed by the original suite</summary>

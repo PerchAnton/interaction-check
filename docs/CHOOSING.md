@@ -19,6 +19,16 @@ The [first example](../examples/quickstart/README.md) puts native tests beside r
 Both catch its deliberate Cancel defect. Native assertions are simpler there; JSON
 does not establish extra coverage, shorter total code or faster tests.
 
+## Try a handoff
+
+Choose one real bug with a deterministic adapter. Give a teammate the checked
+JSON case, the adapter revision, and a single replay command. Ask them to name
+the first failing action and its expected and observed values before discussing
+the bug. Record whether they reproduced it unaided, the setup they needed, and
+whether the ordinary native test was already enough to explain it. A second
+checkout of the same revision is sufficient for this trial.
+[Export and rerun a case](../README.md#export-a-failure-and-keep-a-native-test).
+
 ## What adopting replay costs
 
 You maintain the adapter, selected state projection, scenario expectations, runtime
