@@ -1,5 +1,10 @@
 # Releases and alpha compatibility
 
+The next candidate is `0.1.0b1`; use the matching tag `v0.1.0b1` only after
+review and green exact-head CI. [The beta contract](COMPATIBILITY.md) describes
+additive report changes and upgrade limits. It is not yet published; the alpha
+history below remains evidence for older versions, not a beta release receipt.
+
 ## Published prerelease
 
 **[0.1.0a8 on PyPI](https://pypi.org/project/interaction-check/0.1.0a8/)** was published

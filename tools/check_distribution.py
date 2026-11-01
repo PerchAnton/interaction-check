@@ -6,6 +6,7 @@ import subprocess
 import sys
 import tempfile
 import venv
+import xml.etree.ElementTree as ET
 
 
 def run(*command, cwd, expected=0):
@@ -53,8 +54,18 @@ for line in sys.stdin:
             {"event": {"n": 4}, "expect": {"n": 4}},
         ]}
         (root / "scenario.json").write_text(json.dumps(scenario), encoding="utf-8")
-        run(str(cli), "--failure-dir", "failures", "scenario.json", "--", str(python),
+        run(str(cli), "--failure-dir", "failures", "--report", "report.json", "--trace",
+            "--junit", "report.xml", "scenario.json", "--", str(python),
             str(adapter), cwd=root, expected=1)
+        report = json.loads((root / "report.json").read_text(encoding="utf-8"))
+        assert report["schema"] == 1 and report["version"] == metadata["version"]
+        result, = report["results"]
+        assert result["passed"] is False and result["failure_step"] == 2
+        assert result["source"] == "scenario.json" and result["name"] == "installed CLI"
+        assert [entry["step"] for entry in result["trace"]] == [1, 2]
+        assert result["trace"][1]["expect"] == {"n": 3}
+        assert result["trace"][1]["actual"] == {"n": 2}
+        assert ET.parse(root / "report.xml").getroot().get("failures") == "1"
         prefix = json.loads((root / "failures/0001.json").read_text(encoding="utf-8"))
         if prefix["steps"] != scenario["steps"][:2]:
             raise RuntimeError("Installed CLI exported the wrong prefix")
@@ -64,8 +75,13 @@ for line in sys.stdin:
             raise RuntimeError("Export did not reproduce the state mismatch")
         scenario["steps"][1]["expect"]["n"] = 2
         (root / "scenario.json").write_text(json.dumps(scenario), encoding="utf-8")
-        run(str(cli), "scenario.json", "--", str(python), str(adapter), cwd=root)
-        print(f"Installed {metadata['version']}: version, metadata, PASS, export and replay verified")
+        run(str(cli), "--report", "report.json", "--junit", "report.xml", "scenario.json",
+            "--", str(python), str(adapter), cwd=root)
+        result, = json.loads((root / "report.json").read_text(encoding="utf-8"))["results"]
+        assert result["passed"] is True and result["steps"] == 3
+        assert "failure_step" not in result and "trace" not in result
+        assert ET.parse(root / "report.xml").getroot().get("failures") == "0"
+        print(f"Installed {metadata['version']}: metadata, JSON/JUnit contract, PASS, export and replay verified")
 
 
 if __name__ == "__main__":

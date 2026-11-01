@@ -1,6 +1,11 @@
 # Changelog
 
-## Unreleased
+## 0.1.0b1 (candidate, not published)
+
+- Define the beta CLI/scenario/JSONL and report boundary, separate from internal Python helpers and prototype adapters.
+- Add `schema: 1` to JSON reports and `failure_step` only for state mismatches; compact reports no longer require parsing error prose to locate the mismatch. Existing scenario/protocol versions are unchanged.
+- Verify JSON/JUnit fields, checked trace and failure export from the installed wheel.
+
 
 - Add a current-source tui-input walkthrough with the same four actions in JSON
   and an ordinary Rust test, a deliberately wrong expectation, exported replay,

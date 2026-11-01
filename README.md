@@ -1,5 +1,9 @@
 # interaction-check
 
+**Beta candidate:** this checkout prepares `0.1.0b1`; it is not published.
+The latest published package remains `0.1.0a8`. See the
+[CLI/report compatibility contract](docs/COMPATIBILITY.md).
+
 Describe actions such as Open → Type → Cancel in JSON, call your code through a small
 adapter, and compare the returned state with your expectations. A standalone Python
 development tool, with no runtime dependencies. Python 3.10+.

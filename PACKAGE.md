@@ -1,5 +1,9 @@
 # interaction-check
 
+**Beta candidate:** this checkout prepares `0.1.0b1`; it is not published.
+The latest published package remains `0.1.0a8`. See the
+[CLI/report compatibility contract](docs/COMPATIBILITY.md).
+
 A small Python command-line tool that replays semantic JSON event sequences against
 an explicitly selected local adapter. Python 3.10+; **zero runtime dependencies**.
 Licensed under MIT OR Apache-2.0. Experimental alpha: formats and CLI may still change.
