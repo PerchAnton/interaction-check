@@ -16,7 +16,7 @@ import tempfile
 import time
 import xml.etree.ElementTree as ET
 
-VERSION = "0.1.0a8"
+VERSION = "0.1.0b1"
 LIMIT = 1024 * 1024
 MAX_DEPTH = 64
 
@@ -327,6 +327,8 @@ def main(argv=None):
                 result["stderr"] = error.stderr
             if isinstance(error, CheckError) and error.trace is not None:
                 result["trace"] = error.trace
+            if isinstance(error, CheckError) and error.failure_step is not None:
+                result["failure_step"] = error.failure_step
             if (args.failure_dir is not None and isinstance(error, CheckError)
                     and error.failure_step is not None):
                 destination = args.failure_dir / f"{index:04d}.json"
@@ -347,7 +349,7 @@ def main(argv=None):
                 print("  Scenario: " + result["failure_scenario"])
     report_failed = False
     for destination, render in [
-        (args.report, lambda: json.dumps({"version": VERSION, "results": results},
+        (args.report, lambda: json.dumps({"schema": 1, "version": VERSION, "results": results},
                                         ensure_ascii=False, indent=2) + "\n"),
         (args.junit, lambda: junit_report(results)),
     ]:

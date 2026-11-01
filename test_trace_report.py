@@ -79,11 +79,37 @@ class TraceTests(unittest.TestCase):
             with contextlib.redirect_stdout(io.StringIO()):
                 code = main(["--trace", "--report", str(report), "--junit", str(junit),
                              str(bad), str(good), "--", *self.command()])
-            results = json.loads(report.read_text(encoding="utf-8"))["results"]
+            document = json.loads(report.read_text(encoding="utf-8"))
+            self.assertEqual(document["schema"], 1)
+            results = document["results"]
             self.assertEqual(code, 1)
             self.assertEqual([r["passed"] for r in results], [False, True])
+            self.assertEqual(results[0]["failure_step"], 2)
+            self.assertNotIn("failure_step", results[1])
             self.assertEqual([len(r["trace"]) for r in results], [2, 3])
             self.assertIn("Step 2", junit.read_text(encoding="utf-8"))
+
+    def test_compact_report_has_mismatch_index_but_protocol_failure_does_not(self):
+        with tempfile.TemporaryDirectory() as folder:
+            root = Path(folder)
+            scenario, report = root / "case.json", root / "report.json"
+            value = case()
+            value["steps"][1]["expect"]["text"] = "wrong"
+            scenario.write_text(json.dumps(value), encoding="utf-8")
+            invalid_protocol = ECHO.replace('"protocol": 1, "id"', '"protocol": True, "id"')
+            for adapter, expected_step in [(ECHO, 2), (invalid_protocol, None),
+                                           (ECHO + "raise SystemExit(7)", None)]:
+                with self.subTest(adapter=adapter), contextlib.redirect_stdout(io.StringIO()):
+                    self.assertEqual(main(["--report", str(report), str(scenario),
+                                           "--", *self.command(adapter)]), 1)
+                    document = json.loads(report.read_text(encoding="utf-8"))
+                    self.assertEqual(document["schema"], 1)
+                    result = document["results"][0]
+                    self.assertNotIn("trace", result)
+                    if expected_step is None:
+                        self.assertNotIn("failure_step", result)
+                    else:
+                        self.assertEqual(result["failure_step"], expected_step)
 
     def test_cli_trace_requires_json_report(self):
         diagnostic = io.StringIO()

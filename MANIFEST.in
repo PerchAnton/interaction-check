@@ -10,3 +10,4 @@ include docs/REAL_API_WALKTHROUGH.md docs/evidence/dispatch.json
 include examples/tui-input/README.md examples/tui-input/Cargo.toml examples/tui-input/Cargo.lock examples/tui-input/graphemes.json examples/tui-input/verify.py
 recursive-include examples/tui-input/src *.rs
 recursive-include examples/tui-input/tests *.rs
+include docs/COMPATIBILITY.md
