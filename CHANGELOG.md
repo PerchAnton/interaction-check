@@ -1,5 +1,13 @@
 # Changelog
 
+## Unreleased
+
+- Keep CLI results and reports when scenario names, mismatches or export paths
+  contain characters the console cannot encode. Only console text is escaped;
+  JSON, JUnit and exported expectations retain their original Unicode.
+- Decode the quickstart adapter's JSONL input as UTF-8 instead of the console's
+  encoding. Add ASCII, Windows-1252 and UTF-8 regressions.
+
 ## 0.1.0b1
 
 Published on 1 November 2026 (Europe/Kyiv) to [PyPI](https://pypi.org/project/interaction-check/0.1.0b1/)

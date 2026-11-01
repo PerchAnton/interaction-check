@@ -46,6 +46,9 @@ discards the draft. In the deliberate broken copy, the returned `saved` field is
 `Preview`, so the comparison fails. The runner is not recording clicks or generating
 expectations, and this adapter is a small teaching fixture, not a generic editor API.
 
+The adapter reads UTF-8 protocol bytes explicitly. Titles containing accented
+characters, Cyrillic or emoji do not depend on the console's encoding.
+
 Run the correct Cancel case by itself:
 
 ```sh

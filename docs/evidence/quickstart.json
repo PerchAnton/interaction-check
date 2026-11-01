@@ -48,10 +48,10 @@
   },
   "source_hash_format": "SHA-256 of UTF-8 text with LF line endings",
   "source_files": {
-    "interaction_check.py": "8caa54e166fbf116d80a7e8e6013c830e15d231803d381cf43c99799be178751",
+    "interaction_check.py": "85a4283b496388a2dbec940d7dff0bab192779b3bdc56712c01a35f7fc384315",
     "examples/quickstart/verify.py": "095587e81236d34a44b9046d9b2f03e304bf58cdac519d903af749ffe0ce25a4",
     "examples/quickstart/editor.py": "0fcb587a689a94c012c8723631b1884aaf0433967d92fab5bc0785218a73acd8",
-    "examples/quickstart/adapter.py": "8964e160f85c7f0c19151d5d285b3fa658cb85514e2273bdf86f10dfa5b38818",
+    "examples/quickstart/adapter.py": "5c165d2e3952b421d5ef423c2ba681103bf4ae771b11a966ad4436e09d084e4a",
     "examples/quickstart/native_tests.py": "772b23b7b03ce86665a0ad1622091533641ccd87e4ccd62e5daa562e20a33195",
     "examples/quickstart/scenarios/01-cancel.json": "4bd6e2fef4c3e9baaa881c0f2f5b348fd19e151a0e07bfa2b8c3d1ffdd02c22d",
     "examples/quickstart/scenarios/02-save.json": "72b9d44980be39e37db9eefd8e802222fc7d1fa8f4f11e34346ced7c74947bc7",

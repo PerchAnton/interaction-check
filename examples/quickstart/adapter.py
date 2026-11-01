@@ -7,8 +7,9 @@ from editor import Editor
 
 def main():
     editor = Editor()
-    for line in sys.stdin:
-        request = json.loads(line)
+    # Protocol bytes are UTF-8, independently of the user's console encoding.
+    for line in sys.stdin.buffer:
+        request = json.loads(line.decode("utf-8"))
         if (type(request.get("protocol")) is not int or request["protocol"] != 1
                 or type(request.get("id")) is not int):
             raise ValueError("expected protocol 1 and an integer id")
