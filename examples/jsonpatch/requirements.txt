@@ -1,0 +1,3 @@
+interaction-check==0.1.0b1
+jsonpatch==1.39
+jsonpointer==3.5

@@ -92,6 +92,9 @@ checked prefix, which must be rerun; it does not automatically minimize a failur
 
 ## Read a real API trace
 
+The [JSON Patch example](examples/jsonpatch/README.md) shows what happens to a
+document when a patch fails in copy mode and in-place mode.
+
 Current source includes **[property writes and callbacks](examples/dispatch/README.md)**,
 [expected/observed Mermaid diagrams](examples/dispatch/trace.md), a
 [deliberate first mismatch](examples/dispatch/mismatch.md), and ordinary native tests.
