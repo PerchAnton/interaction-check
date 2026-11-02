@@ -72,7 +72,7 @@
   "jsonpatch": {
     "repository": "stefankoegl/python-json-patch",
     "package": "jsonpatch",
-    "version": "1.37"
+    "version": "1.39"
   },
   "dictdiffer": {
     "repository": "inveniosoftware/dictdiffer",

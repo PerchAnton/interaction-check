@@ -51,7 +51,7 @@ under Linux, Windows and macOS.
 | [ReactiveX/RxPY](https://github.com/ReactiveX/RxPY) | 6.1.0 | [rxpy](consumers/rx_streams.py) | 3 / 14 |
 | [pytransitions/transitions](https://github.com/pytransitions/transitions) | 0.9.3 | [transitions](consumers/transitions_machine.py) | 3 / 14 |
 | [fgmacedo/python-statemachine](https://github.com/fgmacedo/python-statemachine) | 3.2.2 | [python-statemachine](consumers/state_machine.py) | 3 / 14 |
-| [stefankoegl/python-json-patch](https://github.com/stefankoegl/python-json-patch) | 1.37 | [jsonpatch](consumers/json_patches.py) | 3 / 9 |
+| [stefankoegl/python-json-patch](https://github.com/stefankoegl/python-json-patch) | 1.39 | [jsonpatch](consumers/json_patches.py) | 3 / 9 |
 | [inveniosoftware/dictdiffer](https://github.com/inveniosoftware/dictdiffer) | 0.10.0 | [dictdiffer](consumers/dictionary_diffs.py) | 3 / 12 |
 | [qlustered/deepdiff](https://github.com/qlustered/deepdiff) | 9.1.0 | [deepdiff](consumers/deep_diffs.py) | 3 / 12 |
 | [mahmoud/glom](https://github.com/mahmoud/glom) | 25.12.0 | [glom](consumers/glom_paths.py) | 3 / 12 |
