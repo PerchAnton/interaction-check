@@ -275,6 +275,15 @@ def junit_report(results):
     return '<?xml version="1.0" encoding="utf-8"?>\n' + ET.tostring(suite, encoding="unicode") + "\n"
 
 
+def console(message, *, file=None):
+    """Escape only characters the console cannot encode; reports retain Unicode."""
+    stream = sys.stdout if file is None else file
+    encoding = getattr(stream, "encoding", None)
+    if encoding is not None:
+        message = message.encode(encoding, errors="backslashreplace").decode(encoding)
+    print(message, file=stream)
+
+
 def main(argv=None):
     argv = list(sys.argv[1:] if argv is None else argv)
     parser = argparse.ArgumentParser(description=__doc__)
@@ -338,15 +347,15 @@ def main(argv=None):
                     result["failure_scenario"] = str(destination)
                 except (OSError, UnicodeError) as export_error:
                     result["export_error"] = str(export_error)
-                    print(f"ERROR writing failure scenario {destination}: {export_error}",
-                          file=sys.stderr)
+                    console(f"ERROR writing failure scenario {destination}: {export_error}",
+                            file=sys.stderr)
         result["source"] = str(path)
         results.append(result)
-        print(("PASS " if result["passed"] else "FAIL ") + result["name"])
+        console(("PASS " if result["passed"] else "FAIL ") + result["name"])
         if not result["passed"]:
-            print("  " + result["error"])
+            console("  " + result["error"])
             if result.get("failure_scenario"):
-                print("  Scenario: " + result["failure_scenario"])
+                console("  Scenario: " + result["failure_scenario"])
     report_failed = False
     for destination, render in [
         (args.report, lambda: json.dumps({"schema": 1, "version": VERSION, "results": results},
@@ -357,7 +366,7 @@ def main(argv=None):
             try:
                 write_report(destination, render())
             except (OSError, UnicodeError) as error:
-                print(f"ERROR writing report {destination}: {error}", file=sys.stderr)
+                console(f"ERROR writing report {destination}: {error}", file=sys.stderr)
                 report_failed = True
     return 0 if not report_failed and all(result["passed"] for result in results) else 1
 

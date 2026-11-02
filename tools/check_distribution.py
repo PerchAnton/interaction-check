@@ -81,6 +81,17 @@ for line in sys.stdin:
         assert result["passed"] is True and result["steps"] == 3
         assert "failure_step" not in result and "trace" not in result
         assert ET.parse(root / "report.xml").getroot().get("failures") == "0"
+        scenario["name"] = "Unicode title: \u0423\u043a\u0440\u0430\u0457\u043d\u0430"
+        (root / "scenario.json").write_text(json.dumps(scenario), encoding="utf-8")
+        unicode_run = subprocess.run(
+            [str(cli), "--report", "unicode.json", "scenario.json", "--",
+             str(python), str(adapter)], cwd=root, capture_output=True, timeout=30,
+            env=dict(os.environ, PYTHONIOENCODING="ascii", PYTHONUTF8="0"), check=False,
+        )
+        assert unicode_run.returncode == 0, unicode_run.stderr
+        assert b"Traceback" not in unicode_run.stderr
+        result, = json.loads((root / "unicode.json").read_text(encoding="utf-8"))["results"]
+        assert result["passed"] is True and result["name"] == scenario["name"]
         print(f"Installed {metadata['version']}: metadata, JSON/JUnit contract, PASS, export and replay verified")
 
 

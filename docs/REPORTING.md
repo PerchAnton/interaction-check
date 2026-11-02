@@ -19,6 +19,12 @@ collapsed section. For a CI problem, link the failing run and relevant step firs
 A separate successful diagnostic run does not make the original required check pass.
 Do not substitute a long list of unrelated passing tests for the requested evidence.
 
+The CLI respects the console's encoding. Characters it cannot display are written
+as backslash escapes, so a Unicode scenario name or mismatch does not interrupt a
+run or prevent reports from being saved. JSON, JUnit and exported scenarios retain
+the original Unicode text. Adapter JSONL input and output use UTF-8 regardless of
+the console's encoding; Python adapters should decode input bytes explicitly.
+
 Before sending an exported case, rerun it with the same adapter revision and retain
 the original expectations. Say whether the failure is an assertion, an adapter crash,
 a timeout or a protocol error. Only an assertion mismatch has a checked failing state.
