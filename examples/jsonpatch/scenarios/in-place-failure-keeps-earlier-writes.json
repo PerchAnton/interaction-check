@@ -1,0 +1,66 @@
+{
+  "schema": 1,
+  "name": "jsonpatch / in-place-failure-keeps-earlier-writes",
+  "steps": [
+    {
+      "event": {
+        "op": "new",
+        "data": {
+          "count": 1,
+          "label": "A"
+        }
+      },
+      "expect": {
+        "document": {
+          "count": 1,
+          "label": "A"
+        }
+      }
+    },
+    {
+      "event": {
+        "op": "apply",
+        "patch": [
+          {
+            "op": "replace",
+            "path": "/count",
+            "value": 2
+          },
+          {
+            "op": "test",
+            "path": "/label",
+            "value": "wrong"
+          }
+        ],
+        "in_place": true
+      },
+      "expect": {
+        "document": {
+          "count": 2,
+          "label": "A"
+        },
+        "error": "JsonPatchTestFailed"
+      }
+    },
+    {
+      "event": {
+        "op": "apply",
+        "patch": [
+          {
+            "op": "replace",
+            "path": "/label",
+            "value": "B"
+          }
+        ],
+        "in_place": true
+      },
+      "expect": {
+        "document": {
+          "count": 2,
+          "label": "B"
+        },
+        "error": null
+      }
+    }
+  ]
+}
