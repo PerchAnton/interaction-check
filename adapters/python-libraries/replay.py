@@ -13,6 +13,7 @@ ROOT = pathlib.Path(__file__).resolve().parents[2]
 def main():
     """Run each native consumer in fresh processes and preserve failures."""
     parser = argparse.ArgumentParser()
+    parser.add_argument("consumer", nargs="?", choices=MODULES, help="run one adapter")
     parser.add_argument("--reports", type=pathlib.Path)
     args = parser.parse_args()
     if args.reports:
@@ -20,13 +21,14 @@ def main():
         args.reports = args.reports.resolve()
         args.reports.mkdir(parents=True, exist_ok=True)
     status = 0
-    for consumer in MODULES:
-        command = [
-            sys.executable,
-            str(ROOT / "interaction_check.py"),
-            "--timeout",
-            "30",
-        ]
+    consumers = [args.consumer] if args.consumer else MODULES
+    for consumer in consumers:
+        if consumer == "jsonpatch":
+            # Isolated mode keeps the checkout's interaction_check.py off sys.path.
+            runner = ["-I", "-m", "interaction_check"]
+        else:
+            runner = [str(ROOT / "interaction_check.py")]
+        command = [sys.executable, *runner, "--timeout", "30"]
         if args.reports:
             command += ["--report", str(args.reports / f"{consumer}.json")]
         scenarios = sorted((ROOT / "scenarios" / consumer).glob("*.json"))

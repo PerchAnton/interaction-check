@@ -1,10 +1,12 @@
 """Invalid trace arguments must not partially mutate native fixtures."""
 
+import json
 import os
 import sys
 import tempfile
 import types
 import unittest
+from importlib.metadata import version
 from pathlib import Path
 from unittest.mock import patch
 
@@ -135,6 +137,16 @@ class InputBoundaryTests(unittest.TestCase):
                     self.assertTrue(expected.parent.is_dir())
             finally:
                 os.chdir(previous)
+
+    def test_jsonpatch_uses_the_installed_runner(self):
+        with tempfile.TemporaryDirectory() as directory:
+            with patch.object(
+                sys, "argv", ["replay.py", "jsonpatch", "--reports", directory]
+            ):
+                self.assertEqual(replay.main(), 0)
+            path = Path(directory) / "jsonpatch.json"
+            report = json.loads(path.read_text(encoding="utf-8"))
+            self.assertEqual(report["version"], version("interaction-check"))
 
 
 if __name__ == "__main__":

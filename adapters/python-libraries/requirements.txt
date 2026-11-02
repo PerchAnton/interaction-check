@@ -7,6 +7,7 @@ deepdiff==9.1.0
 dictdiffer==0.10.0
 face==26.0.1
 glom==25.12.0
+interaction-check==0.1.0b1
 jsonpatch==1.39
 jsonpointer==3.5
 jsonschema==4.26.0

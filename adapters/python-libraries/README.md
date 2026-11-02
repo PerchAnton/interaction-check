@@ -16,21 +16,24 @@ python adapters/python-libraries/replay.py
 python -m unittest discover -s adapters/python-libraries/tests -v
 ```
 
-One consumer, for example:
+To replay just the three jsonpatch scenarios and save `reports/jsonpatch.json`:
 
 ```sh
-python interaction_check.py scenarios/jsonpatch/*.json -- python adapters/python-libraries/main.py jsonpatch
+python adapters/python-libraries/replay.py jsonpatch --reports reports
 ```
 
-`replay.py` expands filenames without shell globs, so the full command also works
+`replay.py` runs jsonpatch 1.39 with the published `interaction-check==0.1.0b1`
+from the active Python environment. The JSON report records the runner version.
+The script expands filenames without shell globs, so the same command also works
 on Windows. Each scenario starts a fresh adapter process. Expectations stay in
 the runner; adapters receive only events and return observed native state.
 
 ## Coverage
 
-**60 hand-authored scenarios / 223 steps**, plus nine adapter boundary tests.
+**60 hand-authored scenarios / 223 steps**, nine adapter boundary tests and a
+check that jsonpatch uses the installed runner.
 Versions of direct and transitive dependencies are pinned in `requirements.txt`;
-`requirements.in` lists the twenty direct consumers. Full native upstream test
+`requirements.in` lists the twenty direct consumers and the jsonpatch runner. Full native upstream test
 suites are not part of these examples. CI replays this collection on Python 3.12
 under Linux, Windows and macOS.
 
