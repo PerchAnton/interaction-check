@@ -1,6 +1,10 @@
 # Releases and compatibility
 
-## Published beta
+## Current beta 0.1.0b2
+
+Published on 5 November 2026 (Europe/Kyiv). [Package on PyPI](https://pypi.org/project/interaction-check/0.1.0b2/) · [GitHub prerelease and checksums](https://github.com/PerchAnton/interaction-check/releases/tag/v0.1.0b2) · [Installation checks](evidence/release-beta2.json).
+
+## Previous beta.1
 
 **[0.1.0b1 on PyPI](https://pypi.org/project/interaction-check/0.1.0b1/)** was published
 on **1 November 2026 (Europe/Kyiv)** through
@@ -43,7 +47,7 @@ compatibility contract beyond this alpha policy.
 
 ## Preparing a future release
 
-Beta.1 and earlier alphas are already published; do not reuse their versions or tags.
+Beta.2 and earlier prereleases each have their own immutable version and tag.
 Preserve the real-property walkthrough and optional Mermaid renderer. For the next
 candidate, verify the source example as well:
 

@@ -102,6 +102,8 @@ is unchanged. The optional renderer runs from source, not as a new CLI flag.
 
 ## Current prerelease 0.1.0b2
 
+[Published files and clean-install checks](docs/evidence/release-beta2.json).
+
 This release preserves the original Unicode in JSON, JUnit and replay exports when the terminal cannot print a character. The wheel tests cover successful and mismatching runs under ASCII, Windows-1252 and UTF-8.
 
 [Release notes](docs/releases/0.1.0b2.md) · [PyPI files](https://pypi.org/project/interaction-check/0.1.0b2/) · [GitHub prerelease](https://github.com/PerchAnton/interaction-check/releases/tag/v0.1.0b2).

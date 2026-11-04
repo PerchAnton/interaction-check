@@ -1,0 +1,32 @@
+{
+  "package": "interaction-check",
+  "version": "0.1.0b2",
+  "releaseCommit": "ae2c52298c41f11a0bb71629eb7d9ccc864274cc",
+  "verifiedAt": "2026-11-05T01:21:58.430618+02:00",
+  "registry": "PyPI",
+  "registryURL": "https://pypi.org/project/interaction-check/0.1.0b2/",
+  "verifiedAssets": {
+    "interaction_check-0.1.0b2-py3-none-any.whl": {
+      "sha256": "7a273df0257f88d886bca702f9b17604656fc2d9e03e338ff3e0a7bdce4ecb4d",
+      "bytes": 13511
+    },
+    "interaction_check-0.1.0b2.tar.gz": {
+      "sha256": "d057a120a47d2b44c358903f9210f2e5323837c7cd2cec636b4e7c02d078269f",
+      "bytes": 69232
+    }
+  },
+  "checks": {
+    "freshPyPIInstall": true,
+    "unicodeConsoleCases": 6,
+    "encodings": [
+      "ASCII",
+      "Windows-1252",
+      "UTF-8"
+    ],
+    "jsonAndJUnit": true,
+    "jsonpatch": "1.39",
+    "scenarios": 3,
+    "steps": 9
+  },
+  "publishWorkflow": "https://github.com/PerchAnton/interaction-check/actions/runs/41932229618"
+}
