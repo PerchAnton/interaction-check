@@ -1,6 +1,6 @@
 # Changelog
 
-## 0.1.0b2 — unreleased
+## 0.1.0b2
 
 - Keep CLI results and reports when scenario names, mismatches or export paths
   contain characters the console cannot encode. Only console text is escaped;

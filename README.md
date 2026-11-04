@@ -1,8 +1,6 @@
 # interaction-check
 
-**Published beta:** `0.1.0b1` is available on
-[PyPI](https://pypi.org/project/interaction-check/0.1.0b1/), verified 1 November 2026
-(Europe/Kyiv). Read the [CLI/report compatibility contract](https://github.com/PerchAnton/interaction-check/blob/main/docs/COMPATIBILITY.md).
+Beta **0.1.0b2** writes Unicode JSON reports even when the terminal uses ASCII or Windows-1252. See the [CLI/report compatibility contract](https://github.com/PerchAnton/interaction-check/blob/main/docs/COMPATIBILITY.md).
 
 Describe actions such as Open → Type → Cancel in JSON, call your code through a small
 adapter, and compare the returned state with your expectations. A standalone Python
@@ -53,7 +51,7 @@ within that adapter's contract. A normal Rust test is simpler for this single ca
 This checks state, not terminal rendering or real keyboard delivery. Interactive
 examples and native UI tests remain necessary for those behaviors. See the
 [commands, output, dependency costs and limitations](examples/tui-input/README.md).
-The walkthrough and adapter are in the [beta source tree](https://github.com/PerchAnton/interaction-check/tree/v0.1.0b1/examples/tui-input). The wheel supplies the runner.
+The walkthrough and adapter are in the [beta source tree](https://github.com/PerchAnton/interaction-check/tree/v0.1.0b2/examples/tui-input). The wheel supplies the runner.
 
 ## Try it without an application
 
@@ -102,7 +100,13 @@ For terminal widgets, see [five rat-salsa calls and their limits](docs/REAL_API_
 These examples are included in the **0.1.0a8 source archive**; the runner protocol
 is unchanged. The optional renderer runs from source, not as a new CLI flag.
 
-## Current prerelease: 0.1.0b1
+## Current prerelease 0.1.0b2
+
+This release preserves the original Unicode in JSON, JUnit and replay exports when the terminal cannot print a character. The wheel tests cover successful and mismatching runs under ASCII, Windows-1252 and UTF-8.
+
+[Release notes](docs/releases/0.1.0b2.md) · [PyPI files](https://pypi.org/project/interaction-check/0.1.0b2/) · [GitHub prerelease](https://github.com/PerchAnton/interaction-check/releases/tag/v0.1.0b2).
+
+## Previous publication 0.1.0b1
 
 Published **1 November 2026 (Europe/Kyiv)**. Beta documents the CLI/JSON contract
 and adds report `schema: 1` and a machine-readable `failure_step` for mismatches.
@@ -156,7 +160,7 @@ Install the exact published prerelease from PyPI in a virtual environment:
 
 ```sh
 python -m venv .venv
-.venv/bin/python -m pip install 'interaction-check==0.1.0b1'
+.venv/bin/python -m pip install 'interaction-check==0.1.0b2'
 .venv/bin/interaction-check --version
 ```
 
