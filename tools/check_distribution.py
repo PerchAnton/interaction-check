@@ -83,15 +83,30 @@ for line in sys.stdin:
         assert ET.parse(root / "report.xml").getroot().get("failures") == "0"
         scenario["name"] = "Unicode title: \u0423\u043a\u0440\u0430\u0457\u043d\u0430"
         (root / "scenario.json").write_text(json.dumps(scenario), encoding="utf-8")
-        unicode_run = subprocess.run(
-            [str(cli), "--report", "unicode.json", "scenario.json", "--",
-             str(python), str(adapter)], cwd=root, capture_output=True, timeout=30,
-            env=dict(os.environ, PYTHONIOENCODING="ascii", PYTHONUTF8="0"), check=False,
-        )
-        assert unicode_run.returncode == 0, unicode_run.stderr
-        assert b"Traceback" not in unicode_run.stderr
-        result, = json.loads((root / "unicode.json").read_text(encoding="utf-8"))["results"]
-        assert result["passed"] is True and result["name"] == scenario["name"]
+        for encoding in ("ascii", "cp1252", "utf-8"):
+            for mismatch in (False, True):
+                # A distinct report path prevents a stale successful report from
+                # hiding a crash before the JSON writer runs.
+                report_name = f"unicode-{encoding}-{mismatch}.json"
+                scenario["steps"][1]["expect"]["n"] = 3 if mismatch else 2
+                (root / "scenario.json").write_text(
+                    json.dumps(scenario, ensure_ascii=False), encoding="utf-8")
+                unicode_run = subprocess.run(
+                    [str(cli), "--report", report_name, "scenario.json", "--",
+                     str(python), str(adapter)], cwd=root, capture_output=True, timeout=30,
+                    env=dict(os.environ, PYTHONIOENCODING=encoding, PYTHONUTF8="0"), check=False,
+                )
+                assert unicode_run.returncode == int(mismatch), unicode_run.stderr
+                assert b"Traceback" not in unicode_run.stderr
+                document = json.loads((root / report_name).read_text(encoding="utf-8"))
+                assert document["version"] == metadata["version"]
+                result, = document["results"]
+                assert result["passed"] is (not mismatch) and result["name"] == scenario["name"]
+                if mismatch:
+                    assert result["failure_step"] == 2
+                else:
+                    escaped = scenario["name"].encode(encoding, errors="backslashreplace")
+                    assert b"PASS " + escaped in unicode_run.stdout
         print(f"Installed {metadata['version']}: metadata, JSON/JUnit contract, PASS, export and replay verified")
 
 

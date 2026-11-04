@@ -20,3 +20,20 @@ report. Run the native input check with
 The scenarios and input handling were extracted from [PR #14](https://github.com/PerchAnton/interaction-check/pull/14).
 The [upstream tutorial](https://github.com/stefankoegl/python-json-patch/blob/v1.39/doc/tutorial.rst)
 shows how to exercise copy and in-place behavior directly with the Python API.
+
+## Check an unpublished candidate separately
+
+The published baseline above remains pinned to 0.1.0b1. To test the current
+wheel without replacing that baseline environment:
+
+```sh
+python -m pip install build
+python -m build --wheel
+python examples/jsonpatch/check_candidate.py dist --expected-version 0.1.0b2 --report candidate-jsonpatch.json
+```
+
+Use a distribution directory containing exactly one wheel. The candidate check
+creates and removes its own virtual environment, installs that wheel together with
+jsonpatch 1.39 / jsonpointer 3.5, runs the native input tests and all three scenarios
+in isolated mode, and checks the report's runner version. It does not import the
+source checkout. CI runs both the published and candidate checks on three systems.
