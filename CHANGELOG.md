@@ -1,12 +1,15 @@
 # Changelog
 
-## Unreleased
+## 0.1.0b2 — unreleased
 
 - Keep CLI results and reports when scenario names, mismatches or export paths
   contain characters the console cannot encode. Only console text is escaped;
   JSON, JUnit and exported expectations retain their original Unicode.
 - Decode the quickstart adapter's JSONL input as UTF-8 instead of the console's
   encoding. Add ASCII, Windows-1252 and UTF-8 regressions.
+
+- Verify the installed wheel with Unicode titles under ASCII, Windows-1252 and UTF-8, for successful and mismatching scenarios; JSON evidence is required in every case.
+- Keep the jsonpatch 1.39 published-beta baseline and add a separate isolated candidate-wheel check for all three scenarios / nine steps.
 
 ## 0.1.0b1
 
