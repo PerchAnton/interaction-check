@@ -1,0 +1,16 @@
+{
+  "version": "0.1.0",
+  "registry": "PyPI",
+  "python": "3.12.14",
+  "registry_install": "PASS",
+  "quickstart": "3 native, 3 replay /12 steps, deliberate failure/export/replay PASS",
+  "distribution_gate": "PASS: isolated installed wheel, JSON/JUnit, trace, failure export and Unicode encodings",
+  "files": {
+    "interaction_check-0.1.0.tar.gz": "85e81d837c22b25f4b0248383d2da2959b88520a29894a7851be0e266fa02be1",
+    "interaction_check-0.1.0-py3-none-any.whl": "730f5c6b76a45ce065e60fd4734b90375d8855c24ae4a755143b3dbe9b808ce5"
+  },
+  "hosted_archives_match_registry": true,
+  "commit": "8093c122570a5dff4af6b1695edab3cfb6c0e314",
+  "publishWorkflow": "https://github.com/PerchAnton/interaction-check/actions/runs/42407975114",
+  "githubRelease": "https://github.com/PerchAnton/interaction-check/releases/tag/v0.1.0"
+}

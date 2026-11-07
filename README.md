@@ -100,10 +100,13 @@ For terminal widgets, see [five rat-salsa calls and their limits](docs/REAL_API_
 These examples are included in the **0.1.0a8 source archive**; the runner protocol
 is unchanged. The optional renderer runs from source, not as a new CLI flag.
 
-## First non-prerelease candidate 0.1.0
+## Current release 0.1.0
 
 The CLI, scenario schema 1, JSONL protocol 1 and report schema 1 are unchanged
-from beta.2. Publication is pending registry verification. See the
+from beta.2. Published on PyPI and GitHub on 7 November 2026; the registry
+archives match CI and passed clean-install checks.
+[Release files](https://github.com/PerchAnton/interaction-check/releases/tag/v0.1.0) ·
+[Publication evidence](docs/evidence/release-0.1.0.json). See the
 [0.1.x compatibility and support policy](docs/COMPATIBILITY.md).
 
 ## Previous prerelease 0.1.0b2
@@ -176,7 +179,7 @@ On Windows use `.venv\Scripts\python.exe` and `.venv\Scripts\interaction-check.e
 For a source checkout, use `python -m pip install .` inside your virtual environment.
 Use an exact pin and run the adapter regressions before upgrading. Previous prereleases were checked for registry installation, metadata, all three
 quickstart scenarios, deliberate failure detection, export and replay. The 0.1.0
-registry checks are recorded after publication. The [previous GitHub release](https://github.com/PerchAnton/interaction-check/releases/tag/v0.1.0-alpha.5)
+registry checks are recorded in [the release receipt](docs/evidence/release-0.1.0.json). The [previous GitHub release](https://github.com/PerchAnton/interaction-check/releases/tag/v0.1.0-alpha.5)
 remains available. Start with the
 [dependency-free first example](examples/quickstart/README.md), then the
 [XState walkthrough](examples/xstate/README.md) or [native-test guide](docs/NATIVE_TESTS.md).
