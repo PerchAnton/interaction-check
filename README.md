@@ -1,6 +1,6 @@
 # interaction-check
 
-Beta **0.1.0b2** writes Unicode JSON reports even when the terminal uses ASCII or Windows-1252. See the [CLI/report compatibility contract](https://github.com/PerchAnton/interaction-check/blob/main/docs/COMPATIBILITY.md).
+Version **0.1.0** preserves Unicode JSON reports even when the terminal uses ASCII or Windows-1252. See the [CLI/report compatibility contract](https://github.com/PerchAnton/interaction-check/blob/main/docs/COMPATIBILITY.md).
 
 Describe actions such as Open → Type → Cancel in JSON, call your code through a small
 adapter, and compare the returned state with your expectations. A standalone Python
@@ -11,7 +11,7 @@ development tool, with no runtime dependencies. Python 3.10+.
 
 **[First example](#try-it-without-an-application)** · **[When to use it](docs/CHOOSING.md)** · **[Install](#install-the-released-command)** · **[Report a failure](docs/REPORTING.md)** · **[Evidence](#evidence-and-trade-offs)**
 
-**Try a failing case with Python alone.** From the beta source checkout, run
+**Try a failing case with Python alone.** From the source checkout, run
 `python3 examples/quickstart/verify.py`. Open a title, type `Preview`, then
 cancel. In the deliberately broken copy step 3 reports
 `state.saved: expected 'Original', got 'Preview'`. The verifier replays that
@@ -100,7 +100,13 @@ For terminal widgets, see [five rat-salsa calls and their limits](docs/REAL_API_
 These examples are included in the **0.1.0a8 source archive**; the runner protocol
 is unchanged. The optional renderer runs from source, not as a new CLI flag.
 
-## Current prerelease 0.1.0b2
+## First non-prerelease candidate 0.1.0
+
+The CLI, scenario schema 1, JSONL protocol 1 and report schema 1 are unchanged
+from beta.2. Publication is pending registry verification. See the
+[0.1.x compatibility and support policy](docs/COMPATIBILITY.md).
+
+## Previous prerelease 0.1.0b2
 
 [Published files and clean-install checks](docs/evidence/release-beta2.json).
 
@@ -153,24 +159,24 @@ the source archive includes the complete first example. Application adapters rem
 
 </details>
 
-Trying the beta? [Report a bug](https://github.com/PerchAnton/interaction-check/issues/new?template=bug_report.yml)
-with your runner and adapter versions, or read the [beta compatibility policy](docs/COMPATIBILITY.md).
+Trying the runner? [Report a bug](https://github.com/PerchAnton/interaction-check/issues/new?template=bug_report.yml)
+with your runner and adapter versions, or read the [0.1.x compatibility policy](docs/COMPATIBILITY.md).
 
 ## Install the released command
 
-Install the exact published prerelease from PyPI in a virtual environment:
+Install the exact release from PyPI in a virtual environment:
 
 ```sh
 python -m venv .venv
-.venv/bin/python -m pip install 'interaction-check==0.1.0b2'
+.venv/bin/python -m pip install 'interaction-check==0.1.0'
 .venv/bin/interaction-check --version
 ```
 
 On Windows use `.venv\Scripts\python.exe` and `.venv\Scripts\interaction-check.exe`.
 For a source checkout, use `python -m pip install .` inside your virtual environment.
-The exact pin selects this beta without opting into all future prereleases. Installation
-from PyPI, metadata, all three quickstart scenarios, deliberate failure detection,
-export and replay were checked in a fresh environment. The [previous GitHub release](https://github.com/PerchAnton/interaction-check/releases/tag/v0.1.0-alpha.5)
+Use an exact pin and run the adapter regressions before upgrading. Previous prereleases were checked for registry installation, metadata, all three
+quickstart scenarios, deliberate failure detection, export and replay. The 0.1.0
+registry checks are recorded after publication. The [previous GitHub release](https://github.com/PerchAnton/interaction-check/releases/tag/v0.1.0-alpha.5)
 remains available. Start with the
 [dependency-free first example](examples/quickstart/README.md), then the
 [XState walkthrough](examples/xstate/README.md) or [native-test guide](docs/NATIVE_TESTS.md).

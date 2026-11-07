@@ -1,20 +1,20 @@
 # interaction-check
 
-Beta **0.1.0b2** writes Unicode JSON reports even when the terminal uses ASCII or Windows-1252. See the [CLI/report compatibility contract](https://github.com/PerchAnton/interaction-check/blob/main/docs/COMPATIBILITY.md).
+Version **0.1.0** preserves Unicode JSON reports even when the terminal uses ASCII or Windows-1252. See the [CLI/report compatibility contract](https://github.com/PerchAnton/interaction-check/blob/main/docs/COMPATIBILITY.md).
 
 A small Python command-line tool that replays semantic JSON event sequences against
 an explicitly selected local adapter. Python 3.10+; **zero runtime dependencies**.
-Licensed under MIT OR Apache-2.0. Experimental beta; compatibility and upgrade limits are documented above.
+Licensed under MIT OR Apache-2.0. The 0.1.x compatibility and upgrade limits are documented above.
 
 ## Installation
 
-Install this published prerelease from PyPI:
+Install the release from PyPI:
 
 ```sh
-python -m pip install 'interaction-check==0.1.0b2'
+python -m pip install 'interaction-check==0.1.0'
 ```
 
-An exact version selects this prerelease without opting into all future prereleases.
+Use an exact version and run your adapter regressions before upgrading.
 Use a virtual environment. On Windows, the same command works with `py -m pip`.
 For other distribution options and current publication status, see the
 [project README](https://github.com/PerchAnton/interaction-check#install-the-released-command).

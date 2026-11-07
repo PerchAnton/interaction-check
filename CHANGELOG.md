@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.1.0
+
+- First non-prerelease, with an explicit 0.1.x patch compatibility and best-effort
+  support policy. Published status is recorded after registry verification.
+- Runner behavior is unchanged from beta.2 apart from the package version in
+  reports. Scenario schema 1, JSONL protocol 1 and report schema 1 are preserved.
+
 ## 0.1.0b2
 
 - Keep CLI results and reports when scenario names, mismatches or export paths

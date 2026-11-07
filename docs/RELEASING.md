@@ -1,6 +1,19 @@
 # Releases and compatibility
 
-## Current beta 0.1.0b2
+## Non-prerelease 0.1.0 candidate
+
+The owner authorized this release on 7 November 2026. Require the reviewed
+commit to pass the full CI matrix, merge it into main and wait for main CI.
+Then create the matching v0.1.0 tag and use the existing Trusted Publishing
+workflow with publish=true. Keep environment approval and archive checks intact.
+Do not mark the release published until registry hashes and a clean installation
+are verified. Publish the GitHub release with prerelease=false and attach the
+exact registry artifacts and checksums. Earlier prereleases stay unchanged.
+
+The [0.1.x contract](COMPATIBILITY.md) defines patch compatibility and support;
+this release does not claim the separate future 1.0 commitment.
+
+## Previous beta 0.1.0b2
 
 Published on 5 November 2026 (Europe/Kyiv). [Package on PyPI](https://pypi.org/project/interaction-check/0.1.0b2/) · [GitHub prerelease and checksums](https://github.com/PerchAnton/interaction-check/releases/tag/v0.1.0b2) · [Installation checks](evidence/release-beta2.json).
 
