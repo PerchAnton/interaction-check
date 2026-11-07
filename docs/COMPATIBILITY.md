@@ -1,9 +1,20 @@
-# Beta CLI and report contract
+# CLI and report compatibility for 0.1.x
 
-**0.1.0b1** was published on 1 November 2026 (Europe/Kyiv); it remains a prerelease.
-[Publication and clean-install checks](evidence/release-beta1.json).
-Beta consolidates the CLI and JSON contract; it does not establish
-that another runner improves a project's native tests or approve its CI use.
+## Maintenance and versioning
+
+This is the first non-prerelease **0.1.0**. Patch releases in 0.1.x preserve the
+supported interface below, defaults, error behavior and minimum platform version.
+Incompatible changes require a new minor (0.2.0 or later), migration notes and
+regression tests; they must not be hidden in a patch. A future 1.0 additionally
+requires a separate long-term compatibility review. Internal implementation details
+and the exclusions below are not added to the supported API.
+
+Maintenance is best effort by PerchAnton. Fixes target the latest 0.1.x patch;
+older patches and prereleases are not separate support branches. There is no SLA,
+fixed maintenance end date, independent security audit or guaranteed response time.
+Document deprecations and alternatives before removal. Report reproducible defects
+with exact versions and synthetic inputs, without secrets or personal documents.
+Application owners remain responsible for native regression tests and rollout.
 
 ## Supported interface
 
@@ -46,17 +57,18 @@ control characters are replaced. Exact formatting and timings are not contractua
 
 ## Migration and scope
 
-Pin the exact prerelease (`interaction-check==0.1.0b1`). Existing
+Pin the exact release (`interaction-check==0.1.0`). Existing
 schema-1 scenarios/adapters do not need changes. JSON consumers should handle the
 two additive fields without comparing complete objects or parsing message prose.
 The installed-wheel gate checks reports, trace, JUnit, failure export and replay
 outside the checkout. Native/JSON examples, Mermaid output and the existing
 Python/OS matrix remain required. Internal Python helpers and prototype adapters
-are outside this beta contract; they are not automatically accepted upstream.
+are outside this contract; they are not automatically accepted upstream.
 
-Preserve this contract throughout beta; an unavoidable incompatible correction
-needs a new prerelease, migration notes and a regression. Never reuse a published
-version. A 1.0 support/deprecation commitment remains a separate review.
+The runner behavior is unchanged from 0.1.0b2 apart from its reported package
+version. Existing schema-1 scenarios and protocol-1 adapters need no migration.
+Keep report schema 1 separate from the package version. Never reuse a published
+version.
 
 ## CI approval
 
@@ -64,4 +76,4 @@ We can provide an exact runner/archive hash, license/dependency inventory, nativ
 test comparison, adapter scope and a patch for the project's shared workflow.
 Maintainers decide whether to execute the runner, which source and workflow to
 use, and the job's permissions/maintenance owner. Keep existing source gates;
-neither a pinned commit, green tests nor beta status grants this approval.
+neither a pinned commit, green tests nor release status grants this approval.

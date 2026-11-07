@@ -29,7 +29,7 @@ wheel without replacing that baseline environment:
 ```sh
 python -m pip install build
 python -m build --wheel
-python examples/jsonpatch/check_candidate.py dist --expected-version 0.1.0b2 --report candidate-jsonpatch.json
+python examples/jsonpatch/check_candidate.py dist --expected-version 0.1.0 --report candidate-jsonpatch.json
 ```
 
 Use a distribution directory containing exactly one wheel. The candidate check

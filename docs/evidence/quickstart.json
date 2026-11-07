@@ -1,7 +1,7 @@
 {
-  "recorded_date": "2026-11-04",
+  "recorded_date": "2026-11-07",
   "scope": "Original teaching model; no upstream bug or adoption claim",
-  "python": "3.14.3",
+  "python": "3.12.14",
   "system": "Darwin",
   "runner": "source checkout",
   "native": {
@@ -48,7 +48,7 @@
   },
   "source_hash_format": "SHA-256 of UTF-8 text with LF line endings",
   "source_files": {
-    "interaction_check.py": "90f84dbf4abc0b8de4fad240f202c9d2045947161b08d04fcdc3b5101ff0db75",
+    "interaction_check.py": "7558fd70aa66a036713622955942262107e9c27dfa93e636f242b76d5cd9d406",
     "examples/quickstart/verify.py": "095587e81236d34a44b9046d9b2f03e304bf58cdac519d903af749ffe0ce25a4",
     "examples/quickstart/editor.py": "0fcb587a689a94c012c8723631b1884aaf0433967d92fab5bc0785218a73acd8",
     "examples/quickstart/adapter.py": "5c165d2e3952b421d5ef423c2ba681103bf4ae771b11a966ad4436e09d084e4a",
