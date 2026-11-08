@@ -1,10 +1,9 @@
 # interaction-check
 
-**1.0.0 is being prepared and is not published yet.** Install 0.1.0 until the
-[release checklist](https://github.com/PerchAnton/interaction-check/blob/main/docs/RELEASE-1.0.md)
-is complete. The candidate preserves behavior and defines the 1.x compatibility commitment.
+**1.0.0 is published.** The [1.x compatibility contract](docs/COMPATIBILITY.md)
+covers the supported API and behavior. [Verified publication and installation](docs/evidence/release-1.0.0.json).
 
-Version **0.1.0** preserves Unicode JSON reports even when the terminal uses ASCII or Windows-1252. See the [CLI/report compatibility contract](https://github.com/PerchAnton/interaction-check/blob/main/docs/COMPATIBILITY.md).
+Version **1.0.0** preserves Unicode JSON reports even when the terminal uses ASCII or Windows-1252. See the [CLI/report compatibility contract](https://github.com/PerchAnton/interaction-check/blob/main/docs/COMPATIBILITY.md).
 
 Describe actions such as Open → Type → Cancel in JSON, call your code through a small
 adapter, and compare the returned state with your expectations. A standalone Python
@@ -104,14 +103,14 @@ For terminal widgets, see [five rat-salsa calls and their limits](docs/REAL_API_
 These examples are included in the **0.1.0a8 source archive**; the runner protocol
 is unchanged. The optional renderer runs from source, not as a new CLI flag.
 
-## Current release 0.1.0
+## Current release 1.0.0
 
-The CLI, scenario schema 1, JSONL protocol 1 and report schema 1 are unchanged
-from beta.2. Published on PyPI and GitHub on 7 November 2026; the registry
-archives match CI and passed clean-install checks.
-[Release files](https://github.com/PerchAnton/interaction-check/releases/tag/v0.1.0) ·
-[Publication evidence](docs/evidence/release-0.1.0.json). See the
-[0.1.x compatibility and support policy](docs/COMPATIBILITY.md).
+Published on 8 November 2026 to [PyPI](https://pypi.org/project/interaction-check/1.0.0/).
+Wheel and source bytes match the publication workflow. A clean registry installation,
+the installed-wheel contract gate and three jsonpatch 1.39 scenarios passed.
+[Release files](https://github.com/PerchAnton/interaction-check/releases/tag/v1.0.0) ·
+[Publication evidence](docs/evidence/release-1.0.0.json) ·
+[1.x compatibility contract](docs/COMPATIBILITY.md).
 
 ## Previous prerelease 0.1.0b2
 
@@ -167,7 +166,7 @@ the source archive includes the complete first example. Application adapters rem
 </details>
 
 Trying the runner? [Report a bug](https://github.com/PerchAnton/interaction-check/issues/new?template=bug_report.yml)
-with your runner and adapter versions, or read the [1.x candidate compatibility policy](docs/COMPATIBILITY.md).
+with your runner and adapter versions, or read the [1.x compatibility policy](docs/COMPATIBILITY.md).
 
 ## Install the released command
 
@@ -175,15 +174,15 @@ Install the exact release from PyPI in a virtual environment:
 
 ```sh
 python -m venv .venv
-.venv/bin/python -m pip install 'interaction-check==0.1.0'
+.venv/bin/python -m pip install 'interaction-check==1.0.0'
 .venv/bin/interaction-check --version
 ```
 
 On Windows use `.venv\Scripts\python.exe` and `.venv\Scripts\interaction-check.exe`.
 For a source checkout, use `python -m pip install .` inside your virtual environment.
 Use an exact pin and run the adapter regressions before upgrading. Previous prereleases were checked for registry installation, metadata, all three
-quickstart scenarios, deliberate failure detection, export and replay. The 0.1.0
-registry checks are recorded in [the release receipt](docs/evidence/release-0.1.0.json). The [previous GitHub release](https://github.com/PerchAnton/interaction-check/releases/tag/v0.1.0-alpha.5)
+quickstart scenarios, deliberate failure detection, export and replay. The 1.0.0
+registry checks are recorded in [the release receipt](docs/evidence/release-1.0.0.json). The [previous GitHub release](https://github.com/PerchAnton/interaction-check/releases/tag/v0.1.0-alpha.5)
 remains available. Start with the
 [dependency-free first example](examples/quickstart/README.md), then the
 [XState walkthrough](examples/xstate/README.md) or [native-test guide](docs/NATIVE_TESTS.md).
@@ -215,7 +214,7 @@ Replay is **2.46× slower** in this small pilot. Its value is a shareable trace 
 failure report. Native tests also need only XState; fewer total lines of code or faster
 application behavior are not demonstrated.
 
-**Experimental, 0.1.0a7 (alpha 7), available on PyPI.** Maintained by [PerchAnton](https://github.com/PerchAnton).
+**Stable 1.0.0, available on PyPI.** Maintained by [PerchAnton](https://github.com/PerchAnton).
 Upstream adoption is not claimed. The first adapter uses a fixed
 edit-session revision and commits through PhotoCraft's actual `Session` command API;
 consumer-owned adapters also exercise the real PhotoCraft and PdfCraft dialogs.

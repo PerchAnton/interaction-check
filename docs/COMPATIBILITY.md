@@ -15,8 +15,7 @@ are breaking when they invalidate supported consumers. Internal details and the
 exclusions below are outside this contract. A bug fix restores documented behavior;
 it must include a reproducer and describe any changed result.
 
-Maintenance by PerchAnton is best effort, targeting the latest 1.x release once
-published. Older releases remain downloadable, not separate maintenance branches.
+Maintenance by PerchAnton is best effort, targeting the latest 1.x release. Older releases remain downloadable, not separate maintenance branches.
 There is no SLA, fixed support term or independent security audit. Report defects
 with exact versions and synthetic inputs, without secrets or personal documents.
 Application owners remain responsible for native regression tests and rollout.
@@ -62,7 +61,7 @@ control characters are replaced. Exact formatting and timings are not contractua
 
 ## Migration and scope
 
-After publication, upgrade with `interaction-check==1.0.0`. Existing
+Upgrade with `interaction-check==1.0.0`. Existing
 schema-1 scenarios/adapters do not need changes. JSON consumers should handle the
 two additive fields without comparing complete objects or parsing message prose.
 The installed-wheel gate checks reports, trace, JUnit, failure export and replay

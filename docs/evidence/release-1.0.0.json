@@ -1,0 +1,39 @@
+{
+  "package": "interaction-check",
+  "version": "1.0.0",
+  "published": true,
+  "checkedAt": "2026-11-08T08:17:00.798792+00:00",
+  "sourceCommit": "5f195044fd8ede71fa8dc15ef4c7ff465debe77b",
+  "mergeCommit": "53988009ef9a3bd29e1b9a2a9a70a0b13649f186",
+  "mainCi": [
+    42461264315,
+    42461264177
+  ],
+  "publicationWorkflow": 42461572075,
+  "files": [
+    {
+      "filename": "interaction_check-1.0.0-py3-none-any.whl",
+      "bytes": 13511,
+      "sha256": "3b5076832bbcbb0eae9129296ec8392ee19a98f1900e2eee1e8edc9e5f894a96",
+      "url": "https://files.pythonhosted.org/packages/80/83/b53ba8ba3e583ada7eaa1d34b35bed61fe4dc93f793384217375557a0de7/interaction_check-1.0.0-py3-none-any.whl"
+    },
+    {
+      "filename": "interaction_check-1.0.0.tar.gz",
+      "bytes": 72130,
+      "sha256": "2539094bebf83fa9b6d6f75bde70aa93dd48e6631ec9dd576335dfce1ff26f55",
+      "url": "https://files.pythonhosted.org/packages/6e/d8/03c3a2439d47fe5634762eba9907672a446b2220c30dfde12b2412a10f97/interaction_check-1.0.0.tar.gz"
+    }
+  ],
+  "registryMatchesWorkflow": true,
+  "cleanConsumer": {
+    "python": "3.14",
+    "installedFrom": "https://pypi.org/simple",
+    "version": "1.0.0",
+    "installedWheelGate": "PASS: metadata, JSON/JUnit, Unicode console encodings, mismatch, export, replay",
+    "jsonpatch": "1.39",
+    "jsonpatchScenarios": 3,
+    "jsonpatchSteps": 9,
+    "nativeInputTests": 1
+  },
+  "githubRelease": "https://github.com/PerchAnton/interaction-check/releases/tag/v1.0.0"
+}

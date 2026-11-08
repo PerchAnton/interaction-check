@@ -1,9 +1,10 @@
 # Changelog
 
-## 1.0.0 — unreleased
+## 1.0.0 — 2026-11-08
 
 - Commit to the documented API, supported platforms and compatible upgrades throughout 1.x.
-- Preserve runtime behavior from 0.1.0 and check existing consumers before publication.
+- Preserve runtime behavior from 0.1.0; verify the published archive and a clean registry consumer.
+- Publication checks are recorded in docs/evidence/release-1.0.0.json.
 - Correct release instructions to require a new matching tag; retain older artifacts.
 
 ## 0.1.0
