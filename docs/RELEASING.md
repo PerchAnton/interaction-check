@@ -51,7 +51,7 @@ The source archive passes native dispatch and Mermaid report checks.
 [Hashes, installation and workflow evidence](evidence/release-alpha8.json).
 Earlier registry versions, tags and release assets remain unchanged.
 
-## Alpha compatibility
+## Historical alpha compatibility
 
 - Alpha releases are experimental. CLI options, Python APIs, report fields and
   adapter behavior may change between releases, even within `0.1.0`.
@@ -100,8 +100,9 @@ exports a failing prefix, and replays it. CI repeats this on supported platforms
 
 Before publishing, use an empty `dist/`, review its contents, require green CI on the
 exact release commit, and record SHA-256 checksums for both assets. Attach only the
-verified artifacts and changelog to a prerelease pointing to that commit. Do not mark
-an alpha as the latest stable release.
+verified artifacts and changelog to a release pointing to that commit. Use
+`prerelease=false` for 1.0.0; alpha/beta/rc versions remain prereleases. Preserve
+existing releases and their assets.
 
 ## Registry publication
 
