@@ -1,21 +1,19 @@
 # interaction-check
 
-**1.0.0 is being prepared and is not published yet.** Install 0.1.0 until the
-[release checklist](https://github.com/PerchAnton/interaction-check/blob/main/docs/RELEASE-1.0.md)
-is complete. The candidate preserves behavior and defines the 1.x compatibility commitment.
+This page documents **1.0.0**. Check the [release status](https://github.com/PerchAnton/interaction-check/releases/tag/v1.0.0) for registry availability.
 
-Version **0.1.0** preserves Unicode JSON reports even when the terminal uses ASCII or Windows-1252. See the [CLI/report compatibility contract](https://github.com/PerchAnton/interaction-check/blob/main/docs/COMPATIBILITY.md).
+Version **1.0.0** preserves Unicode JSON reports even when the terminal uses ASCII or Windows-1252. See the [CLI/report compatibility contract](https://github.com/PerchAnton/interaction-check/blob/main/docs/COMPATIBILITY.md).
 
 A small Python command-line tool that replays semantic JSON event sequences against
 an explicitly selected local adapter. Python 3.10+; **zero runtime dependencies**.
-Licensed under MIT OR Apache-2.0. Published 0.1.x guarantees remain on its tag; the candidate policy is linked above.
+Licensed under MIT OR Apache-2.0. The 1.x CLI and report compatibility policy is linked above.
 
 ## Installation
 
 Install the release from PyPI:
 
 ```sh
-python -m pip install 'interaction-check==0.1.0'
+python -m pip install 'interaction-check==1.0.0'
 ```
 
 Use an exact version and run your adapter regressions before upgrading.

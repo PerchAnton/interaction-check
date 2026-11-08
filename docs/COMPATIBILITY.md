@@ -2,8 +2,8 @@
 
 ## Maintenance and versioning
 
-This is the contract for the **unpublished 1.0.0 candidate**. The currently
-published release is 0.1.0; its contract remains available on the v0.1.0 tag.
+This is the compatibility contract for **1.0.0 and the 1.x series**.
+The earlier 0.1.0 contract remains available on the v0.1.0 tag.
 Version 1.0 introduces a compatibility commitment, without changing runtime behavior.
 
 Follow [Semantic Versioning 2.0](https://semver.org/spec/v2.0.0.html): patches fix
