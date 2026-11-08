@@ -1,5 +1,9 @@
 # interaction-check
 
+**1.0.0 is being prepared and is not published yet.** Install 0.1.0 until the
+[release checklist](https://github.com/PerchAnton/interaction-check/blob/main/docs/RELEASE-1.0.md)
+is complete. The candidate preserves behavior and defines the 1.x compatibility commitment.
+
 Version **0.1.0** preserves Unicode JSON reports even when the terminal uses ASCII or Windows-1252. See the [CLI/report compatibility contract](https://github.com/PerchAnton/interaction-check/blob/main/docs/COMPATIBILITY.md).
 
 Describe actions such as Open → Type → Cancel in JSON, call your code through a small
@@ -163,7 +167,7 @@ the source archive includes the complete first example. Application adapters rem
 </details>
 
 Trying the runner? [Report a bug](https://github.com/PerchAnton/interaction-check/issues/new?template=bug_report.yml)
-with your runner and adapter versions, or read the [0.1.x compatibility policy](docs/COMPATIBILITY.md).
+with your runner and adapter versions, or read the [1.x candidate compatibility policy](docs/COMPATIBILITY.md).
 
 ## Install the released command
 

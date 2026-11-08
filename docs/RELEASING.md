@@ -1,5 +1,11 @@
 # Releases and compatibility
 
+## Next candidate: 1.0.0 (not published)
+
+Follow [the 1.0 checklist](RELEASE-1.0.md). Use a **new** tag matching the reviewed
+package version; never reuse v0.1.0. Preparation and CI do not publish a package.
+
+
 ## Current non-prerelease 0.1.0
 
 Published on 7 November 2026 through Trusted Publishing. The registry wheel and
@@ -8,14 +14,13 @@ source archive match CI, and the clean installed-wheel checks passed.
 
 For later releases, require the reviewed
 commit to pass the full CI matrix, merge it into main and wait for main CI.
-Then create the matching v0.1.0 tag and use the existing Trusted Publishing
+Then create a new matching version tag and use the existing Trusted Publishing
 workflow with publish=true. Keep environment approval and archive checks intact.
 Do not mark the release published until registry hashes and a clean installation
 are verified. Publish the GitHub release with prerelease=false and attach the
 exact registry artifacts and checksums. Earlier prereleases stay unchanged.
 
-The [0.1.x contract](COMPATIBILITY.md) defines patch compatibility and support;
-this release does not claim the separate future 1.0 commitment.
+The [published 0.1.x contract](https://github.com/PerchAnton/interaction-check/blob/v0.1.0/docs/COMPATIBILITY.md) remains historical. The [candidate 1.x contract](COMPATIBILITY.md) awaits publication.
 
 ## Previous beta 0.1.0b2
 
@@ -46,7 +51,7 @@ The source archive passes native dispatch and Mermaid report checks.
 [Hashes, installation and workflow evidence](evidence/release-alpha8.json).
 Earlier registry versions, tags and release assets remain unchanged.
 
-## Alpha compatibility
+## Historical alpha compatibility
 
 - Alpha releases are experimental. CLI options, Python APIs, report fields and
   adapter behavior may change between releases, even within `0.1.0`.
@@ -95,8 +100,9 @@ exports a failing prefix, and replays it. CI repeats this on supported platforms
 
 Before publishing, use an empty `dist/`, review its contents, require green CI on the
 exact release commit, and record SHA-256 checksums for both assets. Attach only the
-verified artifacts and changelog to a prerelease pointing to that commit. Do not mark
-an alpha as the latest stable release.
+verified artifacts and changelog to a release pointing to that commit. Use
+`prerelease=false` for 1.0.0; alpha/beta/rc versions remain prereleases. Preserve
+existing releases and their assets.
 
 ## Registry publication
 
@@ -154,7 +160,7 @@ After success, verify the [project](https://pypi.org/project/interaction-check/)
 version, license, Python requirement and both archive hashes. In a fresh venv:
 
 ```sh
-python -m pip install --index-url https://pypi.org/simple 'interaction-check==0.1.0b1'
+python -m pip install --index-url https://pypi.org/simple 'interaction-check==<approved-version>'
 interaction-check --version
 ```
 

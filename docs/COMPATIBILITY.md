@@ -1,18 +1,23 @@
-# CLI and report compatibility for 0.1.x
+# CLI and report compatibility for 1.x
 
 ## Maintenance and versioning
 
-This is the first non-prerelease **0.1.0**. Patch releases in 0.1.x preserve the
-supported interface below, defaults, error behavior and minimum platform version.
-Incompatible changes require a new minor (0.2.0 or later), migration notes and
-regression tests; they must not be hidden in a patch. A future 1.0 additionally
-requires a separate long-term compatibility review. Internal implementation details
-and the exclusions below are not added to the supported API.
+This is the compatibility contract for **1.0.0 and the 1.x series**.
+The earlier 0.1.0 contract remains available on the v0.1.0 tag.
+Version 1.0 introduces a compatibility commitment, without changing runtime behavior.
 
-Maintenance is best effort by PerchAnton. Fixes target the latest 0.1.x patch;
-older patches and prereleases are not separate support branches. There is no SLA,
-fixed maintenance end date, independent security audit or guaranteed response time.
-Document deprecations and alternatives before removal. Report reproducible defects
+Follow [Semantic Versioning 2.0](https://semver.org/spec/v2.0.0.html): patches fix
+bugs while preserving the documented contract; minor releases add compatible
+features or deprecations; incompatible changes require a new major and migration
+notes. Deprecations document a replacement and remain available throughout 1.x.
+Changes to defaults, error semantics, minimum platforms or existing input limits
+are breaking when they invalidate supported consumers. Internal details and the
+exclusions below are outside this contract. A bug fix restores documented behavior;
+it must include a reproducer and describe any changed result.
+
+Maintenance by PerchAnton is best effort, targeting the latest 1.x release once
+published. Older releases remain downloadable, not separate maintenance branches.
+There is no SLA, fixed support term or independent security audit. Report defects
 with exact versions and synthetic inputs, without secrets or personal documents.
 Application owners remain responsible for native regression tests and rollout.
 
@@ -35,7 +40,7 @@ Application owners remain responsible for native regression tests and rollout.
 
 ## JSON report schema 1
 
-`--report` now adds `schema: 1` next to `version` (the package version) and `results`
+`--report` includes `schema: 1` next to `version` (the package version) and `results`
 (ordered one-per-input scenario). This is separate from scenario schema/protocol.
 Readers must accept additional fields and reject unsupported report schema versions.
 Alpha reports lack `schema`; treat those as legacy reports explicitly, not as proof
@@ -57,7 +62,7 @@ control characters are replaced. Exact formatting and timings are not contractua
 
 ## Migration and scope
 
-Pin the exact release (`interaction-check==0.1.0`). Existing
+After publication, upgrade with `interaction-check==1.0.0`. Existing
 schema-1 scenarios/adapters do not need changes. JSON consumers should handle the
 two additive fields without comparing complete objects or parsing message prose.
 The installed-wheel gate checks reports, trace, JUnit, failure export and replay
@@ -65,7 +70,7 @@ outside the checkout. Native/JSON examples, Mermaid output and the existing
 Python/OS matrix remain required. Internal Python helpers and prototype adapters
 are outside this contract; they are not automatically accepted upstream.
 
-The runner behavior is unchanged from 0.1.0b2 apart from its reported package
+The runner behavior is unchanged from 0.1.0 apart from its reported package
 version. Existing schema-1 scenarios and protocol-1 adapters need no migration.
 Keep report schema 1 separate from the package version. Never reuse a published
 version.
@@ -77,3 +82,14 @@ test comparison, adapter scope and a patch for the project's shared workflow.
 Maintainers decide whether to execute the runner, which source and workflow to
 use, and the job's permissions/maintenance owner. Keep existing source gates;
 neither a pinned commit, green tests nor release status grants this approval.
+
+## Version 1 boundaries
+
+The supported entry points are the installed `interaction-check` command and
+`python -m interaction_check`. Importing implementation functions is not a public
+Python library API. Preserve all existing flags, the 5-second default timeout,
+exit-code meanings and schema-1/protocol-1 behavior throughout 1.x. Python 3.10
+remains the minimum. New optional report fields are additive; removing fields,
+changing types/meanings, or no longer accepting schema-1 scenarios/protocol-1
+adapters requires a major. A future schema may be opt-in only if schema 1 remains
+the default. Console prose, timings and XML formatting are not machine interfaces.
