@@ -12,3 +12,4 @@ include examples/tui-input/README.md examples/tui-input/Cargo.toml examples/tui-
 recursive-include examples/tui-input/src *.rs
 recursive-include examples/tui-input/tests *.rs
 include docs/COMPATIBILITY.md
+include docs/RELEASE-1.0.md

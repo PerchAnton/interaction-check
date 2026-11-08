@@ -42,12 +42,40 @@ print(json.dumps({"version": interaction_check.VERSION, "module": interaction_ch
             raise RuntimeError("Imported source checkout instead of installed package")
         if run(str(cli), "--version", cwd=root).strip() != "interaction-check " + metadata["version"]:
             raise RuntimeError("Installed CLI version differs from package metadata")
+        assert run(str(python), "-I", "-m", "interaction_check", "--version", cwd=root).strip() == (
+            "interaction-check " + metadata["version"])
         adapter = root / "echo.py"
         adapter.write_text('''import json, sys
 for line in sys.stdin:
     r = json.loads(line)
     print(json.dumps({"protocol": 1, "id": r["id"], "state": r["event"]}))
 ''', encoding="utf-8")
+        # Fixed consumer inputs, run unchanged against 0.1.0 and the 1.x candidate.
+        # Do not derive expectations from the current matching implementation.
+        contract_cases = [
+            ("recursive subset", {"items": [{"n": 1, "extra": 2}]}, {"items": [{"n": 1.0}]}, True),
+            ("bool is not number", {"n": True}, {"n": 1}, False),
+            ("array order matters", {"n": [1, 2]}, {"n": [2, 1]}, False),
+            ("array length matters", {"n": [1, 2]}, {"n": [1]}, False),
+        ]
+        paths = []
+        for index, (name, actual, expected, _) in enumerate(contract_cases):
+            path = f"contract-{index}.json"
+            (root / path).write_text(json.dumps({"schema": 1, "name": name,
+                "steps": [{"event": actual, "expect": expected}]}), encoding="utf-8")
+            paths.append(path)
+        run(str(cli), "--trace", "--report", "contracts.json", *paths, "--",
+            str(python), str(adapter), cwd=root, expected=1)
+        contract_report = json.loads((root / "contracts.json").read_text(encoding="utf-8"))
+        assert contract_report["schema"] == 1
+        assert len(contract_report["results"]) == len(contract_cases)
+        for result, (name, actual, expected, passed) in zip(contract_report["results"], contract_cases):
+            assert result["name"] == name and result["passed"] is passed
+            assert result["trace"][0]["actual"] == actual
+            assert result["trace"][0]["expect"] == expected
+            if not passed:
+                assert result["failure_step"] == 1
+        run(str(cli), "--timeout", "0", *paths, "--", str(python), str(adapter), cwd=root, expected=2)
         scenario = {"schema": 1, "name": "installed CLI", "steps": [
             {"event": {"n": 1}, "expect": {"n": 1}},
             {"event": {"n": 2}, "expect": {"n": 3}},

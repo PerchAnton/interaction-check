@@ -1,10 +1,14 @@
 # interaction-check
 
+**1.0.0 is being prepared and is not published yet.** Install 0.1.0 until the
+[release checklist](https://github.com/PerchAnton/interaction-check/blob/main/docs/RELEASE-1.0.md)
+is complete. The candidate preserves behavior and defines the 1.x compatibility commitment.
+
 Version **0.1.0** preserves Unicode JSON reports even when the terminal uses ASCII or Windows-1252. See the [CLI/report compatibility contract](https://github.com/PerchAnton/interaction-check/blob/main/docs/COMPATIBILITY.md).
 
 A small Python command-line tool that replays semantic JSON event sequences against
 an explicitly selected local adapter. Python 3.10+; **zero runtime dependencies**.
-Licensed under MIT OR Apache-2.0. The 0.1.x compatibility and upgrade limits are documented above.
+Licensed under MIT OR Apache-2.0. Published 0.1.x guarantees remain on its tag; the candidate policy is linked above.
 
 ## Installation
 

@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.0.0 — unreleased
+
+- Commit to the documented API, supported platforms and compatible upgrades throughout 1.x.
+- Preserve runtime behavior from 0.1.0 and check existing consumers before publication.
+- Correct release instructions to require a new matching tag; retain older artifacts.
+
 ## 0.1.0
 
 - First non-prerelease, with an explicit 0.1.x patch compatibility and best-effort

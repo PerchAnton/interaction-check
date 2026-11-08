@@ -16,7 +16,7 @@ import tempfile
 import time
 import xml.etree.ElementTree as ET
 
-VERSION = "0.1.0"
+VERSION = "1.0.0"
 LIMIT = 1024 * 1024
 MAX_DEPTH = 64
 
