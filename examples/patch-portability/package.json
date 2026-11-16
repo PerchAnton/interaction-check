@@ -1,0 +1,7 @@
+{
+  "name": "patch-portability-example",
+  "private": true,
+  "type": "module",
+  "dependencies": { "immutable-json-patch": "6.0.3", "jsonpatcherproxy": "0.1.0-0" },
+  "scripts": { "test": "node --test native.test.mjs" }
+}

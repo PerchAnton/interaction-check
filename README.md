@@ -434,3 +434,7 @@ Licensed under either the [MIT license](LICENSE-MIT) or the
 [Apache License, Version 2.0](LICENSE-APACHE), at your option.
 Unless explicitly stated otherwise, contributions submitted for inclusion are offered
 under the same dual license.
+
+### JSON Patch across runtimes
+
+[Patch portability](examples/patch-portability/README.md) replays real Python, JavaScript, Go and Rust packages, including observer output and separate native before/after checks for two upstream fixes. Known mismatches remain failed reports. Native tests are enough when a contract does not cross implementations.

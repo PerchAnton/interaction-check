@@ -1,0 +1,140 @@
+{
+  "schema": 1,
+  "name": "move-and-escaped-key",
+  "steps": [
+    {
+      "event": {
+        "op": "new",
+        "data": {
+          "items": [
+            "a",
+            "b",
+            "c"
+          ],
+          "a/b": {
+            "~key": 1
+          }
+        }
+      },
+      "expect": {
+        "document": {
+          "items": [
+            "a",
+            "b",
+            "c"
+          ],
+          "a/b": {
+            "~key": 1
+          }
+        },
+        "error": null
+      }
+    },
+    {
+      "event": {
+        "op": "apply",
+        "patch": [
+          {
+            "op": "move",
+            "from": "/items/0",
+            "path": "/items/2"
+          }
+        ]
+      },
+      "expect": {
+        "document": {
+          "items": [
+            "b",
+            "c",
+            "a"
+          ],
+          "a/b": {
+            "~key": 1
+          }
+        },
+        "error": null
+      }
+    },
+    {
+      "event": {
+        "op": "apply",
+        "patch": [
+          {
+            "op": "replace",
+            "path": "/a~1b/~0key",
+            "value": 2
+          }
+        ]
+      },
+      "expect": {
+        "document": {
+          "items": [
+            "b",
+            "c",
+            "a"
+          ],
+          "a/b": {
+            "~key": 2
+          }
+        },
+        "error": null
+      }
+    },
+    {
+      "event": {
+        "op": "apply",
+        "patch": [
+          {
+            "op": "copy",
+            "from": "/a~1b",
+            "path": "/copy"
+          }
+        ]
+      },
+      "expect": {
+        "document": {
+          "items": [
+            "b",
+            "c",
+            "a"
+          ],
+          "a/b": {
+            "~key": 2
+          },
+          "copy": {
+            "~key": 2
+          }
+        },
+        "error": null
+      }
+    },
+    {
+      "event": {
+        "op": "apply",
+        "patch": [
+          {
+            "op": "replace",
+            "path": "/copy/~0key",
+            "value": 3
+          }
+        ]
+      },
+      "expect": {
+        "document": {
+          "items": [
+            "b",
+            "c",
+            "a"
+          ],
+          "a/b": {
+            "~key": 2
+          },
+          "copy": {
+            "~key": 3
+          }
+        },
+        "error": null
+      }
+    }
+  ]
+}

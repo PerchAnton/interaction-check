@@ -1,0 +1,61 @@
+{
+  "schema": 1,
+  "name": "failed-batch-publication",
+  "steps": [
+    {
+      "event": {
+        "op": "new",
+        "data": {
+          "n": 1
+        }
+      },
+      "expect": {
+        "document": {
+          "n": 1
+        },
+        "error": null
+      }
+    },
+    {
+      "event": {
+        "op": "apply",
+        "patch": [
+          {
+            "op": "replace",
+            "path": "/n",
+            "value": 2
+          },
+          {
+            "op": "test",
+            "path": "/n",
+            "value": 9
+          }
+        ]
+      },
+      "expect": {
+        "document": {
+          "n": 1
+        },
+        "error": "rejected"
+      }
+    },
+    {
+      "event": {
+        "op": "apply",
+        "patch": [
+          {
+            "op": "replace",
+            "path": "/n",
+            "value": 3
+          }
+        ]
+      },
+      "expect": {
+        "document": {
+          "n": 3
+        },
+        "error": null
+      }
+    }
+  ]
+}

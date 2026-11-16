@@ -72,3 +72,42 @@ jobs:
           name: interop-example-evidence
           path: artifacts/interop/
           if-no-files-found: error
+  patch-portability:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        with:
+          python-version: '3.14'
+      - uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444 # v5
+        with:
+          node-version: '24.22.1'
+          package-manager-cache: false
+      - uses: actions/setup-go@924ae3a1cded613372ab5595356fb5720e22ba16 # v6
+        with:
+          go-version: '1.27.4'
+          cache-dependency-path: examples/patch-portability/go.sum
+      - run: rustup toolchain install 1.99.1 --profile minimal --component rustfmt
+      - run: python -m pip install -r examples/patch-portability/requirements.txt
+      - run: npm --prefix examples/patch-portability ci --ignore-scripts --no-audit --no-fund
+      - run: python examples/patch-portability/native_test.py
+      - run: node --test examples/patch-portability/native.test.mjs
+      - run: node examples/patch-portability/producer.mjs && git diff --exit-code -- examples/patch-portability/scenarios/producer.json
+      - run: cargo +1.99.1 test --locked --manifest-path examples/patch-portability/rust/Cargo.toml
+      - run: cargo +1.99.1 build --locked --manifest-path examples/patch-portability/rust/Cargo.toml
+      - run: go -C examples/patch-portability build -o ../../artifacts/patch-go .
+      - name: Fetch exact upstream fixes without changing the published baselines
+        run: |
+          mkdir -p artifacts/jsondiff-fixed
+          curl --fail --location --retry 0 https://api.github.com/repos/bensynapse/jsondiff/tarball/93a94633a7ee0afa1434c29c4e86f1f1b00fb589 -o artifacts/jsondiff-fixed.tgz
+          tar -xzf artifacts/jsondiff-fixed.tgz --strip-components=1 -C artifacts/jsondiff-fixed
+          python -m pip install --no-deps --target artifacts/jsonpath-fixed https://github.com/jg-rp/python-jsonpath/archive/bd91a15094796927cd683c628169c1a8e8b6ddb6.tar.gz
+      - run: python examples/patch-portability/check_fixes.py --fixed-jsondiff artifacts/jsondiff-fixed --output artifacts/patch-portability/fixes
+      - run: python examples/patch-portability/verify.py --output artifacts/patch-portability/reports --go-adapter artifacts/patch-go --rust-adapter examples/patch-portability/rust/target/debug/patch-portability-adapter --fixed-jsonpath artifacts/jsonpath-fixed
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        if: always()
+        with:
+          name: patch-portability-evidence
+          path: artifacts/patch-portability/
+          if-no-files-found: error
