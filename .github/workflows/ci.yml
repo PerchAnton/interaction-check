@@ -103,6 +103,15 @@ jobs:
           curl --fail --location --retry 0 https://api.github.com/repos/bensynapse/jsondiff/tarball/93a94633a7ee0afa1434c29c4e86f1f1b00fb589 -o artifacts/jsondiff-fixed.tgz
           tar -xzf artifacts/jsondiff-fixed.tgz --strip-components=1 -C artifacts/jsondiff-fixed
           python -m pip install --no-deps --target artifacts/jsonpath-fixed https://github.com/jg-rp/python-jsonpath/archive/bd91a15094796927cd683c628169c1a8e8b6ddb6.tar.gz
+      - name: Compare the exact immutable-json-patch inverse fix
+        run: |
+          mkdir -p artifacts/immutable-fixed artifacts/patch-portability
+          curl --fail --location --retry 0 https://api.github.com/repos/bardrop-oss/immutable-json-patch/tarball/d3b9ab0aef94ffb10c78fa0713a0e87bab14696d -o artifacts/immutable-fixed.tgz
+          tar -xzf artifacts/immutable-fixed.tgz --strip-components=1 -C artifacts/immutable-fixed
+          npm --prefix artifacts/immutable-fixed ci --ignore-scripts --no-audit --no-fund
+          npm --prefix artifacts/immutable-fixed run build:esm
+          node examples/patch-portability/inverse_probe.mjs > artifacts/patch-portability/immutable-before.json
+          node examples/patch-portability/inverse_probe.mjs --module artifacts/immutable-fixed/lib/esm/index.js --fixed > artifacts/patch-portability/immutable-after.json
       - run: python examples/patch-portability/check_fixes.py --fixed-jsondiff artifacts/jsondiff-fixed --output artifacts/patch-portability/fixes
       - run: python examples/patch-portability/verify.py --output artifacts/patch-portability/reports --go-adapter artifacts/patch-go --rust-adapter examples/patch-portability/rust/target/debug/patch-portability-adapter --fixed-jsonpath artifacts/jsonpath-fixed
       - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2

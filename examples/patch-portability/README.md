@@ -48,7 +48,7 @@ go -C examples/patch-portability build -o ../../artifacts/patch-go .
 python examples/patch-portability/verify.py --output artifacts/patch-portability/reports --go-adapter artifacts/patch-go --rust-adapter examples/patch-portability/rust/target/debug/patch-portability-adapter
 ```
 
-## Two known upstream differences, kept visible
+## Known upstream differences, kept visible
 
 Published python-jsonpath 2.2.2 accepts `true` as equal to `1` in a `test`.
 `boolean-is-not-number.json` fails at **step 2, `state.error`**. The adapter's
@@ -75,3 +75,25 @@ checks the known discrepancy instead of treating any failure as acceptable.
 This small corpus does not measure performance, prove production compatibility,
 or replace each library's own suite. Pinning and maintaining adapters is a cost;
 use it when the same application data really crosses these runtimes.
+
+### Native inverse comparison
+
+`inverse_probe.mjs` separately checks immutable-json-patch
+[PR #8](https://github.com/josdejong/immutable-json-patch/pull/8). On published
+6.0.3, the root-array and nested-array moves to `/-` do not round trip; moving
+between different arrays does. The returned array contains an actual
+`undefined` element, which becomes `null` when JSON is serialized. Both facts
+are recorded instead of silently treating that serialization as valid data.
+
+The same three cases pass after building ESM from exact upstream PR head
+`d3b9ab0aef94ffb10c78fa0713a0e87bab14696d`. CI keeps both JSON records. The fix
+belongs to that upstream PR; it is not a new fix in interaction-check.
+
+```sh
+node examples/patch-portability/inverse_probe.mjs
+node examples/patch-portability/inverse_probe.mjs --module /path/to/fixed/lib/esm/index.js --fixed
+```
+
+The default command asserts the two known failures of the pinned baseline;
+`--fixed` requires all three round trips. These are three small native cases,
+not an upstream full-suite or performance result.
