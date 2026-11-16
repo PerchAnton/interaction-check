@@ -438,3 +438,8 @@ under the same dual license.
 ### JSON Patch across runtimes
 
 [Patch portability](examples/patch-portability/README.md) replays real Python, JavaScript, Go and Rust packages, including observer output and separate native before/after checks for two upstream fixes. Known mismatches remain failed reports. Native tests are enough when a contract does not cross implementations.
+
+See [observable lifecycle contracts](examples/lifecycle-contracts/README.md) for
+real emitter adapters, a precise unsubscribe mismatch, and native checks of three
+existing upstream patch fixes. Native tests are included; Python is optional for
+upstream consumers.

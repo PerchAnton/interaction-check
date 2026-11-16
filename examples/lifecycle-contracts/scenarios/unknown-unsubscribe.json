@@ -1,0 +1,62 @@
+{
+  "schema": 1,
+  "name": "unknown-unsubscribe",
+  "steps": [
+    {
+      "event": {
+        "op": "new"
+      },
+      "expect": {
+        "callbacks": [],
+        "log": []
+      }
+    },
+    {
+      "event": {
+        "op": "on",
+        "listener": "a"
+      },
+      "expect": {
+        "callbacks": [],
+        "log": []
+      }
+    },
+    {
+      "event": {
+        "op": "write",
+        "value": 7
+      },
+      "expect": {
+        "value": 7
+      }
+    },
+    {
+      "event": {
+        "op": "off",
+        "listener": "never-registered"
+      },
+      "expect": {
+        "callbacks": []
+      }
+    },
+    {
+      "event": {
+        "op": "emit"
+      },
+      "expect": {
+        "callbacks": [
+          [
+            "a",
+            7
+          ]
+        ],
+        "log": [
+          [
+            "a",
+            7
+          ]
+        ]
+      }
+    }
+  ]
+}
