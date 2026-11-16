@@ -1,0 +1,126 @@
+{
+  "schema": 1,
+  "name": "interop / events-log",
+  "steps": [
+    {
+      "event": {
+        "op": "new"
+      },
+      "expect": {
+        "writes": 0,
+        "emissions": 0,
+        "callbacks": [],
+        "log": []
+      }
+    },
+    {
+      "event": {
+        "op": "on",
+        "name": "data.*",
+        "listener": "first"
+      },
+      "expect": {
+        "writes": 0,
+        "emissions": 0,
+        "callbacks": [],
+        "log": []
+      }
+    },
+    {
+      "event": {
+        "op": "on",
+        "name": "data.*",
+        "listener": "second"
+      },
+      "expect": {
+        "writes": 0,
+        "emissions": 0,
+        "callbacks": [],
+        "log": []
+      }
+    },
+    {
+      "event": {
+        "op": "write",
+        "value": 7
+      },
+      "expect": {
+        "writes": 1,
+        "emissions": 0,
+        "callbacks": [],
+        "log": []
+      }
+    },
+    {
+      "event": {
+        "op": "emit",
+        "name": "data.ready"
+      },
+      "expect": {
+        "writes": 1,
+        "emissions": 1,
+        "callbacks": [
+          {
+            "listener": "first",
+            "value": 7
+          },
+          {
+            "listener": "second",
+            "value": 7
+          }
+        ],
+        "log": [
+          {
+            "listener": "first",
+            "value": 7
+          },
+          {
+            "listener": "second",
+            "value": 7
+          }
+        ]
+      }
+    },
+    {
+      "event": {
+        "op": "emit",
+        "name": [
+          "data",
+          "ready"
+        ]
+      },
+      "expect": {
+        "writes": 1,
+        "emissions": 2,
+        "callbacks": [
+          {
+            "listener": "first",
+            "value": 7
+          },
+          {
+            "listener": "second",
+            "value": 7
+          }
+        ],
+        "log": [
+          {
+            "listener": "first",
+            "value": 7
+          },
+          {
+            "listener": "second",
+            "value": 7
+          },
+          {
+            "listener": "first",
+            "value": 7
+          },
+          {
+            "listener": "second",
+            "value": 7
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,72 @@
+{
+  "schema": 1,
+  "name": "interop / patch-failure",
+  "steps": [
+    {
+      "event": {
+        "op": "new",
+        "data": {
+          "n": 1,
+          "items": [
+            "a"
+          ]
+        }
+      },
+      "expect": {
+        "document": {
+          "n": 1,
+          "items": [
+            "a"
+          ]
+        },
+        "error": null
+      }
+    },
+    {
+      "event": {
+        "op": "apply",
+        "patch": [
+          {
+            "op": "replace",
+            "path": "/n",
+            "value": 2
+          },
+          {
+            "op": "remove",
+            "path": "/missing"
+          }
+        ]
+      },
+      "expect": {
+        "document": {
+          "n": 1,
+          "items": [
+            "a"
+          ]
+        },
+        "error": "rejected"
+      }
+    },
+    {
+      "event": {
+        "op": "apply",
+        "patch": [
+          {
+            "op": "move",
+            "from": "/items/0",
+            "path": "/missing/0"
+          }
+        ]
+      },
+      "expect": {
+        "document": {
+          "n": 1,
+          "items": [
+            "a"
+          ]
+        },
+        "error": "rejected"
+      }
+    }
+  ]
+}

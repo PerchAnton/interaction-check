@@ -1,5 +1,10 @@
 # interaction-check
 
+[Real-library interop examples](examples/interop/README.md) cover Python JSON
+Patch → Mutative, zundo Undo/Redo boundaries, and EventEmitter2 callback traces.
+Each keeps a native test and distinguishes raw behavior from the example's
+application policy; no upstream adoption or performance improvement is claimed.
+
 **1.0.0 is published.** The [1.x compatibility contract](docs/COMPATIBILITY.md)
 covers the supported API and behavior. [Verified publication and installation](docs/evidence/release-1.0.0.json).
 

@@ -1,0 +1,131 @@
+{
+  "schema": 1,
+  "name": "interop / patch-boundary",
+  "steps": [
+    {
+      "event": {
+        "op": "new",
+        "data": {
+          "items": [],
+          "": 1
+        }
+      },
+      "expect": {
+        "error": null
+      }
+    },
+    {
+      "event": {
+        "op": "apply",
+        "patch": [
+          {
+            "op": "add",
+            "path": "/items/2",
+            "value": "x"
+          }
+        ]
+      },
+      "expect": {
+        "document": {
+          "items": [],
+          "": 1
+        },
+        "error": "rejected"
+      }
+    },
+    {
+      "event": {
+        "op": "apply",
+        "patch": [
+          {
+            "op": "remove",
+            "path": "/items/-"
+          }
+        ]
+      },
+      "expect": {
+        "document": {
+          "items": [],
+          "": 1
+        },
+        "error": "rejected"
+      }
+    },
+    {
+      "event": {
+        "op": "apply",
+        "patch": [
+          {
+            "op": "move",
+            "from": "/items",
+            "path": "/items/0"
+          }
+        ]
+      },
+      "expect": {
+        "document": {
+          "items": [],
+          "": 1
+        },
+        "error": "rejected"
+      }
+    },
+    {
+      "event": {
+        "op": "apply",
+        "patch": [
+          {
+            "op": "replace",
+            "path": "",
+            "value": {}
+          }
+        ]
+      },
+      "expect": {
+        "document": {
+          "items": [],
+          "": 1
+        },
+        "error": "rejected"
+      }
+    },
+    {
+      "event": {
+        "op": "apply",
+        "patch": [
+          {
+            "op": "copy",
+            "from": "/",
+            "path": "/~2"
+          }
+        ]
+      },
+      "expect": {
+        "document": {
+          "items": [],
+          "": 1
+        },
+        "error": "rejected"
+      }
+    },
+    {
+      "event": {
+        "op": "apply",
+        "patch": [
+          {
+            "op": "add",
+            "path": "/__proto__/x",
+            "value": 1
+          }
+        ]
+      },
+      "expect": {
+        "document": {
+          "items": [],
+          "": 1
+        },
+        "error": "rejected"
+      }
+    }
+  ]
+}

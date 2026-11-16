@@ -1,0 +1,72 @@
+{
+  "schema": 1,
+  "name": "interop / patch-move",
+  "steps": [
+    {
+      "event": {
+        "op": "new",
+        "data": {
+          "items": [
+            "a",
+            "b",
+            "c"
+          ]
+        }
+      },
+      "expect": {
+        "document": {
+          "items": [
+            "a",
+            "b",
+            "c"
+          ]
+        },
+        "error": null
+      }
+    },
+    {
+      "event": {
+        "op": "apply",
+        "patch": [
+          {
+            "op": "move",
+            "from": "/items/0",
+            "path": "/items/2"
+          }
+        ]
+      },
+      "expect": {
+        "document": {
+          "items": [
+            "b",
+            "c",
+            "a"
+          ]
+        },
+        "error": null
+      }
+    },
+    {
+      "event": {
+        "op": "apply",
+        "patch": [
+          {
+            "op": "move",
+            "from": "/items/2",
+            "path": "/items/0"
+          }
+        ]
+      },
+      "expect": {
+        "document": {
+          "items": [
+            "a",
+            "b",
+            "c"
+          ]
+        },
+        "error": null
+      }
+    }
+  ]
+}
