@@ -1,0 +1,12 @@
+{
+  "name": "interaction-check-observer-boundaries",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "tiny-emitter": "2.1.0",
+    "pubsub-js": "1.9.5"
+  },
+  "scripts": {
+    "test": "node --test native.test.mjs"
+  }
+}

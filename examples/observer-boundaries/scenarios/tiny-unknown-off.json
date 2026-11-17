@@ -1,0 +1,51 @@
+{
+  "schema": 1,
+  "name": "tiny-unknown-off",
+  "steps": [
+    {
+      "event": {
+        "op": "on",
+        "name": "a"
+      },
+      "expect": {
+        "callbacks": []
+      }
+    },
+    {
+      "event": {
+        "op": "on",
+        "name": "b"
+      },
+      "expect": {
+        "callbacks": []
+      }
+    },
+    {
+      "event": {
+        "op": "off",
+        "name": "missing"
+      },
+      "expect": {
+        "callbacks": []
+      }
+    },
+    {
+      "event": {
+        "op": "emit",
+        "value": 7
+      },
+      "expect": {
+        "callbacks": [
+          [
+            "a",
+            7
+          ],
+          [
+            "b",
+            7
+          ]
+        ]
+      }
+    }
+  ]
+}

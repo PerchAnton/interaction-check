@@ -1,0 +1,60 @@
+{
+  "schema": 1,
+  "name": "atom-rebinding",
+  "steps": [
+    {
+      "event": {
+        "op": "write",
+        "value": 1
+      },
+      "expect": {
+        "value": 1,
+        "callbacks": [
+          {
+            "name": "x",
+            "old": 0,
+            "new": 1,
+            "type": "update"
+          }
+        ]
+      }
+    },
+    {
+      "event": {
+        "op": "replace",
+        "value": 2
+      },
+      "expect": {
+        "value": 2,
+        "callbacks": []
+      }
+    },
+    {
+      "event": {
+        "op": "write-old",
+        "value": 99
+      },
+      "expect": {
+        "value": 2,
+        "callbacks": []
+      }
+    },
+    {
+      "event": {
+        "op": "write",
+        "value": 3
+      },
+      "expect": {
+        "value": 3,
+        "callbacks": [
+          {
+            "name": "x",
+            "old": 2,
+            "new": 3,
+            "type": "update"
+          }
+        ]
+      }
+    }
+  ]
+}

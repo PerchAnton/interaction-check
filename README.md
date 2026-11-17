@@ -443,3 +443,8 @@ See [observable lifecycle contracts](examples/lifecycle-contracts/README.md) for
 real emitter adapters, a precise unsubscribe mismatch, and native checks of three
 existing upstream patch fixes. Native tests are included; Python is optional for
 upstream consumers.
+
+[Observer boundaries](examples/observer-boundaries/README.md) adds small native
+checks and JSON traces for tiny-emitter, PubSubJS, Atom, Traits and Automat.
+It distinguishes a changed value from a notification and retains requested
+behavior that the installed library does not provide as an explicit failed report.

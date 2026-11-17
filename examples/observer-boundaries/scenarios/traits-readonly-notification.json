@@ -1,0 +1,23 @@
+{
+  "schema": 1,
+  "name": "traits-readonly-notification",
+  "steps": [
+    {
+      "event": {
+        "op": "write",
+        "value": 2
+      },
+      "expect": {
+        "value": 2,
+        "mutable_square": 4,
+        "readonly_square": 4,
+        "callbacks": [
+          "mutable.x",
+          "mutable_square",
+          "readonly.x",
+          "readonly_square"
+        ]
+      }
+    }
+  ]
+}
