@@ -17,6 +17,29 @@ class Boundaries(unittest.TestCase):
         self.assertEqual(current['callbacks'], [{'name': 'x', 'old': 2, 'new': 3, 'type': 'update'}])
         self.assertEqual(len(current['log']), 2)
 
+    def test_atom_observing_parent_and_child_reports_each_change_once(self):
+        from atom.api import Atom, Int, List, Typed, observe
+
+        class Point(Atom):
+            x = Int()
+
+        class Item(Atom):
+            pos = Typed(Point, ())
+            seen = List()
+
+            @observe('pos', 'pos.x')
+            def record(self, change):
+                self.seen.append((change['name'], change.get('oldvalue'), change['value']))
+
+        first, second = Point(x=0), Point(x=2)
+        item = Item(pos=first)
+        item.seen.clear()
+        first.x = 1
+        item.pos = second
+        first.x = 99
+        second.x = 3
+        self.assertEqual(item.seen, [('x', 0, 1), ('pos', first, second), ('x', 2, 3)])
+
     def test_traits_value_updates_but_readonly_property_notification_is_missing(self):
         step = traits_controller()
         for value in [2, 3]:

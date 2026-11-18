@@ -16,7 +16,7 @@ python examples/observer-boundaries/verify.py --output artifacts/observer-bounda
 | --- | --- | --- |
 | tiny-emitter 2.1.0 | Removing an unknown callback preserves both listeners; duplicate cleanup preserves the other listener; `once` can be removed with the original function | [#48](https://github.com/scottcorgan/tiny-emitter/issues/48) |
 | PubSubJS 1.9.5 | Clearing `enter` also removes `entering`, with both clearing methods and with/without a direct parent subscription | [#215](https://github.com/mroderick/PubSubJS/issues/215), existing [fix #232](https://github.com/mroderick/PubSubJS/pull/232) |
-| Atom 0.14.1 | Replacing `pos` changes its value without a `pos.x` callback. The old object is detached; subsequent changes to the replacement do notify | [#245](https://github.com/nucleic/atom/issues/245) |
+| Atom 0.14.1 | Replacing `pos` changes its value without a `pos.x` callback. The old object is detached; subsequent changes to the replacement do notify. Observing both `pos` and `pos.x` reports the replacement once and tracks the new point | [#245](https://github.com/nucleic/atom/issues/245) |
 | Traits 7.3.0 | A nested ReadOnly value and its square change. The direct observer fires, but the dependent property's callback does not | [#1735](https://github.com/enthought/traits/issues/1735) |
 | Automat 25.4.16 | After the data factory fails, the next public `read()` hits a data-type assertion; the successful-factory control works | [#160](https://github.com/glyph/automat/issues/160), existing [proposal #177](https://github.com/glyph/automat/pull/177) |
 
