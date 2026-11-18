@@ -1,0 +1,79 @@
+{
+  "schema": 1,
+  "name": "observer-to-other-runtimes",
+  "steps": [
+    {
+      "event": {
+        "op": "new",
+        "data": {
+          "a/b": 1,
+          "list": [
+            "a",
+            "b",
+            "c"
+          ]
+        }
+      },
+      "expect": {
+        "document": {
+          "a/b": 1,
+          "list": [
+            "a",
+            "b",
+            "c"
+          ]
+        },
+        "error": null
+      }
+    },
+    {
+      "event": {
+        "op": "apply",
+        "patch": [
+          {
+            "op": "replace",
+            "path": "/a~1b",
+            "value": 2
+          }
+        ]
+      },
+      "expect": {
+        "document": {
+          "a/b": 2,
+          "list": [
+            "a",
+            "b",
+            "c"
+          ]
+        },
+        "error": null
+      }
+    },
+    {
+      "event": {
+        "op": "apply",
+        "patch": [
+          {
+            "op": "replace",
+            "path": "/list/1",
+            "value": "c"
+          },
+          {
+            "op": "remove",
+            "path": "/list/2"
+          }
+        ]
+      },
+      "expect": {
+        "document": {
+          "a/b": 2,
+          "list": [
+            "a",
+            "c"
+          ]
+        },
+        "error": null
+      }
+    }
+  ]
+}

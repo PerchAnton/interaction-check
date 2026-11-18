@@ -1,0 +1,76 @@
+{
+  "schema": 1,
+  "name": "interop / history-valid",
+  "steps": [
+    {
+      "event": {
+        "op": "new"
+      },
+      "expect": {
+        "value": 0,
+        "missing": false
+      }
+    },
+    {
+      "event": {
+        "op": "set",
+        "value": 1
+      },
+      "expect": {
+        "value": 1
+      }
+    },
+    {
+      "event": {
+        "op": "set",
+        "value": 2
+      },
+      "expect": {
+        "value": 2
+      }
+    },
+    {
+      "event": {
+        "op": "undo"
+      },
+      "expect": {
+        "value": 1,
+        "past": [
+          {
+            "missing": false,
+            "value": 0
+          }
+        ]
+      }
+    },
+    {
+      "event": {
+        "op": "redo"
+      },
+      "expect": {
+        "value": 2,
+        "future": []
+      }
+    },
+    {
+      "event": {
+        "op": "undo",
+        "steps": 99
+      },
+      "expect": {
+        "value": 0,
+        "past": []
+      }
+    },
+    {
+      "event": {
+        "op": "redo",
+        "steps": 99
+      },
+      "expect": {
+        "value": 2,
+        "future": []
+      }
+    }
+  ]
+}

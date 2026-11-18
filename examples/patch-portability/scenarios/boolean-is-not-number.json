@@ -1,0 +1,38 @@
+{
+  "schema": 1,
+  "name": "boolean-is-not-number",
+  "steps": [
+    {
+      "event": {
+        "op": "new",
+        "data": {
+          "n": 1
+        }
+      },
+      "expect": {
+        "document": {
+          "n": 1
+        },
+        "error": null
+      }
+    },
+    {
+      "event": {
+        "op": "apply",
+        "patch": [
+          {
+            "op": "test",
+            "path": "/n",
+            "value": true
+          }
+        ]
+      },
+      "expect": {
+        "document": {
+          "n": 1
+        },
+        "error": "rejected"
+      }
+    }
+  ]
+}

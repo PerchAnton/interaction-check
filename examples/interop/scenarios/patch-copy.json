@@ -1,0 +1,83 @@
+{
+  "schema": 1,
+  "name": "interop / patch-copy",
+  "steps": [
+    {
+      "event": {
+        "op": "new",
+        "data": {
+          "a/b": {
+            "~": {
+              "n": 1
+            }
+          },
+          "items": []
+        }
+      },
+      "expect": {
+        "document": {
+          "items": []
+        },
+        "error": null
+      }
+    },
+    {
+      "event": {
+        "op": "apply",
+        "patch": [
+          {
+            "op": "copy",
+            "from": "/a~1b/~0",
+            "path": "/copy"
+          }
+        ]
+      },
+      "expect": {
+        "document": {
+          "copy": {
+            "n": 1
+          },
+          "a/b": {
+            "~": {
+              "n": 1
+            }
+          }
+        },
+        "error": null
+      }
+    },
+    {
+      "event": {
+        "op": "apply",
+        "patch": [
+          {
+            "op": "replace",
+            "path": "/copy/n",
+            "value": 2
+          },
+          {
+            "op": "add",
+            "path": "/items/-",
+            "value": "x"
+          }
+        ]
+      },
+      "expect": {
+        "document": {
+          "copy": {
+            "n": 2
+          },
+          "a/b": {
+            "~": {
+              "n": 1
+            }
+          },
+          "items": [
+            "x"
+          ]
+        },
+        "error": null
+      }
+    }
+  ]
+}

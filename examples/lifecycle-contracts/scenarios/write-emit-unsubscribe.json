@@ -1,0 +1,91 @@
+{
+  "schema": 1,
+  "name": "write-emit-unsubscribe",
+  "steps": [
+    {
+      "event": {
+        "op": "new"
+      },
+      "expect": {
+        "value": null,
+        "writes": 0,
+        "emissions": 0,
+        "callbacks": [],
+        "log": []
+      }
+    },
+    {
+      "event": {
+        "op": "on",
+        "listener": "a"
+      },
+      "expect": {
+        "callbacks": [],
+        "log": []
+      }
+    },
+    {
+      "event": {
+        "op": "write",
+        "value": 7
+      },
+      "expect": {
+        "value": 7,
+        "writes": 1,
+        "emissions": 0,
+        "callbacks": [],
+        "log": []
+      }
+    },
+    {
+      "event": {
+        "op": "emit"
+      },
+      "expect": {
+        "emissions": 1,
+        "callbacks": [
+          [
+            "a",
+            7
+          ]
+        ],
+        "log": [
+          [
+            "a",
+            7
+          ]
+        ]
+      }
+    },
+    {
+      "event": {
+        "op": "off",
+        "listener": "a"
+      },
+      "expect": {
+        "callbacks": [],
+        "log": [
+          [
+            "a",
+            7
+          ]
+        ]
+      }
+    },
+    {
+      "event": {
+        "op": "emit"
+      },
+      "expect": {
+        "emissions": 2,
+        "callbacks": [],
+        "log": [
+          [
+            "a",
+            7
+          ]
+        ]
+      }
+    }
+  ]
+}

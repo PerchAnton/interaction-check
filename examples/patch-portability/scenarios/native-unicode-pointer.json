@@ -1,0 +1,38 @@
+{
+  "schema": 1,
+  "name": "native-unicode-pointer",
+  "steps": [
+    {
+      "event": {
+        "op": "new",
+        "data": {
+          "café": 1
+        }
+      },
+      "expect": {
+        "document": {
+          "café": 1
+        },
+        "error": null
+      }
+    },
+    {
+      "event": {
+        "op": "apply",
+        "patch": [
+          {
+            "op": "replace",
+            "path": "/café",
+            "value": 2
+          }
+        ]
+      },
+      "expect": {
+        "document": {
+          "café": 2
+        },
+        "error": null
+      }
+    }
+  ]
+}

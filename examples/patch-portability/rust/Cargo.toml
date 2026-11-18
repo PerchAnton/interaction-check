@@ -1,0 +1,9 @@
+[package]
+name = "patch-portability-adapter"
+version = "0.0.0"
+edition = "2024"
+publish = false
+
+[dependencies]
+json-patch = "=5.0.0"
+serde_json = "=1.0.154"

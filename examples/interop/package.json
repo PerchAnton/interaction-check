@@ -1,0 +1,18 @@
+{
+  "name": "interaction-check-interop-examples",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=24"
+  },
+  "scripts": {
+    "test": "node --test *.test.mjs"
+  },
+  "dependencies": {
+    "eventemitter2": "6.4.9",
+    "mutative": "2.0.2",
+    "react": "19.3.1",
+    "zundo": "2.3.0",
+    "zustand": "5.1.0"
+  }
+}

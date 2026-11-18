@@ -3,9 +3,12 @@ __pycache__/
 .venv/
 .venv-pyee/
 .venv-dispatch/
+.venv-interop/
+/artifacts/
 **/target/
 /.artifacts/
 **/node_modules/
 /dist/
 /build/
 /*.egg-info/
+.venv-patch/

@@ -1,0 +1,80 @@
+{
+  "schema": 1,
+  "name": "merge-null-array-idempotence",
+  "steps": [
+    {
+      "event": {
+        "op": "new",
+        "data": {
+          "delete": 1,
+          "items": [
+            1,
+            2
+          ],
+          "keep": true
+        }
+      },
+      "expect": {
+        "document": {
+          "delete": 1,
+          "items": [
+            1,
+            2
+          ],
+          "keep": true
+        },
+        "error": null
+      }
+    },
+    {
+      "event": {
+        "op": "merge",
+        "patch": {
+          "delete": null,
+          "items": [
+            3
+          ]
+        }
+      },
+      "expect": {
+        "document": {
+          "items": [
+            3
+          ],
+          "keep": true
+        },
+        "error": null
+      }
+    },
+    {
+      "event": {
+        "op": "merge",
+        "patch": {
+          "delete": null,
+          "items": [
+            3
+          ]
+        }
+      },
+      "expect": {
+        "document": {
+          "items": [
+            3
+          ],
+          "keep": true
+        },
+        "error": null
+      }
+    },
+    {
+      "event": {
+        "op": "merge",
+        "patch": null
+      },
+      "expect": {
+        "document": null,
+        "error": null
+      }
+    }
+  ]
+}

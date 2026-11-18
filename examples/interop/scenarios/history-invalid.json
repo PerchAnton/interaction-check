@@ -1,0 +1,159 @@
+{
+  "schema": 1,
+  "name": "interop / history-invalid",
+  "steps": [
+    {
+      "event": {
+        "op": "new"
+      },
+      "expect": {
+        "value": 0,
+        "missing": false,
+        "past": [],
+        "future": [],
+        "callbacks": []
+      }
+    },
+    {
+      "event": {
+        "op": "set",
+        "value": 1
+      },
+      "expect": {
+        "value": 1,
+        "past": [
+          {
+            "missing": false,
+            "value": 0
+          }
+        ],
+        "callbacks": [
+          {
+            "missing": false,
+            "value": 1
+          }
+        ]
+      }
+    },
+    {
+      "event": {
+        "op": "undo",
+        "steps": 0
+      },
+      "expect": {
+        "value": 1,
+        "missing": false,
+        "past": [
+          {
+            "missing": false,
+            "value": 0
+          }
+        ],
+        "future": [],
+        "callbacks": [],
+        "log": [
+          {
+            "missing": false,
+            "value": 1
+          }
+        ]
+      }
+    },
+    {
+      "event": {
+        "op": "undo",
+        "steps": -1
+      },
+      "expect": {
+        "value": 1,
+        "missing": false,
+        "past": [
+          {
+            "missing": false,
+            "value": 0
+          }
+        ],
+        "future": [],
+        "callbacks": [],
+        "log": [
+          {
+            "missing": false,
+            "value": 1
+          }
+        ]
+      }
+    },
+    {
+      "event": {
+        "op": "redo",
+        "steps": {}
+      },
+      "expect": {
+        "value": 1,
+        "missing": false,
+        "past": [
+          {
+            "missing": false,
+            "value": 0
+          }
+        ],
+        "future": [],
+        "callbacks": [],
+        "log": [
+          {
+            "missing": false,
+            "value": 1
+          }
+        ]
+      }
+    },
+    {
+      "event": {
+        "op": "undo",
+        "steps": "1"
+      },
+      "expect": {
+        "value": 1,
+        "missing": false,
+        "past": [
+          {
+            "missing": false,
+            "value": 0
+          }
+        ],
+        "future": [],
+        "callbacks": [],
+        "log": [
+          {
+            "missing": false,
+            "value": 1
+          }
+        ]
+      }
+    },
+    {
+      "event": {
+        "op": "undo",
+        "steps": null
+      },
+      "expect": {
+        "value": 1,
+        "missing": false,
+        "past": [
+          {
+            "missing": false,
+            "value": 0
+          }
+        ],
+        "future": [],
+        "callbacks": [],
+        "log": [
+          {
+            "missing": false,
+            "value": 1
+          }
+        ]
+      }
+    }
+  ]
+}

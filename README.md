@@ -1,5 +1,10 @@
 # interaction-check
 
+[Real-library interop examples](examples/interop/README.md) cover Python JSON
+Patch → Mutative, zundo Undo/Redo boundaries, and EventEmitter2 callback traces.
+Each keeps a native test and distinguishes raw behavior from the example's
+application policy; no upstream adoption or performance improvement is claimed.
+
 **1.0.0 is published.** The [1.x compatibility contract](docs/COMPATIBILITY.md)
 covers the supported API and behavior. [Verified publication and installation](docs/evidence/release-1.0.0.json).
 
@@ -429,3 +434,17 @@ Licensed under either the [MIT license](LICENSE-MIT) or the
 [Apache License, Version 2.0](LICENSE-APACHE), at your option.
 Unless explicitly stated otherwise, contributions submitted for inclusion are offered
 under the same dual license.
+
+### JSON Patch across runtimes
+
+[Patch portability](examples/patch-portability/README.md) replays real Python, JavaScript, Go and Rust packages, including observer output and separate native before/after checks for two upstream fixes. Known mismatches remain failed reports. Native tests are enough when a contract does not cross implementations.
+
+See [observable lifecycle contracts](examples/lifecycle-contracts/README.md) for
+real emitter adapters, a precise unsubscribe mismatch, and native checks of three
+existing upstream patch fixes. Native tests are included; Python is optional for
+upstream consumers.
+
+[Observer boundaries](examples/observer-boundaries/README.md) adds small native
+checks and JSON traces for tiny-emitter, PubSubJS, Atom, Traits and Automat.
+It distinguishes a changed value from a notification and retains requested
+behavior that the installed library does not provide as an explicit failed report.

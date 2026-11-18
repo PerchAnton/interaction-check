@@ -1,0 +1,72 @@
+{
+  "schema": 1,
+  "name": "interop / events-names",
+  "steps": [
+    {
+      "event": {
+        "op": "new"
+      },
+      "expect": {
+        "value": null,
+        "writes": 0,
+        "emissions": 0,
+        "callbacks": [],
+        "log": []
+      }
+    },
+    {
+      "event": {
+        "op": "on",
+        "name": "newListener",
+        "listener": "watch"
+      },
+      "expect": {
+        "writes": 0,
+        "emissions": 0,
+        "callbacks": [],
+        "log": []
+      }
+    },
+    {
+      "event": {
+        "op": "write",
+        "value": 7
+      },
+      "expect": {
+        "value": 7,
+        "writes": 1,
+        "emissions": 0,
+        "callbacks": [],
+        "log": []
+      }
+    },
+    {
+      "event": {
+        "op": "emit",
+        "name": "newListener"
+      },
+      "expect": {
+        "value": 7,
+        "writes": 1,
+        "emissions": 1,
+        "callbacks": [],
+        "log": []
+      }
+    },
+    {
+      "event": {
+        "op": "emit",
+        "name": [
+          "newListener"
+        ]
+      },
+      "expect": {
+        "value": 7,
+        "writes": 1,
+        "emissions": 2,
+        "callbacks": [],
+        "log": []
+      }
+    }
+  ]
+}
